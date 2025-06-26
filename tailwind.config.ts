@@ -63,12 +63,10 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				wrlds: {
-					teal: '#9F9EA1',
-					dark: '#3F3F3F',
-					light: '#F6F6F7',
-					accent: '#C8C8C9',
-					muted: '#F1F1F1'
+				church: {
+					navy: '#244363',
+					brown: '#4c3219', 
+					gold: '#d9b062'
 				}
 			},
 			borderRadius: {

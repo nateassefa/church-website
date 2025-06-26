@@ -1,188 +1,327 @@
 
-import { ArrowLeft, CheckCircle, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { motion } from "framer-motion";
-import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Card, CardContent } from "@/components/ui/card";
+import SEO from '@/components/SEO';
+import { motion } from 'framer-motion';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 const About = () => {
-  // Scroll to top on mount
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-  
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.6 }
+    }
+  };
+
   return (
     <PageLayout>
-      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto">
-          <div className="max-w-6xl mx-auto">
-            <Link to="/" className="inline-flex items-center text-gray-500 hover:text-gray-700 mb-6 transition-colors">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Home
-            </Link>
-            
-            <motion.h1 
-              initial={{ opacity: 0, y: -10 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 0.5 }} 
-              className="text-4xl font-bold mb-6"
+      <SEO 
+        title="About Us - Living Hope Church"
+        description="Learn about Living Hope for Generations Church's mission, vision, and core values. A vibrant, multicultural church serving Ethiopian and Eritrean families."
+        keywords={['about', 'mission', 'vision', 'values', 'church', 'Ethiopian', 'Eritrean']}
+      />
+      
+      <div className="pt-20 pb-16">
+        {/* Hero Section */}
+        <section className="bg-[#244363] text-white py-16">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+              className="text-center max-w-4xl mx-auto"
             >
-              About WRLDS Technologies
-            </motion.h1>
-            
-            <div className="prose prose-lg max-w-none">
+              <motion.h1 
+                variants={itemVariants}
+                className="text-4xl md:text-5xl font-bold mb-6"
+              >
+                About Us
+              </motion.h1>
               <motion.p 
-                initial={{ opacity: 0 }} 
-                animate={{ opacity: 1 }} 
-                transition={{ duration: 0.5, delay: 0.2 }} 
-                className="text-xl text-gray-600 mb-12"
+                variants={itemVariants}
+                className="text-xl text-gray-200 leading-relaxed"
               >
-                We're a team of innovators dedicated to revolutionizing smart textile technology for industries worldwide.
+                Living Hope exists to proclaim the gospel, grow as disciples, build community, and serve others
               </motion.p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-                <motion.div 
-                  initial={{ opacity: 0, x: -20 }} 
-                  animate={{ opacity: 1, x: 0 }} 
-                  transition={{ duration: 0.6 }}
-                  className="space-y-6"
-                >
-                  <h2 className="text-3xl font-bold">Our Mission</h2>
-                  <p className="text-gray-600">
-                    At WRLDS Technologies, we're on a mission to transform ordinary textiles into intelligent, 
-                    data-driven solutions that improve safety, performance, and quality of life across industries.
-                  </p>
-                  <p className="text-gray-600">
-                    We believe that by embedding intelligence into everyday fabrics, we can create a more 
-                    connected, responsive, and safer world.
-                  </p>
-                </motion.div>
-                
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }} 
-                  animate={{ opacity: 1, x: 0 }} 
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="bg-gray-50 rounded-2xl p-8 border border-gray-100"
-                >
-                  <h3 className="text-2xl font-bold mb-4">Our Values</h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-gray-700 mt-1 mr-3 flex-shrink-0" />
-                      <span><strong>Innovation:</strong> We push boundaries to create solutions that weren't possible before.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-gray-700 mt-1 mr-3 flex-shrink-0" />
-                      <span><strong>Quality:</strong> We're committed to excellence in every sensor, algorithm, and solution we deliver.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-gray-700 mt-1 mr-3 flex-shrink-0" />
-                      <span><strong>Collaboration:</strong> We work closely with our clients to ensure their unique needs are met.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-gray-700 mt-1 mr-3 flex-shrink-0" />
-                      <span><strong>Impact:</strong> We measure success by the tangible differences our technology makes in the real world.</span>
-                    </li>
-                  </ul>
-                </motion.div>
-              </div>
-              
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="mb-16"
-              >
-                <h2 className="text-3xl font-bold mb-6">Our Story</h2>
-                <div className="bg-white rounded-xl border border-gray-200 p-8 shadow-sm">
-                  <p className="text-gray-600 mb-4">
-                    We started with the ambition to make an inherently scattered and complex development area modular, 
-                    smart and available to analog brands. After successfully raising millions of dollars for development, 
-                    we spent the first two years in full code mode.
-                  </p>
-                  <p className="text-gray-600 mb-4">
-                    The goal was to turn all the scattered hardware and building blocks into simple modules to be 
-                    assembled like Lego. During this time we took in a range of customers for whom we built prototypes - 
-                    a way for us to make sure what we built had bearing in real world use cases.
-                  </p>
-                  <p className="text-gray-600">
-                    In 2023 we felt we had reached a technology level allowing us to start working on enterprise level. 
-                    Since then, we have focused on textile integrations because of the enormous potential smart textiles 
-                    have across multiple industries from healthcare to public safety.
-                  </p>
-                </div>
-              </motion.div>
-              
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="mb-16"
-              >
-                <h2 className="text-3xl font-bold mb-6">Our Team</h2>
-                <p className="text-gray-600 mb-8">
-                  Our diverse team combines expertise in textile engineering, electronics, software development, 
-                  artificial intelligence, and industry-specific knowledge to deliver holistic solutions.
-                </p>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {[
-                    {
-                      name: "Felix von Heland",
-                      role: "CEO and Founder",
-                      bio: "Leading WRLDS Technologies with a vision to transform the future of smart textiles.",
-                      image: "/lovable-uploads/aa5291bd-2417-4c1e-9a02-0bcc71a92507.png"
-                    },
-                    {
-                      name: "Niek Bijman",
-                      role: "Software Lead",
-                      bio: "Specializing in cloud infrastructure and APIs for seamless data integration.",
-                      image: "/lovable-uploads/e502f601-c519-43a8-86f5-5fa89ae50d2f.png"
-                    },
-                    {
-                      name: "Chengjie Li",
-                      role: "Hardware Lead",
-                      bio: "Expert in embedded systems engineering, leading our hardware development efforts.",
-                      image: "/lovable-uploads/3de85ddd-15e1-4216-9697-f91abb9a47ce.png"
-                    },
-                    {
-                      name: "Love",
-                      role: "COO",
-                      bio: "Overseeing daily operations and ensuring business objectives are met effectively.",
-                      image: "/lovable-uploads/a9bb9110-964a-43b0-a5ab-7162140cd133.png"
-                    }
-                  ].map((member, i) => (
-                    <Card key={i} className="bg-gray-50 border border-gray-100 overflow-hidden">
-                      <CardContent className="p-6">
-                        <div className="flex flex-col items-center text-center">
-                          <div className="w-32 h-32 relative mb-4 rounded-full overflow-hidden">
-                            <img 
-                              src={member.image} 
-                              alt={member.name} 
-                              className="w-full h-full object-cover filter grayscale" 
-                            />
-                          </div>
-                          <h3 className="font-bold text-lg">{member.name}</h3>
-                          <p className="text-gray-500 text-sm mb-2">{member.role}</p>
-                          <p className="text-gray-600 text-sm">{member.bio}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-            
-            <div className="mt-16 pt-8 border-t border-gray-200">
-              <Link to="/careers" className="inline-flex items-center px-5 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-all group">
-                Join Our Team
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
+            </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Mission Statement */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={containerVariants}
+            >
+              <motion.div variants={itemVariants} className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-[#244363] mb-6">
+                  Mission Statement
+                </h2>
+                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                  Living Hope exists to:
+                </p>
+              </motion.div>
+
+              <motion.div 
+                variants={itemVariants}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+              >
+                <Card className="border-l-4 border-l-[#244363] hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-center">
+                    <h3 className="text-lg font-semibold text-[#244363] mb-2">Proclaim</h3>
+                    <p className="text-gray-600">the gospel</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="border-l-4 border-l-[#4c3219] hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-center">
+                    <h3 className="text-lg font-semibold text-[#4c3219] mb-2">Grow</h3>
+                    <p className="text-gray-600">as disciples</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="border-l-4 border-l-[#d9b062] hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-center">
+                    <h3 className="text-lg font-semibold text-[#d9b062] mb-2">Build</h3>
+                    <p className="text-gray-600">community</p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="border-l-4 border-l-[#244363] hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6 text-center">
+                    <h3 className="text-lg font-semibold text-[#244363] mb-2">Serve</h3>
+                    <p className="text-gray-600">others</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <motion.div variants={itemVariants} className="text-center mt-12">
+                <p className="text-lg text-gray-700 italic">
+                  Live out our faith and reflect Christ's love
+                </p>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Purpose Highlights */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={containerVariants}
+            >
+              <motion.h2 
+                variants={itemVariants}
+                className="text-3xl md:text-4xl font-bold text-[#244363] text-center mb-12"
+              >
+                Purpose Highlights
+              </motion.h2>
+
+              <motion.div 
+                variants={itemVariants}  
+                className="grid grid-cols-1 md:grid-cols-3 gap-8"
+              >
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-8">
+                    <h3 className="text-xl font-semibold text-[#244363] mb-4">
+                      Spiritual Growth & Discipleship
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      Fostering deep spiritual growth and discipleship in our community
+                    </p>
+                    <Badge variant="outline" className="text-[#4c3219] border-[#4c3219]">
+                      Acts 2:42–47
+                    </Badge>
+                  </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-8">
+                    <h3 className="text-xl font-semibold text-[#244363] mb-4">
+                      Evangelism & Outreach
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      Sharing the good news and reaching out to our community
+                    </p>
+                    <div className="space-y-2">
+                      <Badge variant="outline" className="text-[#4c3219] border-[#4c3219] mr-2">
+                        Matt. 28:19–20
+                      </Badge>
+                      <Badge variant="outline" className="text-[#4c3219] border-[#4c3219]">
+                        Acts 1:8
+                      </Badge>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-8">
+                    <h3 className="text-xl font-semibold text-[#244363] mb-4">
+                      Next-Gen Leaders
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      Developing and empowering the next generation of leaders
+                    </p>
+                    <div className="space-y-2">
+                      <Badge variant="outline" className="text-[#4c3219] border-[#4c3219] mr-2">
+                        1 Tim. 4:12
+                      </Badge>
+                      <Badge variant="outline" className="text-[#4c3219] border-[#4c3219]">
+                        2 Tim. 2:2
+                      </Badge>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Vision Statement */}
+        <section className="py-16 bg-[#4c3219] text-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={containerVariants}
+              className="text-center max-w-4xl mx-auto"
+            >
+              <motion.h2 
+                variants={itemVariants}
+                className="text-3xl md:text-4xl font-bold mb-8"
+              >
+                Vision Statement
+              </motion.h2>
+              <motion.p 
+                variants={itemVariants}
+                className="text-xl leading-relaxed mb-6"
+              >
+                A vibrant, multicultural church where Christ's life flourishes across generations.
+              </motion.p>
+              <motion.p 
+                variants={itemVariants}
+                className="text-lg text-gray-200"
+              >
+                Rooted in Scripture, celebrating diversity, and serving with love.
+              </motion.p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Core Values */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={containerVariants}
+            >
+              <motion.h2 
+                variants={itemVariants}
+                className="text-3xl md:text-4xl font-bold text-[#244363] text-center mb-12"
+              >
+                Core Values
+              </motion.h2>
+
+              <motion.div 
+                variants={itemVariants}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              >
+                <Card className="border-l-4 border-l-[#244363] hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold text-[#244363] mb-3">Rooted</h3>
+                    <p className="text-gray-600 mb-3">Grounded in God's truth and faithfulness</p>
+                    <Badge variant="outline" className="text-[#4c3219] border-[#4c3219]">
+                      1 Cor. 4:2
+                    </Badge>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-l-4 border-l-[#4c3219] hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold text-[#4c3219] mb-3">Community</h3>
+                    <p className="text-gray-600 mb-3">Building authentic relationships and fellowship</p>
+                    <div className="space-y-2">
+                      <Badge variant="outline" className="text-[#4c3219] border-[#4c3219] mr-2">
+                        Acts 2:42
+                      </Badge>
+                      <Badge variant="outline" className="text-[#4c3219] border-[#4c3219]">
+                        Rom. 12:13
+                      </Badge>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-l-4 border-l-[#d9b062] hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold text-[#d9b062] mb-3">Empowerment</h3>
+                    <p className="text-gray-600 mb-3">Using our gifts to serve God and others</p>
+                    <div className="space-y-2">
+                      <Badge variant="outline" className="text-[#4c3219] border-[#4c3219] mr-2">
+                        1 Pet. 4:10–11
+                      </Badge>
+                      <Badge variant="outline" className="text-[#4c3219] border-[#4c3219]">
+                        Eph. 4:12
+                      </Badge>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-l-4 border-l-[#244363] hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold text-[#244363] mb-3">Excellence</h3>
+                    <p className="text-gray-600 mb-3">Doing everything with excellence for God's glory</p>
+                    <Badge variant="outline" className="text-[#4c3219] border-[#4c3219]">
+                      Col. 3:23–24
+                    </Badge>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-l-4 border-l-[#4c3219] hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold text-[#4c3219] mb-3">Stewardship</h3>
+                    <p className="text-gray-600 mb-3">Faithful management of God's resources</p>
+                    <Badge variant="outline" className="text-[#4c3219] border-[#4c3219]">
+                      2 Cor. 9:6–7
+                    </Badge>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-l-4 border-l-[#d9b062] hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold text-[#d9b062] mb-3">Generational</h3>
+                    <p className="text-gray-600 mb-3">Passing faith to the next generation</p>
+                    <Badge variant="outline" className="text-[#4c3219] border-[#4c3219]">
+                      Psalm 78:4–6
+                    </Badge>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+      </div>
     </PageLayout>
   );
 };
