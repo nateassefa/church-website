@@ -87,9 +87,16 @@ const Features = () => {
                     <Heart className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold text-[#d9b062] mb-2">Connect with Us</h3>
-                  <p className="text-gray-600 text-sm mb-4">
-                    Whether new or long-time family, join us in worship, fellowship, and service.
-                  </p>
+                  <div className="mb-4">
+                    <img 
+                      src="/lovable-uploads/efb47d79-086d-4add-9b79-91fb775c2a0a.png" 
+                      alt="Church community gathering" 
+                      className="w-full h-32 object-cover rounded-lg mb-3"
+                    />
+                    <p className="text-gray-600 text-sm">
+                      Whether new or long-time family, join us in worship, fellowship, and service.
+                    </p>
+                  </div>
                 </div>
                 <Button 
                   className="w-full bg-[#d9b062] hover:bg-[#d9b062]/90 text-white"

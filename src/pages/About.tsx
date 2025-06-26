@@ -1,9 +1,8 @@
 
+import { motion } from "framer-motion";
 import PageLayout from '@/components/PageLayout';
 import SEO from '@/components/SEO';
-import { motion } from 'framer-motion';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from "@/components/ui/card";
 
 const About = () => {
   const containerVariants = {
@@ -29,299 +28,176 @@ const About = () => {
   return (
     <PageLayout>
       <SEO 
-        title="About Us - Living Hope Church"
-        description="Learn about Living Hope for Generations Church's mission, vision, and core values. A vibrant, multicultural church serving Ethiopian and Eritrean families."
-        keywords={['about', 'mission', 'vision', 'values', 'church', 'Ethiopian', 'Eritrean']}
+        title="About Us - Living Hope Church" 
+        description="Learn about Living Hope for Generations Church, our mission, vision, and core values. A spiritual home for Ethiopian and Eritrean families."
+        keywords={['about', 'mission', 'vision', 'values', 'Ethiopian church', 'Eritrean church', 'Christian community']}
       />
       
-      <div className="pt-20 pb-16">
-        {/* Hero Section */}
-        <section className="bg-[#244363] text-white py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={containerVariants}
-              className="text-center max-w-4xl mx-auto"
+      <div className="pt-20 pb-16 bg-gradient-to-br from-[#244363] to-[#4c3219]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+            className="text-center text-white"
+          >
+            <motion.h1 
+              className="text-4xl md:text-5xl font-bold mb-6"
+              variants={itemVariants}
             >
-              <motion.h1 
-                variants={itemVariants}
-                className="text-4xl md:text-5xl font-bold mb-6"
-              >
-                About Us
-              </motion.h1>
-              <motion.p 
-                variants={itemVariants}
-                className="text-xl text-gray-200 leading-relaxed"
-              >
-                Living Hope exists to proclaim the gospel, grow as disciples, build community, and serve others
-              </motion.p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Mission Statement */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={containerVariants}
+              About Us
+            </motion.h1>
+            <motion.p 
+              className="text-xl max-w-3xl mx-auto"
+              variants={itemVariants}
             >
-              <motion.div variants={itemVariants} className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-[#244363] mb-6">
-                  Mission Statement
-                </h2>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Living Hope exists to:
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={itemVariants}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-              >
-                <Card className="border-l-4 border-l-[#244363] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6 text-center">
-                    <h3 className="text-lg font-semibold text-[#244363] mb-2">Proclaim</h3>
-                    <p className="text-gray-600">the gospel</p>
-                  </CardContent>
-                </Card>
-                
-                <Card className="border-l-4 border-l-[#4c3219] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6 text-center">
-                    <h3 className="text-lg font-semibold text-[#4c3219] mb-2">Grow</h3>
-                    <p className="text-gray-600">as disciples</p>
-                  </CardContent>
-                </Card>
-                
-                <Card className="border-l-4 border-l-[#d9b062] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6 text-center">
-                    <h3 className="text-lg font-semibold text-[#d9b062] mb-2">Build</h3>
-                    <p className="text-gray-600">community</p>
-                  </CardContent>
-                </Card>
-                
-                <Card className="border-l-4 border-l-[#244363] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6 text-center">
-                    <h3 className="text-lg font-semibold text-[#244363] mb-2">Serve</h3>
-                    <p className="text-gray-600">others</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              <motion.div variants={itemVariants} className="text-center mt-12">
-                <p className="text-lg text-gray-700 italic">
-                  Live out our faith and reflect Christ's love
-                </p>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Purpose Highlights */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={containerVariants}
-            >
-              <motion.h2 
-                variants={itemVariants}
-                className="text-3xl md:text-4xl font-bold text-[#244363] text-center mb-12"
-              >
-                Purpose Highlights
-              </motion.h2>
-
-              <motion.div 
-                variants={itemVariants}  
-                className="grid grid-cols-1 md:grid-cols-3 gap-8"
-              >
-                <Card className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-8">
-                    <h3 className="text-xl font-semibold text-[#244363] mb-4">
-                      Spiritual Growth & Discipleship
-                    </h3>
-                    <p className="text-gray-600 mb-4">
-                      Fostering deep spiritual growth and discipleship in our community
-                    </p>
-                    <Badge variant="outline" className="text-[#4c3219] border-[#4c3219]">
-                      Acts 2:42–47
-                    </Badge>
-                  </CardContent>
-                </Card>
-
-                <Card className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-8">
-                    <h3 className="text-xl font-semibold text-[#244363] mb-4">
-                      Evangelism & Outreach
-                    </h3>
-                    <p className="text-gray-600 mb-4">
-                      Sharing the good news and reaching out to our community
-                    </p>
-                    <div className="space-y-2">
-                      <Badge variant="outline" className="text-[#4c3219] border-[#4c3219] mr-2">
-                        Matt. 28:19–20
-                      </Badge>
-                      <Badge variant="outline" className="text-[#4c3219] border-[#4c3219]">
-                        Acts 1:8
-                      </Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-8">
-                    <h3 className="text-xl font-semibold text-[#244363] mb-4">
-                      Next-Gen Leaders
-                    </h3>
-                    <p className="text-gray-600 mb-4">
-                      Developing and empowering the next generation of leaders
-                    </p>
-                    <div className="space-y-2">
-                      <Badge variant="outline" className="text-[#4c3219] border-[#4c3219] mr-2">
-                        1 Tim. 4:12
-                      </Badge>
-                      <Badge variant="outline" className="text-[#4c3219] border-[#4c3219]">
-                        2 Tim. 2:2
-                      </Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Vision Statement */}
-        <section className="py-16 bg-[#4c3219] text-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={containerVariants}
-              className="text-center max-w-4xl mx-auto"
-            >
-              <motion.h2 
-                variants={itemVariants}
-                className="text-3xl md:text-4xl font-bold mb-8"
-              >
-                Vision Statement
-              </motion.h2>
-              <motion.p 
-                variants={itemVariants}
-                className="text-xl leading-relaxed mb-6"
-              >
-                A vibrant, multicultural church where Christ's life flourishes across generations.
-              </motion.p>
-              <motion.p 
-                variants={itemVariants}
-                className="text-lg text-gray-200"
-              >
-                Rooted in Scripture, celebrating diversity, and serving with love.
-              </motion.p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Core Values */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={containerVariants}
-            >
-              <motion.h2 
-                variants={itemVariants}
-                className="text-3xl md:text-4xl font-bold text-[#244363] text-center mb-12"
-              >
-                Core Values
-              </motion.h2>
-
-              <motion.div 
-                variants={itemVariants}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              >
-                <Card className="border-l-4 border-l-[#244363] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold text-[#244363] mb-3">Rooted</h3>
-                    <p className="text-gray-600 mb-3">Grounded in God's truth and faithfulness</p>
-                    <Badge variant="outline" className="text-[#4c3219] border-[#4c3219]">
-                      1 Cor. 4:2
-                    </Badge>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-l-4 border-l-[#4c3219] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold text-[#4c3219] mb-3">Community</h3>
-                    <p className="text-gray-600 mb-3">Building authentic relationships and fellowship</p>
-                    <div className="space-y-2">
-                      <Badge variant="outline" className="text-[#4c3219] border-[#4c3219] mr-2">
-                        Acts 2:42
-                      </Badge>
-                      <Badge variant="outline" className="text-[#4c3219] border-[#4c3219]">
-                        Rom. 12:13
-                      </Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-l-4 border-l-[#d9b062] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold text-[#d9b062] mb-3">Empowerment</h3>
-                    <p className="text-gray-600 mb-3">Using our gifts to serve God and others</p>
-                    <div className="space-y-2">
-                      <Badge variant="outline" className="text-[#4c3219] border-[#4c3219] mr-2">
-                        1 Pet. 4:10–11
-                      </Badge>
-                      <Badge variant="outline" className="text-[#4c3219] border-[#4c3219]">
-                        Eph. 4:12
-                      </Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-l-4 border-l-[#244363] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold text-[#244363] mb-3">Excellence</h3>
-                    <p className="text-gray-600 mb-3">Doing everything with excellence for God's glory</p>
-                    <Badge variant="outline" className="text-[#4c3219] border-[#4c3219]">
-                      Col. 3:23–24
-                    </Badge>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-l-4 border-l-[#4c3219] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold text-[#4c3219] mb-3">Stewardship</h3>
-                    <p className="text-gray-600 mb-3">Faithful management of God's resources</p>
-                    <Badge variant="outline" className="text-[#4c3219] border-[#4c3219]">
-                      2 Cor. 9:6–7
-                    </Badge>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-l-4 border-l-[#d9b062] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold text-[#d9b062] mb-3">Generational</h3>
-                    <p className="text-gray-600 mb-3">Passing faith to the next generation</p>
-                    <Badge variant="outline" className="text-[#4c3219] border-[#4c3219]">
-                      Psalm 78:4–6
-                    </Badge>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
+              A vibrant, multicultural church where Christ's life flourishes across generations
+            </motion.p>
+          </motion.div>
+        </div>
       </div>
+
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16"
+          >
+            <motion.div variants={itemVariants}>
+              <img 
+                src="/lovable-uploads/9c02c3ad-467e-4e34-b390-1fdb0fc95062.png" 
+                alt="Church leadership and community members" 
+                className="w-full h-96 object-cover rounded-lg shadow-lg"
+              />
+            </motion.div>
+            <motion.div variants={itemVariants}>
+              <h2 className="text-3xl font-bold text-[#244363] mb-6">Our Church Family</h2>
+              <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                Living Hope for Generations Church is more than a place of worship—it's a spiritual home 
+                where Ethiopian and Eritrean families along the 95-Highway Corridor come together to 
+                grow in faith, build lasting relationships, and serve our community with Christ's love.
+              </p>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                We believe that you are not just a guest—you are family. Our doors are open to all 
+                who seek to discover their purpose, deepen their relationship with Christ, and be part 
+                of a loving, supportive community.
+              </p>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+            className="mb-16"
+          >
+            <motion.div variants={itemVariants} className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-[#244363] mb-4">Mission Statement</h2>
+              <p className="text-xl text-gray-600">Living Hope exists to:</p>
+            </motion.div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                "Proclaim the gospel",
+                "Grow as disciples", 
+                "Build community",
+                "Serve others",
+                "Live out our faith and reflect Christ's love"
+              ].map((mission, index) => (
+                <motion.div key={index} variants={itemVariants}>
+                  <Card className="h-full hover:shadow-lg transition-all duration-300 border-l-4 border-l-[#d9b062]">
+                    <CardContent className="p-6">
+                      <div className="text-center">
+                        <div className="w-12 h-12 bg-[#d9b062] rounded-full flex items-center justify-center mx-auto mb-4">
+                          <span className="text-white font-bold text-lg">{index + 1}</span>
+                        </div>
+                        <p className="text-lg font-semibold text-[#244363]">{mission}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16"
+          >
+            <motion.div variants={itemVariants}>
+              <Card className="h-full border-l-4 border-l-[#244363]">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold text-[#244363] mb-4">Purpose Highlights</h3>
+                  <ul className="space-y-3">
+                    <li className="text-gray-700">
+                      <strong>Spiritual Growth & Discipleship</strong> – Acts 2:42–47
+                    </li>
+                    <li className="text-gray-700">
+                      <strong>Evangelism & Outreach</strong> – Matt. 28:19–20; Acts 1:8
+                    </li>
+                    <li className="text-gray-700">
+                      <strong>Next-Gen Leaders</strong> – 1 Tim. 4:12; 2 Tim. 2:2
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div variants={itemVariants}>
+              <Card className="h-full border-l-4 border-l-[#4c3219]">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold text-[#4c3219] mb-4">Vision Statement</h3>
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    A vibrant, multicultural church where Christ's life flourishes across generations.
+                    Rooted in Scripture, celebrating diversity, and serving with love.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            <motion.div variants={itemVariants} className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-[#244363] mb-4">Core Values</h2>
+              <p className="text-xl text-gray-600">The principles that guide our church family</p>
+            </motion.div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                { title: "Rooted", verse: "1 Cor. 4:2" },
+                { title: "Community", verse: "Acts 2:42; Rom. 12:13" },
+                { title: "Empowerment", verse: "1 Pet. 4:10–11; Eph. 4:12" },
+                { title: "Excellence", verse: "Col. 3:23–24" },
+                { title: "Stewardship", verse: "2 Cor. 9:6–7" },
+                { title: "Generational", verse: "Psalm 78:4–6" }
+              ].map((value, index) => (
+                <motion.div key={index} variants={itemVariants}>
+                  <Card className="h-full hover:shadow-lg transition-all duration-300 border-l-4 border-l-[#d9b062]">
+                    <CardContent className="p-6">
+                      <div className="text-center">
+                        <h4 className="text-xl font-bold text-[#244363] mb-2">{value.title}</h4>
+                        <p className="text-sm text-[#4c3219] font-medium">{value.verse}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </PageLayout>
   );
 };
