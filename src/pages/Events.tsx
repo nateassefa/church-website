@@ -8,6 +8,17 @@ import { Calendar, Clock, MapPin, Users, Heart, Music, BookOpen, Coffee, ArrowRi
 import { Link } from "react-router-dom";
 import PastEventsCarousel from '@/components/PastEventsCarousel';
 
+const eventCategories = [
+  { name: "Worship", icon: <Music className="w-5 h-5" />, color: "bg-blue-100 text-blue-800" },
+  { name: "Bible Study", icon: <BookOpen className="w-5 h-5" />, color: "bg-green-100 text-green-800" },
+  { name: "Prayer", icon: <Heart className="w-5 h-5" />, color: "bg-red-100 text-red-800" },
+  { name: "Small Groups", icon: <Users className="w-5 h-5" />, color: "bg-purple-100 text-purple-800" },
+  { name: "Children", icon: <Heart className="w-5 h-5" />, color: "bg-yellow-100 text-yellow-800" },
+  { name: "Fellowship", icon: <Coffee className="w-5 h-5" />, color: "bg-orange-100 text-orange-800" },
+  { name: "Outreach", icon: <Users className="w-5 h-5" />, color: "bg-indigo-100 text-indigo-800" },
+  { name: "Holiday", icon: <Calendar className="w-5 h-5" />, color: "bg-pink-100 text-pink-800" }
+];
+
 export const pastEvents = [
   {
     id: 7,
@@ -39,17 +50,6 @@ export const pastEvents = [
     category: "Community",
     image: "thanksgiving-placeholder"
   }
-];
-
-const eventCategories = [
-  { name: "Worship", icon: <Music className="w-5 h-5" />, color: "bg-blue-100 text-blue-800" },
-  { name: "Bible Study", icon: <BookOpen className="w-5 h-5" />, color: "bg-green-100 text-green-800" },
-  { name: "Prayer", icon: <Heart className="w-5 h-5" />, color: "bg-red-100 text-red-800" },
-  { name: "Small Groups", icon: <Users className="w-5 h-5" />, color: "bg-purple-100 text-purple-800" },
-  { name: "Children", icon: <Heart className="w-5 h-5" />, color: "bg-yellow-100 text-yellow-800" },
-  { name: "Fellowship", icon: <Coffee className="w-5 h-5" />, color: "bg-orange-100 text-orange-800" },
-  { name: "Outreach", icon: <Users className="w-5 h-5" />, color: "bg-indigo-100 text-indigo-800" },
-  { name: "Holiday", icon: <Calendar className="w-5 h-5" />, color: "bg-pink-100 text-pink-800" }
 ];
 
 const containerVariants = {
@@ -214,7 +214,7 @@ const Events = () => {
       </section>
 
       {/* Upcoming Events */}
-      <section className="py-16 bg-[#f8f6f3]">
+      <section className="py-16 bg-[#244363]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -224,7 +224,7 @@ const Events = () => {
           >
             <motion.h2 
               variants={itemVariants}
-              className="text-3xl md:text-4xl font-bold text-center text-[#244363] mb-12"
+              className="text-3xl md:text-4xl font-bold text-center text-white mb-12"
             >
               Upcoming Events
             </motion.h2>
@@ -235,7 +235,7 @@ const Events = () => {
             >
               {upcomingEvents.map((event, index) => (
                 <motion.div key={event.id} variants={itemVariants}>
-                  <Card className={`h-full bg-white hover:shadow-lg transition-all duration-300 ${event.featured ? 'ring-2 ring-[#d9b062]' : ''}`}>
+                  <Card className={`h-full bg-white hover:shadow-lg transition-all duration-300 border-0 ${event.featured ? 'ring-2 ring-[#d9b062]' : ''}`}>
                     <CardContent className="p-6">
                       <div className="mb-4">
                         <Badge className={`${getCategoryColor(event.category)} mb-3`}>
@@ -278,6 +278,9 @@ const Events = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Skinny gold line separator between Upcoming Events and Stay Connected */}
+      <div className="w-screen h-0.5 bg-[#d9b062] mx-auto" style={{margin: 0, padding: 0}}></div>
 
       {/* Call to Action */}
       <section className="py-16 bg-[#244363] text-white">

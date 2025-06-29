@@ -169,7 +169,7 @@ const PlanVisit = () => {
                   <p className="text-white text-lg mb-1">8:30–10:30 AM</p>
                   <p className="text-white text-base mb-4">3637 Graham Park Road, Triangle, VA 22172</p>
                   <Link to="https://maps.google.com/?q=123+Church+Street,+Woodbridge,+VA+22191" target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#244363] font-bold">
+                    <Button className="bg-[#d9b062] text-[#244363] hover:bg-[#bfa05a] font-bold">
                       Get Directions
                     </Button>
                   </Link>
@@ -183,7 +183,7 @@ const PlanVisit = () => {
                   <p className="text-white text-lg mb-1">Mondays at 9:00–10:00 PM (Zoom)</p>
                   <p className="text-white text-base mb-4">Meeting ID: 123-456-7890<br/>Passcode: YAStudy</p>
                   <a href="https://zoom.us/j/1234567890" target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#244363] font-bold">
+                    <Button className="bg-[#d9b062] text-[#244363] hover:bg-[#bfa05a] font-bold">
                       Join on Zoom
                     </Button>
                   </a>
@@ -195,7 +195,7 @@ const PlanVisit = () => {
       </section>
 
       {/* What to Expect */}
-      <section className="py-16 bg-[#f8f6f3]">
+      <section className="py-16 bg-[#244363]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -205,7 +205,7 @@ const PlanVisit = () => {
           >
             <motion.h2 
               variants={itemVariants}
-              className="text-3xl md:text-4xl font-bold text-center text-[#244363] mb-12"
+              className="text-3xl md:text-4xl font-bold text-center text-white mb-12"
             >
               What to Expect
             </motion.h2>
@@ -216,7 +216,7 @@ const PlanVisit = () => {
             >
               {whatToExpect.map((item, index) => (
                 <motion.div key={index} variants={itemVariants}>
-                  <Card className="h-full bg-white hover:shadow-lg transition-all duration-300">
+                  <Card className="h-full bg-white hover:shadow-lg transition-all duration-300 border-0">
                     <CardContent className="p-6 text-center">
                       <div className="w-12 h-12 bg-[#d9b062] rounded-full flex items-center justify-center mx-auto mb-4">
                         {item.icon}

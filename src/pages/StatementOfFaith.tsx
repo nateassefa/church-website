@@ -82,14 +82,14 @@ const StatementOfFaith = () => {
   ];
 
   return (
-    <PageLayout>
+    <PageLayout footerTall={true}>
       <SEO 
         title="Statement of Faith - Living Hope Church"
         description="Our core beliefs and theological foundations at Living Hope for Generations Church, rooted in biblical truth."
         keywords={['statement of faith', 'beliefs', 'doctrine', 'theology', 'bible', 'Christian']}
       />
       
-      <div className="pt-20 pb-16 bg-gradient-to-br from-[#244363] to-[#4c3219]">
+      <div className="pt-20 pb-4 bg-gradient-to-br from-[#244363] to-[#4c3219]">
         {/* Hero Section */}
         <section className="bg-[#244363] text-white py-16 pt-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -210,7 +210,7 @@ const StatementOfFaith = () => {
         </section>
 
         {/* Additional Information */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-gray-50 mb-0">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial="hidden"
@@ -225,22 +225,16 @@ const StatementOfFaith = () => {
               >
                 Our Theological Foundation
               </motion.h2>
-              <motion.p 
-                variants={itemVariants}
-                className="text-lg text-gray-700 leading-relaxed mb-8"
-              >
+              <p className="text-lg text-black leading-relaxed mb-8">
                 At Living Hope for Generations Church, we hold to the historic Christian faith as revealed in Scripture. 
                 Our beliefs are grounded in the Bible and align with the core doctrines that have been affirmed by 
                 the Christian church throughout history.
-              </motion.p>
-              <motion.p 
-                variants={itemVariants}
-                className="text-lg text-gray-700 leading-relaxed"
-              >
+              </p>
+              <p className="text-lg text-black leading-relaxed">
                 We welcome questions and discussions about our beliefs. If you have any questions about our 
                 statement of faith or would like to learn more about what we believe, please don't hesitate 
                 to reach out to us.
-              </motion.p>
+              </p>
             </motion.div>
           </div>
         </section>

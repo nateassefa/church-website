@@ -5,20 +5,27 @@ import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
+      const currentScrollY = window.scrollY;
+      
+      // Show navbar at the top, hide when scrolling down
+      if (currentScrollY > 100) {
+        setIsVisible(false);
       } else {
-        setIsScrolled(false);
+        setIsVisible(true);
       }
+      
+      setLastScrollY(currentScrollY);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -37,10 +44,15 @@ const Navbar = () => {
   return (
     <motion.nav 
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 w-full bg-transparent"
+        "fixed top-0 left-0 right-0 z-[9999] w-full bg-transparent shadow-sm transition-transform duration-300"
       )}
+      style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 9999 }}
       initial={{ opacity: 1, y: 0 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={{ 
+        opacity: isVisible ? 1 : 0,
+        y: isVisible ? 0 : -100,
+        transition: { duration: 0.3 }
+      }}
     >
       <div className="w-full px-4 sm:px-6 lg:px-8 mx-auto bg-transparent">
         <div className="flex items-center justify-between h-16 bg-transparent">

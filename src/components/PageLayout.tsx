@@ -8,9 +8,10 @@ import FloatingContactButton from '@/components/FloatingContactButton';
 type PageLayoutProps = {
   children: React.ReactNode;
   showContact?: boolean;
+  footerTall?: boolean;
 };
 
-const PageLayout = ({ children, showContact = true }: PageLayoutProps) => {
+const PageLayout = ({ children, showContact = true, footerTall = false }: PageLayoutProps) => {
   const location = useLocation();
 
   // Effect to scroll to top when route changes
@@ -19,10 +20,10 @@ const PageLayout = ({ children, showContact = true }: PageLayoutProps) => {
   }, [location]);
 
   return (
-    <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden">
+    <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden flex flex-col">
       <Navbar />
-      {children}
-      <Footer />
+      <div className="flex-1 flex flex-col">{children}</div>
+      <Footer tall={footerTall} />
       {showContact && <FloatingContactButton />}
     </div>
   );
