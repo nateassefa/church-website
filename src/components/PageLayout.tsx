@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -20,10 +19,9 @@ const PageLayout = ({ children, showContact = true }: PageLayoutProps) => {
   }, [location]);
 
   return (
-    <div className="min-h-screen bg-white w-full max-w-[100vw] overflow-x-hidden">
+    <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden">
       <Navbar />
       {children}
-      {showContact && <ContactInfo />}
       <Footer />
       {showContact && <FloatingContactButton />}
     </div>

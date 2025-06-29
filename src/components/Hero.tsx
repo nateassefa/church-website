@@ -1,10 +1,46 @@
-
 import { ArrowRight, MapPin, Clock, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useRef, useEffect, useState } from "react";
+
+// Typing effect hook
+function useTypingEffect(text: string, speed: number = 60) {
+  const [displayed, setDisplayed] = useState("");
+  useEffect(() => {
+    let i = 0;
+    setDisplayed("");
+    const interval = setInterval(() => {
+      setDisplayed(text.slice(0, i + 1));
+      i++;
+      if (i >= text.length) clearInterval(interval);
+    }, speed);
+    return () => clearInterval(interval);
+  }, [text, speed]);
+  return displayed;
+}
 
 const Hero = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.load();
+      console.log('Video element found, attempting to load');
+      console.log('Video element:', videoRef.current);
+      console.log('Video src:', videoRef.current.src);
+      
+      // Add event listeners for debugging
+      videoRef.current.addEventListener('loadstart', () => console.log('Video load started'));
+      videoRef.current.addEventListener('loadeddata', () => console.log('Video data loaded'));
+      videoRef.current.addEventListener('canplay', () => console.log('Video can play'));
+      videoRef.current.addEventListener('error', (e) => console.error('Video error:', e));
+      videoRef.current.addEventListener('play', () => console.log('Video started playing'));
+    } else {
+      console.log('Video element not found');
+    }
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -33,6 +69,9 @@ const Hero = () => {
     }
   };
 
+  const headline = "Living Hope for Generations Church";
+  const typedHeadline = useTypingEffect(headline, 60);
+
   return (
     <motion.div 
       className="relative mt-16 md:mt-0 w-full"
@@ -40,84 +79,41 @@ const Hero = () => {
       animate="visible" 
       variants={containerVariants}
     >
-      <div className="banner-container bg-[#244363] relative overflow-hidden h-[70vh] sm:h-[80vh] md:h-[85vh] w-full">
-        <div className="absolute inset-0 bg-[#244363] w-full">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#244363]/90 via-[#4c3219]/70 to-[#d9b062]/30"></div>
+      <div className="banner-container relative overflow-hidden h-[70vh] sm:h-[80vh] md:h-[85vh] w-full bg-[#244363] flex items-center justify-center">
+        {/* Video Placeholder */}
+        <div className="absolute inset-0 flex items-center justify-center z-0">
+          <span className="text-white text-4xl font-bold opacity-30">[Hero Video Placeholder]</span>
         </div>
-        
-        <div className="banner-overlay bg-transparent pt-16 sm:pt-20 md:pt-24 w-full">
-          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center h-full">
-            <motion.div className="w-full max-w-5xl text-center" variants={itemVariants}>
-              <motion.h1 
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6"
-                variants={itemVariants}
-              >
-                Welcome to Living Hope
-              </motion.h1>
-              <motion.h2 
-                className="text-xl sm:text-2xl md:text-3xl text-[#d9b062] mb-6 sm:mb-8 font-semibold"
-                variants={itemVariants}
-              >
-                A Home for Every Generation
-              </motion.h2>
-              <motion.p 
-                className="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed"
-                variants={itemVariants}
-              >
-                Join us in discovering purpose, deepening your relationship with Christ, and building community.
-              </motion.p>
-              
-              <motion.div 
-                className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
-                variants={itemVariants}
-              >
-                <Link to="/plan-visit">
-                  <Button className="w-full sm:w-auto min-h-[48px] px-8 py-3 bg-[#d9b062] text-[#244363] rounded-md hover:bg-[#d9b062]/90 transition-all shadow-lg hover:shadow-xl flex items-center justify-center group text-base font-semibold">
-                    Plan Your Visit
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
-                
-                <Button 
-                  className="w-full sm:w-auto min-h-[48px] px-8 py-3 bg-transparent border-2 border-white text-white rounded-md hover:bg-white hover:text-[#244363] transition-all shadow-lg hover:shadow-xl flex items-center justify-center group text-base font-semibold"
-                  onClick={() => scrollToSection('contact')}
-                >
-                  Connect with Us
-                </Button>
-              </motion.div>
-
-              <motion.div 
-                className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto text-white"
-                variants={itemVariants}
-              >
-                <div className="flex items-center justify-center md:justify-start gap-3">
-                  <Clock className="w-6 h-6 text-[#d9b062]" />
-                  <div className="text-left">
-                    <p className="font-semibold">Service Time</p>
-                    <p className="text-sm text-gray-300">Sundays, 8:00 – 10:00 AM</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center justify-center md:justify-start gap-3">
-                  <MapPin className="w-6 h-6 text-[#d9b062]" />
-                  <div className="text-left">
-                    <p className="font-semibold">Location</p>
-                    <p className="text-sm text-gray-300">Triangle, VA</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center justify-center md:justify-start gap-3">
-                  <Users className="w-6 h-6 text-[#d9b062]" />
-                  <div className="text-left">
-                    <p className="font-semibold">Languages</p>
-                    <p className="text-sm text-gray-300">English & Amharic</p>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
+        {/* Black overlay for text readability */}
+        <div 
+          className="absolute inset-0 w-full"
+          style={{ 
+            zIndex: 1,
+            backgroundColor: 'rgba(0,0,0,0.15)'
+          }}
+        ></div>
+        {/* Full-width bottom text banner */}
+        <div
+          className="absolute left-0 right-0 bottom-0 p-6 md:p-12 flex flex-col md:flex-row items-end md:items-center justify-between w-full gap-8"
+          style={{ zIndex: 2 }}
+        >
+          <div className="flex-1 min-w-0">
+            <h2 className="text-lg md:text-xl text-white mb-2 font-semibold tracking-wide opacity-90 text-left" style={{fontFamily: 'Playfair Display, serif'}}>Welcome to</h2>
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4 leading-tight drop-shadow-xl text-left" style={{fontFamily: 'Playfair Display, serif'}}>
+              {typedHeadline}
+            </h1>
+            <p className="text-base md:text-lg text-white/90 mb-0 text-left max-w-4xl md:max-w-5xl lg:max-w-6xl font-normal" style={{fontFamily: 'Playfair Display, serif', fontWeight: 400}}>
+              A bilingual, intergenerational Christian church for Ethiopian & Eritrean families in Northern Virginia
+            </p>
+          </div>
+          <div className="flex-shrink-0 flex items-center justify-center w-full md:w-auto mt-6 md:mt-0">
+            <a href="/plan-visit" className="bg-[#d9b062] hover:bg-[#bfa05a] text-[#244363] font-bold text-xl px-12 py-6 rounded-xl shadow-2xl transition-all whitespace-nowrap border-2 border-[#d9b062]">
+              PLAN YOUR VISIT
+            </a>
           </div>
         </div>
       </div>
+      <style>{`@keyframes blinker { 50% { opacity: 0; } }`}</style>
     </motion.div>
   );
 };

@@ -4,6 +4,19 @@
 
 **URL**: https://lovable.dev/projects/ec1d4f1e-2506-4da5-a91b-34afa90cceb6
 
+## Recent Updates
+
+### YouTube Integration
+The "Watch Last Sunday's Service" section has been updated to embed YouTube videos from the LivingHopeGenChurch channel. 
+
+**Features:**
+- Responsive YouTube video embed
+- Automatic fetching of latest church service videos (with API setup)
+- Mobile-friendly design
+- Consistent styling with the original section
+
+**Setup:** See `YOUTUBE_SETUP.md` for detailed instructions on enabling the YouTube Data API integration.
+
 ## How can I edit this code?
 
 There are several ways of editing your application.

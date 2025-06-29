@@ -1,25 +1,74 @@
-
 import PageLayout from '@/components/PageLayout';
 import SEO from '@/components/SEO';
-import { motion } from 'framer-motion';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Clock, MapPin, Car, Users, Shirt, ArrowRight } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { MapPin, Clock, Phone, Mail, Users, Car, Baby, Coffee, Heart, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const PlanVisit = () => {
+  const serviceInfo = {
+    time: "10:00 AM - 12:00 PM",
+    day: "Every Sunday",
+    address: "123 Church Street, Woodbridge, VA 22191",
+    phone: "(703) 555-0123",
+    email: "info@livinghopechurch.org"
+  };
+
+  const whatToExpect = [
+    {
+      icon: <Users className="w-6 h-6" />,
+      title: "Welcoming Community",
+      description: "You'll be greeted with warm smiles and genuine hospitality from our diverse congregation."
+    },
+    {
+      icon: <Coffee className="w-6 h-6" />,
+      title: "Fellowship Time",
+      description: "Stay after service for coffee, refreshments, and meaningful conversations."
+    },
+    {
+      icon: <Baby className="w-6 h-6" />,
+      title: "Children's Ministry",
+      description: "Safe, engaging programs for children of all ages during the service."
+    },
+    {
+      icon: <Heart className="w-6 h-6" />,
+      title: "Bilingual Services",
+      description: "Worship in both Amharic and English, celebrating our multicultural community."
+    }
+  ];
+
+  const visitorInfo = [
+    {
+      title: "What to Wear",
+      description: "Come as you are! We welcome casual, business casual, or traditional attire."
+    },
+    {
+      title: "Parking",
+      description: "Free parking available on-site. Handicap accessible spaces are clearly marked."
+    },
+    {
+      title: "Childcare",
+      description: "Nursery and Sunday School available for children ages 0-12 during service."
+    },
+    {
+      title: "Accessibility",
+      description: "Our facility is fully accessible with ramps, elevators, and hearing assistance available."
+    }
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1
+        staggerChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
@@ -27,273 +76,228 @@ const PlanVisit = () => {
     }
   };
 
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <PageLayout>
       <SEO 
-        title="Plan Your Visit - Living Hope Church"
-        description="Plan your first visit to Living Hope for Generations Church. Service times, location, parking, and everything you need to know for a welcoming experience."
-        keywords={['plan visit', 'first time', 'service times', 'location', 'Triangle VA', 'church visit']}
+        title="Plan Your Visit - Living Hope for Generations Church" 
+        description="Plan your visit to Living Hope for Generations Church. Find service times, location, what to expect, and visitor information."
+        keywords={['plan visit', 'service times', 'location', 'first time', 'welcome', 'church visit']}
       />
       
-      <div className="pt-20 pb-16">
-        {/* Hero Section */}
-        <section className="bg-[#244363] text-white py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={containerVariants}
-              className="text-center max-w-4xl mx-auto"
+      {/* Hero Section */}
+      <section className="pt-24 pb-16 bg-gradient-to-br from-[#244363] to-[#1a2e47] text-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+            className="text-center"
+          >
+            <motion.h1 
+              variants={itemVariants}
+              className="text-4xl md:text-6xl font-bold mb-6"
             >
-              <motion.h1 
-                variants={itemVariants}
-                className="text-4xl md:text-5xl font-bold mb-6"
-              >
-                We Can't Wait to Meet You!
-              </motion.h1>
-              <motion.p 
-                variants={itemVariants}
-                className="text-xl text-gray-200 leading-relaxed"
-              >
-                We make your first visit easy and meaningful
-              </motion.p>
+              Plan Your Visit
+            </motion.h1>
+            <motion.p 
+              variants={itemVariants}
+              className="text-xl md:text-2xl text-[#d9b062] mb-8 max-w-3xl mx-auto"
+            >
+              We can't wait to welcome you to our church family
+            </motion.p>
+            <motion.div variants={itemVariants} className="flex flex-col items-center gap-4 justify-center">
+              <Button className="bg-[#d9b062] text-[#244363] hover:bg-[#bfa05a] px-8 py-4 text-lg font-bold">
+                Connect with us!
+              </Button>
+              <div className="flex gap-4 mt-4">
+                <a href="https://www.instagram.com/livinghopegenchurch?igsh=MWs4dXdnZ28xOHBidw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-white hover:text-[#d9b062] transition"><rect width="20" height="20" x="2" y="2" rx="5" strokeWidth="2"/><circle cx="12" cy="12" r="5" strokeWidth="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61574837435090&sk=photos" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                  <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-white hover:text-[#d9b062] transition"><path d="M18 2h-3a5 5 0 0 0-5 5v3H6v4h4v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3V2z" strokeWidth="2"/></svg>
+                </a>
+                <a href="https://www.tiktok.com/@livinghopegenchurch" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                  <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white hover:text-[#d9b062] transition">
+                    <path d="M41.5 17.5c-3.6 0-6.5-2.9-6.5-6.5h-5.5v23.5c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4c.5 0 1 .1 1.5.3v-5.2c-.5-.1-1-.1-1.5-.1-5.1 0-9.2 4.1-9.2 9.2s4.1 9.2 9.2 9.2 9.2-4.1 9.2-9.2V22.2c1.9 1.2 4.1 1.8 6.5 1.8v-6.5z" fill="currentColor"/>
+                  </svg>
+                </a>
+                <a href="https://www.youtube.com/@Livinghopegenchurch" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                  <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-white hover:text-[#d9b062] transition"><rect x="2" y="6" width="20" height="12" rx="4" strokeWidth="2"/><polygon points="10,9 16,12 10,15" fill="currentColor"/></svg>
+                </a>
+              </div>
             </motion.div>
-          </div>
-        </section>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* Visit Information */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={containerVariants}
+      {/* Service Information */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+            className="max-w-6xl mx-auto"
+          >
+            <motion.h2 
+              variants={itemVariants}
+              className="text-3xl md:text-4xl font-bold text-center text-[#244363] mb-12"
             >
-              <motion.h2 
-                variants={itemVariants}
-                className="text-3xl md:text-4xl font-bold text-[#244363] text-center mb-12"
-              >
-                What to Expect
-              </motion.h2>
-
-              <motion.div 
-                variants={itemVariants}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              >
-                {/* Service Time */}
-                <Card className="border-l-4 border-l-[#244363] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-[#244363] rounded-full flex items-center justify-center mr-4">
-                        <Clock className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-[#244363]">Service Time</h3>
-                    </div>
-                    <p className="text-lg font-semibold text-gray-800 mb-2">
-                      Sundays, 8:00 – 10:00 AM
-                    </p>
-                    <div className="text-gray-600 space-y-2">
-                      <p>• Worship in English & Amharic</p>
-                      <p>• English Sermon</p>
-                      <p>• Amharic Sermon</p>
-                      <p>• Fellowship time included</p>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Location */}
-                <Card className="border-l-4 border-l-[#4c3219] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-[#4c3219] rounded-full flex items-center justify-center mr-4">
-                        <MapPin className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-[#4c3219]">Location</h3>
-                    </div>
-                    <p className="text-lg font-semibold text-gray-800 mb-3">
-                      3637 Graham Park Rd.
-                    </p>
-                    <p className="text-lg font-semibold text-gray-800 mb-4">
-                      Triangle, VA 22172
-                    </p>
-                    <p className="text-gray-600">
-                      Conveniently located along the 95-Highway Corridor, serving Ethiopian and Eritrean families in the area.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                {/* Parking */}
-                <Card className="border-l-4 border-l-[#d9b062] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-[#d9b062] rounded-full flex items-center justify-center mr-4">
-                        <Car className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-[#d9b062]">Parking</h3>
-                    </div>
-                    <p className="text-lg font-semibold text-gray-800 mb-3">
-                      Ample parking available
-                    </p>
-                    <div className="text-gray-600 space-y-2">
-                      <p>• Free parking on-site</p>
-                      <p>• Accessible parking spaces</p>
-                      <p>• Well-lit and safe</p>
-                      <p>• Close to main entrance</p>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Kids' Church */}
-                <Card className="border-l-4 border-l-[#244363] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-[#244363] rounded-full flex items-center justify-center mr-4">
-                        <Users className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-[#244363]">Kids' Church</h3>
-                    </div>
-                    <p className="text-lg font-semibold text-gray-800 mb-3">
-                      Available for all ages
-                    </p>
-                    <div className="text-gray-600 space-y-2">
-                      <p>• Age-appropriate programs</p>
-                      <p>• Safe and supervised</p>
-                      <p>• Christ-centered activities</p>
-                      <p>• Runs during main service</p>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Dress Code */}
-                <Card className="border-l-4 border-l-[#4c3219] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-[#4c3219] rounded-full flex items-center justify-center mr-4">
-                        <Shirt className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-[#4c3219]">Dress Code</h3>
-                    </div>
-                    <p className="text-lg font-semibold text-gray-800 mb-3">
-                      Casual or comfortable attire
-                    </p>
-                    <div className="text-gray-600 space-y-2">
-                      <p>• Come as you are</p>
-                      <p>• No formal dress required</p>
-                      <p>• Comfort is key</p>
-                      <p>• Focus on worship, not wardrobe</p>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* What to Expect */}
-                <Card className="border-l-4 border-l-[#d9b062] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-[#d9b062] rounded-full flex items-center justify-center mr-4">
-                        <ArrowRight className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-[#d9b062]">First Visit</h3>
-                    </div>
-                    <p className="text-lg font-semibold text-gray-800 mb-3">
-                      Warm welcome awaits
-                    </p>
-                    <div className="text-gray-600 space-y-2">
-                      <p>• Friendly greeters at the door</p>
-                      <p>• Help finding seats</p>
-                      <p>• No pressure to participate</p>
-                      <p>• You belong here</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Contact Section */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={containerVariants}
-              className="text-center max-w-3xl mx-auto"
+              Join us this Weekend
+            </motion.h2>
+            <motion.p 
+              variants={itemVariants}
+              className="text-xl md:text-2xl text-center text-[#244363] mb-8 max-w-3xl mx-auto"
             >
-              <motion.h2 
-                variants={itemVariants}
-                className="text-3xl md:text-4xl font-bold text-[#244363] mb-6"
-              >
-                Questions About Your Visit?
-              </motion.h2>
-              <motion.p 
-                variants={itemVariants}
-                className="text-xl text-gray-600 mb-8 leading-relaxed"
-              >
-                We're here to help make your first visit comfortable and meaningful. Don't hesitate to reach out with any questions.
-              </motion.p>
-              <motion.div variants={itemVariants}>
-                <Button 
-                  onClick={scrollToContact}
-                  className="bg-[#d9b062] hover:bg-[#d9b062]/90 text-white px-8 py-3 text-lg"
-                >
-                  Contact Us Today
+              We believe that coming together to worship, pray, and connect with one another is an essential part of living a fulfilling life. We can't wait to see you!
+            </motion.p>
+            <motion.div variants={itemVariants} className="flex justify-center mb-12">
+              <a href="https://maps.google.com/?q=3637+Graham+Park+Road+Triangle,+VA+22172" target="_blank" rel="noopener noreferrer">
+                <Button className="bg-[#d9b062] text-[#244363] hover:bg-[#bfa05a] px-8 py-4 text-lg font-bold">
+                  <MapPin className="mr-2" />
+                  Get Directions
                 </Button>
-              </motion.div>
+              </a>
             </motion.div>
-          </div>
-        </section>
-
-        {/* Call to Action */}
-        <section className="py-16 bg-[#4c3219] text-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={containerVariants}
-              className="text-center max-w-4xl mx-auto"
-            >
-              <motion.h2 
-                variants={itemVariants}
-                className="text-3xl md:text-4xl font-bold mb-6"
-              >
-                You Are Family Here
-              </motion.h2>
-              <motion.p 
-                variants={itemVariants}
-                className="text-xl text-gray-200 mb-8 leading-relaxed"
-              >
-                Living Hope for Generations Church is a spiritual home for Ethiopian and Eritrean families along the 95-Highway Corridor. You belong here, and we can't wait to welcome you into our church family.
-              </motion.p>
-              <motion.div 
-                variants={itemVariants}
-                className="bg-white/10 backdrop-blur-sm rounded-lg p-8 max-w-2xl mx-auto"
-              >
-                <h3 className="text-2xl font-semibold mb-4 text-[#d9b062]">This Sunday</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
-                  <div className="flex items-center justify-center md:justify-start">
-                    <Clock className="w-5 h-5 mr-3 text-[#d9b062]" />
-                    <span>8:00 – 10:00 AM</span>
-                  </div>
-                  <div className="flex items-center justify-center md:justify-start">
-                    <MapPin className="w-5 h-5 mr-3 text-[#d9b062]" />
-                    <span>Triangle, VA</span>
-                  </div>
+            <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Sunday Services Card */}
+              <div className="relative rounded-xl overflow-hidden shadow-lg">
+                <img src="/placeholder.svg" alt="Sunday Services" className="w-full h-72 object-cover object-center" />
+                <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-8">
+                  <h3 className="text-2xl font-bold text-white mb-2">Sunday Service (Amharic & English)</h3>
+                  <p className="text-white text-lg mb-1">8:30–10:30 AM</p>
+                  <p className="text-white text-base mb-4">3637 Graham Park Road, Triangle, VA 22172</p>
+                  <Link to="https://maps.google.com/?q=123+Church+Street,+Woodbridge,+VA+22191" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#244363] font-bold">
+                      Get Directions
+                    </Button>
+                  </Link>
                 </div>
-              </motion.div>
+              </div>
+              {/* Young Adult Bible Study Card */}
+              <div className="relative rounded-xl overflow-hidden shadow-lg">
+                <img src="/placeholder.svg" alt="Watch Online" className="w-full h-72 object-cover object-center" />
+                <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-8">
+                  <h3 className="text-2xl font-bold text-white mb-2">Young Adult Bible Study</h3>
+                  <p className="text-white text-lg mb-1">Mondays at 9:00–10:00 PM (Zoom)</p>
+                  <p className="text-white text-base mb-4">Meeting ID: 123-456-7890<br/>Passcode: YAStudy</p>
+                  <a href="https://zoom.us/j/1234567890" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#244363] font-bold">
+                      Join on Zoom
+                    </Button>
+                  </a>
+                </div>
+              </div>
             </motion.div>
-          </div>
-        </section>
-      </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* What to Expect */}
+      <section className="py-16 bg-[#f8f6f3]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            <motion.h2 
+              variants={itemVariants}
+              className="text-3xl md:text-4xl font-bold text-center text-[#244363] mb-12"
+            >
+              What to Expect
+            </motion.h2>
+            
+            <motion.div 
+              variants={containerVariants}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            >
+              {whatToExpect.map((item, index) => (
+                <motion.div key={index} variants={itemVariants}>
+                  <Card className="h-full bg-white hover:shadow-lg transition-all duration-300">
+                    <CardContent className="p-6 text-center">
+                      <div className="w-12 h-12 bg-[#d9b062] rounded-full flex items-center justify-center mx-auto mb-4">
+                        {item.icon}
+                      </div>
+                      <h3 className="text-lg font-bold text-[#244363] mb-3">{item.title}</h3>
+                      <p className="text-gray-700 text-sm">{item.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Visitor Information */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+            className="max-w-4xl mx-auto"
+          >
+            <motion.h2 
+              variants={itemVariants}
+              className="text-3xl md:text-4xl font-bold text-center text-[#244363] mb-12"
+            >
+              Visitor Information
+            </motion.h2>
+            
+            <motion.div 
+              variants={containerVariants}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            >
+              {visitorInfo.map((info, index) => (
+                <motion.div key={index} variants={itemVariants}>
+                  <Card className="h-full bg-gray-50 border border-gray-200">
+                    <CardContent className="p-6">
+                      <h3 className="text-lg font-bold text-[#244363] mb-3">{info.title}</h3>
+                      <p className="text-gray-700">{info.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-16 bg-[#244363] text-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Ready to Join Us?
+            </h2>
+            <p className="text-xl mb-8 max-w-2xl mx-auto">
+              We're excited to meet you and welcome you into our church family. 
+              Come experience the love of Christ in our community.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/ministries">
+                <Button className="bg-[#d9b062] text-[#244363] hover:bg-[#bfa05a] px-8 py-4 text-lg font-bold">
+                  Explore Our Ministries
+                  <ArrowRight className="ml-2" />
+                </Button>
+              </Link>
+              <Button className="bg-[#d9b062] text-[#244363] hover:bg-[#bfa05a] px-8 py-4 text-lg font-bold">
+                Learn More About Us
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </PageLayout>
   );
 };

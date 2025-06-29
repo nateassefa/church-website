@@ -1,4 +1,3 @@
-
 import PageLayout from '@/components/PageLayout';
 import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
@@ -28,56 +27,56 @@ const StatementOfFaith = () => {
 
   const beliefs = [
     {
-      title: "The Word of God",
-      description: "We believe in the divine inspiration and authority of Scripture",
-      reference: "2 Tim. 3:15–17"
+      title: "The Bible",
+      description: "The Bible is the inspired, inerrant, and infallible Word of God.",
+      references: ["2 Tim. 3:15-17"]
     },
     {
       title: "The Trinity",
-      description: "We believe in one God eternally existing in three persons",
-      reference: "Matt. 28:19"
+      description: "One God in three persons—Father, Son, and Holy Spirit.",
+      references: ["Matt. 28:19"]
     },
     {
       title: "God the Father",
-      description: "We believe in God the Father, creator and sustainer of all",
-      reference: "Ps. 19:1; Rom. 1:20"
+      description: "Creator and Sustainer of all things.",
+      references: ["Ps. 19:1", "Rom. 1:20"]
     },
     {
       title: "Jesus Christ",
-      description: "We believe Jesus is fully God and fully man, our Lord and Savior",
-      reference: "John 1:1–14; Phil. 2:5–11"
+      description: "Fully God and fully man, who lived a sinless life, died for humanity's sins, rose from the dead, and will return to judge the living and the dead.",
+      references: ["John 1:1-14", "Phil. 2:5-11"]
     },
     {
       title: "The Holy Spirit",
-      description: "We believe in the Holy Spirit as our helper and guide",
-      reference: "John 14:16–17"
+      description: "Empowers, teaches, and sanctifies believers.",
+      references: ["John 14:16-17"]
     },
     {
       title: "Salvation",
-      description: "We believe salvation is by grace through faith, not by works",
-      reference: "Eph. 2:8–10"
+      description: "By grace through faith in Jesus Christ alone.",
+      references: ["Eph. 2:8-10"]
     },
     {
       title: "The Church",
-      description: "We believe the church is the body of Christ on earth",
-      reference: "Eph. 1:22–23"
+      description: "A community of believers committed to worship, discipleship, and evangelism.",
+      references: ["Eph. 1:22-23"]
     },
     {
       title: "The Second Coming",
-      description: "We believe in the return of Jesus Christ and eternal life",
-      reference: "Matt. 25:31–46; Rev. 21:1–4"
+      description: "Jesus will return visibly to establish His eternal kingdom.",
+      references: ["Matt. 25:31-46", "Rev. 21:1-4"]
     }
   ];
 
   const ordinances = [
     {
       title: "Baptism",
-      description: "A public declaration of faith and obedience to Christ",
+      description: "Holy Baptism is a means of grace, through which God forgives sins, grants new life, and welcomes believers into His Church.",
       references: ["Matt. 28:19", "Acts 2:38", "Titus 3:5"]
     },
     {
       title: "Lord's Supper",
-      description: "A remembrance of Christ's sacrifice and our unity in Him",
+      description: "The Lord's Supper is the true body and blood of Christ, given under the bread and wine for the forgiveness of sins and the strengthening of faith.",
       references: ["1 Cor. 10:16", "1 Cor. 11:23–26", "Matt. 26:26–28"]
     }
   ];
@@ -90,9 +89,9 @@ const StatementOfFaith = () => {
         keywords={['statement of faith', 'beliefs', 'doctrine', 'theology', 'bible', 'Christian']}
       />
       
-      <div className="pt-20 pb-16">
+      <div className="pt-20 pb-16 bg-gradient-to-br from-[#244363] to-[#4c3219]">
         {/* Hero Section */}
-        <section className="bg-[#244363] text-white py-16">
+        <section className="bg-[#244363] text-white py-16 pt-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial="hidden"
@@ -117,7 +116,7 @@ const StatementOfFaith = () => {
         </section>
 
         {/* Core Beliefs */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-white text-gray-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial="hidden"
@@ -137,19 +136,25 @@ const StatementOfFaith = () => {
                 className="grid grid-cols-1 md:grid-cols-2 gap-8"
               >
                 {beliefs.map((belief, index) => (
-                  <Card key={index} className="border-l-4 border-l-[#244363] hover:shadow-lg transition-shadow">
-                    <CardContent className="p-6">
-                      <h3 className="text-xl font-semibold text-[#244363] mb-3">
-                        {belief.title}
-                      </h3>
-                      <p className="text-gray-600 mb-4">
-                        {belief.description}
-                      </p>
-                      <Badge variant="outline" className="text-[#4c3219] border-[#4c3219]">
-                        {belief.reference}
-                      </Badge>
-                    </CardContent>
-                  </Card>
+                  <motion.div
+                    key={index}
+                    variants={itemVariants}
+                    className="bg-gray-50 rounded-2xl shadow-lg p-8 border-l-8 border-[#d9b062] hover:shadow-xl transition-shadow duration-300"
+                  >
+                    <h3 className="text-xl font-bold text-[#244363] mb-4">{belief.title}</h3>
+                    <p className="text-gray-700 leading-relaxed mb-6">{belief.description}</p>
+                    <div className="space-y-2">
+                      {belief.references.map((ref, refIndex) => (
+                        <Badge 
+                          key={refIndex}
+                          variant="outline" 
+                          className="text-[#4c3219] border-[#4c3219] mr-2"
+                        >
+                          {ref}
+                        </Badge>
+                      ))}
+                    </div>
+                  </motion.div>
                 ))}
               </motion.div>
             </motion.div>
@@ -157,7 +162,7 @@ const StatementOfFaith = () => {
         </section>
 
         {/* The Ordinances */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-white text-gray-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial="hidden"
@@ -177,7 +182,7 @@ const StatementOfFaith = () => {
                 className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
               >
                 {ordinances.map((ordinance, index) => (
-                  <Card key={index} className="border-l-4 border-l-[#d9b062] hover:shadow-lg transition-shadow">
+                  <Card key={index} className="border-l-4 border-l-[#d9b062] hover:shadow-lg transition-shadow bg-gray-50">
                     <CardContent className="p-8">
                       <h3 className="text-2xl font-semibold text-[#d9b062] mb-4">
                         {ordinance.title}
@@ -204,27 +209,37 @@ const StatementOfFaith = () => {
           </div>
         </section>
 
-        {/* Call to Action */}
-        <section className="py-16 bg-[#4c3219] text-white">
+        {/* Additional Information */}
+        <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={containerVariants}
-              className="text-center max-w-3xl mx-auto"
+              className="max-w-4xl mx-auto text-center"
             >
               <motion.h2 
                 variants={itemVariants}
-                className="text-3xl md:text-4xl font-bold mb-6"
+                className="text-3xl md:text-4xl font-bold text-[#244363] mb-8"
               >
-                Join Us in Faith
+                Our Theological Foundation
               </motion.h2>
               <motion.p 
                 variants={itemVariants}
-                className="text-xl text-gray-200 mb-8 leading-relaxed"
+                className="text-lg text-gray-700 leading-relaxed mb-8"
               >
-                These beliefs form the foundation of our community. We invite you to explore faith with us and discover the hope found in Jesus Christ.
+                At Living Hope for Generations Church, we hold to the historic Christian faith as revealed in Scripture. 
+                Our beliefs are grounded in the Bible and align with the core doctrines that have been affirmed by 
+                the Christian church throughout history.
+              </motion.p>
+              <motion.p 
+                variants={itemVariants}
+                className="text-lg text-gray-700 leading-relaxed"
+              >
+                We welcome questions and discussions about our beliefs. If you have any questions about our 
+                statement of faith or would like to learn more about what we believe, please don't hesitate 
+                to reach out to us.
               </motion.p>
             </motion.div>
           </div>

@@ -1,144 +1,67 @@
-
-import { ArrowRight, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
-import emailjs from 'emailjs-com';
+import { Instagram, Facebook } from "lucide-react";
+
+// Replace TikTokIcon with a more accurate TikTok logo (musical note shape)
+const TikTokIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 32 32" fill="none" width={22} height={22} {...props}>
+    <path
+      d="M22.5 2H18v16.563a3.063 3.063 0 1 1-3.063-3.062c.106 0 .21.01.313.023V12.5a7.5 7.5 0 1 0 7.5 7.5V10.5c1.13.84 2.522 1.34 4 1.34V7.5c-1.478 0-2.87-.5-4-1.34V2Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+const YouTubeIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" width={22} height={22} {...props}>
+    <path d="M21.8 8.001a2.75 2.75 0 0 0-1.936-1.945C18.1 6 12 6 12 6s-6.1 0-7.864.056A2.75 2.75 0 0 0 2.2 8.001 28.6 28.6 0 0 0 2 12a28.6 28.6 0 0 0 .2 3.999 2.75 2.75 0 0 0 1.936 1.945C5.9 18 12 18 12 18s6.1 0 7.864-.056A2.75 2.75 0 0 0 21.8 15.999 28.6 28.6 0 0 0 22 12a28.6 28.6 0 0 0-.2-3.999zM10 15V9l6 3-6 3z" />
+  </svg>
+);
 
 const Footer = () => {
-  const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-
-  const handleSubscribe = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!email) {
-      toast({
-        title: "Error",
-        description: "Please enter your email address.",
-        variant: "destructive"
-      });
-      return;
-    }
-    
-    setIsSubmitting(true);
-    
-    try {
-      // EmailJS configuration
-      const EMAILJS_SERVICE_ID = "service_i3h66xg";
-      const EMAILJS_TEMPLATE_ID = "template_fgq53nh";
-      const EMAILJS_PUBLIC_KEY = "wQmcZvoOqTAhGnRZ3";
-      
-      const templateParams = {
-        from_name: "Website Subscriber",
-        from_email: email,
-        message: `New subscription request from the website footer.`,
-        to_name: 'WRLDS Team',
-        reply_to: email
-      };
-      
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        templateParams,
-        EMAILJS_PUBLIC_KEY
-      );
-      
-      toast({
-        title: "Success!",
-        description: "Thank you for subscribing to our newsletter.",
-        variant: "default"
-      });
-      
-      setEmail("");
-    } catch (error) {
-      console.error("Error sending subscription:", error);
-      
-      toast({
-        title: "Error",
-        description: "There was a problem subscribing. Please try again later.",
-        variant: "destructive"
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
-    <footer id="contact" className="bg-black text-white pt-16 pb-8 w-full">
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 pb-10 border-b border-gray-700">
-          <div className="lg:col-span-2">
-            <img 
-              src="/lovable-uploads/7d120ee6-3614-4b75-9c35-716d54490d67.png" 
-              alt="WRLDS Technologies Logo" 
-              className="h-10 w-auto mb-6 invert" // Added invert to make logo white
-            />
-            <p className="text-gray-300 mb-6">
-              WRLDS Technologies provides an end-to-end platform for the creation and deployment of AI-powered smart sensor devices, giving customers 100% ownership while handling the complete technological development.
-            </p>
-            <p className="text-gray-300 mb-6">
-              Hornsgatan 110<br />
-              117 26, Stockholm Sweden
-            </p>
-            <div className="flex space-x-4">
-              <a 
-                href="https://www.linkedin.com/company/wrldstechnologies/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 transition-colors hover:bg-gray-700 hover:text-white"
-              >
-                <Linkedin size={20} />
-              </a>
-            </div>
-          </div>
-          
-          <div>
-            <h3 className="text-lg font-bold mb-4 text-white">Company</h3>
-            <ul className="space-y-3">
-              <li><Link to="/about" className="text-gray-300 hover:text-white transition-colors">About Us</Link></li>
-              <li><Link to="/careers" className="text-gray-300 hover:text-white transition-colors">Careers</Link></li>
-              <li><Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</Link></li>
+    <footer className="bg-[#4c3219] text-white w-full pt-16 pb-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <span className="absolute -left-[450px] top-1/2 -translate-y-1/2 text-6xl font-extrabold text-white">Living Hope</span>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-stretch text-center md:text-left divide-y-0 md:divide-x md:divide-white/20 pl-0 md:pl-24">
+          {/* Left: About */}
+          <div className="flex-1 flex flex-col items-center md:items-start pb-10 md:pb-0 md:pr-10">
+            <h3 className="text-base font-bold tracking-widest mb-4 text-white uppercase">About</h3>
+            <ul className="space-y-2 text-gray-300">
+              <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
+              <li><Link to="/statement-of-faith" className="hover:text-white transition-colors">Statement of Faith</Link></li>
+              <li><Link to="/ministries" className="hover:text-white transition-colors">Ministries</Link></li>
+              <li><Link to="/events" className="hover:text-white transition-colors">Events</Link></li>
             </ul>
           </div>
-          
-          <div>
-            <h3 className="text-lg font-bold mb-4 text-white">Get in Touch</h3>
-            <form className="space-y-4" onSubmit={handleSubscribe}>
-              <div>
-                <input 
-                  type="email" 
-                  placeholder="Your email" 
-                  className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600 text-white placeholder-gray-400"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  disabled={isSubmitting}
-                />
-              </div>
-              <button 
-                type="submit" 
-                className="w-full px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-600 transition-colors flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Subscribing..." : (
-                  <>
-                    Subscribe
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </>
-                )}
-              </button>
-            </form>
+          {/* Center: Church Info */}
+          <div className="flex-1 flex flex-col items-center justify-center px-0 md:px-10 border-white/20 md:border-x">
+            <h2 className="text-2xl font-extrabold mb-2 tracking-wide">LIVING HOPE FOR GENERATIONS CHURCH</h2>
+            <p className="font-semibold text-white mb-4">A spiritual home for Ethiopian and Eritrean families along the 95-Highway Corridor.</p>
+            <div className="flex items-center justify-center space-x-4 mb-4">
+              <a href="https://www.instagram.com/livinghopegenchurch?igsh=MWs4dXdnZ28xOHBidw==" target="_blank" rel="noopener noreferrer" className="hover:text-[#d9b062] transition-colors"><Instagram size={22} /></a>
+              <a href="https://www.facebook.com/61574837435090/about/?_rdr" target="_blank" rel="noopener noreferrer" className="hover:text-[#d9b062] transition-colors"><Facebook size={22} /></a>
+              <a href="https://www.tiktok.com/@livinghopegenchurch" target="_blank" rel="noopener noreferrer" className="hover:text-[#d9b062] transition-colors"><TikTokIcon /></a>
+              <a href="https://www.youtube.com/@Livinghopegenchurch" target="_blank" rel="noopener noreferrer" className="hover:text-[#d9b062] transition-colors"><YouTubeIcon /></a>
+            </div>
+            <address className="not-italic text-gray-300 mb-1 leading-relaxed">
+              3637 Graham Park Rd, Triangle, VA 22172
+            </address>
+            <a href="mailto:info@livinghopegenchurch.org" className="text-gray-300 hover:text-white transition-colors block mb-1">info@livinghopegenchurch.org</a>
+            <a href="tel:+15408739903" className="text-gray-300 hover:text-white transition-colors block">+1 540-873-9903</a>
+          </div>
+          {/* Right: Get Connected */}
+          <div className="flex-1 flex flex-col items-center md:items-end pt-10 md:pt-0 md:pl-10">
+            <h3 className="text-base font-bold tracking-widest mb-4 text-white uppercase">Get Connected</h3>
+            <ul className="space-y-2 text-gray-300">
+              <li><Link to="/ministries" className="hover:text-white transition-colors">Small Groups</Link></li>
+              <li><Link to="/plan-visit" className="hover:text-white transition-colors">Plan Your Visit</Link></li>
+              <li><Link to="/give" className="hover:text-white transition-colors">Give</Link></li>
+              <li><Link to="/plan-visit#faq" className="hover:text-white transition-colors">FAQs</Link></li>
+            </ul>
           </div>
         </div>
-        
-        <div className="pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} WRLDS Technologies. All rights reserved.
-          </p>
-          <div className="flex space-x-6">
-            <Link to="/privacy-policy" className="text-sm text-gray-400 hover:text-white transition-colors">Privacy Policy</Link>
-          </div>
+        <div className="pt-8 mt-8 border-t border-white/10 text-center text-gray-400 text-sm">
+          © {new Date().getFullYear()} Living Hope for Generations Church. All rights reserved.
         </div>
       </div>
     </footer>

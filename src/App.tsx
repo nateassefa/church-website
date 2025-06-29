@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -13,6 +12,17 @@ import Events from "./pages/Events";
 import PlanVisit from "./pages/PlanVisit";
 import Give from "./pages/Give";
 import NotFound from "./pages/NotFound";
+import Careers from "./pages/Careers";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Blog from "./pages/Blog";
+import BlogPostDetail from "./pages/BlogPostDetail";
+import DevelopmentProcess from "./pages/DevelopmentProcess";
+import HockeyProject from "./pages/HockeyProject";
+import PetProject from "./pages/PetProject";
+import SportRetailProject from "./pages/SportRetailProject";
+import TechDetails from "./pages/TechDetails";
+import WorkwearProject from "./pages/WorkwearProject";
+import FireCatProject from "./pages/FireCatProject";
 
 const App = () => {
   const [queryClient] = useState(() => new QueryClient());
@@ -31,6 +41,17 @@ const App = () => {
             <Route path="/events" element={<Events />} />
             <Route path="/plan-visit" element={<PlanVisit />} />
             <Route path="/give" element={<Give />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogPostDetail />} />
+            <Route path="/development-process" element={<DevelopmentProcess />} />
+            <Route path="/hockey-project" element={<HockeyProject />} />
+            <Route path="/pet-project" element={<PetProject />} />
+            <Route path="/sport-retail-project" element={<SportRetailProject />} />
+            <Route path="/tech-details" element={<TechDetails />} />
+            <Route path="/workwear-project" element={<WorkwearProject />} />
+            <Route path="/firecat-project" element={<FireCatProject />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

@@ -1,24 +1,87 @@
-
 import PageLayout from '@/components/PageLayout';
 import SEO from '@/components/SEO';
-import { motion } from 'framer-motion';
-import { Card, CardContent } from '@/components/ui/card';
-import { Clock, Users, Heart, HandHeart } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Users, BookOpen, Heart, Music, Calendar, MapPin, Clock, Phone, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Ministries = () => {
+  const ministries = [
+    {
+      title: "Bilingual Worship Services",
+      description: "Join us every Sunday for worship in both Amharic and English, creating a bridge between generations and cultures.",
+      details: [
+        "Sunday Service: 8:30–10:30 AM (Amharic & English)",
+        "Location: 3637 Graham Park Road, Triangle VA 22172",
+        "Contemporary and traditional worship",
+        "Children's ministry during service",
+        "Fellowship time after service"
+      ],
+      icon: <Music className="w-8 h-8" />,
+      color: "bg-blue-50 border-blue-200"
+    },
+    {
+      title: "Young Adult Ministry",
+      description: "A vibrant community for young adults to grow in faith, build relationships, and navigate life together.",
+      details: [
+        "Monday Bible Study: 9:00 PM - 10:00 PM (Zoom)",
+        "Monthly social events and activities",
+        "Mentorship and discipleship programs",
+        "Career and life guidance support"
+      ],
+      icon: <Users className="w-8 h-8" />,
+      color: "bg-purple-50 border-purple-200"
+    },
+    {
+      title: "Children's Ministry",
+      description: "Nurturing the faith of our youngest members through age-appropriate learning and activities.",
+      details: [
+        "Sunday School during worship service",
+        "Children's choir and activities",
+        "Family-friendly events"
+      ],
+      icon: <Heart className="w-8 h-8" />,
+      color: "bg-yellow-50 border-yellow-200"
+    },
+    {
+      title: "Prayer Ministry",
+      description: "Join our dedicated prayer warriors in lifting up our church, community, and world in prayer.",
+      details: [
+        "Saturday Prayer Meeting: 8:00 PM - 9:00 PM (Zoom)",
+        "Prayer chain for urgent requests",
+        "Monthly prayer walks",
+        "24/7 prayer support"
+      ],
+      icon: <Heart className="w-8 h-8" />,
+      color: "bg-red-50 border-red-200"
+    },
+    {
+      title: "Community Outreach",
+      description: "Serving our local community through various outreach programs and initiatives.",
+      details: [
+        "Food pantry and assistance programs",
+        "Homeless ministry partnerships",
+        "International mission support",
+        "Local community service projects"
+      ],
+      icon: <Users className="w-8 h-8" />,
+      color: "bg-orange-50 border-orange-200"
+    }
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1
+        staggerChildren: 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
@@ -29,211 +92,107 @@ const Ministries = () => {
   return (
     <PageLayout>
       <SEO 
-        title="Ministries - Living Hope Church"
-        description="Discover our ministries at Living Hope Church including Sunday worship, children's programs, small groups, and community outreach."
-        keywords={['ministries', 'sunday worship', 'children', 'youth', 'small groups', 'outreach']}
+        title="Ministries - Living Hope for Generations Church" 
+        description="Explore our various ministries at Living Hope for Generations Church including worship services, Bible study groups, youth ministry, and community outreach."
+        keywords={['ministries', 'worship services', 'bible study', 'youth ministry', 'children ministry', 'prayer', 'community outreach']}
       />
       
-      <div className="pt-20 pb-16">
-        {/* Hero Section */}
-        <section className="bg-[#244363] text-white py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={containerVariants}
-              className="text-center max-w-4xl mx-auto"
+      {/* Hero Section */}
+      <section className="pt-24 pb-16 bg-gradient-to-br from-[#244363] to-[#1a2e47] text-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+            className="text-center"
+          >
+            <motion.h1 
+              variants={itemVariants}
+              className="text-4xl md:text-6xl font-bold mb-6"
             >
-              <motion.h1 
-                variants={itemVariants}
-                className="text-4xl md:text-5xl font-bold mb-6"
-              >
-                ይሣተፉ
-              </motion.h1>
-              <motion.h2 
-                variants={itemVariants}
-                className="text-2xl md:text-3xl text-[#d9b062] mb-6"
-              >
-                Our Ministries
-              </motion.h2>
-              <motion.p 
-                variants={itemVariants}
-                className="text-xl text-gray-200 leading-relaxed"
-              >
-                Join us in worship, fellowship, and service across all generations
-              </motion.p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Ministries Grid */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={containerVariants}
-              className="grid grid-cols-1 md:grid-cols-2 gap-8"
+              Our Ministries
+            </motion.h1>
+            <motion.p 
+              variants={itemVariants}
+              className="text-xl md:text-2xl text-[#d9b062] mb-8 max-w-3xl mx-auto"
             >
-              {/* Sunday Worship */}
-              <motion.div variants={itemVariants}>
-                <Card className="h-full border-l-4 border-l-[#244363] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-8">
-                    <div className="flex items-center mb-6">
-                      <div className="w-12 h-12 bg-[#244363] rounded-full flex items-center justify-center mr-4">
-                        <Clock className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="text-2xl font-semibold text-[#244363]">Sunday Worship</h3>
-                    </div>
-                    <p className="text-gray-600 text-lg mb-6">
-                      Authentic worship, uplifting messages, and a welcoming community.
-                    </p>
-                    <div className="space-y-3">
-                      <div className="flex items-center text-gray-700">
-                        <Clock className="w-5 h-5 mr-3 text-[#d9b062]" />
-                        <span>Sundays, 8:00 – 10:00 AM</span>
-                      </div>
-                      <div className="bg-gray-50 p-4 rounded-lg">
-                        <p className="font-semibold text-[#244363] mb-2">Service includes:</p>
-                        <ul className="text-gray-600 space-y-1">
-                          <li>• Worship in English & Amharic</li>
-                          <li>• English Sermon</li>
-                          <li>• Amharic Sermon</li>
-                          <li>• Community Fellowship</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              {/* Children, Youth & Young Adults */}
-              <motion.div variants={itemVariants}>
-                <Card className="h-full border-l-4 border-l-[#4c3219] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-8">
-                    <div className="flex items-center mb-6">
-                      <div className="w-12 h-12 bg-[#4c3219] rounded-full flex items-center justify-center mr-4">
-                        <Users className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="text-2xl font-semibold text-[#4c3219]">Children, Youth & Young Adults</h3>
-                    </div>
-                    <p className="text-gray-600 text-lg mb-6">
-                      Age-appropriate, Christ-centered programs for every stage of growth.
-                    </p>
-                    <div className="space-y-4">
-                      <div className="bg-gray-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-[#4c3219] mb-2">Children's Ministry</h4>
-                        <p className="text-gray-600 text-sm">Bible stories, songs, and activities designed for young hearts</p>
-                      </div>
-                      <div className="bg-gray-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-[#4c3219] mb-2">Youth Programs</h4>
-                        <p className="text-gray-600 text-sm">Relevant discussions and activities for teenagers</p>
-                      </div>
-                      <div className="bg-gray-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-[#4c3219] mb-2">Young Adults</h4>
-                        <p className="text-gray-600 text-sm">Life application and community for college age and beyond</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              {/* Small Groups */}
-              <motion.div variants={itemVariants}>
-                <Card className="h-full border-l-4 border-l-[#d9b062] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-8">
-                    <div className="flex items-center mb-6">
-                      <div className="w-12 h-12 bg-[#d9b062] rounded-full flex items-center justify-center mr-4">
-                        <Heart className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="text-2xl font-semibold text-[#d9b062]">Small Groups</h3>
-                    </div>
-                    <p className="text-gray-600 text-lg mb-6">
-                      Weekly gatherings for Bible study, prayer, and authentic community.
-                    </p>
-                    <div className="space-y-4">
-                      <div className="bg-gray-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-[#d9b062] mb-2">What to Expect</h4>
-                        <ul className="text-gray-600 text-sm space-y-1">
-                          <li>• In-depth Bible study</li>
-                          <li>• Prayer and support</li>
-                          <li>• Meaningful relationships</li>
-                          <li>• Spiritual growth</li>
-                        </ul>
-                      </div>
-                      <div className="bg-gray-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-[#d9b062] mb-2">Meeting Times</h4>
-                        <p className="text-gray-600 text-sm">Various times throughout the week to accommodate different schedules</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              {/* Outreach & Service */}
-              <motion.div variants={itemVariants}>
-                <Card className="h-full border-l-4 border-l-[#244363] hover:shadow-lg transition-shadow">
-                  <CardContent className="p-8">
-                    <div className="flex items-center mb-6">
-                      <div className="w-12 h-12 bg-[#244363] rounded-full flex items-center justify-center mr-4">
-                        <HandHeart className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="text-2xl font-semibold text-[#244363]">Outreach & Service</h3>
-                    </div>
-                    <p className="text-gray-600 text-lg mb-6">
-                      Mentorship, career support, prayer, and compassionate outreach to our community.
-                    </p>
-                    <div className="space-y-4">
-                      <div className="bg-gray-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-[#244363] mb-2">Community Services</h4>
-                        <ul className="text-gray-600 text-sm space-y-1">
-                          <li>• Mentorship programs</li>
-                          <li>• Career guidance and support</li>
-                          <li>• Prayer ministry</li>
-                          <li>• Community outreach events</li>
-                        </ul>
-                      </div>
-                      <div className="bg-gray-50 p-4 rounded-lg">
-                        <h4 className="font-semibold text-[#244363] mb-2">Ways to Serve</h4>
-                        <p className="text-gray-600 text-sm">
-                          Join us in serving both within our church family and in the broader community
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
+              Growing together in faith, serving our community, and building bridges between generations
+            </motion.p>
+            <motion.div variants={itemVariants}>
+              <Link to="/plan-visit">
+                <Button className="bg-[#d9b062] text-[#244363] hover:bg-[#bfa05a] px-8 py-4 text-lg font-bold">
+                  Join Us This Sunday
+                </Button>
+              </Link>
             </motion.div>
-          </div>
-        </section>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* Call to Action */}
-        <section className="py-16 bg-[#4c3219] text-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={containerVariants}
-              className="text-center max-w-3xl mx-auto"
-            >
-              <motion.h2 
-                variants={itemVariants}
-                className="text-3xl md:text-4xl font-bold mb-6"
-              >
-                Get Involved Today
-              </motion.h2>
-              <motion.p 
-                variants={itemVariants}
-                className="text-xl text-gray-200 mb-8 leading-relaxed"
-              >
-                Whether you're looking to grow in faith, build relationships, or serve others, there's a place for you in our ministries. Come as you are and discover where you belong.
-              </motion.p>
-            </motion.div>
-          </div>
-        </section>
-      </div>
+      {/* Ministries Hero Cards */}
+      <section className="w-full flex flex-col gap-12 py-12">
+        {ministries.map((ministry, idx) => {
+          const isEven = idx % 2 === 1;
+          return (
+            <div key={idx} className="relative w-full max-w-6xl mx-auto h-[400px] rounded-2xl overflow-hidden shadow-xl flex">
+              <img
+                src="/placeholder.svg"
+                alt={ministry.title}
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div className={`absolute inset-0 bg-black/50 flex flex-col justify-center ${isEven ? 'items-end pr-12' : 'items-start pl-12'} h-full w-full`}>
+                <div className={`max-w-2xl ${isEven ? 'text-right' : 'text-left'}`}>
+                  <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 drop-shadow-lg">{ministry.title}</h2>
+                  <p className="text-lg md:text-xl text-white mb-4 drop-shadow">{ministry.description}</p>
+                  <ul className="mb-8 list-disc list-inside" style={{ color: '#f3c96b' }}>
+                    {ministry.details.map((detail, i) => (
+                      <li key={i} className="text-lg" style={{ color: '#fff', WebkitTextStroke: '0.2px #fff' }}>
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link to="/plan-visit">
+                    <Button className="bg-white text-[#244363] hover:bg-[#d9b062] hover:text-[#244363] px-8 py-4 text-lg font-bold rounded-full shadow-lg">
+                      LEARN MORE <span className="ml-2">&rarr;</span>
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-16 bg-[#f8f6f3]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-[#244363] mb-6">
+              Get Involved Today
+            </h2>
+            <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+              There's a place for everyone in our church family. Find your ministry and start serving today.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/plan-visit">
+                <Button className="bg-[#244363] text-white hover:bg-[#1a2e47] px-8 py-4 text-lg">
+                  Plan Your Visit
+                </Button>
+              </Link>
+              <Link to="/contact">
+                <Button variant="outline" className="border-[#244363] text-[#244363] hover:bg-[#244363] hover:text-white px-8 py-4 text-lg">
+                  Contact Us
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </PageLayout>
   );
 };
