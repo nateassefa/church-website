@@ -17,7 +17,7 @@ const ministries = [
   },
   {
     title: "Young Adult Bible Study",
-    description: "Tuesdays @ 9–10 PM on Zoom"
+    description: "Mondays at 9-10PM on Zoom"
   }
 ];
 
@@ -71,12 +71,38 @@ const Features = () => {
           >
             <div className="flex-1 flex items-center justify-center min-w-0">
               <div className="relative w-full aspect-[16/12] min-h-[350px] md:min-h-[420px] lg:min-h-[500px] rounded-2xl overflow-hidden shadow-2xl bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-500 text-2xl">[YouTube Video Placeholder]</span>
+                <iframe
+                  className="w-full h-full rounded-lg"
+                  src="https://www.youtube.com/embed/T8c-ecb5lrg?si=bxuJgOsqPADXASmV"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+                {/* Bottom Gradient Overlay with Label */}
+                <div className="absolute bottom-0 left-0 w-full pointer-events-none">
+                  <div className="w-full bg-gradient-to-t from-black via-black/90 to-transparent rounded-b-lg px-4 py-3 flex items-end justify-start md:justify-center">
+                    <span className="text-white text-lg md:text-2xl font-bold drop-shadow-lg text-left md:text-center w-full">ያለፈው እሁድ የአማርኛ ስብከት</span>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="flex-1 flex items-center justify-center min-w-0">
               <div className="relative w-full aspect-[16/12] min-h-[350px] md:min-h-[420px] lg:min-h-[500px] rounded-2xl overflow-hidden shadow-2xl bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-500 text-2xl">[YouTube Video Placeholder]</span>
+                <iframe
+                  className="w-full h-full rounded-lg"
+                  src="https://www.youtube.com/embed/F9F30SWcDks?si=0QWY4u5hhVqsgKrg"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+                {/* Bottom Gradient Overlay with Label */}
+                <div className="absolute bottom-0 left-0 w-full pointer-events-none">
+                  <div className="w-full bg-gradient-to-t from-black via-black/90 to-transparent rounded-b-lg px-4 py-3 flex items-end justify-start md:justify-center">
+                    <span className="text-white text-lg md:text-2xl font-bold drop-shadow-lg text-left md:text-center w-full">Last Sunday's English Sermon</span>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -84,40 +110,26 @@ const Features = () => {
           {/* Ministries Section - Three Horizontal Cards */}
           <motion.div variants={itemVariants} className="max-w-6xl mx-auto mt-10 grid grid-cols-1 md:grid-cols-3 gap-12">
             {ministries.map((ministry, idx) => (
-              ministry.title === "Neighborhood Bible Study Groups" ? (
-                <Card key={idx} className="flex flex-col h-full bg-white rounded-2xl shadow-2xl border-0 items-center">
-                  <div className="w-full aspect-square bg-white flex items-center justify-center rounded-t-2xl overflow-hidden">
+              <Card key={idx} className="flex flex-col h-full bg-white rounded-2xl shadow-2xl border-0 items-center">
+                <div className="w-full aspect-square bg-white flex items-center justify-center rounded-t-2xl overflow-hidden">
+                  {ministry.title === "Bilingual Worship" ? (
+                    <img src="/490103190_122106027620827914_5173506189753291620_n_PhotoGrid.png" alt="Bilingual Worship" className="object-cover w-full h-full" />
+                  ) : ministry.title === "Neighborhood Bible Study Groups" ? (
+                    <img src="/bible-study.png" alt="Neighborhood Bible Study Group" className="object-cover w-full h-full" />
+                  ) : ministry.title === "Young Adult Bible Study" ? (
+                    <img src="/IMG_6655_PhotoGrid.png" alt="Young Adult Bible Study" className="object-cover w-full h-full" />
+                  ) : (
                     <span className="text-gray-400 text-3xl">Image Placeholder</span>
-                  </div>
-                  <CardContent className="flex flex-col flex-1 items-center text-center w-full px-8 py-8">
-                    <h4 className="text-3xl font-extrabold text-[#244363] mb-3 mt-2">{ministry.title}</h4>
-                    <p className="text-lg text-gray-700 mb-8">{ministry.description}</p>
-                    <Button className="mt-auto w-full bg-[#244363] text-white font-bold rounded-md py-3 text-lg hover:bg-[#1a2e47] transition-all">
-                      Button Placeholder
-                    </Button>
-                  </CardContent>
-                </Card>
-              ) : (
-                <Card key={idx} className="flex flex-col h-full bg-white rounded-2xl shadow-2xl border-0 items-center">
-                  {/* Large image placeholder at the top */}
-                  <div className="w-full aspect-square bg-white flex items-center justify-center rounded-t-2xl overflow-hidden">
-                    {ministry.title === "Bilingual Worship" ? (
-                      <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                        <span className="text-gray-500 text-xl">[Image Placeholder]</span>
-                      </div>
-                    ) : (
-                      <span className="text-gray-400 text-3xl">Image Placeholder</span>
-                    )}
-                  </div>
-                  <CardContent className="flex flex-col flex-1 items-center text-center w-full px-8 py-8">
-                    <h4 className="text-3xl font-extrabold text-[#244363] mb-3 mt-2">{ministry.title}</h4>
-                    <p className="text-lg text-gray-700 mb-8">{ministry.description}</p>
-                    <Button className="mt-auto w-full bg-[#244363] text-white font-bold rounded-md py-3 text-lg hover:bg-[#1a2e47] transition-all">
-                      Button Placeholder
-                    </Button>
-                  </CardContent>
-                </Card>
-              )
+                  )}
+                </div>
+                <CardContent className="flex flex-col flex-1 items-center text-center w-full px-8 py-8">
+                  <h4 className="text-3xl font-extrabold text-[#244363] mb-3 mt-2">{ministry.title}</h4>
+                  <p className="text-lg text-gray-700 mb-8">{ministry.description}</p>
+                  <Button className="mt-auto w-full bg-[#244363] text-white font-bold rounded-md py-3 text-lg hover:bg-[#1a2e47] transition-all">
+                    Button Placeholder
+                  </Button>
+                </CardContent>
+              </Card>
             ))}
           </motion.div>
         </motion.div>

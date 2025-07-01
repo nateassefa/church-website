@@ -136,11 +136,42 @@ const Ministries = () => {
           return (
             <div key={idx} className="relative w-full max-w-6xl mx-auto h-[400px] rounded-2xl overflow-hidden shadow-xl flex">
               <img
-                src="/placeholder.svg"
+                src={
+                  ministry.title === "Bilingual Worship Services"
+                    ? "/490103190_122106027620827914_5173506189753291620_n_PhotoGrid.png"
+                    : ministry.title === "Children's Ministry"
+                      ? "/PHOTO-2025-06-15-14-20-21.jpg"
+                    : ministry.title === "Prayer Ministry"
+                      ? "/87c42148-e584-4fcf-b619-b36ab2a66e6e_PhotoGrid.png"
+                    : ministry.title === "Community Outreach"
+                      ? "/PHOTO-2025-03-29-14-31-16.jpg"
+                    : ministry.title === "Young Adult Ministry"
+                      ? "/IMG_6655_PhotoGrid.png"
+                      : "/placeholder.svg"
+                }
                 alt={ministry.title}
-                className="absolute inset-0 w-full h-full object-cover object-center"
+                className={`absolute inset-0 w-full h-full object-cover ${
+                  ministry.title === "Bilingual Worship Services"
+                    ? 'object-[center_60%]'
+                    : ministry.title === "Children's Ministry"
+                      ? 'object-right'
+                    : ministry.title === "Prayer Ministry"
+                      ? ''
+                    : ministry.title === "Community Outreach"
+                      ? ''
+                      : 'object-center'
+                }`}
+                style={
+                  ministry.title === "Prayer Ministry"
+                    ? { objectPosition: 'right 20%' }
+                    : ministry.title === "Community Outreach"
+                      ? { objectPosition: 'center 35%' }
+                      : undefined
+                }
               />
-              <div className={`absolute inset-0 bg-black/50 flex flex-col justify-center ${isEven ? 'items-end pr-12' : 'items-start pl-12'} h-full w-full`}>
+              {/* Black gradient overlay for text readability */}
+              <div className={`absolute inset-0 z-10 ${isEven ? 'bg-gradient-to-l from-black/70 via-black/40 to-transparent' : 'bg-gradient-to-r from-black/70 via-black/40 to-transparent'}`} />
+              <div className={`absolute inset-0 bg-black/50 flex flex-col justify-center ${isEven ? 'items-end pr-12' : 'items-start pl-12'} h-full w-full z-20`}>
                 <div className={`max-w-2xl ${isEven ? 'text-right' : 'text-left'}`}>
                   <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 drop-shadow-lg">{ministry.title}</h2>
                   <p className="text-lg md:text-xl text-white mb-4 drop-shadow">{ministry.description}</p>
