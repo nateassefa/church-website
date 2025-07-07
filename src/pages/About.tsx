@@ -32,8 +32,17 @@ const About = () => {
         keywords={['about', 'mission', 'vision', 'values', 'Ethiopian church', 'Eritrean church', 'Christian community']}
       />
       
-      <div className="pt-20 pb-16 bg-gradient-to-br from-[#244363] to-[#4c3219]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative pt-20 pb-16 bg-gradient-to-br from-[#244363] to-[#4c3219] overflow-hidden">
+        {/* Hero background image */}
+        <img 
+          src="/image (3).jpg" 
+          alt="Living Hope for Generations Church family" 
+          className="absolute inset-0 w-full h-full object-cover object-[center_40%] opacity-60 z-0" 
+          style={{ pointerEvents: 'none' }}
+        />
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-[#244363]/80 z-10" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -66,8 +75,12 @@ const About = () => {
             className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16"
           >
             <motion.div variants={itemVariants}>
-              <div className="w-full h-96 flex items-center justify-center bg-gray-200 rounded-lg shadow-lg">
-                <span className="text-gray-500 text-xl">[About Image Placeholder]</span>
+              <div className="w-full h-96 flex items-center justify-center bg-gray-200 rounded-lg shadow-lg overflow-hidden">
+                <img 
+                  src="/image (3).jpg" 
+                  alt="Living Hope for Generations Church family" 
+                  className="w-full h-full object-cover object-center" 
+                />
               </div>
             </motion.div>
             <motion.div variants={itemVariants}>

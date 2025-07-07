@@ -41,23 +41,19 @@ const PastEventsCarousel: React.FC<PastEventsCarouselProps> = ({ events }) => {
 
   return (
     <div className="w-full max-w-xs sm:max-w-sm md:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto mt-10">
-      <div className="relative flex items-center justify-center" style={{ height: '340px', maxWidth: '100%' }}>
+      <div className="relative flex items-center justify-center w-full min-h-[80vh] max-w-full">
         <div className="overflow-visible w-full h-full" ref={emblaRef}>
           <div className="flex w-full h-full items-center">
             {events.map((event, idx) => (
               <div
                 key={event.id}
-                className="min-w-0 shrink-0 grow-0 basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5 flex items-center justify-center bg-white rounded-2xl overflow-visible shadow-lg transition-all duration-700 ease-in-out mx-2"
-                style={{ width: '340px', height: '340px' }}
+                className="flex items-center justify-center w-full h-full overflow-visible transition-all duration-700 ease-in-out mx-2"
               >
-                <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 rounded-2xl p-4">
-                  <div className="w-full aspect-square flex items-center justify-center bg-gray-300 rounded-xl mb-4 overflow-hidden" style={{ maxWidth: '240px', maxHeight: '240px' }}>
-                    <span className="text-gray-500 text-lg">[Event Image Placeholder]</span>
-                  </div>
-                  <div className="text-base font-bold text-[#244363] mb-1 text-center">{event.title}</div>
-                  <div className="text-xs text-gray-700 mb-1 text-center">{event.date}</div>
-                  <div className="text-xs text-gray-500 text-center">{event.location}</div>
-                </div>
+                <img
+                  src={event.image}
+                  alt={event.title}
+                  className="object-contain mx-auto my-0 max-h-[70vh] max-w-[90vw]"
+                />
               </div>
             ))}
           </div>

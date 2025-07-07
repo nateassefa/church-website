@@ -21,34 +21,52 @@ const eventCategories = [
 
 export const pastEvents = [
   {
-    id: 7,
-    title: "Easter Celebration Service",
-    description: "A special Easter service celebrating the resurrection of Jesus Christ with special music and message.",
-    date: "April 9, 2024",
-    time: "10:00 AM - 12:00 PM",
-    location: "Main Sanctuary",
-    category: "Holiday",
-    image: "easter-placeholder"
+    id: 1,
+    title: "Tekeste Event",
+    date: "",
+    time: "",
+    location: "",
+    image: "/tekeste copy.jpg"
   },
   {
-    id: 8,
-    title: "Christmas Caroling",
-    description: "Spreading joy through the community with traditional Christmas carols and warm fellowship.",
-    date: "December 23, 2023",
-    time: "6:00 PM - 8:00 PM",
-    location: "Various Neighborhoods",
-    category: "Outreach",
-    image: "caroling-placeholder"
+    id: 2,
+    title: "Church Event 6/16/25",
+    date: "",
+    time: "",
+    location: "",
+    image: "/6:16:25_Church.png"
   },
   {
-    id: 9,
-    title: "Thanksgiving Community Dinner",
-    description: "A community-wide Thanksgiving dinner serving those in need and celebrating God's blessings.",
-    date: "November 23, 2023",
-    time: "2:00 PM - 6:00 PM",
-    location: "Fellowship Hall",
-    category: "Community",
-    image: "thanksgiving-placeholder"
+    id: 3,
+    title: "Event 3",
+    date: "",
+    time: "",
+    location: "",
+    image: "/event3.png"
+  },
+  {
+    id: 4,
+    title: "Event 2",
+    date: "",
+    time: "",
+    location: "",
+    image: "/event2.png"
+  },
+  {
+    id: 5,
+    title: "Event 1",
+    date: "",
+    time: "",
+    location: "",
+    image: "/event1.png"
+  },
+  {
+    id: 6,
+    title: "Event 224b9109",
+    date: "",
+    time: "",
+    location: "",
+    image: "/224b9109-4ad8-4533-926b-ece91c121f22.png"
   }
 ];
 

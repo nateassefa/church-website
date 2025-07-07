@@ -163,7 +163,7 @@ const PlanVisit = () => {
             <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Sunday Services Card */}
               <div className="relative rounded-xl overflow-hidden shadow-lg">
-                <img src="/placeholder.svg" alt="Sunday Services" className="w-full h-72 object-cover object-center" />
+                <img src="/image (4).jpg" alt="Sunday Service at Living Hope for Generations Church" className="w-full h-72 object-cover object-center" />
                 <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-8">
                   <h3 className="text-2xl font-bold text-white mb-2">Sunday Service (Amharic & English)</h3>
                   <p className="text-white text-lg mb-1">8:30–10:30 AM</p>
