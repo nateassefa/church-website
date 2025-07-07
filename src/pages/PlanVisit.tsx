@@ -81,8 +81,15 @@ const PlanVisit = () => {
       />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-[#244363] to-[#1a2e47] text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative pt-24 pb-16 text-white overflow-hidden">
+        <img
+          src="/WhatsApp Image 2025-04-06 at 21.54.47.jpeg"
+          alt="Plan Your Visit Background"
+          className="absolute inset-0 w-full h-full object-cover object-center z-0"
+          style={{ filter: 'brightness(0.5)' }}
+        />
+        <div className="absolute inset-0 bg-black/40 z-10" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           <motion.div
             initial="hidden"
             animate="visible"

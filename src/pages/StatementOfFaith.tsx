@@ -89,16 +89,15 @@ const StatementOfFaith = () => {
         keywords={['statement of faith', 'beliefs', 'doctrine', 'theology', 'bible', 'Christian']}
       />
       
-      <div className="pt-20 pb-4 bg-gradient-to-br from-[#244363] to-[#4c3219]">
+      <div className="pb-4 bg-gradient-to-br from-[#244363] to-[#4c3219]">
         {/* Hero Section */}
         <section className="relative text-white py-16 pt-16 min-h-[350px] flex items-center justify-center">
           <img 
             src="/WhatsApp Image 2025-04-10 at 20.53.28.jpeg" 
             alt="Statement of Faith Background" 
-            className="absolute inset-0 w-full h-full object-cover object-center z-0" 
-            style={{ filter: 'brightness(0.5)' }}
+            className="absolute inset-0 w-full h-full object-cover object-[0_35%] z-0" 
           />
-          <div className="absolute inset-0 bg-black/60 z-10" />
+          <div className="absolute inset-0 bg-black/50 z-10" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
             <motion.div
               initial="hidden"
@@ -169,7 +168,7 @@ const StatementOfFaith = () => {
         </section>
 
         {/* The Ordinances */}
-        <section className="py-16 bg-white text-gray-900">
+        <section className="py-16 bg-[#244363] text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial="hidden"
@@ -179,7 +178,7 @@ const StatementOfFaith = () => {
             >
               <motion.h2 
                 variants={itemVariants}
-                className="text-3xl md:text-4xl font-bold text-[#244363] text-center mb-12"
+                className="text-3xl md:text-4xl font-bold text-white text-center mb-12"
               >
                 The Ordinances
               </motion.h2>

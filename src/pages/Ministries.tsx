@@ -97,128 +97,135 @@ const Ministries = () => {
         keywords={['ministries', 'worship services', 'bible study', 'youth ministry', 'children ministry', 'prayer', 'community outreach']}
       />
       
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-[#244363] to-[#1a2e47] text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-            className="text-center"
-          >
-            <motion.h1 
-              variants={itemVariants}
-              className="text-4xl md:text-6xl font-bold mb-6"
+      <main>
+        {/* Hero Section with Background Image */}
+        <section className="relative pt-24 pb-16 bg-gradient-to-br from-[#244363] to-[#1a2e47] text-white overflow-hidden">
+          <img
+            src="/490094335_122121905240709690_8942868148826318596_n.jpg"
+            alt="Ministries Background"
+            className="absolute inset-0 w-full h-full object-cover object-[center_30%] z-0"
+            style={{ filter: 'brightness(0.5)' }}
+          />
+          <div className="absolute inset-0 bg-black/40 z-10" />
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+              className="text-center"
             >
-              Our Ministries
-            </motion.h1>
-            <motion.p 
-              variants={itemVariants}
-              className="text-xl md:text-2xl text-[#d9b062] mb-8 max-w-3xl mx-auto"
-            >
-              Growing together in faith, serving our community, and building bridges between generations
-            </motion.p>
-            <motion.div variants={itemVariants}>
-              <Link to="/plan-visit">
-                <Button className="bg-[#d9b062] text-[#244363] hover:bg-[#bfa05a] px-8 py-4 text-lg font-bold">
-                  Join Us This Sunday
-                </Button>
-              </Link>
+              <motion.h1
+                variants={itemVariants}
+                className="text-4xl md:text-6xl font-bold mb-6"
+              >
+                Our Ministries
+              </motion.h1>
+              <motion.p 
+                variants={itemVariants}
+                className="max-w-2xl mx-auto text-lg md:text-xl mb-8"
+              >
+                Discover the many ways you can get involved and grow in faith, fellowship, and service at Living Hope for Generations Church.
+              </motion.p>
+              <motion.div variants={itemVariants}>
+                <a href="#ministries-list" className="inline-block bg-white text-[#244363] font-semibold px-8 py-3 rounded shadow hover:bg-gray-100 transition">
+                  Explore Ministries
+                </a>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* Ministries Hero Cards */}
-      <section className="w-full flex flex-col gap-12 py-12">
-        {ministries.map((ministry, idx) => {
-          const isEven = idx % 2 === 1;
-          return (
-            <div key={idx} className="relative w-full max-w-6xl mx-auto h-[400px] rounded-2xl overflow-hidden shadow-xl flex">
-              <img
-                src={
-                  ministry.title === "Bilingual Worship Services"
-                    ? "/490103190_122106027620827914_5173506189753291620_n_PhotoGrid.png"
-                    : ministry.title === "Children's Ministry"
-                      ? "/PHOTO-2025-06-15-14-20-21.jpg"
-                    : ministry.title === "Prayer Ministry"
-                      ? "/87c42148-e584-4fcf-b619-b36ab2a66e6e_PhotoGrid.png"
-                    : ministry.title === "Community Outreach"
-                      ? "/PHOTO-2025-03-29-14-31-16.jpg"
-                    : ministry.title === "Young Adult Ministry"
-                      ? "/IMG_6655_PhotoGrid.png"
-                      : "/placeholder.svg"
-                }
-                alt={ministry.title}
-                className={`absolute inset-0 w-full h-full object-cover ${
-                  ministry.title === "Bilingual Worship Services"
-                    ? 'object-[center_60%]'
-                    : ministry.title === "Children's Ministry"
-                      ? 'object-right'
-                    : ministry.title === "Prayer Ministry"
-                      ? ''
-                    : ministry.title === "Community Outreach"
-                      ? ''
-                      : 'object-center'
-                }`}
-                style={
-                  ministry.title === "Prayer Ministry"
-                    ? { objectPosition: 'right 20%' }
-                    : ministry.title === "Community Outreach"
-                      ? { objectPosition: 'center 35%' }
-                      : undefined
-                }
-              />
-              {/* Black gradient overlay for text readability */}
-              <div className={`absolute inset-0 z-10 ${isEven ? 'bg-gradient-to-l from-black/70 via-black/40 to-transparent' : 'bg-gradient-to-r from-black/70 via-black/40 to-transparent'}`} />
-              <div className={`absolute inset-0 bg-black/50 flex flex-col justify-center ${isEven ? 'items-end pr-12' : 'items-start pl-12'} h-full w-full z-20`}>
-                <div className={`max-w-2xl ${isEven ? 'text-right' : 'text-left'}`}>
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 drop-shadow-lg">{ministry.title}</h2>
-                  <p className="text-lg md:text-xl text-white mb-4 drop-shadow">{ministry.description}</p>
-                  <ul className="mb-8 list-disc list-inside" style={{ color: '#f3c96b' }}>
-                    {ministry.details.map((detail, i) => (
-                      <li key={i} className="text-lg" style={{ color: '#fff', WebkitTextStroke: '0.2px #fff' }}>
-                        {detail}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link to="/plan-visit">
-                    <Button className="bg-white text-[#244363] hover:bg-[#d9b062] hover:text-[#244363] px-8 py-4 text-lg font-bold rounded-full shadow-lg">
-                      LEARN MORE <span className="ml-2">&rarr;</span>
-                    </Button>
-                  </Link>
+        {/* Ministries Hero Cards */}
+        <section className="w-full flex flex-col gap-12 py-12">
+          {ministries.map((ministry, idx) => {
+            const isEven = idx % 2 === 1;
+            return (
+              <div key={idx} className="relative w-full max-w-6xl mx-auto h-[400px] rounded-2xl overflow-hidden shadow-xl flex">
+                <img
+                  src={
+                    ministry.title === "Bilingual Worship Services"
+                      ? "/490103190_122106027620827914_5173506189753291620_n_PhotoGrid.png"
+                      : ministry.title === "Children's Ministry"
+                        ? "/PHOTO-2025-06-15-14-20-21.jpg"
+                        : ministry.title === "Prayer Ministry"
+                          ? "/87c42148-e584-4fcf-b619-b36ab2a66e6e_PhotoGrid.png"
+                          : ministry.title === "Community Outreach"
+                            ? "/PHOTO-2025-03-29-14-31-16.jpg"
+                            : ministry.title === "Young Adult Ministry"
+                              ? "/IMG_6655_PhotoGrid.png"
+                              : "/placeholder.svg"
+                  }
+                  alt={ministry.title}
+                  className={`absolute inset-0 w-full h-full object-cover ${
+                    ministry.title === "Bilingual Worship Services"
+                      ? 'object-[center_60%]'
+                      : ministry.title === "Children's Ministry"
+                        ? 'object-right'
+                      : ministry.title === "Prayer Ministry"
+                        ? ''
+                      : ministry.title === "Community Outreach"
+                        ? ''
+                        : 'object-center'
+                  }`}
+                  style={
+                    ministry.title === "Prayer Ministry"
+                      ? { objectPosition: 'right 20%' }
+                      : ministry.title === "Community Outreach"
+                        ? { objectPosition: 'center 35%' }
+                        : undefined
+                  }
+                />
+                {/* Black gradient overlay for text readability */}
+                <div className={`absolute inset-0 z-10 ${isEven ? 'bg-gradient-to-l from-black/70 via-black/40 to-transparent' : 'bg-gradient-to-r from-black/70 via-black/40 to-transparent'}`} />
+                <div className={`absolute inset-0 bg-black/50 flex flex-col justify-center ${isEven ? 'items-end pr-12' : 'items-start pl-12'} h-full w-full z-20`}>
+                  <div className={`max-w-2xl ${isEven ? 'text-right' : 'text-left'}`}>
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 drop-shadow-lg">{ministry.title}</h2>
+                    <p className="text-lg md:text-xl text-white mb-4 drop-shadow">{ministry.description}</p>
+                    <ul className="mb-8 list-disc list-inside" style={{ color: '#f3c96b' }}>
+                      {ministry.details.map((detail, i) => (
+                        <li key={i} className="text-lg" style={{ color: '#fff', WebkitTextStroke: '0.2px #fff' }}>
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
+                    <Link to="/plan-visit">
+                      <Button className="bg-white text-[#244363] hover:bg-[#d9b062] hover:text-[#244363] px-8 py-4 text-lg font-bold rounded-full shadow-lg">
+                        LEARN MORE <span className="ml-2">&rarr;</span>
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
-      </section>
+            );
+          })}
+        </section>
 
-      {/* Call to Action */}
-      <section className="py-16 bg-[#f8f6f3]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#244363] mb-6">
-              Get Involved Today
-            </h2>
-            <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-              There's a place for everyone in our church family. Find your ministry and start serving today.
-            </p>
-            <div className="flex justify-center">
-              <Link to="/plan-visit">
-                <Button className="bg-[#244363] text-white hover:bg-[#1a2e47] px-8 py-4 text-lg">
-                  Plan Your Visit
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+        {/* Call to Action */}
+        <section className="py-16 bg-[#f8f6f3]">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-[#244363] mb-6">
+                Get Involved Today
+              </h2>
+              <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+                There's a place for everyone in our church family. Find your ministry and start serving today.
+              </p>
+              <div className="flex justify-center">
+                <Link to="/plan-visit">
+                  <Button className="bg-[#244363] text-white hover:bg-[#1a2e47] px-8 py-4 text-lg">
+                    Plan Your Visit
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      </main>
     </PageLayout>
   );
 };
