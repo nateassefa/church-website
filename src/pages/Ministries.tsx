@@ -209,15 +209,10 @@ const Ministries = () => {
             <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
               There's a place for everyone in our church family. Find your ministry and start serving today.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <Link to="/plan-visit">
                 <Button className="bg-[#244363] text-white hover:bg-[#1a2e47] px-8 py-4 text-lg">
                   Plan Your Visit
-                </Button>
-              </Link>
-              <Link to="/contact">
-                <Button variant="outline" className="border-[#244363] text-[#244363] hover:bg-[#244363] hover:text-white px-8 py-4 text-lg">
-                  Contact Us
                 </Button>
               </Link>
             </div>

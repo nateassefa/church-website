@@ -91,8 +91,15 @@ const StatementOfFaith = () => {
       
       <div className="pt-20 pb-4 bg-gradient-to-br from-[#244363] to-[#4c3219]">
         {/* Hero Section */}
-        <section className="bg-[#244363] text-white py-16 pt-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative text-white py-16 pt-16 min-h-[350px] flex items-center justify-center">
+          <img 
+            src="/WhatsApp Image 2025-04-10 at 20.53.28.jpeg" 
+            alt="Statement of Faith Background" 
+            className="absolute inset-0 w-full h-full object-cover object-center z-0" 
+            style={{ filter: 'brightness(0.5)' }}
+          />
+          <div className="absolute inset-0 bg-black/60 z-10" />
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
             <motion.div
               initial="hidden"
               animate="visible"

@@ -41,19 +41,15 @@ const PlanVisit = () => {
   const visitorInfo = [
     {
       title: "What to Wear",
-      description: "Come as you are! We welcome casual, business casual, or traditional attire."
+      description: "Casual or Comfortable Attire."
     },
     {
       title: "Parking",
-      description: "Free parking available on-site. Handicap accessible spaces are clearly marked."
+      description: "Free parking available on-site."
     },
     {
       title: "Childcare",
       description: "Nursery and Sunday School available for children ages 0-12 during service."
-    },
-    {
-      title: "Accessibility",
-      description: "Our facility is fully accessible with ramps, elevators, and hearing assistance available."
     }
   ];
 
@@ -177,53 +173,16 @@ const PlanVisit = () => {
               </div>
               {/* Young Adult Bible Study Card */}
               <div className="relative rounded-xl overflow-hidden shadow-lg">
-                <img src="/placeholder.svg" alt="Watch Online" className="w-full h-72 object-cover object-center" />
-                <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-8">
+                <img src="/Screenshot 2025-07-07 at 1.25.14 PM.png" alt="Young Adult Bible Study at Living Hope for Generations Church" className="w-full h-72 object-cover object-center" />
+                {/* Black gradient overlay at the bottom */}
+                <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-black/80 to-transparent z-10" />
+                <div className="absolute inset-0 flex flex-col justify-end p-8 pt-60 z-20">
                   <h3 className="text-2xl font-bold text-white mb-2">Young Adult Bible Study</h3>
                   <p className="text-white text-lg mb-1">Mondays at 9:00–10:00 PM (Zoom)</p>
-                  <p className="text-white text-base mb-4">Meeting ID: 123-456-7890<br/>Passcode: YAStudy</p>
-                  <a href="https://zoom.us/j/1234567890" target="_blank" rel="noopener noreferrer">
-                    <Button className="bg-[#d9b062] text-[#244363] hover:bg-[#bfa05a] font-bold">
-                      Join on Zoom
-                    </Button>
-                  </a>
+                  <p className="text-white text-base mb-4">Text 571-244-4906 if interested in joining anytime!</p>
                 </div>
               </div>
             </motion.div>
-
-            {/* Embedded YouTube Videos Section (Plan Your Visit) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 mb-6">
-              {/* Video 1 */}
-              <div className="flex flex-col items-center">
-                <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg mb-2">
-                  <iframe
-                    width="100%"
-                    height="315"
-                    src="https://www.youtube.com/embed/T8c-ecb5lrg?si=bxuJgOsqPADXASmV"
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-                <a href="https://youtu.be/T8c-ecb5lrg?si=bxuJgOsqPADXASmV" target="_blank" rel="noopener noreferrer" className="text-[#244363] underline text-sm">https://youtu.be/T8c-ecb5lrg?si=bxuJgOsqPADXASmV</a>
-              </div>
-              {/* Video 2 */}
-              <div className="flex flex-col items-center">
-                <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg mb-2">
-                  <iframe
-                    width="100%"
-                    height="315"
-                    src="https://www.youtube.com/embed/F9F30SWcDks?si=0QWY4u5hhVqsgKrg"
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-                <a href="https://youtu.be/F9F30SWcDks?si=0QWY4u5hhVqsgKrg" target="_blank" rel="noopener noreferrer" className="text-[#244363] underline text-sm">https://youtu.be/F9F30SWcDks?si=0QWY4u5hhVqsgKrg</a>
-              </div>
-            </div>
           </motion.div>
         </div>
       </section>
@@ -285,7 +244,7 @@ const PlanVisit = () => {
             
             <motion.div 
               variants={containerVariants}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
               {visitorInfo.map((info, index) => (
                 <motion.div key={index} variants={itemVariants}>
@@ -325,9 +284,11 @@ const PlanVisit = () => {
                   <ArrowRight className="ml-2" />
                 </Button>
               </Link>
-              <Button className="bg-[#d9b062] text-[#244363] hover:bg-[#bfa05a] px-8 py-4 text-lg font-bold">
-                Learn More About Us
-              </Button>
+              <Link to="/about">
+                <Button className="bg-[#d9b062] text-[#244363] hover:bg-[#bfa05a] px-8 py-4 text-lg font-bold">
+                  Learn More About Us
+                </Button>
+              </Link>
             </div>
           </motion.div>
         </div>
