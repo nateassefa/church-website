@@ -118,42 +118,11 @@ const Events = () => {
       image: "bible-study-placeholder"
     },
     {
-      id: 3,
-      title: "Prayer Meeting",
-      description: "Join our prayer warriors for an evening of powerful prayer, intercession, and spiritual warfare.",
-      date: "Every Saturday",
-      time: "8:00 PM - 9:00 PM",
-      location: "Zoom Meeting",
-      category: "Prayer",
-      image: "prayer-placeholder"
-    },
-    {
-      id: 4,
-      title: "Neighborhood Bible Study - Woodbridge",
-      description: "Connect with fellow believers in your area through our neighborhood Bible study group.",
-      date: "Every Tuesday",
-      time: "7:00 PM - 8:30 PM",
-      location: "Woodbridge Community Center",
-      category: "Small Groups",
-      image: "small-group-placeholder"
-    },
-    {
-      id: 5,
-      title: "Children's Ministry Activities",
-      description: "Fun and educational activities for children including Sunday School, crafts, and Bible stories.",
-      date: "Every Sunday",
-      time: "10:30 AM - 12:00 PM",
-      location: "Children's Wing",
-      category: "Children",
-      image: "children-placeholder"
-    },
-    {
       id: 6,
       title: "Fellowship Lunch",
       description: "Stay after service for a delicious meal and meaningful conversations with our church family.",
-      date: "First Sunday of Month",
-      time: "12:00 PM - 2:00 PM",
-      location: "Fellowship Hall",
+      date: "Directly after Sunday Service",
+      time: "Directly after Sunday Service",
       category: "Fellowship",
       image: "fellowship-placeholder"
     }
@@ -261,7 +230,7 @@ const Events = () => {
               {upcomingEvents.map((event, index) => (
                 <motion.div key={event.id} variants={itemVariants}>
                   <Card className={`h-full bg-white hover:shadow-lg transition-all duration-300 border-0 ${event.featured ? 'ring-2 ring-[#d9b062]' : ''}`}>
-                    <CardContent className="p-6">
+                    <CardContent className="p-6 flex flex-col h-full">
                       <div className="mb-4">
                         <Badge className={`${getCategoryColor(event.category)} mb-3`}>
                           {event.category}
@@ -281,17 +250,21 @@ const Events = () => {
                           <Calendar className="w-4 h-4 mr-2" />
                           {event.date}
                         </div>
-                        <div className="flex items-center">
-                          <Clock className="w-4 h-4 mr-2" />
-                          {event.time}
-                        </div>
-                        <div className="flex items-center">
-                          <MapPin className="w-4 h-4 mr-2" />
-                          {event.location}
-                        </div>
+                        {event.title !== 'Fellowship Lunch' && (
+                          <>
+                            <div className="flex items-center">
+                              <Clock className="w-4 h-4 mr-2" />
+                              {event.time}
+                            </div>
+                            <div className="flex items-center">
+                              <MapPin className="w-4 h-4 mr-2" />
+                              {event.location}
+                            </div>
+                          </>
+                        )}
                       </div>
                       
-                      <Button className="w-full mt-4 bg-[#244363] text-white hover:bg-[#1a2e47]">
+                      <Button className="w-full mt-auto bg-[#244363] text-white hover:bg-[#1a2e47]">
                         Learn More
                         <ArrowRight className="ml-2 w-4 h-4" />
                       </Button>

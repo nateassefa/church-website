@@ -94,7 +94,7 @@ const Hero = () => {
         ></div>
         {/* Full-width bottom text banner */}
         <div
-          className="absolute left-0 right-0 bottom-0 p-6 md:p-12 flex flex-col md:flex-row items-end md:items-center justify-between w-full gap-8"
+          className="absolute left-0 right-0 bottom-0 p-6 md:p-12 flex items-end md:items-center w-full"
           style={{ zIndex: 2 }}
         >
           <div className="flex-1 min-w-0">
@@ -105,11 +105,6 @@ const Hero = () => {
             <p className="text-base md:text-lg text-white/90 mb-0 text-left max-w-4xl md:max-w-5xl lg:max-w-6xl font-normal" style={{fontFamily: 'Playfair Display, serif', fontWeight: 400}}>
               A bilingual, intergenerational Christian church for Ethiopian & Eritrean families in Northern Virginia
             </p>
-          </div>
-          <div className="flex-shrink-0 flex items-center justify-center w-full md:w-auto mt-6 md:mt-0">
-            <a href="/plan-visit" className="bg-[#d9b062] hover:bg-[#bfa05a] text-[#244363] font-bold text-xl px-12 py-6 rounded-xl shadow-2xl transition-all whitespace-nowrap border-2 border-[#d9b062]">
-              PLAN YOUR VISIT
-            </a>
           </div>
         </div>
       </div>

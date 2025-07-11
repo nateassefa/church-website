@@ -47,7 +47,7 @@ const PastEventsCarousel: React.FC<PastEventsCarouselProps> = ({ events }) => {
             {events.map((event, idx) => (
               <div
                 key={event.id}
-                className="flex items-center justify-center w-full h-full overflow-visible transition-all duration-700 ease-in-out mx-2"
+                className="flex items-center justify-center w-full h-full overflow-visible mx-2"
               >
                 <img
                   src={event.image}

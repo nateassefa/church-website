@@ -43,31 +43,40 @@ const Features = () => {
   };
 
   return (
-    <section className="py-16 bg-transparent">
-      <div className="container mx-auto px-0 sm:px-0 lg:px-0 max-w-[1800px]">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={containerVariants}
-        >
-          {/* Transparent Welcome Box */}
-          <motion.div variants={itemVariants} className="w-full mb-10 flex flex-col items-center">
-            <div className="w-full max-w-5xl mx-auto text-center bg-transparent">
-              <h2 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight text-[#244363] drop-shadow-lg">Join us this Sunday</h2>
-              <p className="text-2xl md:text-3xl text-[#d9b062] mb-8 max-w-3xl mx-auto font-bold tracking-widest uppercase">
-                Equipping second-generation youth to grow in Christ and lead—in their language and culture.
-              </p>
-              <Button className="bg-[#d9b062] text-[#244363] px-12 py-6 text-2xl rounded-md font-extrabold shadow-lg hover:bg-[#bfa05a] transition-all">
-                Plan Your Visit
-              </Button>
-            </div>
-          </motion.div>
-
-          {/* Large YouTube Video Frames */}
+    <section className="bg-[#244363]">
+      <>
+        <div className="container mx-auto px-0 sm:px-0 lg:px-0 max-w-[1800px]">
           <motion.div
-            variants={itemVariants}
-            className="flex flex-col md:flex-row gap-6 max-w-[1600px] mx-auto mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            {/* Transparent Welcome Box */}
+            <motion.div variants={itemVariants} className="w-full mb-10 flex flex-col items-center">
+              <div className="w-full max-w-5xl mx-auto text-center bg-transparent">
+                <h2 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight text-white drop-shadow-lg">Join us this Sunday</h2>
+                <p className="text-2xl md:text-3xl text-[#d9b062] mb-8 max-w-3xl mx-auto font-bold tracking-widest uppercase">
+                  Equipping second-generation youth to grow in Christ and lead—in their language and culture.
+                </p>
+                <Link to="/plan-visit">
+                  <Button className="bg-[#d9b062] text-[#244363] px-12 py-6 text-2xl rounded-md font-extrabold shadow-lg hover:bg-[#bfa05a] transition-all">
+                    Plan Your Visit
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Large YouTube Video Frames - Full Bleed, Outside Container */}
+        <div className="relative w-screen left-1/2 right-1/2 -translate-x-1/2 bg-[#244363] py-8 px-0 mb-0 z-0">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+            className="flex flex-col md:flex-row gap-6 w-full max-w-[1600px] mx-auto px-6 z-10 relative"
           >
             <div className="flex-1 flex items-center justify-center min-w-0">
               <div className="relative w-full aspect-[16/12] min-h-[350px] md:min-h-[420px] lg:min-h-[500px] rounded-2xl overflow-hidden shadow-2xl bg-gray-200 flex items-center justify-center">
@@ -106,34 +115,42 @@ const Features = () => {
               </div>
             </div>
           </motion.div>
+        </div>
 
-          {/* Ministries Section - Three Horizontal Cards */}
-          <motion.div variants={itemVariants} className="max-w-6xl mx-auto mt-10 grid grid-cols-1 md:grid-cols-3 gap-12">
-            {ministries.map((ministry, idx) => (
-              <Card key={idx} className="flex flex-col h-full bg-white rounded-2xl shadow-2xl border-0 items-center">
-                <div className="w-full aspect-square bg-white flex items-center justify-center rounded-t-2xl overflow-hidden">
-                  {ministry.title === "Bilingual Worship" ? (
-                    <img src="/490103190_122106027620827914_5173506189753291620_n_PhotoGrid.png" alt="Bilingual Worship" className="object-cover w-full h-full" />
-                  ) : ministry.title === "Neighborhood Bible Study Groups" ? (
-                    <img src="/bible-study.png" alt="Neighborhood Bible Study Group" className="object-cover w-full h-full" />
-                  ) : ministry.title === "Young Adult Bible Study" ? (
-                    <img src="/IMG_6655_PhotoGrid.png" alt="Young Adult Bible Study" className="object-cover w-full h-full" />
-                  ) : (
-                    <span className="text-gray-400 text-3xl">Image Placeholder</span>
-                  )}
-                </div>
-                <CardContent className="flex flex-col flex-1 items-center text-center w-full px-8 py-8">
-                  <h4 className="text-3xl font-extrabold text-[#244363] mb-3 mt-2">{ministry.title}</h4>
-                  <p className="text-lg text-gray-700 mb-8">{ministry.description}</p>
-                  <Button className="mt-auto w-full bg-[#244363] text-white font-bold rounded-md py-3 text-lg hover:bg-[#1a2e47] transition-all">
-                    Button Placeholder
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </motion.div>
-        </motion.div>
-      </div>
+        {/* Skinny gold line separator between YouTube videos and cards */}
+        <div className="w-screen h-0.25 bg-[#d9b062]" style={{margin: 0, padding: 0, lineHeight: 0}}></div>
+
+        {/* Full-width navy background for cards section, flush with separators */}
+        <div className="w-screen bg-[#244363] pt-0 pb-0" style={{margin: 0, lineHeight: 0}}>
+          <div className="container mx-auto px-0 sm:px-0 lg:px-0 max-w-[1800px] py-16">
+            {/* Ministries Section - Three Horizontal Cards */}
+            <motion.div variants={itemVariants} className="max-w-8xl mx-auto mt-10 grid grid-cols-1 md:grid-cols-3 gap-16">
+              {ministries.map((ministry, idx) => (
+                <Card key={idx} className="flex flex-col h-full bg-white rounded-2xl shadow-2xl border-0 items-center">
+                  <div className="w-full aspect-[4/3] min-h-[320px] bg-white flex items-center justify-center rounded-t-2xl overflow-hidden">
+                    {ministry.title === "Bilingual Worship" ? (
+                      <img src="/490103190_122106027620827914_5173506189753291620_n_PhotoGrid.png" alt="Bilingual Worship" className="object-cover w-full h-full" />
+                    ) : ministry.title === "Neighborhood Bible Study Groups" ? (
+                      <img src="/bible-study.png" alt="Neighborhood Bible Study Group" className="object-cover w-full h-full" />
+                    ) : ministry.title === "Young Adult Bible Study" ? (
+                      <img src="/IMG_6655_PhotoGrid.png" alt="Young Adult Bible Study" className="object-cover w-full h-full" />
+                    ) : (
+                      <span className="text-gray-400 text-3xl">Image Placeholder</span>
+                    )}
+                  </div>
+                  <CardContent className="flex flex-col flex-1 items-center text-center w-full px-10 py-12">
+                    <h4 className="text-3xl font-extrabold text-[#244363] mb-3 mt-2">{ministry.title}</h4>
+                    <p className="text-lg text-gray-700 mb-8">{ministry.description}</p>
+                    <Button className="mt-auto w-full bg-[#244363] text-white font-bold rounded-md py-3 text-lg hover:bg-[#1a2e47] transition-all">
+                      Button Placeholder
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </>
     </section>
   );
 };

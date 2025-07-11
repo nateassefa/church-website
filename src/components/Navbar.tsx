@@ -58,7 +58,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 bg-transparent">
           <div className="flex-shrink-0 bg-transparent">
             <Link to="/" className="flex items-center bg-transparent -ml-8 mt-16">
-              <img src="/logo.png" alt="Living Hope Logo" className="h-52 w-auto object-contain" />
+              <img src="/church_logo_white_text (1).png" alt="Living Hope Logo" className="h-52 w-auto object-contain" />
             </Link>
           </div>
           
