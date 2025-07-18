@@ -22,7 +22,11 @@ const Footer = ({ tall = false }: FooterProps) => {
   return (
     <footer className={`bg-[#4c3219] text-white w-full ${tall ? 'pt-16 pb-8' : 'pt-16 pb-8'}`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <span className="absolute -left-[450px] top-1/2 -translate-y-1/2 text-6xl font-extrabold text-white">Living Hope</span>
+        <img
+          src="/church_logo_white_text (1).png"
+          alt="Living Hope for Generations Church Logo"
+          className="absolute -left-[450px] top-1/2 -translate-y-1/2 h-[28rem] w-auto object-contain"
+        />
         <div className="flex flex-col md:flex-row justify-between items-start md:items-stretch text-center md:text-left divide-y-0 md:divide-x md:divide-white/20 pl-0 md:pl-24">
           {/* Left: About */}
           <div className="flex-1 flex flex-col items-center md:items-start pb-10 md:pb-0 md:pr-10">

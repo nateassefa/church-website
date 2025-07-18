@@ -13,24 +13,18 @@ const Ministries = () => {
       description: "Join us every Sunday for worship in both Amharic and English, creating a bridge between generations and cultures.",
       details: [
         "Sunday Service: 8:30–10:30 AM (Amharic & English)",
-        "Location: 3637 Graham Park Road, Triangle VA 22172",
-        "Contemporary and traditional worship",
-        "Children's ministry during service",
-        "Fellowship time after service"
+        "Location: 3637 Graham Park Road, Triangle VA 22172"
       ],
-      icon: <Music className="w-8 h-8" />,
+      icon: <Music className="w-8 h-8" />, 
       color: "bg-blue-50 border-blue-200"
     },
     {
       title: "Young Adult Ministry",
       description: "A vibrant community for young adults to grow in faith, build relationships, and navigate life together.",
       details: [
-        "Monday Bible Study: 9:00 PM - 10:00 PM (Zoom)",
-        "Monthly social events and activities",
-        "Mentorship and discipleship programs",
-        "Career and life guidance support"
+        "Monday Bible Study: 9:00 PM - 10:00 PM (Zoom)"
       ],
-      icon: <Users className="w-8 h-8" />,
+      icon: <Users className="w-8 h-8" />, 
       color: "bg-purple-50 border-purple-200"
     },
     {
@@ -38,10 +32,9 @@ const Ministries = () => {
       description: "Nurturing the faith of our youngest members through age-appropriate learning and activities.",
       details: [
         "Sunday School during worship service",
-        "Children's choir and activities",
-        "Family-friendly events"
+        "Children's choir and activities"
       ],
-      icon: <Heart className="w-8 h-8" />,
+      icon: <Heart className="w-8 h-8" />, 
       color: "bg-yellow-50 border-yellow-200"
     },
     {
@@ -49,11 +42,9 @@ const Ministries = () => {
       description: "Join our dedicated prayer warriors in lifting up our church, community, and world in prayer.",
       details: [
         "Saturday Prayer Meeting: 8:00 PM - 9:00 PM (Zoom)",
-        "Prayer chain for urgent requests",
-        "Monthly prayer walks",
-        "24/7 prayer support"
+        "Prayer chain for urgent requests"
       ],
-      icon: <Heart className="w-8 h-8" />,
+      icon: <Heart className="w-8 h-8" />, 
       color: "bg-red-50 border-red-200"
     },
     {
@@ -61,11 +52,9 @@ const Ministries = () => {
       description: "Serving our local community through various outreach programs and initiatives.",
       details: [
         "Food pantry and assistance programs",
-        "Homeless ministry partnerships",
-        "International mission support",
         "Local community service projects"
       ],
-      icon: <Users className="w-8 h-8" />,
+      icon: <Users className="w-8 h-8" />, 
       color: "bg-orange-50 border-orange-200"
     }
   ];
@@ -101,11 +90,11 @@ const Ministries = () => {
         {/* Hero Section with Background Image */}
         <section className="relative pt-24 pb-16 bg-gradient-to-br from-[#244363] to-[#1a2e47] text-white overflow-hidden">
           <img
-            src="/490094335_122121905240709690_8942868148826318596_n.jpg"
+            src="/WhatsApp Image 2025-03-29 at 14.31.16.png"
             alt="Ministries Background"
-            className="absolute inset-0 w-full h-full object-cover object-[center_30%] z-0"
-            style={{ filter: 'brightness(0.5)' }}
+            className="absolute inset-0 w-full h-full object-cover object-[center_40%] z-0"
           />
+          <div className="absolute inset-0 bg-black/60 z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/80 via-[#244363]/40 to-transparent z-10" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
             <motion.div
@@ -120,17 +109,33 @@ const Ministries = () => {
               >
                 Our Ministries
               </motion.h1>
+              <div className="h-1 w-16 bg-[#d9b062] mx-auto my-4 rounded" />
               <motion.p 
                 variants={itemVariants}
                 className="max-w-2xl mx-auto text-lg md:text-xl mb-8"
               >
                 Discover the many ways you can get involved and grow in faith, fellowship, and service at Living Hope for Generations Church.
               </motion.p>
-              <motion.div variants={itemVariants}>
-                <a href="#ministries-list" className="inline-block bg-white text-[#244363] font-semibold px-8 py-3 rounded shadow hover:bg-gray-100 transition">
-                  Explore Ministries
-                </a>
-              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Call to Action (moved above cards) */}
+        <section className="py-16 bg-[#f8f6f3]">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-[#244363] mb-2">
+                Get Involved Today
+              </h2>
+              <div className="h-1 w-16 bg-[#d9b062] mx-auto my-4 rounded" />
+              <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+                There's a place for everyone in our church family. Find your ministry and start serving today.
+              </p>
             </motion.div>
           </div>
         </section>
@@ -176,7 +181,7 @@ const Ministries = () => {
                   }
                 />
                 {/* Black gradient overlay for text readability */}
-                <div className={`absolute inset-0 z-10 ${isEven ? 'bg-gradient-to-l from-[#244363]/70 via-[#244363]/30 to-transparent' : 'bg-gradient-to-r from-[#244363]/70 via-[#244363]/30 to-transparent'}`} />
+                <div className={`absolute inset-0 z-20 ${isEven ? 'bg-gradient-to-l from-[#244363]/70 via-[#244363]/30 to-transparent' : 'bg-gradient-to-r from-[#244363]/70 via-[#244363]/30 to-transparent'}`} />
                 <div className={`absolute inset-0 bg-black/35 flex flex-col justify-center ${isEven ? 'items-end pr-12' : 'items-start pl-12'} h-full w-full z-20`}>
                   <div className={`max-w-2xl ${isEven ? 'text-right' : 'text-left'}`}>
                     <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 drop-shadow-lg">{ministry.title}</h2>
@@ -198,25 +203,6 @@ const Ministries = () => {
               </div>
             );
           })}
-        </section>
-
-        {/* Call to Action */}
-        <section className="py-16 bg-[#f8f6f3]">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-[#244363] mb-6">
-                Get Involved Today
-              </h2>
-              <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-                There's a place for everyone in our church family. Find your ministry and start serving today.
-              </p>
-            </motion.div>
-          </div>
         </section>
       </main>
     </PageLayout>

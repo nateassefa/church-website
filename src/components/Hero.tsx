@@ -80,33 +80,25 @@ const Hero = () => {
       variants={containerVariants}
     >
       <div className="banner-container relative overflow-hidden h-[70vh] sm:h-[80vh] md:h-[85vh] w-full bg-[#244363] flex items-center justify-center">
-        {/* Video Placeholder */}
-        <div className="absolute inset-0 flex items-center justify-center z-0">
-          <span className="text-white text-4xl font-bold opacity-30">[Hero Video Placeholder]</span>
-        </div>
+        {/* Hero Video Background */}
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          src="/video-output-1EC165FD-AFD9-4B30-97E7-360C1FEA4B0D-1.mov"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
         {/* Black overlay for text readability */}
         <div 
           className="absolute inset-0 w-full"
           style={{ 
             zIndex: 1,
-            backgroundColor: 'rgba(0,0,0,0.15)'
+            backgroundColor: 'rgba(0,0,0,0.35)'
           }}
         ></div>
         {/* Full-width bottom text banner */}
-        <div
-          className="absolute left-0 right-0 bottom-0 p-6 md:p-12 flex items-end md:items-center w-full"
-          style={{ zIndex: 2 }}
-        >
-          <div className="flex-1 min-w-0">
-            <h2 className="text-lg md:text-xl text-white mb-2 font-semibold tracking-wide opacity-90 text-left" style={{fontFamily: 'Playfair Display, serif'}}>Welcome to</h2>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4 leading-tight drop-shadow-xl text-left" style={{fontFamily: 'Playfair Display, serif'}}>
-              {typedHeadline}
-            </h1>
-            <p className="text-base md:text-lg text-white/90 mb-0 text-left max-w-4xl md:max-w-5xl lg:max-w-6xl font-normal" style={{fontFamily: 'Playfair Display, serif', fontWeight: 400}}>
-              A bilingual, intergenerational Christian church for Ethiopian & Eritrean families in Northern Virginia
-            </p>
-          </div>
-        </div>
       </div>
       <style>{`@keyframes blinker { 50% { opacity: 0; } }`}</style>
     </motion.div>

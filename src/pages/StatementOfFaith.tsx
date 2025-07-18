@@ -91,7 +91,7 @@ const StatementOfFaith = () => {
       
       <div className="pb-4 bg-gradient-to-br from-[#244363] to-[#4c3219]">
         {/* Hero Section */}
-        <section className="relative text-white py-16 pt-16 min-h-[350px] flex items-center justify-center">
+        <section className="relative pt-24 pb-16 text-white overflow-hidden">
           <img 
             src="/WhatsApp Image 2025-04-10 at 20.53.28.jpeg" 
             alt="Statement of Faith Background" 
@@ -112,6 +112,7 @@ const StatementOfFaith = () => {
               >
                 Statement of Faith
               </motion.h1>
+              <div className="h-1 w-16 bg-[#d9b062] mx-auto my-4 rounded" />
               <motion.p 
                 variants={itemVariants}
                 className="text-xl text-gray-200 leading-relaxed"

@@ -102,16 +102,15 @@ const PlanVisit = () => {
             >
               Plan Your Visit
             </motion.h1>
+            <div className="h-1 w-16 bg-[#d9b062] mx-auto my-4 rounded" />
             <motion.p 
               variants={itemVariants}
-              className="text-xl md:text-2xl text-[#d9b062] mb-8 max-w-3xl mx-auto"
+              className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto"
             >
-              We can't wait to welcome you to our church family
+              We can't wait to welcome you to our church family!
             </motion.p>
             <motion.div variants={itemVariants} className="flex flex-col items-center gap-4 justify-center">
-              <Button className="bg-[#d9b062] text-[#244363] hover:bg-[#bfa05a] px-8 py-4 text-lg font-bold">
-                Connect with us!
-              </Button>
+              {/* Removed Connect with us! button as requested */}
               <div className="flex gap-4 mt-4">
                 <a href="https://www.instagram.com/livinghopegenchurch?igsh=MWs4dXdnZ28xOHBidw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                   <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-white hover:text-[#d9b062] transition"><rect width="20" height="20" x="2" y="2" rx="5" strokeWidth="2"/><circle cx="12" cy="12" r="5" strokeWidth="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
@@ -149,6 +148,7 @@ const PlanVisit = () => {
             >
               Join us this Weekend
             </motion.h2>
+            <div className="h-1 w-16 bg-[#d9b062] mx-auto my-4 rounded" />
             <motion.p 
               variants={itemVariants}
               className="text-2xl md:text-3xl text-center text-[#244363] mb-8 max-w-3xl mx-auto"
@@ -163,30 +163,28 @@ const PlanVisit = () => {
                 </Button>
               </a>
             </motion.div>
-            <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div variants={itemVariants} className="flex justify-center gap-16 flex-wrap">
               {/* Sunday Services Card */}
-              <div className="relative rounded-xl overflow-hidden shadow-lg">
-                <img src="/image (4).jpg" alt="Sunday Service at Living Hope for Generations Church" className="w-full h-72 object-cover object-center" />
-                <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-8">
-                  <h3 className="text-2xl font-bold text-white mb-2">Sunday Service (Amharic & English)</h3>
-                  <p className="text-white text-lg mb-1">8:30–10:30 AM</p>
-                  <p className="text-white text-base mb-4">3637 Graham Park Road, Triangle, VA 22172</p>
-                  <Link to="https://maps.google.com/?q=123+Church+Street,+Woodbridge,+VA+22191" target="_blank" rel="noopener noreferrer">
-                    <Button className="bg-[#d9b062] text-[#244363] hover:bg-[#bfa05a] font-bold">
-                      Get Directions
-                    </Button>
-                  </Link>
+              <div className="relative overflow-hidden shadow-lg h-[36rem] max-w-[32rem] w-full">
+                <img src="/image (4).jpg" alt="Sunday Service at Living Hope for Generations Church" className="w-full h-[36rem] object-cover object-center" />
+                <div className="absolute inset-0 bg-black/20 z-10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/80 to-transparent z-20" />
+                <div className="absolute inset-0 flex flex-col justify-end p-12 z-30">
+                  <h3 className="text-3xl font-bold text-white mb-4">Sunday Service (Amharic & English)</h3>
+                  <p className="text-xl text-white mb-2">8:30–10:30 AM</p>
+                  <p className="text-lg text-white mb-6">3637 Graham Park Road, Triangle, VA 22172</p>
+                  {/* Removed Get Directions button as requested */}
                 </div>
               </div>
               {/* Young Adult Bible Study Card */}
-              <div className="relative rounded-xl overflow-hidden shadow-lg">
-                <img src="/Screenshot 2025-07-07 at 1.25.14 PM.png" alt="Young Adult Bible Study at Living Hope for Generations Church" className="w-full h-72 object-cover object-center" />
-                {/* Black gradient overlay at the bottom */}
-                <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-black/80 to-transparent z-10" />
-                <div className="absolute inset-0 flex flex-col justify-end p-8 pt-60 z-20">
-                  <h3 className="text-2xl font-bold text-white mb-2">Young Adult Bible Study</h3>
-                  <p className="text-white text-lg mb-1">Mondays at 9:00–10:00 PM (Zoom)</p>
-                  <p className="text-white text-base mb-4">Text 571-244-4906 if interested in joining anytime!</p>
+              <div className="relative overflow-hidden shadow-lg h-[36rem] max-w-[32rem] w-full">
+                <img src="/IMG_6655_PhotoGrid.png" alt="Young Adult Bible Study at Living Hope for Generations Church" className="w-full h-[36rem] object-cover object-center" />
+                <div className="absolute inset-0 bg-black/20 z-10" />
+                <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-[#244363]/80 to-transparent z-20" />
+                <div className="absolute inset-0 flex flex-col justify-end p-12 pt-80 z-30">
+                  <h3 className="text-3xl font-bold text-white mb-4">Young Adult Bible Study</h3>
+                  <p className="text-xl text-white mb-2">Mondays at 9:00–10:00 PM (Zoom)</p>
+                  <p className="text-lg text-white mb-6">Text 571-244-4906 if interested in joining anytime!</p>
                 </div>
               </div>
             </motion.div>

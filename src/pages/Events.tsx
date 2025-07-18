@@ -158,11 +158,12 @@ const Events = () => {
             >
               Church Events
             </motion.h1>
+            <div className="h-1 w-16 bg-[#d9b062] mx-auto my-4 rounded" />
             <motion.p 
               variants={itemVariants}
-              className="text-xl md:text-2xl text-[#d9b062] mb-8 max-w-3xl mx-auto"
+              className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto"
             >
-              Join us for worship, fellowship, and spiritual growth
+              Join us for worship, fellowship, and spiritual growth!
             </motion.p>
             <motion.div variants={itemVariants}>
               <Link to="/plan-visit">
