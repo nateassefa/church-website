@@ -100,22 +100,22 @@ const Events = () => {
       id: 1,
       title: "Sunday Worship Service",
       description: "Join us for our weekly bilingual worship service featuring contemporary and traditional music, inspiring messages, and fellowship.",
-      date: "Every Sunday",
+      date: "Every Sunday at 8:30 AM",
       time: "8:30–10:30 AM",
       location: "3637 Graham Park Road, Triangle VA 22172 (Amharic & English)",
       category: "Worship",
-      image: "worship-placeholder",
+      image: "/IMG_1504-preview.png",
       featured: true
     },
     {
       id: 2,
       title: "Young Adult Bible Study",
       description: "A dynamic Bible study for young adults focusing on relevant topics and building community through faith discussions.",
-      date: "Every Monday",
+      date: "Every Monday at 9pm via Zoom",
       time: "9:00 PM - 10:00 PM",
       location: "Zoom Meeting",
       category: "Bible Study",
-      image: "bible-study-placeholder"
+      image: "/Screenshot 2025-07-18 at 4.19.55 PM.png"
     },
     {
       id: 6,
@@ -124,7 +124,7 @@ const Events = () => {
       date: "Directly after Sunday Service",
       time: "Directly after Sunday Service",
       category: "Fellowship",
-      image: "fellowship-placeholder"
+      image: "/IMG_1210.jpg"
     }
   ];
 
@@ -217,7 +217,7 @@ const Events = () => {
                               : '/placeholder.svg'
                           }
                           alt={event.title}
-                          className="w-full h-full object-cover"
+                          className={`w-full h-full object-cover${event.title === 'Young Adult Bible Study' ? ' object-[center_70%]' : ''}`}
                         />
                       </div>
                       <div className="p-6 flex flex-col flex-1">

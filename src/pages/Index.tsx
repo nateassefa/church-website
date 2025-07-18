@@ -72,7 +72,7 @@ const Index = () => {
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left: About/Welcome Text */}
           <div className="flex flex-col items-start">
-            <span className="text-[#d9b062] font-semibold text-lg mb-2">Welcome</span>
+            <span className="text-[#d9b062] font-semibold text-lg mb-2">Welcome to</span>
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#223046]">Living Hope for Generations Church</h2>
             <p className="text-lg text-[#223046] mb-6 opacity-90">
               A vibrant church where generations and cultures grow together in Christ and live out the Gospel.<br/>
