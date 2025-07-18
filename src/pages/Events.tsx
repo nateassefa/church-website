@@ -139,12 +139,12 @@ const Events = () => {
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 text-white overflow-hidden">
         <img
-          src="/WhatsApp Image 2025-04-06 at 21.54.39.jpeg"
+          src="/WhatsApp Image 2025-04-06 at 21.54.39.jpg"
           alt="Events Background"
           className="absolute inset-0 w-full h-full object-cover object-[center_30%] z-0"
           style={{ filter: 'brightness(0.5)' }}
         />
-        <div className="absolute inset-0 bg-black/40 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/80 via-[#244363]/40 to-transparent z-10" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           <motion.div
             initial="hidden"

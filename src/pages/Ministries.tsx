@@ -106,7 +106,7 @@ const Ministries = () => {
             className="absolute inset-0 w-full h-full object-cover object-[center_30%] z-0"
             style={{ filter: 'brightness(0.5)' }}
           />
-          <div className="absolute inset-0 bg-black/40 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/80 via-[#244363]/40 to-transparent z-10" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
             <motion.div
               initial="hidden"
@@ -176,8 +176,8 @@ const Ministries = () => {
                   }
                 />
                 {/* Black gradient overlay for text readability */}
-                <div className={`absolute inset-0 z-10 ${isEven ? 'bg-gradient-to-l from-black/70 via-black/40 to-transparent' : 'bg-gradient-to-r from-black/70 via-black/40 to-transparent'}`} />
-                <div className={`absolute inset-0 bg-black/50 flex flex-col justify-center ${isEven ? 'items-end pr-12' : 'items-start pl-12'} h-full w-full z-20`}>
+                <div className={`absolute inset-0 z-10 ${isEven ? 'bg-gradient-to-l from-[#244363]/70 via-[#244363]/30 to-transparent' : 'bg-gradient-to-r from-[#244363]/70 via-[#244363]/30 to-transparent'}`} />
+                <div className={`absolute inset-0 bg-black/35 flex flex-col justify-center ${isEven ? 'items-end pr-12' : 'items-start pl-12'} h-full w-full z-20`}>
                   <div className={`max-w-2xl ${isEven ? 'text-right' : 'text-left'}`}>
                     <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 drop-shadow-lg">{ministry.title}</h2>
                     <p className="text-lg md:text-xl text-white mb-4 drop-shadow">{ministry.description}</p>
@@ -215,13 +215,6 @@ const Ministries = () => {
               <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
                 There's a place for everyone in our church family. Find your ministry and start serving today.
               </p>
-              <div className="flex justify-center">
-                <Link to="/plan-visit">
-                  <Button className="bg-[#244363] text-white hover:bg-[#1a2e47] px-8 py-4 text-lg">
-                    Plan Your Visit
-                  </Button>
-                </Link>
-              </div>
             </motion.div>
           </div>
         </section>

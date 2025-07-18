@@ -83,12 +83,12 @@ const PlanVisit = () => {
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 text-white overflow-hidden">
         <img
-          src="/WhatsApp Image 2025-04-06 at 21.54.47.jpeg"
+          src="/WhatsApp Image 2025-04-06 at 21.54.47.jpg"
           alt="Plan Your Visit Background"
           className="absolute inset-0 w-full h-full object-cover object-center z-0"
           style={{ filter: 'brightness(0.5)' }}
         />
-        <div className="absolute inset-0 bg-black/40 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/80 via-[#244363]/40 to-transparent z-10" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           <motion.div
             initial="hidden"
@@ -145,13 +145,13 @@ const PlanVisit = () => {
           >
             <motion.h2 
               variants={itemVariants}
-              className="text-3xl md:text-4xl font-bold text-center text-[#244363] mb-12"
+              className="text-6xl md:text-8xl font-bold text-center text-[#244363] mb-12"
             >
               Join us this Weekend
             </motion.h2>
             <motion.p 
               variants={itemVariants}
-              className="text-xl md:text-2xl text-center text-[#244363] mb-8 max-w-3xl mx-auto"
+              className="text-2xl md:text-3xl text-center text-[#244363] mb-8 max-w-3xl mx-auto"
             >
               We believe that coming together to worship, pray, and connect with one another is an essential part of living a fulfilling life. We can't wait to see you!
             </motion.p>

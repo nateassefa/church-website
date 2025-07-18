@@ -8,16 +8,22 @@ const YOUTUBE_VIDEO_ID = "dQw4w9WgXcQ"; // Replace with real video ID
 
 const ministries = [
   {
-    title: "Bilingual Worship",
-    description: "Amharic & English"
+    title: "Kids Life",
+    description: "Kids Life has a variety of avenues to help your children pre-school to 5th grade learn about Jesus’ love for them.",
+    image: "/490103190_122106027620827914_5173506189753291620_n_PhotoGrid.png",
+    button: "Learn More"
   },
   {
-    title: "Neighborhood Bible Study Groups",
-    description: "Woodbridge, Dumfries, Stafford, Fredericksburg"
+    title: "Life Groups",
+    description: "Groups offer a fantastic opportunity to deepen your faith, build meaningful connections, and grow in community.",
+    image: "/bible-study.png",
+    button: "Find Your Group"
   },
   {
-    title: "Young Adult Bible Study",
-    description: "Mondays at 9-10PM on Zoom"
+    title: "Life Connect",
+    description: "Life Connect is your pathway to involvement and finding your fit in our vibrant church family.",
+    image: "/IMG_6655_PhotoGrid.png",
+    button: "Save Your Seat"
   }
 ];
 
@@ -55,8 +61,8 @@ const Features = () => {
             {/* Transparent Welcome Box */}
             <motion.div variants={itemVariants} className="w-full mb-10 flex flex-col items-center">
               <div className="w-full max-w-5xl mx-auto text-center bg-transparent">
-                <h2 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight text-white drop-shadow-lg">Join us this Sunday</h2>
-                <p className="text-2xl md:text-3xl text-[#d9b062] mb-8 max-w-3xl mx-auto font-bold tracking-widest uppercase">
+                <h2 className="text-5xl md:text-7xl font-extrabold mt-10 mb-6 tracking-tight text-white drop-shadow-lg">Join us this Sunday</h2>
+                <p className="text-2xl md:text-3xl text-[#d9b062] mb-8 max-w-3xl mx-auto font-normal tracking-widest uppercase">
                   Equipping second-generation youth to grow in Christ and lead—in their language and culture.
                 </p>
                 <Link to="/plan-visit">
@@ -70,7 +76,7 @@ const Features = () => {
         </div>
 
         {/* Large YouTube Video Frames - Full Bleed, Outside Container */}
-        <div className="relative w-screen left-1/2 right-1/2 -translate-x-1/2 bg-[#244363] py-8 px-0 mb-0 z-0">
+        <div className="relative w-screen left-1/2 right-1/2 -translate-x-1/2 bg-white py-8 px-0 mb-0 z-0">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -117,39 +123,40 @@ const Features = () => {
           </motion.div>
         </div>
 
-        {/* Skinny gold line separator between YouTube videos and cards */}
-        <div className="w-screen h-0.25 bg-[#d9b062]" style={{margin: 0, padding: 0, lineHeight: 0}}></div>
+        {/* Extremely skinny gold line separator between videos and cards */}
+        <div className="w-screen h-1 bg-[#d9b062]" style={{margin: 0, padding: 0, lineHeight: 0}}></div>
 
         {/* Full-width navy background for cards section, flush with separators */}
-        <div className="w-screen bg-[#244363] pt-0 pb-0" style={{margin: 0, lineHeight: 0}}>
-          <div className="container mx-auto px-0 sm:px-0 lg:px-0 max-w-[1800px] py-16">
-            {/* Ministries Section - Three Horizontal Cards */}
-            <motion.div variants={itemVariants} className="max-w-8xl mx-auto mt-10 grid grid-cols-1 md:grid-cols-3 gap-16">
-              {ministries.map((ministry, idx) => (
-                <Card key={idx} className="flex flex-col h-full bg-white rounded-2xl shadow-2xl border-0 items-center">
-                  <div className="w-full aspect-[4/3] min-h-[320px] bg-white flex items-center justify-center rounded-t-2xl overflow-hidden">
-                    {ministry.title === "Bilingual Worship" ? (
-                      <img src="/490103190_122106027620827914_5173506189753291620_n_PhotoGrid.png" alt="Bilingual Worship" className="object-cover w-full h-full" />
-                    ) : ministry.title === "Neighborhood Bible Study Groups" ? (
-                      <img src="/bible-study.png" alt="Neighborhood Bible Study Group" className="object-cover w-full h-full" />
-                    ) : ministry.title === "Young Adult Bible Study" ? (
-                      <img src="/IMG_6655_PhotoGrid.png" alt="Young Adult Bible Study" className="object-cover w-full h-full" />
-                    ) : (
-                      <span className="text-gray-400 text-3xl">Image Placeholder</span>
-                    )}
+        <div className="w-full bg-white py-16">
+          <h2 className="text-5xl md:text-7xl font-extrabold text-center mb-16 text-[#181818]">What are you looking for?</h2>
+          <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 px-4 items-stretch">
+            {["Sunday Service", "Neighborhood Bible Study", "Young Adult Bible Study"].map((title, idx) => (
+              <div key={idx} className="relative overflow-hidden group aspect-[4/3] w-full mx-auto flex flex-col justify-end h-full">
+                <img src={ministries[idx].image} alt={title} className="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-300" />
+                {/* 20% black overlay for extra contrast */}
+                <div className="absolute inset-0 bg-black/40 z-10" />
+                {/* Navy gradient overlay, increased spread */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/95 15% via-[#244363]/80 30% to-transparent z-20" style={{maskImage: 'linear-gradient(to top, #244363F2 15%, #244363CC 30%, transparent 50%)'}} />
+                {/* Text content */}
+                <div className="relative z-20 p-8 pb-0 w-full flex flex-col justify-end flex-1">
+                  <div className="flex flex-col justify-end flex-1">
+                    <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-2 leading-tight drop-shadow-lg">{title}</h3>
+                    <p className={`text-white text-xl md:text-2xl font-normal leading-snug mb-1 ${idx === 1 ? 'mt-12' : ''}`}>
+                      {[
+                        "Join us at 8:30 AM on Sundays",
+                        "Bible Study Groups across Woodbridge, Dumfries, Stafford, and Fredericksburg",
+                        "Join us on Zoom every Monday at 9pm!"
+                      ][idx]}
+                    </p>
                   </div>
-                  <CardContent className="flex flex-col flex-1 items-center text-center w-full px-10 py-12">
-                    <h4 className="text-3xl font-extrabold text-[#244363] mb-3 mt-2">{ministry.title}</h4>
-                    <p className="text-lg text-gray-700 mb-8">{ministry.description}</p>
-                    <Button className="mt-auto w-full bg-[#244363] text-white font-bold rounded-md py-3 text-lg hover:bg-[#1a2e47] transition-all">
-                      Button Placeholder
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </motion.div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
+
+        {/* Thicker gold line separator between cards and Past Events */}
+        <div className="w-screen h-1 bg-[#d9b062]" style={{margin: 0, padding: 0, lineHeight: 0}}></div>
       </>
     </section>
   );
