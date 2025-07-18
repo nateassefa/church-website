@@ -176,40 +176,8 @@ const Events = () => {
         </div>
       </section>
 
-      {/* Event Categories */}
-      <section className="py-12 bg-white border-b border-gray-200">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            <motion.h2 
-              variants={itemVariants}
-              className="text-2xl font-bold text-center text-[#244363] mb-8"
-            >
-              Event Categories
-            </motion.h2>
-            <motion.div 
-              variants={containerVariants}
-              className="flex flex-wrap justify-center gap-3"
-            >
-              {eventCategories.map((category, index) => (
-                <motion.div key={index} variants={itemVariants}>
-                  <Badge className={`${category.color} px-4 py-2 text-sm font-medium flex items-center gap-2`}>
-                    {category.icon}
-                    {category.name}
-                  </Badge>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Upcoming Events */}
-      <section className="py-16 bg-[#244363]">
+      <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -219,60 +187,52 @@ const Events = () => {
           >
             <motion.h2 
               variants={itemVariants}
-              className="text-3xl md:text-4xl font-bold text-center text-white mb-12"
+              className="text-3xl md:text-4xl font-bold text-center text-[#244363] mb-12"
             >
               Upcoming Events
             </motion.h2>
-            
             <motion.div 
               variants={containerVariants}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
             >
-              {upcomingEvents.map((event, index) => (
-                <motion.div key={event.id} variants={itemVariants}>
-                  <Card className={`h-full bg-white hover:shadow-lg transition-all duration-300 border-0 ${event.featured ? 'ring-2 ring-[#d9b062]' : ''}`}>
-                    <CardContent className="p-6 flex flex-col h-full">
-                      <div className="mb-4">
-                        <Badge className={`${getCategoryColor(event.category)} mb-3`}>
-                          {event.category}
-                        </Badge>
-                        {event.featured && (
-                          <Badge className="bg-[#d9b062] text-[#244363] ml-2">
-                            Featured
-                          </Badge>
-                        )}
+              {upcomingEvents.map((event, index) => {
+                let moreInfoHref = '/ministries';
+                if (event.title === 'Sunday Worship Service') {
+                  moreInfoHref = '/ministries#bilingual-worship';
+                } else if (event.title === 'Young Adult Bible Study') {
+                  moreInfoHref = '/ministries#young-adult';
+                } else if (event.title === 'Fellowship Lunch') {
+                  moreInfoHref = '/ministries#fellowship';
+                }
+                return (
+                  <motion.div key={event.id} variants={itemVariants}>
+                    <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-full">
+                      {/* Event Image Placeholder */}
+                      <div className="w-full h-44 bg-gray-200 flex items-center justify-center overflow-hidden">
+                        {/* Replace with real image if available */}
+                        <img
+                          src={
+                            event.image && event.image !== 'worship-placeholder' && event.image !== 'bible-study-placeholder' && event.image !== 'fellowship-placeholder'
+                              ? event.image
+                              : '/placeholder.svg'
+                          }
+                          alt={event.title}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
-                      
-                      <h3 className="text-xl font-bold text-[#244363] mb-3">{event.title}</h3>
-                      <p className="text-gray-700 mb-4 text-sm">{event.description}</p>
-                      
-                      <div className="space-y-2 text-sm text-gray-600">
-                        <div className="flex items-center">
-                          <Calendar className="w-4 h-4 mr-2" />
-                          {event.date}
+                      <div className="p-6 flex flex-col flex-1">
+                        <h3 className="text-2xl font-bold text-black mb-2">{event.title}</h3>
+                        <div className="text-base text-black mb-4">{event.date}</div>
+                        <div className="mt-auto">
+                          <a href={moreInfoHref} className="font-semibold text-black underline underline-offset-2 hover:text-[#d9b062] flex items-center gap-1 group">
+                            MORE INFO <span className="ml-1 group-hover:translate-x-1 transition-transform">&rarr;</span>
+                          </a>
                         </div>
-                        {event.title !== 'Fellowship Lunch' && (
-                          <>
-                            <div className="flex items-center">
-                              <Clock className="w-4 h-4 mr-2" />
-                              {event.time}
-                            </div>
-                            <div className="flex items-center">
-                              <MapPin className="w-4 h-4 mr-2" />
-                              {event.location}
-                            </div>
-                          </>
-                        )}
                       </div>
-                      
-                      <Button className="w-full mt-auto bg-[#244363] text-white hover:bg-[#1a2e47]">
-                        Learn More
-                        <ArrowRight className="ml-2 w-4 h-4" />
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
+                    </div>
+                  </motion.div>
+                );
+              })}
             </motion.div>
           </motion.div>
         </div>

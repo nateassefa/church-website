@@ -3,6 +3,9 @@ import PageLayout from '@/components/PageLayout';
 import Hero from '@/components/Hero';
 import SEO from '@/components/SEO';
 import { Clock, MapPin } from 'lucide-react';
+import Player from 'lottie-react';
+// @ts-ignore: Importing JSON for Lottie animation
+import treeAnimation from '/public/tree.json';
 
 function getNextSunday830AM() {
   const now = new Date();
@@ -53,15 +56,12 @@ const Index = () => {
       </div>
 
       {/* Centered gratitude banner (replaces countdown) */}
-      <section className="bg-gray-100 py-16 px-4 md:px-0">
+      <section className="bg-gray-100 py-6 px-4 md:px-0">
         <div className="max-w-3xl mx-auto flex flex-col items-center justify-center text-center">
-          {/* Stained glass icon placeholder */}
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="mb-4">
-            <rect x="16" y="2" width="8" height="36" rx="4" fill="#bfa05a" />
-            <rect x="8" y="10" width="24" height="8" rx="4" fill="#244363" />
-            <rect x="8" y="22" width="24" height="8" rx="4" fill="#2ec4b6" />
-            <rect x="16" y="34" width="8" height="4" rx="2" fill="#d9b062" />
-          </svg>
+          {/* Lottie Animated Tree */}
+          <div className="mb-4 flex items-center justify-center">
+            <Player autoplay loop animationData={treeAnimation} style={{ width: '192px', height: '192px' }} />
+          </div>
           <div className="text-[#223046] text-xl md:text-2xl font-medium mb-1">We Are So Grateful Today That God Loves Us</div>
           <div className="text-[#223046] text-xl md:text-2xl font-medium">Just The Way We Are.</div>
         </div>
@@ -72,14 +72,12 @@ const Index = () => {
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left: About/Welcome Text */}
           <div className="flex flex-col items-start">
-            <span className="text-[#2ec4b6] font-semibold text-lg mb-2">Welcome</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#223046]">About Our Church</h2>
-            <p className="text-lg text-[#223046] mb-6 opacity-90">At Modern Church, you won't be met with shame, guilt, or condemnation. No matter what you've been through or what questions you might have, our church is a place where you'll find the grace, mercy, and forgiveness Jesus gives to everyone.</p>
-            <p className="text-lg text-[#223046] mb-6 opacity-90">Come and be part of our family this Sunday.</p>
-            <a href="#" className="text-[#2ec4b6] font-semibold text-base flex items-center gap-2 hover:underline">
-              <span>Watch Video</span>
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5,3 19,10 5,17" /></svg>
-            </a>
+            <span className="text-[#d9b062] font-semibold text-lg mb-2">Welcome</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#223046]">Living Hope for Generations Church</h2>
+            <p className="text-lg text-[#223046] mb-6 opacity-90">
+              A vibrant church where generations and cultures grow together in Christ and live out the Gospel.<br/>
+              We are especially committed to reaching second-generation children, youth, and young adults with the Gospel in ways that reflect their language, culture, and spiritual needs.
+            </p>
           </div>
           {/* Right: Image/Video with Play Button */}
           <div className="flex items-center justify-center">
@@ -95,6 +93,43 @@ const Index = () => {
           </div>
         </div>
       </section>
+      <style>{`
+        @keyframes sproutTreeTrunk {
+          0% { stroke-dasharray: 0 100; opacity: 0; }
+          40% { opacity: 1; }
+          100% { stroke-dasharray: 100 0; opacity: 1; }
+        }
+        @keyframes sproutTreeLeaf {
+          0% { opacity: 0; transform: scale(0.7); }
+          60% { opacity: 1; }
+          100% { opacity: 1; transform: scale(1); }
+        }
+        .animate-sprout-tree path {
+          stroke-dasharray: 100 0;
+          stroke-dashoffset: 0;
+          animation: sproutTreeTrunk 1.2s cubic-bezier(.4,0,.2,1) 0.1s both;
+        }
+        .tree-leaf {
+          animation: sproutTreeLeaf 0.7s cubic-bezier(.4,0,.2,1) both;
+        }
+        .tree-leaf-0 { animation-delay: 0.7s; }
+        .tree-leaf-1 { animation-delay: 0.75s; }
+        .tree-leaf-2 { animation-delay: 0.8s; }
+        .tree-leaf-3 { animation-delay: 0.85s; }
+        .tree-leaf-4 { animation-delay: 0.9s; }
+        .tree-leaf-5 { animation-delay: 0.95s; }
+        .tree-leaf-6 { animation-delay: 1.0s; }
+        .tree-leaf-7 { animation-delay: 1.05s; }
+        .tree-leaf-8 { animation-delay: 1.1s; }
+        .tree-leaf-9 { animation-delay: 1.15s; }
+        .tree-leaf-10 { animation-delay: 1.2s; }
+        .tree-leaf-11 { animation-delay: 1.25s; }
+        .tree-leaf-12 { animation-delay: 1.3s; }
+        .tree-leaf-13 { animation-delay: 1.35s; }
+        .tree-leaf-14 { animation-delay: 1.4s; }
+        .tree-leaf-15 { animation-delay: 1.45s; }
+        .tree-leaf-center { animation-delay: 1.5s; }
+      `}</style>
     </PageLayout>
   );
 };

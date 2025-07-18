@@ -138,10 +138,11 @@ const StatementOfFaith = () => {
               >
                 What We Believe
               </motion.h2>
+              <div className="h-1 w-16 bg-[#d9b062] mx-auto mb-2 rounded" />
 
               <motion.div 
                 variants={itemVariants}
-                className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10"
               >
                 {beliefs.map((belief, index) => (
                   <motion.div
@@ -184,15 +185,16 @@ const StatementOfFaith = () => {
               >
                 The Ordinances
               </motion.h2>
+              <div className="h-1 w-16 bg-[#d9b062] mx-auto mb-2 rounded" />
 
               <motion.div 
                 variants={itemVariants}
-                className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+                className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-10"
               >
                 {ordinances.map((ordinance, index) => (
                   <Card key={index} className="border-l-4 border-l-[#d9b062] hover:shadow-lg transition-shadow bg-gray-50">
                     <CardContent className="p-8">
-                      <h3 className="text-2xl font-semibold text-[#d9b062] mb-4">
+                      <h3 className="text-2xl font-semibold text-[#244363] mb-4">
                         {ordinance.title}
                       </h3>
                       <p className="text-gray-600 mb-6 text-lg">
@@ -233,6 +235,7 @@ const StatementOfFaith = () => {
               >
                 Our Theological Foundation
               </motion.h2>
+              <div className="h-1 w-16 bg-[#d9b062] mx-auto mt-2 mb-6 rounded" />
               <p className="text-lg text-black leading-relaxed mb-8">
                 At Living Hope for Generations Church, we hold to the historic Christian faith as revealed in Scripture. 
                 Our beliefs are grounded in the Bible and align with the core doctrines that have been affirmed by 
