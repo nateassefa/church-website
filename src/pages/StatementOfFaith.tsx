@@ -95,8 +95,9 @@ const StatementOfFaith = () => {
           <img 
             src="/WhatsApp Image 2025-04-10 at 20.53.28.jpeg" 
             alt="Statement of Faith Background" 
-            className="absolute inset-0 w-full h-full object-cover object-[0_35%] z-0" 
+            className="absolute inset-0 w-full h-full object-cover object-[center_40%] z-0" 
           />
+          <div className="absolute inset-0 bg-black/60 z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/80 via-[#244363]/40 to-transparent z-10" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
             <motion.div
