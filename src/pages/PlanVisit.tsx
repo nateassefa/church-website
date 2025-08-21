@@ -5,6 +5,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Clock, Phone, Mail, Users, Car, Baby, Coffee, Heart, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import ContactForm from '@/components/ContactForm';
+import FAQ from '@/components/FAQ';
 
 const PlanVisit = () => {
   const serviceInfo = {
@@ -146,47 +148,16 @@ const PlanVisit = () => {
               variants={itemVariants}
               className="text-6xl md:text-8xl font-bold text-center text-[#244363] mb-12"
             >
-              Join us this Weekend
+              Plan a Visit
             </motion.h2>
-            <div className="h-1 w-16 bg-[#d9b062] mx-auto my-4 rounded" />
             <motion.p 
               variants={itemVariants}
               className="text-2xl md:text-3xl text-center text-[#244363] mb-8 max-w-3xl mx-auto"
             >
-              We believe that coming together to worship, pray, and connect with one another is an essential part of living a fulfilling life. We can't wait to see you!
+              We're excited to meet you and welcome you into our church family. Come experience the love of Christ in our community.
             </motion.p>
-            <motion.div variants={itemVariants} className="flex justify-center mb-12">
-              <a href="https://maps.google.com/?q=3637+Graham+Park+Road+Triangle,+VA+22172" target="_blank" rel="noopener noreferrer">
-                <Button className="bg-[#d9b062] text-[#244363] hover:bg-[#bfa05a] px-8 py-4 text-lg font-bold">
-                  <MapPin className="mr-2" />
-                  Get Directions
-                </Button>
-              </a>
-            </motion.div>
-            <motion.div variants={itemVariants} className="flex justify-center gap-16 flex-wrap">
-              {/* Sunday Services Card */}
-              <div className="relative overflow-hidden shadow-lg h-[36rem] max-w-[32rem] w-full">
-                <img src="/image (4).jpg" alt="Sunday Service at Living Hope for Generations Church" className="w-full h-[36rem] object-cover object-center" />
-                <div className="absolute inset-0 bg-black/20 z-10" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/80 to-transparent z-20" />
-                <div className="absolute inset-0 flex flex-col justify-end p-12 z-30">
-                  <h3 className="text-3xl font-bold text-white mb-4">Sunday Service (Amharic & English)</h3>
-                  <p className="text-xl text-white mb-2">8:30–10:30 AM</p>
-                  <p className="text-lg text-white mb-6">3637 Graham Park Road, Triangle, VA 22172</p>
-                  {/* Removed Get Directions button as requested */}
-                </div>
-              </div>
-              {/* Young Adult Bible Study Card */}
-              <div className="relative overflow-hidden shadow-lg h-[36rem] max-w-[32rem] w-full">
-                <img src="/IMG_6655_PhotoGrid.png" alt="Young Adult Bible Study at Living Hope for Generations Church" className="w-full h-[36rem] object-cover object-center" />
-                <div className="absolute inset-0 bg-black/20 z-10" />
-                <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-[#244363]/80 to-transparent z-20" />
-                <div className="absolute inset-0 flex flex-col justify-end p-12 pt-80 z-30">
-                  <h3 className="text-3xl font-bold text-white mb-4">Young Adult Bible Study</h3>
-                  <p className="text-xl text-white mb-2">Mondays at 9:00–10:00 PM (Zoom)</p>
-                  <p className="text-lg text-white mb-6">Text 571-244-4906 if interested in joining anytime!</p>
-                </div>
-              </div>
+            <motion.div variants={itemVariants} className="mt-12 w-full">
+              <ContactForm />
             </motion.div>
           </motion.div>
         </div>
@@ -230,74 +201,10 @@ const PlanVisit = () => {
         </div>
       </section>
 
-      {/* Visitor Information */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h2 
-              variants={itemVariants}
-              className="text-3xl md:text-4xl font-bold text-center text-[#244363] mb-12"
-            >
-              Visitor Information
-            </motion.h2>
-            
-            <motion.div 
-              variants={containerVariants}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              {visitorInfo.map((info, index) => (
-                <motion.div key={index} variants={itemVariants}>
-                  <Card className="h-full bg-gray-50 border border-gray-200">
-                    <CardContent className="p-6">
-                      <h3 className="text-lg font-bold text-[#244363] mb-3">{info.title}</h3>
-                      <p className="text-gray-700">{info.description}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      {/* FAQ Section */}
+      <FAQ />
 
-      {/* Call to Action */}
-      <section className="py-16 bg-[#244363] text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to Join Us?
-            </h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto">
-              We're excited to meet you and welcome you into our church family. 
-              Come experience the love of Christ in our community.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/ministries">
-                <Button className="bg-[#d9b062] text-[#244363] hover:bg-[#bfa05a] px-8 py-4 text-lg font-bold">
-                  Explore Our Ministries
-                  <ArrowRight className="ml-2" />
-                </Button>
-              </Link>
-              <Link to="/about">
-                <Button className="bg-[#d9b062] text-[#244363] hover:bg-[#bfa05a] px-8 py-4 text-lg font-bold">
-                  Learn More About Us
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+
     </PageLayout>
   );
 };

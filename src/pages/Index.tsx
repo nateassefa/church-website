@@ -5,7 +5,7 @@ import SEO from '@/components/SEO';
 import { Clock, MapPin } from 'lucide-react';
 import Player from 'lottie-react';
 // @ts-ignore: Importing JSON for Lottie animation
-import treeAnimation from '/public/tree.json';
+import treeAnimation from '../tree.json';
 
 function getNextSunday830AM() {
   const now = new Date();
