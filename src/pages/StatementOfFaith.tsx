@@ -93,9 +93,9 @@ const StatementOfFaith = () => {
         {/* Hero Section */}
         <section className="relative pt-24 pb-16 text-white overflow-hidden">
           <img 
-            src="/WhatsApp Image 2025-04-10 at 20.53.28.jpeg" 
+            src="/DSC00012.JPG" 
             alt="Statement of Faith Background" 
-            className="absolute inset-0 w-full h-full object-cover object-[center_40%] z-0" 
+            className="absolute inset-0 w-full h-full object-cover object-[center_20%] z-0" 
           />
           <div className="absolute inset-0 bg-black/60 z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/80 via-[#244363]/40 to-transparent z-10" />

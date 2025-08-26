@@ -104,7 +104,7 @@ const Events = () => {
       time: "8:30–10:30 AM",
       location: "3637 Graham Park Road, Triangle VA 22172 (Amharic & English)",
       category: "Worship",
-      image: "/IMG_1504-preview.png",
+      image: "/DSC00009.jpg",
       featured: true
     },
     {
@@ -208,7 +208,7 @@ const Events = () => {
                   <motion.div key={event.id} variants={itemVariants}>
                     <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-full">
                       {/* Event Image Placeholder */}
-                      <div className="w-full h-44 bg-gray-200 flex items-center justify-center overflow-hidden">
+                      <div className="w-full h-96 bg-gray-200 flex items-center justify-center overflow-hidden">
                         {/* Replace with real image if available */}
                         <img
                           src={
@@ -217,14 +217,14 @@ const Events = () => {
                               : '/placeholder.svg'
                           }
                           alt={event.title}
-                          className={`w-full h-full object-cover${event.title === 'Young Adult Bible Study' ? ' object-[center_70%]' : ''}`}
+                          className={`w-full h-full object-cover object-center`}
                         />
                       </div>
-                      <div className="p-6 flex flex-col flex-1">
-                        <h3 className="text-2xl font-bold text-black mb-2">{event.title}</h3>
-                        <div className="text-base text-black mb-4">{event.date}</div>
+                      <div className="p-12 flex flex-col flex-1">
+                        <h3 className="text-4xl font-bold text-black mb-4">{event.title}</h3>
+                        <div className="text-2xl text-black mb-8">{event.date}</div>
                         <div className="mt-auto">
-                          <a href={moreInfoHref} className="font-semibold text-black underline underline-offset-2 hover:text-[#d9b062] flex items-center gap-1 group">
+                          <a href={moreInfoHref} className="font-semibold text-black underline underline-offset-2 hover:text-[#d9b062] flex items-center gap-1 group text-xl">
                             MORE INFO <span className="ml-1 group-hover:translate-x-1 transition-transform">&rarr;</span>
                           </a>
                         </div>

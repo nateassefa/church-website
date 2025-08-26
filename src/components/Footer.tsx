@@ -41,7 +41,7 @@ const Footer = ({ tall = false }: FooterProps) => {
           {/* Center: Church Info */}
           <div className="flex-1 flex flex-col items-center justify-center px-0 md:px-10 border-white/20 md:border-x">
             <h2 className="text-2xl font-extrabold mb-2 tracking-wide">LIVING HOPE FOR GENERATIONS CHURCH</h2>
-            <p className="font-semibold text-white mb-4">A spiritual home for Ethiopian and Eritrean families along the 95-Highway Corridor.</p>
+            <p className="font-semibold text-white mb-4">A spiritual home for families along the 95-Highway Corridor.</p>
             <div className="flex items-center justify-center space-x-4 mb-4">
               <a href="https://www.instagram.com/livinghopegenchurch?igsh=MWs4dXdnZ28xOHBidw==" target="_blank" rel="noopener noreferrer" className="hover:text-[#d9b062] transition-colors"><Instagram size={22} /></a>
               <a href="https://www.facebook.com/61574837435090/about/?_rdr" target="_blank" rel="noopener noreferrer" className="hover:text-[#d9b062] transition-colors"><Facebook size={22} /></a>
@@ -60,7 +60,7 @@ const Footer = ({ tall = false }: FooterProps) => {
             <ul className="space-y-2 text-gray-300">
               <li><Link to="/ministries" className="hover:text-white transition-colors">Small Groups</Link></li>
               <li><Link to="/plan-visit" className="hover:text-white transition-colors">Plan Your Visit</Link></li>
-              <li><Link to="/give" className="hover:text-white transition-colors">Give</Link></li>
+              <li><a href="https://give.tithe.ly/?formId=b6bf17e5-ad05-4f8f-bb12-55d1da8b3ce3&context=modal" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Give</a></li>
               <li><Link to="/plan-visit#faq" className="hover:text-white transition-colors">FAQs</Link></li>
             </ul>
           </div>

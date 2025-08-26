@@ -211,13 +211,6 @@ const ContactForm = () => {
     <div className="w-full bg-white p-8">
       <div className="max-w-2xl mx-auto">
         <form onSubmit={handleSubmit} className="space-y-8">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <p className="text-xl text-gray-600">
-              We're excited to meet you and welcome you into our church family. Come experience the love of Christ in our community.
-            </p>
-          </div>
-
           {/* Instructions */}
           <p className="text-base text-gray-600 mb-8">
             Fields marked with an <span className="text-red-500">*</span> are required

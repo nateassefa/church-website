@@ -82,20 +82,19 @@ const Hero = () => {
       <div className="banner-container relative overflow-hidden h-[70vh] sm:h-[80vh] md:h-[85vh] w-full bg-[#244363] flex items-center justify-center">
         {/* Hero Video Background */}
         <video
-          ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover z-0"
-          src="/video-output-098B4F39-C289-492B-B115-94229490A07A-1.MP4"
           autoPlay
           loop
           muted
           playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          src="/video-output-6E4FF29B-CECD-494B-B7D3-9F8653926D7D-1.MP4"
         />
         {/* Black overlay for text readability */}
         <div 
           className="absolute inset-0 w-full"
           style={{ 
             zIndex: 1,
-            backgroundColor: 'rgba(0,0,0,0.35)'
+            backgroundColor: 'rgba(0,0,0,0.25)'
           }}
         ></div>
         {/* Full-width bottom text banner */}
