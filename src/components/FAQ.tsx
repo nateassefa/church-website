@@ -5,7 +5,9 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 interface FAQItem {
   id: string;
   question: string;
+  questionAmharic: string;
   answer: string;
+  answerAmharic: string;
   language?: string;
 }
 
@@ -16,22 +18,30 @@ const FAQ = () => {
     {
       id: "1",
       question: "What are your services like?",
-      answer: "Our services usually run about 2 hours long consisting of worship, a powerful message from the Word of God, and fellowship. We will make sure to honor your time!"
+      questionAmharic: "የአገልግሎት ግዜያችን ምን ይመስላል?",
+      answer: "Our services usually run about 2 hours long consisting of worship, a powerful message from the Word of God, and fellowship. We will make sure to honor your time!",
+      answerAmharic: "የአገልግሎት ግዜያችን ለሁለት ሰአት ያህል የሚቆይ ሲሆን በውስጡም የአምልኮ ግዜ የእግዚአብሄር ቃል በሙላት የሚሰበክበት ግዜና በጋራ ሻይ ቡና በማለት ህብረት የምናደርግበትን ግዜን ያካተተ ነው:: ሁሌም ሰአታችንን እንጠብቃለን!"
     },
     {
       id: "2",
       question: "What should I wear?",
-      answer: "There is no dress code, but we encourage you to dress modest yet comfortable!"
+      questionAmharic: "ምን ለብሼ መምጣት ይኖርብኛል?",
+      answer: "There is no dress code, but we encourage you to dress modest yet comfortable!",
+      answerAmharic: "የተለየ የአለባበስ ህግ( ኮድ) የለንም ነገር ግን ቀለል ብሎ ምቾት የሚሰጥዎትን እንዲለብሱ እናበረታታዎታለን::"
     },
     {
       id: "3",
       question: "Do you have anything for children and/or students?",
-      answer: "We do! We have a Young Adult Ministry that holds Bible Study at 9pm every Monday via Zoom! We also have Sunday School for kids preschool-6th grade."
+      questionAmharic: "ለልጆች ወይም ለተማሪዎች የሚሆን አገልግሎት አላችሁ?",
+      answer: "We do! We have a Young Adult Ministry that holds Bible Study at 9pm every Monday via Zoom! We also have Sunday School for kids preschool-6th grade.",
+      answerAmharic: "በርግጥ አለን! የወጣት ልጆች ሚኒስትሪ አለን: በውስጡም ዘወትር ማክሰኞ ምሽት 8:00 ሰአት በዙም የሚካሄድ የወጣት ልጆች የመፀሐፍ ቅዱስ ጥናት ግዜ አለን እንዲሁም ከፕሪ k ጀምሮ እስከ ስድስተኛ ክፍል ላሉ ህፃናት ልጆች የሰንበት ትምህርት በቤተክርስቲያናችን ይሰጣል::"
     },
     {
       id: "4",
       question: "What denomination is Living Hope for Generations Church?",
-      answer: "Living Hope is associated with the Lutheran Church, but we welcome all regardless of denomination or background!"
+      questionAmharic: "ህያው ተስፋ ለትውልዶች ሁሉ ቤተክርስቲያን እምነቷ( አስተምሮዋ) ምንድ ነው?",
+      answer: "Living Hope is associated with the Lutheran Church Missouri Synod, but we welcome all regardless of denomination or background!",
+      answerAmharic: "ህያው ተስፋ ለትውልዶች ሁሉ ቤተክርስቲያን ከሉተራን ቤተክርስቲያን ሚዞሪ ሲኖድ ጋር የተያያዘች ናት:: ነገር ግን በራችን ከየትኛውም ቤተእምነት ለሚመጡ ሁሉ ክፍት ነው::"
     }
   ];
 
@@ -57,8 +67,8 @@ const FAQ = () => {
                 onClick={() => toggleItem(item.id)}
                 className="w-full px-6 py-4 text-left bg-white hover:bg-gray-50 transition-colors flex items-center justify-between"
               >
-                <span className={`font-medium ${item.language === 'Amharic' ? 'text-lg' : 'text-base'}`}>
-                  {item.question}
+                <span className={`font-medium text-base`}>
+                  {item.question} / {item.questionAmharic}
                 </span>
                 {openItems.includes(item.id) ? (
                   <ChevronUp className="h-5 w-5 text-gray-600" />
@@ -77,8 +87,12 @@ const FAQ = () => {
                     className="overflow-hidden"
                   >
                     <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
-                      <p className={`text-gray-700 leading-relaxed ${item.language === 'Amharic' ? 'text-lg' : 'text-base'}`}>
+                      <p className="text-gray-700 leading-relaxed text-base mb-3">
                         {item.answer}
+                      </p>
+                      <div className="border-t border-gray-300 my-3"></div>
+                      <p className="text-gray-700 leading-relaxed text-lg">
+                        {item.answerAmharic}
                       </p>
                     </div>
                   </motion.div>
