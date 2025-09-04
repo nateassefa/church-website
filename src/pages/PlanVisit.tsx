@@ -5,10 +5,32 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Clock, Phone, Mail, Users, Car, Baby, Coffee, Heart, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import ContactForm from '@/components/ContactForm';
 import FAQ from '@/components/FAQ';
+import { useEffect } from 'react';
 
 const PlanVisit = () => {
+  useEffect(() => {
+    // Load Breeze form script
+    const script = document.createElement('script');
+    script.src = 'https://app.breezechms.com/js/form_embed.js';
+    script.async = true;
+    script.onload = () => {
+      console.log('Breeze form script loaded successfully');
+    };
+    script.onerror = () => {
+      console.error('Failed to load Breeze form script');
+    };
+    document.head.appendChild(script);
+
+    return () => {
+      // Cleanup script on component unmount
+      const existingScript = document.querySelector('script[src="https://app.breezechms.com/js/form_embed.js"]');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
+
   const serviceInfo = {
     time: "10:00 AM - 12:00 PM",
     day: "Every Sunday",
@@ -91,29 +113,15 @@ const PlanVisit = () => {
         />
         <div className="absolute inset-0 bg-black/60 z-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/80 via-[#244363]/40 to-transparent z-10" />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-center justify-center">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={containerVariants}
             className="text-center"
           >
-            <motion.h1 
-              variants={itemVariants}
-              className="text-4xl md:text-6xl font-bold mb-6"
-            >
-              Plan Your Visit
-            </motion.h1>
-            <div className="h-1 w-16 bg-[#d9b062] mx-auto my-4 rounded" />
-            <motion.p 
-              variants={itemVariants}
-              className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto"
-            >
-              We can't wait to welcome you to our church family!
-            </motion.p>
             <motion.div variants={itemVariants} className="flex flex-col items-center gap-4 justify-center">
-              {/* Removed Connect with us! button as requested */}
-              <div className="flex gap-4 mt-4">
+              <div className="flex gap-4">
                 <a href="https://www.instagram.com/livinghopegenchurch?igsh=MWs4dXdnZ28xOHBidw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                   <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-white hover:text-[#d9b062] transition"><rect width="20" height="20" x="2" y="2" rx="5" strokeWidth="2"/><circle cx="12" cy="12" r="5" strokeWidth="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
                 </a>
@@ -157,7 +165,23 @@ const PlanVisit = () => {
               We're excited to meet you and welcome you into our church family. Come experience the love of Christ in our community.
             </motion.p>
             <motion.div variants={itemVariants} className="mt-12 w-full">
-              <ContactForm />
+              <div 
+                style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
+                dangerouslySetInnerHTML={{
+                  __html: `
+                    <div class="breeze_form_embed" 
+                         data-subdomain="livinghopeforgenerationschurch" 
+                         data-address="4ecc0c" 
+                         data-width="100%" 
+                         data-border_width="0" 
+                         data-border_color="000000" 
+                         data-background_color="ffffff" 
+                         data-button_color="92b765">
+                    </div>
+                    <script src="https://app.breezechms.com/js/form_embed.js"></script>
+                  `
+                }}
+              />
             </motion.div>
           </motion.div>
         </div>

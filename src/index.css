@@ -4,6 +4,62 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Breeze Form Centering Styles */
+.breeze_form_embed {
+  text-align: center !important;
+}
+
+.breeze_form_embed * {
+  text-align: center !important;
+}
+
+.breeze_form_embed input,
+.breeze_form_embed label,
+.breeze_form_embed div,
+.breeze_form_embed p,
+.breeze_form_embed span {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.breeze_form_embed form {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.breeze_form_embed .form-group,
+.breeze_form_embed .field-group {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.breeze_form_embed input[type="text"],
+.breeze_form_embed input[type="email"],
+.breeze_form_embed input[type="tel"] {
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+.breeze_form_embed .radio-group,
+.breeze_form_embed .checkbox-group {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.breeze_form_embed button,
+.breeze_form_embed input[type="submit"] {
+  margin: 0 auto !important;
+  display: block !important;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
