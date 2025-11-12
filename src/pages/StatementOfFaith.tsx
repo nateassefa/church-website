@@ -93,12 +93,12 @@ const StatementOfFaith = () => {
         {/* Hero Section */}
         <section className="relative pt-24 pb-16 text-white overflow-hidden">
           <img 
-            src="/DSC00012.JPG" 
+            src="/DSC00287.JPG" 
             alt="Statement of Faith Background" 
-            className="absolute inset-0 w-full h-full object-cover object-[center_20%] z-0" 
+            className="absolute inset-0 w-full h-full object-cover object-[center_35%] z-0" 
           />
-          <div className="absolute inset-0 bg-black/60 z-10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/80 via-[#244363]/40 to-transparent z-10" />
+          <div className="absolute inset-0 bg-black/50 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/70 via-[#244363]/30 to-transparent z-10" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
             <motion.div
               initial="hidden"
@@ -170,7 +170,7 @@ const StatementOfFaith = () => {
           </div>
         </section>
 
-        {/* The Ordinances */}
+        {/* The Sacraments */}
         <section className="py-16 bg-[#244363] text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -183,7 +183,7 @@ const StatementOfFaith = () => {
                 variants={itemVariants}
                 className="text-3xl md:text-4xl font-bold text-white text-center mb-12"
               >
-                The Ordinances
+                The Sacraments
               </motion.h2>
               <div className="h-1 w-16 bg-[#d9b062] mx-auto mb-2 rounded" />
 

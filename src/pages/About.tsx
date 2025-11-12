@@ -35,13 +35,13 @@ const About = () => {
       <div className="relative pt-20 pb-16 bg-gradient-to-br from-[#244363] to-[#4c3219] overflow-hidden">
         {/* Hero background image */}
         <img 
-          src="/image (3).jpg" 
+          src="/DSC00310.JPG" 
           alt="Living Hope for Generations Church family" 
-          className="absolute inset-0 w-full h-full object-cover object-[center_40%] opacity-60 z-0" 
+          className="absolute inset-0 w-full h-full object-cover object-[center_25%] opacity-60 z-0" 
           style={{ pointerEvents: 'none' }}
         />
         {/* Overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-[#244363]/80 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-[#244363]/70 z-10" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           <motion.div
             initial="hidden"

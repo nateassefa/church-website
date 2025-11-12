@@ -73,22 +73,24 @@ const Index = () => {
           {/* Left: About/Welcome Text */}
           <div className="flex flex-col items-start">
             <span className="text-[#d9b062] font-semibold text-lg mb-2">Welcome to</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#223046]">Living Hope for Generations Church</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#223046]">Living Hope for Generations Lutheran Church</h2>
             <p className="text-lg text-[#223046] mb-6 opacity-90">
               A vibrant church where generations and cultures grow together in Christ and live out the Gospel.<br/>
               We are especially committed to reaching second-generation children, youth, and young adults with the Gospel in ways that reflect their language, culture, and spiritual needs.
             </p>
           </div>
-          {/* Right: Image/Video with Play Button */}
+          {/* Right: Video */}
           <div className="flex items-center justify-center">
             <div className="relative w-full max-w-md aspect-[16/10] bg-gray-200 rounded-lg overflow-hidden shadow-lg">
-              <img src="/church_placeholder.jpg" alt="Church" className="w-full h-full object-cover" />
-              <button className="absolute inset-0 flex items-center justify-center w-full h-full bg-black/30 hover:bg-black/40 transition">
-                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="32" cy="32" r="32" fill="#fff" fillOpacity="0.8" />
-                  <polygon points="26,20 48,32 26,44" fill="#2ec4b6" />
-                </svg>
-              </button>
+              <video 
+                src="/short_home_page.mp4"
+                controls
+                className="w-full h-full object-cover"
+                playsInline
+                preload="metadata"
+              >
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>

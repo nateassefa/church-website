@@ -104,7 +104,7 @@ const Events = () => {
       time: "8:30–10:30 AM",
       location: "3637 Graham Park Road, Triangle VA 22172 (Amharic & English)",
       category: "Worship",
-      image: "/DSC00009.jpg",
+      image: "/Copy of _I0B7303.png",
       featured: true
     },
     {
@@ -115,7 +115,7 @@ const Events = () => {
       time: "9:00 PM - 10:00 PM",
       location: "Zoom Meeting",
       category: "Bible Study",
-      image: "/Screenshot 2025-07-18 at 4.19.55 PM.png"
+      image: "/nema.png"
     },
     {
       id: 6,
@@ -139,10 +139,10 @@ const Events = () => {
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 text-white overflow-hidden">
         <img
-          src="/WhatsApp Image 2025-04-06 at 21.54.39.jpg"
+          src="/Copy of _I0B7294.png"
           alt="Events Background"
-          className="absolute inset-0 w-full h-full object-cover object-[center_30%] z-0"
-          style={{ filter: 'brightness(0.5)' }}
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          style={{ filter: 'brightness(0.5)', objectPosition: 'center 10%' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/80 via-[#244363]/40 to-transparent z-10" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">

@@ -33,8 +33,8 @@ const FAQ = () => {
       id: "3",
       question: "Do you have anything for children and/or students?",
       questionAmharic: "ለልጆች ወይም ለተማሪዎች የሚሆን አገልግሎት አላችሁ?",
-      answer: "We do! We have a Young Adult Ministry that holds Bible Study at 9pm every Monday via Zoom! We also have Sunday School for kids preschool-6th grade.",
-      answerAmharic: "በርግጥ አለን! የወጣት ልጆች ሚኒስትሪ አለን: በውስጡም ዘወትር ማክሰኞ ምሽት 8:00 ሰአት በዙም የሚካሄድ የወጣት ልጆች የመፀሐፍ ቅዱስ ጥናት ግዜ አለን እንዲሁም ከፕሪ k ጀምሮ እስከ ስድስተኛ ክፍል ላሉ ህፃናት ልጆች የሰንበት ትምህርት በቤተክርስቲያናችን ይሰጣል::"
+      answer: "We do! We have a Young Adult Ministry that holds Bible Study at 8pm every Tuesday via Zoom! We also have Sunday School for kids preschool-6th grade.",
+      answerAmharic: "በርግጥም የልጆችና ወጣቶች አግልግሎት አለን፤ ዘወትር ማክሰኞ ምሽት 8:00 PM በዙም የሚካሄድ የወጣቶች የመፀሐፍ ቅዱስ ጥናት ግዜ አለን:: እንዲሁም ከጀማሪ እስከ ስድስተኛ ክፍል ላሉ ህፃናት የሰንበት ትምህርት በቤተክርስቲያናችን ይሰጣል።"
     },
     {
       id: "4",

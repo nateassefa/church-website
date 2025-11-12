@@ -105,14 +105,15 @@ const PlanVisit = () => {
       />
       
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 text-white overflow-hidden">
+      <section className="relative pt-24 pb-32 text-white overflow-hidden min-h-[80vh]">
         <img
-          src="/WhatsApp Image 2025-04-06 at 21.54.47.jpg"
+          src="/DSC00270.PNG"
           alt="Plan Your Visit Background"
-          className="absolute inset-0 w-full h-full object-cover object-[center_40%] z-0"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          style={{ objectPosition: '5% 40%' }}
         />
-        <div className="absolute inset-0 bg-black/60 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/80 via-[#244363]/40 to-transparent z-10" />
+        <div className="absolute inset-0 bg-black/40 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/45 via-[#244363]/15 to-transparent z-10" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-center justify-center">
           <motion.div
             initial="hidden"
@@ -120,24 +121,7 @@ const PlanVisit = () => {
             variants={containerVariants}
             className="text-center"
           >
-            <motion.div variants={itemVariants} className="flex flex-col items-center gap-4 justify-center">
-              <div className="flex gap-4">
-                <a href="https://www.instagram.com/livinghopegenchurch?igsh=MWs4dXdnZ28xOHBidw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                  <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-white hover:text-[#d9b062] transition"><rect width="20" height="20" x="2" y="2" rx="5" strokeWidth="2"/><circle cx="12" cy="12" r="5" strokeWidth="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61574837435090&sk=photos" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                  <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-white hover:text-[#d9b062] transition"><path d="M18 2h-3a5 5 0 0 0-5 5v3H6v4h4v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3V2z" strokeWidth="2"/></svg>
-                </a>
-                <a href="https://www.tiktok.com/@livinghopegenchurch" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                  <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white hover:text-[#d9b062] transition">
-                    <path d="M41.5 17.5c-3.6 0-6.5-2.9-6.5-6.5h-5.5v23.5c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4c.5 0 1 .1 1.5.3v-5.2c-.5-.1-1-.1-1.5-.1-5.1 0-9.2 4.1-9.2 9.2s4.1 9.2 9.2 9.2 9.2-4.1 9.2-9.2V22.2c1.9 1.2 4.1 1.8 6.5 1.8v-6.5z" fill="currentColor"/>
-                  </svg>
-                </a>
-                <a href="https://www.youtube.com/@Livinghopegenchurch" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                  <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-white hover:text-[#d9b062] transition"><rect x="2" y="6" width="20" height="12" rx="4" strokeWidth="2"/><polygon points="10,9 16,12 10,15" fill="currentColor"/></svg>
-                </a>
-              </div>
-            </motion.div>
+            {/* Social media icons removed */}
           </motion.div>
         </div>
       </section>
