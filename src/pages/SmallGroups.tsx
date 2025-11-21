@@ -86,14 +86,86 @@ const upcomingEvents = [
       frequency: "weekly",
       language: "any",
       gender: "all"
+    },
+    {
+      id: 3,
+      title: "Dumfries Amharic Bible Study",
+      description: "Join us for Bible study in Amharic at our Dumfries location.",
+      date: "Every Thursday at 6:00-8:00 PM",
+      time: "6:00-8:00 PM",
+      location: "Dumfries, VA",
+      category: "Bible Study",
+      image: "",
+      when: "weekly",
+      region: "dumfries",
+      campus: "dumfries",
+      locationType: "in-person",
+      ageGroup: "adult-young-adult",
+      frequency: "weekly",
+      language: "amharic",
+      gender: "all"
+    },
+    {
+      id: 4,
+      title: "Woodbridge Amharic Bible Study",
+      description: "Join us for Bible study in Amharic at our Woodbridge location.",
+      date: "Every Thursday at 7:00 PM",
+      time: "7:00 PM",
+      location: "Woodbridge, VA",
+      category: "Bible Study",
+      image: "",
+      when: "weekly",
+      region: "woodbridge",
+      campus: "woodbridge",
+      locationType: "in-person",
+      ageGroup: "adult-young-adult",
+      frequency: "weekly",
+      language: "amharic",
+      gender: "all"
+    },
+    {
+      id: 5,
+      title: "Fredericksburg Amharic Bible Study",
+      description: "Join us for Bible study in Amharic at our Fredericksburg location.",
+      date: "Every Monday at 3:00-5:00 PM",
+      time: "3:00-5:00 PM",
+      location: "Fredericksburg, VA",
+      category: "Bible Study",
+      image: "",
+      when: "weekly",
+      region: "fredericksburg",
+      campus: "fredericksburg",
+      locationType: "in-person",
+      ageGroup: "adult-young-adult",
+      frequency: "weekly",
+      language: "amharic",
+      gender: "all"
+    },
+    {
+      id: 7,
+      title: "Stafford Amharic Bible Study",
+      description: "Join us for Bible study in Amharic at our Stafford location.",
+      date: "Every Thursday at 6:00-8:00 PM",
+      time: "6:00-8:00 PM",
+      location: "Stafford, VA",
+      category: "Bible Study",
+      image: "",
+      when: "weekly",
+      region: "stafford",
+      campus: "stafford",
+      locationType: "in-person",
+      ageGroup: "adult-young-adult",
+      frequency: "weekly",
+      language: "amharic",
+      gender: "all"
     }
 ];
 
 const SmallGroups = () => {
-  const [regionFilter, setRegionFilter] = useState("any");
-  const [locationTypeFilter, setLocationTypeFilter] = useState("any");
-  const [ageGroupFilter, setAgeGroupFilter] = useState("any");
-  const [languageFilter, setLanguageFilter] = useState("any");
+  const [regionFilter, setRegionFilter] = useState<string>("any");
+  const [locationTypeFilter, setLocationTypeFilter] = useState<string>("any");
+  const [ageGroupFilter, setAgeGroupFilter] = useState<string>("any");
+  const [languageFilter, setLanguageFilter] = useState<string>("any");
 
   // Reset all filters
   const resetFilters = () => {
@@ -104,49 +176,49 @@ const SmallGroups = () => {
   };
 
   const filteredEvents = useMemo(() => {
-    // Start with all events
     let filtered = [...upcomingEvents];
     
     // Apply region filter
     if (regionFilter && regionFilter !== "any" && regionFilter.trim() !== "") {
-      const filterValue = regionFilter.toLowerCase().trim();
+      const filterValue = String(regionFilter).toLowerCase().trim();
       filtered = filtered.filter(event => {
-        if (!event.region) return false;
-        const eventRegion = event.region.toLowerCase().trim();
-        // If event region is "any", it matches all regions
-        if (eventRegion === "any") return true;
-        // Case-insensitive match
+        if (!event?.region) return false;
+        const eventRegion = String(event.region).toLowerCase().trim();
         return eventRegion === filterValue;
       });
     }
     
     // Apply location type filter
     if (locationTypeFilter && locationTypeFilter !== "any" && locationTypeFilter.trim() !== "") {
-      const filterValue = locationTypeFilter.toLowerCase().trim();
+      const filterValue = String(locationTypeFilter).toLowerCase().trim();
       filtered = filtered.filter(event => {
-        if (!event.locationType) return false;
-        const eventLocationType = event.locationType.toLowerCase().trim();
+        if (!event?.locationType) return false;
+        const eventLocationType = String(event.locationType).toLowerCase().trim();
         return eventLocationType === filterValue;
       });
     }
     
     // Apply age group filter
     if (ageGroupFilter && ageGroupFilter !== "any" && ageGroupFilter.trim() !== "") {
-      const filterValue = ageGroupFilter.toLowerCase().trim();
+      const filterValue = String(ageGroupFilter).toLowerCase().trim();
       filtered = filtered.filter(event => {
-        if (!event.ageGroup) return false;
-        const eventAgeGroup = event.ageGroup.toLowerCase().trim();
+        if (!event?.ageGroup) return false;
+        const eventAgeGroup = String(event.ageGroup).toLowerCase().trim();
+        if (eventAgeGroup === "all") return true;
+        if (eventAgeGroup === "adult-young-adult") {
+          return filterValue === "young-adult" || filterValue === "adult";
+        }
         return eventAgeGroup === filterValue;
       });
     }
     
     // Apply language filter
     if (languageFilter && languageFilter !== "any" && languageFilter.trim() !== "") {
-      const filterValue = languageFilter.toLowerCase().trim();
+      const filterValue = String(languageFilter).toLowerCase().trim();
       filtered = filtered.filter(event => {
-        if (!event.language) return false;
-        const eventLanguage = event.language.toLowerCase().trim();
-        // If event language is "any", it matches all languages
+        if (!event?.language) return false;
+        const eventLanguage = String(event.language).toLowerCase().trim();
+        // Match if event language is "any" (matches all) or matches the filter
         if (eventLanguage === "any") return true;
         return eventLanguage === filterValue;
       });
@@ -217,12 +289,6 @@ const SmallGroups = () => {
             >
               Weekly Events
             </motion.h2>
-            <motion.p
-              variants={itemVariants}
-              className="text-center text-gray-700 mb-8 max-w-3xl mx-auto text-lg"
-            >
-              These groups gather to discuss the previous message that was shared on Sunday. Groups will usually review major themes and key points, as well as answer questions.
-            </motion.p>
             
             {/* Search and Filter Bar */}
             <motion.div
@@ -246,6 +312,7 @@ const SmallGroups = () => {
                     <SelectItem value="dumfries">Dumfries</SelectItem>
                     <SelectItem value="woodbridge">Woodbridge</SelectItem>
                     <SelectItem value="fredericksburg">Fredericksburg</SelectItem>
+                    <SelectItem value="stafford">Stafford</SelectItem>
                     <SelectItem value="online">Online</SelectItem>
                   </SelectContent>
                 </Select>
@@ -271,7 +338,7 @@ const SmallGroups = () => {
                 <Select 
                   value={ageGroupFilter || "any"} 
                   onValueChange={(value) => {
-                    setAgeGroupFilter(value || "any");
+                    setAgeGroupFilter(value);
                   }}
                 >
                   <SelectTrigger className="w-[140px] bg-white border-gray-300 rounded-md">
@@ -280,6 +347,7 @@ const SmallGroups = () => {
                   <SelectContent>
                     <SelectItem value="any">Age</SelectItem>
                     <SelectItem value="young-adult">Young Adult</SelectItem>
+                    <SelectItem value="adult">Adult</SelectItem>
                     <SelectItem value="all">All Ages</SelectItem>
                     <SelectItem value="children">Children</SelectItem>
                     <SelectItem value="senior">Senior</SelectItem>
@@ -327,27 +395,34 @@ const SmallGroups = () => {
                   locationDisplay = 'Zoom Meeting';
                 } else if (event.location && event.location.includes('Graham Park')) {
                   locationDisplay = 'Living Hope for Generations Lutheran Church';
+                } else if (event.location && (event.location === 'Dumfries' || event.location === 'Woodbridge' || event.location === 'Fredericksburg' || event.location === 'Stafford')) {
+                  locationDisplay = event.location;
                 }
                 
                 return (
-                  <motion.div key={event.id} variants={itemVariants}>
+                  <motion.div 
+                    key={event.id}
+                    variants={itemVariants}
+                    className={filteredEvents.length === 1 ? 'md:col-start-1 md:col-span-1' : ''}
+                  >
                     <div className="relative rounded-lg overflow-hidden h-[400px] md:h-[500px] shadow-2xl group cursor-pointer">
                       {/* Event Image as background */}
-                      {event.image && event.image !== 'worship-placeholder' && event.image !== 'bible-study-placeholder' && event.image !== 'fellowship-placeholder' ? (
-                        <div className="absolute inset-0">
+                      <div className="absolute inset-0 bg-gray-800">
+                        {event.image && event.image.trim() !== '' ? (
                           <img
-                            src={event.image}
+                            src={event.image.replace(/ /g, '%20')}
                             alt={event.title}
-                            className="w-full h-full object-cover"
+                            className="absolute inset-0 w-full h-full object-cover"
                             loading="lazy"
                             decoding="async"
+                            onError={(e) => {
+                              // Hide image on error, gray background will show through
+                              e.currentTarget.style.opacity = '0';
+                            }}
                           />
-                          {/* Dark overlay for text readability */}
-                          <div className="absolute inset-0 bg-black/40"></div>
-                        </div>
-                      ) : (
-                        <div className="absolute inset-0 bg-gray-800"></div>
-                      )}
+                        ) : null}
+                        <div className="absolute inset-0 bg-black/40"></div>
+                      </div>
                       
                       {/* Content positioned at bottom */}
                       <div className="relative z-10 h-full flex flex-col justify-end p-6 md:p-8 text-white">
