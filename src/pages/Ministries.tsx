@@ -88,7 +88,7 @@ const Ministries = () => {
       
       <main>
         {/* Hero Section with Background Image */}
-        <section className="relative pt-24 pb-16 bg-gradient-to-br from-[#244363] to-[#1a2e47] text-white overflow-hidden">
+        <section className="relative pt-24 pb-32 text-white overflow-hidden min-h-[70vh]">
           <img
             src="/WhatsApp Image 2025-03-29 at 14.31.16.png"
             alt="Ministries Background"
@@ -96,26 +96,20 @@ const Ministries = () => {
           />
           <div className="absolute inset-0 bg-black/60 z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/80 via-[#244363]/40 to-transparent z-10" />
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-4">
             <motion.div
               initial="hidden"
               animate="visible"
               variants={containerVariants}
-              className="text-center"
+              className="text-center max-w-4xl"
+              style={{ transform: 'translateY(360px)' }}
             >
               <motion.h1
                 variants={itemVariants}
-                className="text-4xl md:text-6xl font-bold mb-6"
+                className="text-7xl md:text-8xl font-bold"
               >
                 Our Ministries
               </motion.h1>
-              <div className="h-1 w-16 bg-[#d9b062] mx-auto my-4 rounded" />
-              <motion.p 
-                variants={itemVariants}
-                className="max-w-2xl mx-auto text-lg md:text-xl mb-8"
-              >
-                Discover the many ways you can get involved and grow in faith, fellowship, and service at Living Hope for Generations Church.
-              </motion.p>
             </motion.div>
           </div>
         </section>

@@ -32,35 +32,30 @@ const About = () => {
         keywords={['about', 'mission', 'vision', 'values', 'Ethiopian church', 'Eritrean church', 'Christian community']}
       />
       
-      <div className="relative pt-20 pb-16 bg-gradient-to-br from-[#244363] to-[#4c3219] overflow-hidden">
+      <div className="relative pt-24 pb-32 text-white overflow-hidden min-h-[70vh]">
         {/* Hero background image */}
         <img 
-          src="/DSC00310.JPG" 
+          src="/DSC00310.jpg" 
           alt="Living Hope for Generations Church family" 
-          className="absolute inset-0 w-full h-full object-cover object-[center_25%] opacity-60 z-0" 
-          style={{ pointerEvents: 'none' }}
+          className="absolute inset-0 w-full h-full object-cover object-[center_25%] z-0" 
         />
         {/* Overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-[#244363]/70 z-10" />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        <div className="absolute inset-0 bg-black/50 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/70 via-[#244363]/30 to-transparent z-10" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-4">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={containerVariants}
-            className="text-center text-white"
+            className="text-center max-w-4xl"
+            style={{ transform: 'translateY(360px)' }}
           >
             <motion.h1 
-              className="text-4xl md:text-5xl font-bold mb-6"
+              className="text-7xl md:text-8xl font-bold"
               variants={itemVariants}
             >
               About Us
             </motion.h1>
-            <motion.p 
-              className="text-xl max-w-3xl mx-auto"
-              variants={itemVariants}
-            >
-              A vibrant, multicultural church where Christ's life flourishes across generations
-            </motion.p>
           </motion.div>
         </div>
       </div>

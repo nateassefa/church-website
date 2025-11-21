@@ -91,7 +91,7 @@ const StatementOfFaith = () => {
       
       <div className="pb-4 bg-gradient-to-br from-[#244363] to-[#4c3219]">
         {/* Hero Section */}
-        <section className="relative pt-24 pb-16 text-white overflow-hidden">
+        <section className="relative pt-24 pb-32 text-white overflow-hidden min-h-[70vh]">
           <img 
             src="/DSC00287.JPG" 
             alt="Statement of Faith Background" 
@@ -99,26 +99,20 @@ const StatementOfFaith = () => {
           />
           <div className="absolute inset-0 bg-black/50 z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/70 via-[#244363]/30 to-transparent z-10" />
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-4">
             <motion.div
               initial="hidden"
               animate="visible"
               variants={containerVariants}
-              className="text-center max-w-4xl mx-auto"
+              className="text-center max-w-4xl"
+              style={{ transform: 'translateY(360px)' }}
             >
               <motion.h1 
                 variants={itemVariants}
-                className="text-4xl md:text-5xl font-bold mb-6"
+                className="text-7xl md:text-8xl font-bold"
               >
                 Statement of Faith
               </motion.h1>
-              <div className="h-1 w-16 bg-[#d9b062] mx-auto my-4 rounded" />
-              <motion.p 
-                variants={itemVariants}
-                className="text-xl text-gray-200 leading-relaxed"
-              >
-                What We Believe - Our foundation rooted in Scripture
-              </motion.p>
             </motion.div>
           </div>
         </section>

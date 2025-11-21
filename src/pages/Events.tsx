@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, MapPin, Users, Heart, Music, BookOpen, Coffee, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import PastEventsCarousel from '@/components/PastEventsCarousel';
 
 const eventCategories = [
   { name: "Worship", icon: <Music className="w-5 h-5" />, color: "bg-blue-100 text-blue-800" },
@@ -22,51 +21,27 @@ const eventCategories = [
 export const pastEvents = [
   {
     id: 1,
-    title: "Tekeste Event",
-    date: "",
-    time: "",
-    location: "",
-    image: "/tekeste copy.jpg"
+    title: "Thanksgiving Service",
+    date: "Nov 26",
+    time: "6:00 PM",
+    location: "3637 Graham Park Rd, Triangle VA 22172",
+    image: "/9093e918-84b5-47fd-92e5-87c464ab6c73.png"
   },
   {
     id: 2,
-    title: "Church Event 6/16/25",
-    date: "",
-    time: "",
-    location: "",
-    image: "/6:16:25_Church.png"
-  },
-  {
-    id: 3,
-    title: "Event 3",
-    date: "",
-    time: "",
-    location: "",
-    image: "/event3.png"
-  },
-  {
-    id: 4,
-    title: "Event 2",
-    date: "",
-    time: "",
-    location: "",
-    image: "/event2.png"
+    title: "Vision Sharing Dinner",
+    date: "Nov 29",
+    time: "6:00 PM",
+    location: "3637 Graham Park Rd, Triangle VA 22172",
+    image: "/upcoming_1.png"
   },
   {
     id: 5,
-    title: "Event 1",
-    date: "",
+    title: "Urbana Conference",
+    date: "Dec 28 - Dec 31",
     time: "",
-    location: "",
-    image: "/event1.png"
-  },
-  {
-    id: 6,
-    title: "Event 224b9109",
-    date: "",
-    time: "",
-    location: "",
-    image: "/224b9109-4ad8-4533-926b-ece91c121f22.png"
+    location: "Phoenix, AZ",
+    image: "/1971102936-30a536de1d9a3c88178e1e1170d4818dfd5ac3271924621dff855dbc50735068-d.webp"
   }
 ];
 
@@ -137,46 +112,34 @@ const Events = () => {
       />
       
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 text-white overflow-hidden">
+      <section className="relative pt-24 pb-32 text-white overflow-hidden min-h-[70vh]">
         <img
           src="/Copy of _I0B7294.png"
           alt="Events Background"
           className="absolute inset-0 w-full h-full object-cover z-0"
           style={{ filter: 'brightness(0.5)', objectPosition: 'center 10%' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/80 via-[#244363]/40 to-transparent z-10" />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        <div className="absolute inset-0 bg-black/50 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/70 via-[#244363]/30 to-transparent z-10" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-4">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={containerVariants}
-            className="text-center"
+            className="text-center max-w-4xl"
+            style={{ transform: 'translateY(360px)' }}
           >
             <motion.h1 
               variants={itemVariants}
-              className="text-4xl md:text-6xl font-bold mb-6"
+              className="text-7xl md:text-8xl font-bold"
             >
               Church Events
             </motion.h1>
-            <div className="h-1 w-16 bg-[#d9b062] mx-auto my-4 rounded" />
-            <motion.p 
-              variants={itemVariants}
-              className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto"
-            >
-              Join us for worship, fellowship, and spiritual growth!
-            </motion.p>
-            <motion.div variants={itemVariants}>
-              <Link to="/plan-visit">
-                <Button className="bg-[#d9b062] text-[#244363] hover:bg-[#bfa05a] px-8 py-4 text-lg font-bold">
-                  Plan Your Visit
-                </Button>
-              </Link>
-            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Upcoming Events */}
+      {/* Weekly Events */}
       <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -189,7 +152,7 @@ const Events = () => {
               variants={itemVariants}
               className="text-3xl md:text-4xl font-bold text-center text-[#244363] mb-12"
             >
-              Upcoming Events
+              Weekly Events
             </motion.h2>
             <motion.div 
               variants={containerVariants}
@@ -273,15 +236,58 @@ const Events = () => {
         </div>
       </section>
 
-      {/* Past Events Carousel (restored) */}
+      {/* Past Events Grid */}
       <section className="py-16 bg-white border-t border-gray-200">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-[#244363] mb-8">
-            Past Events
-          </h2>
-          {Array.isArray(pastEvents) && pastEvents.length > 0 && (
-            <PastEventsCarousel events={pastEvents} />
-          )}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            <motion.h2 
+              variants={itemVariants}
+              className="text-3xl md:text-4xl font-bold text-center text-[#244363] mb-12"
+            >
+              Upcoming Events
+            </motion.h2>
+            <div className="max-w-7xl mx-auto border border-gray-300 rounded-lg p-8">
+              {/* Single row - 3 cards */}
+              <motion.div 
+                variants={containerVariants}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
+              >
+                {pastEvents.map((event, index) => (
+                  <motion.div 
+                    key={event.id} 
+                    variants={itemVariants}
+                  >
+                    <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-full">
+                      {/* Event Image */}
+                      <div className="w-full aspect-video bg-gray-200 flex items-center justify-center overflow-hidden">
+                        <img
+                          src={event.image || '/placeholder.svg'}
+                          alt={event.title}
+                          className="w-full h-full object-cover object-center"
+                        />
+                      </div>
+                      <div className="p-8 flex flex-col flex-1">
+                        <h3 className="text-2xl md:text-3xl font-bold text-black mb-4">{event.title}</h3>
+                        <div className="text-lg text-black mb-2">
+                          <span className="font-semibold">{event.date}</span> {event.time && <span className="text-gray-600">{event.time}</span>}
+                        </div>
+                        {event.location && (
+                          <div className="text-lg text-gray-600 mb-4">
+                            {event.location}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </section>
     </PageLayout>

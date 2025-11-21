@@ -87,14 +87,14 @@ const Hero = () => {
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          src="/video-output-6E4FF29B-CECD-494B-B7D3-9F8653926D7D-1.MP4"
+          src="/video-output-37BFB8D5-1DDB-4941-B6DD-EA6D6371FCDA-1 2.mov"
         />
         {/* Black overlay for text readability */}
         <div 
           className="absolute inset-0 w-full"
           style={{ 
             zIndex: 1,
-            backgroundColor: 'rgba(0,0,0,0.25)'
+            backgroundColor: 'rgba(0,0,0,0.7)'
           }}
         ></div>
         {/* Full-width bottom text banner */}

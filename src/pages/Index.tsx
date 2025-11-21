@@ -95,6 +95,62 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Stay Connected Section */}
+      <section className="bg-[#244363] py-8 px-4 md:px-0">
+        <div className="w-full mx-auto border border-gray-700 rounded-lg overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-[4fr_2fr] gap-0">
+            {/* Left: Two YouTube Videos Side by Side */}
+            <div className="bg-[#244363] p-10 flex flex-row gap-10 items-center justify-center">
+              {/* Video 1 - Nate Assefa | confession requires obedience */}
+              <div className="relative flex-1 aspect-video rounded overflow-hidden min-w-0">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/CP-rTFv-Dng"
+                  title="Nate Assefa | confession requires obedience"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full"
+                ></iframe>
+              </div>
+              {/* Video 2 - Dr Mamusha Fenta Pt 1 */}
+              <div className="relative flex-1 aspect-video rounded overflow-hidden min-w-0">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/hZewNwz5eZs"
+                  title="Dr Mamusha Fenta Pt 1"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full"
+                ></iframe>
+              </div>
+            </div>
+
+            {/* Right: Text and Buttons */}
+            <div className="bg-[#244363] p-6 md:p-8 flex flex-col justify-center text-white">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                Watch Last Week's Sermons!
+              </h2>
+              <p className="text-base md:text-lg text-gray-300 mb-6 leading-relaxed">
+                Watch last week's English and Amharic sermon!
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button className="bg-white text-black px-6 py-3 text-sm font-semibold rounded hover:bg-gray-200 transition-colors">
+                  WATCH NOW
+                </button>
+                <button className="bg-[#d9b062] text-black px-6 py-3 text-sm font-semibold rounded hover:bg-[#bfa05a] transition-colors">
+                  ON DEMAND
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <style>{`
         @keyframes sproutTreeTrunk {
           0% { stroke-dasharray: 0 100; opacity: 0; }
