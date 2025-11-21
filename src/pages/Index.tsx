@@ -51,7 +51,7 @@ const Index = () => {
         keywords={['church', 'Ethiopian', 'Eritrean', 'Triangle VA', 'Christian', 'worship', 'community', 'bilingual services']}
       />
       {/* Hero Section */}
-      <div className="pt-0 pb-0">
+      <div className="pb-0">
         <Hero />
       </div>
 
@@ -139,9 +139,14 @@ const Index = () => {
                 Watch last week's English and Amharic sermon!
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                <button className="bg-white text-black px-6 py-3 text-sm font-semibold rounded hover:bg-gray-200 transition-colors">
+                <a 
+                  href="https://www.youtube.com/@Livinghopegenchurch" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-white text-black px-6 py-3 text-sm font-semibold rounded hover:bg-gray-200 transition-colors text-center"
+                >
                   WATCH NOW
-                </button>
+                </a>
               </div>
             </div>
           </div>

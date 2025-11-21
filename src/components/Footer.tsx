@@ -31,7 +31,7 @@ const Footer = ({ tall = false }: FooterProps) => {
         />
         <div className="flex flex-col md:flex-row justify-between items-start md:items-stretch text-center md:text-left divide-y-0 md:divide-x md:divide-white/20 pl-0 md:pl-24">
           {/* Left: About */}
-          <div className="flex-1 flex flex-col items-center md:items-start pb-10 md:pb-0 md:pr-10">
+          <div className="flex-1 flex flex-col items-center md:items-start pb-10 md:pb-0 md:pr-10 w-full md:w-auto">
             <h3 className="text-base font-bold tracking-widest mb-4 text-white uppercase">About</h3>
             <ul className="space-y-2 text-gray-300">
               <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
@@ -41,25 +41,25 @@ const Footer = ({ tall = false }: FooterProps) => {
             </ul>
           </div>
           {/* Center: Church Info */}
-          <div className="flex-1 flex flex-col items-center justify-center px-0 md:px-10 border-white/20 md:border-x">
-            <h2 className="text-2xl font-extrabold mb-2 tracking-wide">LIVING HOPE FOR GENERATIONS CHURCH</h2>
-            <p className="font-semibold text-white mb-4">A spiritual home for families along the 95-Highway Corridor.</p>
+          <div className="flex-1 flex flex-col items-center justify-center px-0 md:px-10 border-white/20 md:border-x w-full md:w-auto">
+            <h2 className="text-2xl font-extrabold mb-2 tracking-wide text-center">LIVING HOPE FOR<br />GENERATIONS LUTHERAN CHURCH</h2>
+            <p className="font-semibold text-white mb-4 text-center">A spiritual home for families along the 95-Highway Corridor.</p>
             <div className="flex items-center justify-center space-x-4 mb-4">
               <a href="https://www.instagram.com/livinghopegenchurch?igsh=MWs4dXdnZ28xOHBidw==" target="_blank" rel="noopener noreferrer" className="hover:text-[#d9b062] transition-colors"><Instagram size={22} /></a>
               <a href="https://www.facebook.com/61574837435090/about/?_rdr" target="_blank" rel="noopener noreferrer" className="hover:text-[#d9b062] transition-colors"><Facebook size={22} /></a>
               <a href="https://www.tiktok.com/@livinghopegenchurch" target="_blank" rel="noopener noreferrer" className="hover:text-[#d9b062] transition-colors"><TikTokIcon /></a>
               <a href="https://www.youtube.com/@Livinghopegenchurch" target="_blank" rel="noopener noreferrer" className="hover:text-[#d9b062] transition-colors"><YouTubeIcon /></a>
             </div>
-            <address className="not-italic text-gray-300 mb-1 leading-relaxed">
+            <address className="not-italic text-gray-300 mb-1 leading-relaxed text-center md:text-left">
               3637 Graham Park Rd, Triangle, VA 22172
             </address>
-            <a href="mailto:info@livinghopegenchurch.org" className="text-gray-300 hover:text-white transition-colors block mb-1">info@livinghopegenchurch.org</a>
-            <a href="tel:+15408739903" className="text-gray-300 hover:text-white transition-colors block">+1 540-873-9903</a>
+            <a href="mailto:info@livinghopegenchurch.org" className="text-gray-300 hover:text-white transition-colors block mb-1 text-center md:text-left">info@livinghopegenchurch.org</a>
+            <a href="tel:+15408739903" className="text-gray-300 hover:text-white transition-colors block text-center md:text-left">+1 540-873-9903</a>
           </div>
           {/* Right: Get Connected */}
-          <div className="flex-1 flex flex-col items-center md:items-end pt-10 md:pt-0 md:pl-10">
-            <h3 className="text-base font-bold tracking-widest mb-4 text-white uppercase">Get Connected</h3>
-            <ul className="space-y-2 text-gray-300">
+          <div className="flex-1 flex flex-col items-center md:items-end pt-10 md:pt-0 md:pl-10 w-full md:w-auto">
+            <h3 className="text-base font-bold tracking-widest mb-4 text-white uppercase text-center md:text-right">Get Connected</h3>
+            <ul className="space-y-2 text-gray-300 text-center md:text-right">
               <li><Link to="/ministries" className="hover:text-white transition-colors">Small Groups</Link></li>
               <li><Link to="/plan-visit" className="hover:text-white transition-colors">Plan Your Visit</Link></li>
               <li><a href="https://give.tithe.ly/?formId=b6bf17e5-ad05-4f8f-bb12-55d1da8b3ce3&context=modal" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Give</a></li>

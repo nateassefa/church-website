@@ -80,6 +80,16 @@ const Ministries = () => {
 
   return (
     <PageLayout>
+      <style>{`
+        .hero-text-mobile {
+          transform: translateY(120px);
+        }
+        @media (min-width: 768px) {
+          .hero-text-mobile {
+            transform: translateY(360px);
+          }
+        }
+      `}</style>
       <SEO 
         title="Ministries - Living Hope for Generations Church" 
         description="Explore our various ministries at Living Hope for Generations Church including worship services, Bible study groups, youth ministry, and community outreach."
@@ -88,7 +98,7 @@ const Ministries = () => {
       
       <main>
         {/* Hero Section with Background Image */}
-        <section className="relative pt-24 pb-32 text-white overflow-hidden min-h-[70vh]">
+        <section className="relative pt-24 pb-16 sm:pb-32 text-white overflow-hidden min-h-[85vh] sm:min-h-[70vh]">
           <img
             src="/WhatsApp Image 2025-03-29 at 14.31.16.png"
             alt="Ministries Background"
@@ -98,19 +108,18 @@ const Ministries = () => {
           />
           <div className="absolute inset-0 bg-black/60 z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/80 via-[#244363]/40 to-transparent z-10" />
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-8 sm:pb-4">
             <motion.div
               initial="hidden"
               animate="visible"
               variants={containerVariants}
-              className="text-center max-w-4xl"
-              style={{ transform: 'translateY(360px)' }}
+              className="text-center max-w-4xl hero-text-mobile"
             >
               <motion.h1
                 variants={itemVariants}
                 className="text-7xl md:text-8xl font-bold"
               >
-                Our Ministries
+                Ministries
               </motion.h1>
             </motion.div>
           </div>

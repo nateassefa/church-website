@@ -26,13 +26,23 @@ const About = () => {
 
   return (
     <PageLayout>
+      <style>{`
+        .hero-text-mobile {
+          transform: translateY(120px);
+        }
+        @media (min-width: 768px) {
+          .hero-text-mobile {
+            transform: translateY(360px);
+          }
+        }
+      `}</style>
       <SEO 
         title="About Us - Living Hope Church" 
         description="Learn about Living Hope for Generations Church, our mission, vision, and core values. A spiritual home for Ethiopian and Eritrean families."
         keywords={['about', 'mission', 'vision', 'values', 'Ethiopian church', 'Eritrean church', 'Christian community']}
       />
       
-      <div className="relative pt-24 pb-32 text-white overflow-hidden min-h-[70vh]">
+      <div className="relative pt-24 pb-16 sm:pb-32 text-white overflow-hidden min-h-[85vh] sm:min-h-[70vh]">
         {/* Hero background image */}
         <img 
           src="/DSC00310.jpg" 
@@ -44,13 +54,12 @@ const About = () => {
         {/* Overlay for readability */}
         <div className="absolute inset-0 bg-black/50 z-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/70 via-[#244363]/30 to-transparent z-10" />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-4">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-8 sm:pb-4">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={containerVariants}
-            className="text-center max-w-4xl"
-            style={{ transform: 'translateY(360px)' }}
+            className="text-center max-w-4xl hero-text-mobile"
           >
             <motion.h1 
               className="text-7xl md:text-8xl font-bold"

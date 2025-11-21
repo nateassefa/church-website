@@ -3,11 +3,18 @@ import { cn } from '@/lib/utils';
 import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,11 +61,11 @@ const Navbar = () => {
         transition: { duration: 0.3 }
       }}
     >
-      <div className="w-full px-4 sm:px-6 lg:px-8 mx-auto bg-transparent">
-        <div className="flex items-center justify-between h-16 bg-transparent">
-          <div className="flex-shrink-0 bg-transparent">
-            <Link to="/" className="flex items-center bg-transparent -ml-8 mt-16">
-              <img src="/church_logo_lutheran.png" alt="Living Hope Logo" className="h-52 w-auto object-contain" loading="eager" fetchPriority="high" />
+      <div className="w-full px-4 sm:px-6 lg:px-8 mx-auto bg-transparent overflow-visible">
+        <div className="flex items-center justify-between h-16 bg-transparent overflow-visible">
+          <div className="flex-shrink-0 bg-transparent overflow-visible">
+            <Link to="/" className="flex items-center bg-transparent -ml-4 md:-ml-8 mt-16 md:mt-16">
+              <img src="/church_logo_lutheran.png" alt="Living Hope Logo" className="h-40 md:h-52 w-auto object-contain max-w-[280px] md:max-w-none" loading="eager" fetchPriority="high" />
             </Link>
           </div>
           
@@ -89,12 +96,38 @@ const Navbar = () => {
               >
                 Ministries
               </Link>
-              <Link 
-                to="/events"
-                className="px-3 py-2 text-lg font-semibold transition-colors hover:text-[#d9b062] text-white"
+              <div
+                onMouseEnter={() => setIsDropdownOpen(true)}
+                onMouseLeave={() => setIsDropdownOpen(false)}
               >
-                Events
-              </Link>
+                <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
+                  <DropdownMenuTrigger className="px-3 py-2 text-lg font-semibold transition-colors hover:text-[#d9b062] text-white focus:outline-none">
+                    Events
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent 
+                    className="bg-black border-gray-700"
+                    onMouseEnter={() => setIsDropdownOpen(true)}
+                    onMouseLeave={() => setIsDropdownOpen(false)}
+                  >
+                    <DropdownMenuItem asChild>
+                      <Link 
+                        to="/events"
+                        className="cursor-pointer text-white hover:text-[#d9b062]"
+                      >
+                        Upcoming Events
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link 
+                        to="/small-groups"
+                        className="cursor-pointer text-white hover:text-[#d9b062]"
+                      >
+                        Small Groups
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
               <Link 
                 to="/plan-visit"
                 className="px-3 py-2 text-lg font-semibold transition-colors hover:text-[#d9b062] text-white"
@@ -179,6 +212,16 @@ const Navbar = () => {
             }}
           >
             Events
+          </Link>
+          <Link 
+            to="/small-groups"
+            className="block px-3 py-3 rounded-md text-lg font-semibold text-white hover:bg-[#244363]/80 pl-8"
+            onClick={() => {
+              setIsMenuOpen(false);
+              window.scrollTo(0, 0);
+            }}
+          >
+            Small Groups
           </Link>
           <Link 
             to="/plan-visit"

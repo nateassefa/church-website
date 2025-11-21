@@ -9,6 +9,7 @@ import About from "./pages/About";
 import StatementOfFaith from "./pages/StatementOfFaith";
 import Ministries from "./pages/Ministries";
 import Events from "./pages/Events";
+import SmallGroups from "./pages/SmallGroups";
 import PlanVisit from "./pages/PlanVisit";
 import Give from "./pages/Give";
 import NotFound from "./pages/NotFound";
@@ -39,6 +40,7 @@ const App = () => {
             <Route path="/statement-of-faith" element={<StatementOfFaith />} />
             <Route path="/ministries" element={<Ministries />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/small-groups" element={<SmallGroups />} />
             <Route path="/plan-visit" element={<PlanVisit />} />
             <Route path="/give" element={<Give />} />
             <Route path="/careers" element={<Careers />} />

@@ -98,6 +98,16 @@ const PlanVisit = () => {
 
   return (
     <PageLayout>
+      <style>{`
+        .hero-text-mobile {
+          transform: translateY(120px);
+        }
+        @media (min-width: 768px) {
+          .hero-text-mobile {
+            transform: translateY(360px);
+          }
+        }
+      `}</style>
       <SEO 
         title="Plan Your Visit - Living Hope for Generations Church" 
         description="Plan your visit to Living Hope for Generations Church. Find service times, location, what to expect, and visitor information."
@@ -105,7 +115,7 @@ const PlanVisit = () => {
       />
       
       {/* Hero Section */}
-      <section className="relative pt-24 pb-32 text-white overflow-hidden min-h-[70vh]">
+      <section className="relative pt-24 pb-16 sm:pb-32 text-white overflow-hidden min-h-[85vh] sm:min-h-[70vh]">
         <img
           src="/DSC00270.png"
           alt="Plan Your Visit Background"
@@ -116,13 +126,12 @@ const PlanVisit = () => {
         />
         <div className="absolute inset-0 bg-black/50 z-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/70 via-[#244363]/30 to-transparent z-10" />
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-4">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-8 sm:pb-4">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={containerVariants}
-            className="text-center max-w-4xl"
-            style={{ transform: 'translateY(360px)' }}
+            className="text-center max-w-4xl hero-text-mobile"
           >
             <motion.h1
               variants={itemVariants}
@@ -215,13 +224,13 @@ const PlanVisit = () => {
       <FAQ />
 
       {/* Stay Connected Section */}
-      <section className="bg-[#244363] py-8 px-4 md:px-0">
+      <section className="bg-[#244363] py-6 sm:py-8 px-4 sm:px-6 md:px-0">
         <div className="w-full mx-auto border border-gray-700 rounded-lg overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-[4fr_2fr] gap-0">
             {/* Left: Two YouTube Videos Side by Side */}
-            <div className="bg-[#244363] p-10 flex flex-row gap-10 items-center justify-center">
+            <div className="bg-[#244363] p-4 sm:p-6 lg:p-10 flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-10 items-center justify-center">
               {/* Video 1 - Nate Assefa | confession requires obedience */}
-              <div className="relative flex-1 aspect-video rounded overflow-hidden min-w-0">
+              <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0">
                 <iframe
                   width="100%"
                   height="100%"
@@ -234,7 +243,7 @@ const PlanVisit = () => {
                 ></iframe>
               </div>
               {/* Video 2 - Dr Mamusha Fenta Pt 1 */}
-              <div className="relative flex-1 aspect-video rounded overflow-hidden min-w-0">
+              <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0">
                 <iframe
                   width="100%"
                   height="100%"
@@ -249,17 +258,22 @@ const PlanVisit = () => {
             </div>
 
             {/* Right: Text and Buttons */}
-            <div className="bg-[#244363] p-6 md:p-8 flex flex-col justify-center text-white">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">
+            <div className="bg-[#244363] p-6 sm:p-8 flex flex-col justify-center text-white text-center lg:text-left">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4">
                 Watch Last Week's Sermons!
               </h2>
-              <p className="text-base md:text-lg text-gray-300 mb-6 leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-4 sm:mb-6 leading-relaxed">
                 Watch last week's English and Amharic sermon!
               </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <button className="bg-white text-black px-6 py-3 text-sm font-semibold rounded hover:bg-gray-200 transition-colors">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                <a 
+                  href="https://www.youtube.com/@Livinghopegenchurch" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-white text-black px-6 py-3 text-sm font-semibold rounded hover:bg-gray-200 transition-colors text-center"
+                >
                   WATCH NOW
-                </button>
+                </a>
               </div>
             </div>
           </div>

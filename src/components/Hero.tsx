@@ -74,7 +74,7 @@ const Hero = () => {
 
   return (
     <motion.div 
-      className="relative mt-16 md:mt-0 w-full"
+      className="relative w-full"
       initial="hidden" 
       animate="visible" 
       variants={containerVariants}
