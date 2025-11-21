@@ -23,7 +23,7 @@ const Footer = ({ tall = false }: FooterProps) => {
     <footer className={`bg-[#4c3219] text-white w-full ${tall ? 'pt-16 pb-8' : 'pt-16 pb-8'}`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <img
-          src="/church_logo_white_text (1).png"
+          src="/church_logo_lutheran.png"
           alt="Living Hope for Generations Church Logo"
           loading="lazy"
           decoding="async"

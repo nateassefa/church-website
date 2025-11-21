@@ -97,7 +97,46 @@ const Hero = () => {
             backgroundColor: 'rgba(0,0,0,0.7)'
           }}
         ></div>
-        {/* Full-width bottom text banner */}
+        
+        {/* Text Overlay Content */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 z-10">
+          <motion.div
+            variants={itemVariants}
+            className="max-w-4xl mx-auto w-full"
+          >
+            {/* Large WELCOME text */}
+            <motion.h1
+              variants={itemVariants}
+              className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-8 sm:mb-12"
+            >
+              WELCOME
+            </motion.h1>
+            
+            {/* Buttons */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full"
+            >
+              {/* Plan a Visit Button */}
+              <Link to="/plan-visit" className="w-full sm:w-auto">
+                <Button className="bg-[#d9b062] hover:bg-[#bfa05a] text-white px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-semibold rounded-md shadow-lg transition-colors w-full sm:w-auto">
+                  PLAN A VISIT
+                </Button>
+              </Link>
+              
+              {/* Get Directions Link */}
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=3637+Graham+Park+Rd,+Triangle,+VA+22172"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 text-white text-base sm:text-lg font-semibold hover:text-[#d9b062] transition-colors bg-black/30 sm:bg-transparent px-4 py-3 sm:px-0 sm:py-0 rounded-md sm:rounded-none w-full sm:w-auto"
+              >
+                GET DIRECTIONS
+                <MapPin size={18} className="sm:w-5 sm:h-5" />
+              </a>
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
       <style>{`@keyframes blinker { 50% { opacity: 0; } }`}</style>
     </motion.div>

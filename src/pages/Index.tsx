@@ -56,26 +56,26 @@ const Index = () => {
       </div>
 
       {/* Centered gratitude banner (replaces countdown) */}
-      <section className="bg-gray-100 py-6 px-4 md:px-0">
+      <section className="bg-gray-100 py-6 sm:py-8 px-4 sm:px-6 md:px-0">
         <div className="max-w-3xl mx-auto flex flex-col items-center justify-center text-center">
           {/* Lottie Animated Tree */}
-          <div className="mb-4 flex items-center justify-center">
-            <Player autoplay loop animationData={treeAnimation} style={{ width: '192px', height: '192px' }} />
+          <div className="mb-4 flex items-center justify-center w-[160px] h-[160px] sm:w-[192px] sm:h-[192px]">
+            <Player autoplay loop animationData={treeAnimation} style={{ width: '100%', height: '100%' }} />
           </div>
-          <div className="text-[#223046] text-xl md:text-2xl font-medium mb-1">We Are So Grateful Today That God Loves Us</div>
-          <div className="text-[#223046] text-xl md:text-2xl font-medium">Just The Way We Are.</div>
+          <div className="text-[#223046] text-lg sm:text-xl md:text-2xl font-medium mb-1 px-2">We Are So Grateful Today That God Loves Us</div>
+          <div className="text-[#223046] text-lg sm:text-xl md:text-2xl font-medium px-2">Just The Way We Are.</div>
         </div>
       </section>
 
       {/* About/Welcome Section */}
-      <section className="bg-white py-16 px-4 md:px-0">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <section className="bg-white py-12 sm:py-16 px-4 sm:px-6 md:px-0">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
           {/* Left: About/Welcome Text */}
-          <div className="flex flex-col items-start">
-            <span className="text-[#d9b062] font-semibold text-lg mb-2">Welcome to</span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#223046]">Living Hope for Generations Lutheran Church</h2>
-            <p className="text-lg text-[#223046] mb-6 opacity-90">
-              A vibrant church where generations and cultures grow together in Christ and live out the Gospel.<br/>
+          <div className="flex flex-col items-start text-center md:text-left">
+            <span className="text-[#d9b062] font-semibold text-base sm:text-lg mb-2">Welcome to</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-[#223046]">Living Hope for Generations Lutheran Church</h2>
+            <p className="text-base sm:text-lg text-[#223046] mb-6 opacity-90 leading-relaxed">
+              A vibrant church where generations and cultures grow together in Christ and live out the Gospel.<br className="hidden sm:block"/>
               We are especially committed to reaching second-generation children, youth, and young adults with the Gospel in ways that reflect their language, culture, and spiritual needs.
             </p>
           </div>
@@ -97,13 +97,13 @@ const Index = () => {
       </section>
 
       {/* Stay Connected Section */}
-      <section className="bg-[#244363] py-8 px-4 md:px-0">
+      <section className="bg-[#244363] py-6 sm:py-8 px-4 sm:px-6 md:px-0">
         <div className="w-full mx-auto border border-gray-700 rounded-lg overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-[4fr_2fr] gap-0">
             {/* Left: Two YouTube Videos Side by Side */}
-            <div className="bg-[#244363] p-10 flex flex-row gap-10 items-center justify-center">
+            <div className="bg-[#244363] p-4 sm:p-6 lg:p-10 flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-10 items-center justify-center">
               {/* Video 1 - Nate Assefa | confession requires obedience */}
-              <div className="relative flex-1 aspect-video rounded overflow-hidden min-w-0">
+              <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0">
                 <iframe
                   width="100%"
                   height="100%"
@@ -116,7 +116,7 @@ const Index = () => {
                 ></iframe>
               </div>
               {/* Video 2 - Dr Mamusha Fenta Pt 1 */}
-              <div className="relative flex-1 aspect-video rounded overflow-hidden min-w-0">
+              <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0">
                 <iframe
                   width="100%"
                   height="100%"
@@ -131,14 +131,14 @@ const Index = () => {
             </div>
 
             {/* Right: Text and Buttons */}
-            <div className="bg-[#244363] p-6 md:p-8 flex flex-col justify-center text-white">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">
+            <div className="bg-[#244363] p-6 sm:p-8 flex flex-col justify-center text-white text-center lg:text-left">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4">
                 Watch Last Week's Sermons!
               </h2>
-              <p className="text-base md:text-lg text-gray-300 mb-6 leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-4 sm:mb-6 leading-relaxed">
                 Watch last week's English and Amharic sermon!
               </p>
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
                 <button className="bg-white text-black px-6 py-3 text-sm font-semibold rounded hover:bg-gray-200 transition-colors">
                   WATCH NOW
                 </button>
@@ -150,7 +150,7 @@ const Index = () => {
 
       {/* Image Gallery Section */}
       <section className="w-full">
-        <div className="grid grid-cols-4 gap-0">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-0">
           {/* Panel 1 */}
           <div className="relative w-full aspect-[4/3] overflow-hidden">
             <img
