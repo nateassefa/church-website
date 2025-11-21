@@ -142,11 +142,54 @@ const Index = () => {
                 <button className="bg-white text-black px-6 py-3 text-sm font-semibold rounded hover:bg-gray-200 transition-colors">
                   WATCH NOW
                 </button>
-                <button className="bg-[#d9b062] text-black px-6 py-3 text-sm font-semibold rounded hover:bg-[#bfa05a] transition-colors">
-                  ON DEMAND
-                </button>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Image Gallery Section */}
+      <section className="w-full">
+        <div className="grid grid-cols-4 gap-0">
+          {/* Panel 1 */}
+          <div className="relative w-full aspect-[4/3] overflow-hidden">
+            <img
+              src="/DSC00009.jpg"
+              alt="Church Community"
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          {/* Panel 2 */}
+          <div className="relative w-full aspect-[4/3] overflow-hidden">
+            <img
+              src="/Copy of _I0B7291.png"
+              alt="Worship Service"
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          {/* Panel 3 */}
+          <div className="relative w-full aspect-[4/3] overflow-hidden">
+            <img
+              src="/PHOTO-2025-03-29-14-31-16.jpg"
+              alt="Community Gathering"
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          {/* Panel 4 */}
+          <div className="relative w-full aspect-[4/3] overflow-hidden">
+            <img
+              src="/DSC00310.jpg"
+              alt="Church Family"
+              className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
       </section>

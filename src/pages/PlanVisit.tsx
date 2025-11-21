@@ -111,6 +111,8 @@ const PlanVisit = () => {
           alt="Plan Your Visit Background"
           className="absolute inset-0 w-full h-full object-cover z-0"
           style={{ objectPosition: '5% 40%' }}
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-black/50 z-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/70 via-[#244363]/30 to-transparent z-10" />
@@ -257,9 +259,6 @@ const PlanVisit = () => {
               <div className="flex flex-col sm:flex-row gap-3">
                 <button className="bg-white text-black px-6 py-3 text-sm font-semibold rounded hover:bg-gray-200 transition-colors">
                   WATCH NOW
-                </button>
-                <button className="bg-[#d9b062] text-black px-6 py-3 text-sm font-semibold rounded hover:bg-[#bfa05a] transition-colors">
-                  ON DEMAND
                 </button>
               </div>
             </div>

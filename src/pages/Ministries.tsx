@@ -93,6 +93,8 @@ const Ministries = () => {
             src="/WhatsApp Image 2025-03-29 at 14.31.16.png"
             alt="Ministries Background"
             className="absolute inset-0 w-full h-full object-cover object-[center_40%] z-0"
+            fetchPriority="high"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-black/60 z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/80 via-[#244363]/40 to-transparent z-10" />
@@ -155,6 +157,8 @@ const Ministries = () => {
                               : "/placeholder.svg"
                   }
                   alt={ministry.title}
+                  loading="lazy"
+                  decoding="async"
                   className={`absolute inset-0 w-full h-full object-cover ${
                     ministry.title === "Bilingual Worship Services"
                       ? ''

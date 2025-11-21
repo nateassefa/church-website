@@ -25,6 +25,8 @@ const Footer = ({ tall = false }: FooterProps) => {
         <img
           src="/church_logo_white_text (1).png"
           alt="Living Hope for Generations Church Logo"
+          loading="lazy"
+          decoding="async"
           className="absolute -left-[450px] top-1/2 -translate-y-1/2 h-[28rem] w-auto object-contain"
         />
         <div className="flex flex-col md:flex-row justify-between items-start md:items-stretch text-center md:text-left divide-y-0 md:divide-x md:divide-white/20 pl-0 md:pl-24">

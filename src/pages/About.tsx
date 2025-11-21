@@ -37,7 +37,9 @@ const About = () => {
         <img 
           src="/DSC00310.jpg" 
           alt="Living Hope for Generations Church family" 
-          className="absolute inset-0 w-full h-full object-cover object-[center_25%] z-0" 
+          className="absolute inset-0 w-full h-full object-cover object-[center_25%] z-0"
+          fetchPriority="high"
+          decoding="async"
         />
         {/* Overlay for readability */}
         <div className="absolute inset-0 bg-black/50 z-10" />
@@ -74,7 +76,9 @@ const About = () => {
                 <img 
                   src="/image (3).jpg" 
                   alt="Living Hope for Generations Church family" 
-                  className="w-full h-full object-cover object-center" 
+                  className="w-full h-full object-cover object-center"
+                  loading="lazy"
+                  decoding="async" 
                 />
               </div>
             </motion.div>

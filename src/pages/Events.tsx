@@ -117,6 +117,8 @@ const Events = () => {
           src="/Copy of _I0B7294.png"
           alt="Events Background"
           className="absolute inset-0 w-full h-full object-cover z-0"
+          fetchPriority="high"
+          decoding="async"
           style={{ filter: 'brightness(0.5)', objectPosition: 'center 10%' }}
         />
         <div className="absolute inset-0 bg-black/50 z-10" />
@@ -181,6 +183,8 @@ const Events = () => {
                           }
                           alt={event.title}
                           className={`w-full h-full object-cover object-center`}
+                          loading="lazy"
+                          decoding="async"
                         />
                       </div>
                       <div className="p-12 flex flex-col flex-1">
