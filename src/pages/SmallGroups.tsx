@@ -13,6 +13,21 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+// Helper to encode image paths with special characters
+const encodeImagePath = (path: string): string => {
+  if (!path) return '';
+  // For paths starting with /, encode only the filename part
+  if (path.startsWith('/')) {
+    const lastSlashIndex = path.lastIndexOf('/');
+    const dirPath = path.substring(0, lastSlashIndex + 1); // Keep leading slash
+    const filename = path.substring(lastSlashIndex + 1);
+    // Encode only the filename to handle spaces, commas, colons, etc.
+    return dirPath + encodeURIComponent(filename);
+  }
+  // If no leading slash, encode the whole path
+  return encodeURIComponent(path);
+};
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -41,7 +56,7 @@ const upcomingEvents = [
       time: "8:30–10:30 AM",
       location: "3637 Graham Park Road, Triangle VA 22172 (Amharic & English)",
       category: "Worship",
-      image: "/Copy of _I0B7303.png",
+      image: "/public.png",
       featured: true,
       when: "weekly",
       region: "church",
@@ -60,7 +75,7 @@ const upcomingEvents = [
       time: "8:00 PM",
       location: "Online",
       category: "Bible Study",
-      image: "/nema.png",
+      image: "/ChatGPT Image Nov 21, 2025, 05_05_29 PM.png",
       when: "weekly",
       region: "online",
       campus: "online",
@@ -77,7 +92,7 @@ const upcomingEvents = [
       date: "Directly after Sunday Service",
       time: "Directly after Sunday Service",
       category: "Fellowship",
-      image: "/IMG_1210.jpg",
+      image: "/37ef91a4-a452-4e5f-a4de-f260106e9b17.png",
       when: "weekly",
       region: "church",
       campus: "main",
@@ -95,7 +110,7 @@ const upcomingEvents = [
       time: "6:00-8:00 PM",
       location: "Dumfries, VA",
       category: "Bible Study",
-      image: "",
+      image: "/ChatGPT Image Nov 21, 2025, 04_27_38 PM.png",
       when: "weekly",
       region: "dumfries",
       campus: "dumfries",
@@ -113,7 +128,7 @@ const upcomingEvents = [
       time: "7:00 PM",
       location: "Woodbridge, VA",
       category: "Bible Study",
-      image: "",
+      image: "/ChatGPT Image Nov 21, 2025, 04_49_12 PM.png",
       when: "weekly",
       region: "woodbridge",
       campus: "woodbridge",
@@ -131,7 +146,7 @@ const upcomingEvents = [
       time: "3:00-5:00 PM",
       location: "Fredericksburg, VA",
       category: "Bible Study",
-      image: "",
+      image: "/ChatGPT Image Nov 21, 2025, 04_32_25 PM.png",
       when: "weekly",
       region: "fredericksburg",
       campus: "fredericksburg",
@@ -149,7 +164,7 @@ const upcomingEvents = [
       time: "6:00-8:00 PM",
       location: "Stafford, VA",
       category: "Bible Study",
-      image: "",
+      image: "/ChatGPT Image Nov 21, 2025, 04_36_33 PM.png",
       when: "weekly",
       region: "stafford",
       campus: "stafford",
@@ -251,7 +266,7 @@ const SmallGroups = () => {
           src="/Copy of _I0B7294.png"
           alt="Small Groups Background"
           className="absolute inset-0 w-full h-full object-cover z-0"
-          fetchPriority="high"
+          fetchpriority="high"
           decoding="async"
           style={{ filter: 'brightness(0.5)', objectPosition: 'center 10%' }}
         />
@@ -285,103 +300,10 @@ const SmallGroups = () => {
           >
             <motion.h2 
               variants={itemVariants}
-              className="text-3xl md:text-4xl font-bold text-center text-[#244363] mb-4"
+              className="text-3xl md:text-4xl font-bold text-center text-[#244363] mb-8"
             >
               Weekly Events
             </motion.h2>
-            
-            {/* Search and Filter Bar */}
-            <motion.div
-              variants={itemVariants}
-              className="mb-8 max-w-7xl mx-auto"
-            >
-              <div className="flex flex-wrap gap-3 items-center justify-center">
-                {/* Location */}
-                <Select 
-                  value={regionFilter || "any"} 
-                  onValueChange={(value) => {
-                    setRegionFilter(value || "any");
-                  }}
-                >
-                  <SelectTrigger className="w-[140px] bg-white border-gray-300 rounded-md">
-                    <SelectValue placeholder="Location" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="any">Location</SelectItem>
-                    <SelectItem value="church">Church</SelectItem>
-                    <SelectItem value="dumfries">Dumfries</SelectItem>
-                    <SelectItem value="woodbridge">Woodbridge</SelectItem>
-                    <SelectItem value="fredericksburg">Fredericksburg</SelectItem>
-                    <SelectItem value="stafford">Stafford</SelectItem>
-                    <SelectItem value="online">Online</SelectItem>
-                  </SelectContent>
-                </Select>
-                
-                {/* Location Type */}
-                <Select 
-                  value={locationTypeFilter || "any"} 
-                  onValueChange={(value) => {
-                    setLocationTypeFilter(value || "any");
-                  }}
-                >
-                  <SelectTrigger className="w-[180px] bg-white border-gray-300 rounded-md">
-                    <SelectValue placeholder="Online or In Person" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="any">Online or In Person</SelectItem>
-                    <SelectItem value="online">Online</SelectItem>
-                    <SelectItem value="in-person">In Person</SelectItem>
-                  </SelectContent>
-                </Select>
-                
-                {/* Age Group */}
-                <Select 
-                  value={ageGroupFilter || "any"} 
-                  onValueChange={(value) => {
-                    setAgeGroupFilter(value);
-                  }}
-                >
-                  <SelectTrigger className="w-[140px] bg-white border-gray-300 rounded-md">
-                    <SelectValue placeholder="Age" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="any">Age</SelectItem>
-                    <SelectItem value="young-adult">Young Adult</SelectItem>
-                    <SelectItem value="adult">Adult</SelectItem>
-                    <SelectItem value="all">All Ages</SelectItem>
-                    <SelectItem value="children">Children</SelectItem>
-                    <SelectItem value="senior">Senior</SelectItem>
-                  </SelectContent>
-                </Select>
-                
-                {/* Language */}
-                <Select 
-                  value={languageFilter || "any"} 
-                  onValueChange={(value) => {
-                    setLanguageFilter(value || "any");
-                  }}
-                >
-                  <SelectTrigger className="w-[150px] bg-white border-gray-300 rounded-md">
-                    <SelectValue placeholder="Language" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="any">Language</SelectItem>
-                    <SelectItem value="english">English</SelectItem>
-                    <SelectItem value="amharic">Amharic</SelectItem>
-                    <SelectItem value="bilingual">Bilingual</SelectItem>
-                  </SelectContent>
-                </Select>
-                
-                {/* Reset Button */}
-                <Button
-                  onClick={resetFilters}
-                  variant="outline"
-                  className="bg-white border-gray-300 rounded-md"
-                >
-                  Reset Filters
-                </Button>
-              </div>
-            </motion.div>
             
             <motion.div 
               variants={containerVariants}
@@ -410,14 +332,39 @@ const SmallGroups = () => {
                       <div className="absolute inset-0 bg-gray-800">
                         {event.image && event.image.trim() !== '' ? (
                           <img
-                            src={event.image.replace(/ /g, '%20')}
+                            key={`${event.id}-${event.image}`}
+                            src={event.image}
                             alt={event.title}
-                            className="absolute inset-0 w-full h-full object-cover"
+                            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
                             loading="lazy"
                             decoding="async"
                             onError={(e) => {
-                              // Hide image on error, gray background will show through
-                              e.currentTarget.style.opacity = '0';
+                              // Log detailed error information to help debug
+                              const imgElement = e.currentTarget;
+                              // Try encoded version as fallback
+                              const encodedPath = encodeImagePath(event.image);
+                              console.error('Image failed to load:', {
+                                eventId: event.id,
+                                eventTitle: event.title,
+                                imagePath: event.image,
+                                encodedPath: encodedPath,
+                                attemptedSrc: imgElement.src,
+                                currentSrc: imgElement.currentSrc,
+                                fullURL: window.location.origin + event.image,
+                                encodedURL: window.location.origin + encodedPath
+                              });
+                              // Try encoded version if direct path failed
+                              if (imgElement.src !== window.location.origin + encodedPath) {
+                                imgElement.src = encodedPath;
+                              } else {
+                                // Hide image on error, gray background will show through
+                                imgElement.style.display = 'none';
+                              }
+                            }}
+                            onLoad={(e) => {
+                              // Ensure image is visible when loaded
+                              e.currentTarget.style.display = 'block';
+                              e.currentTarget.style.opacity = '1';
                             }}
                           />
                         ) : null}

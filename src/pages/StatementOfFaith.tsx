@@ -106,7 +106,7 @@ const StatementOfFaith = () => {
             src="/DSC00287.JPG" 
             alt="Statement of Faith Background" 
             className="absolute inset-0 w-full h-full object-cover object-[center_35%] z-0"
-            fetchPriority="high"
+            fetchpriority="high"
             decoding="async" 
           />
           <div className="absolute inset-0 bg-black/50 z-10" />

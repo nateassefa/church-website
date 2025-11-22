@@ -76,7 +76,7 @@ const Events = () => {
           src="/Copy of _I0B7294.png"
           alt="Events Background"
           className="absolute inset-0 w-full h-full object-cover z-0"
-          fetchPriority="high"
+          fetchpriority="high"
           decoding="async"
           style={{ filter: 'brightness(0.5)', objectPosition: 'center 10%' }}
         />

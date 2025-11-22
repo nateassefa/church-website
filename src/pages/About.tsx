@@ -48,7 +48,7 @@ const About = () => {
           src="/DSC00310.jpg" 
           alt="Living Hope for Generations Church family" 
           className="absolute inset-0 w-full h-full object-cover object-[center_25%] z-0"
-          fetchPriority="high"
+          fetchpriority="high"
           decoding="async"
         />
         {/* Overlay for readability */}

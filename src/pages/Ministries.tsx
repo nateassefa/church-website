@@ -103,7 +103,7 @@ const Ministries = () => {
             src="/WhatsApp Image 2025-03-29 at 14.31.16.png"
             alt="Ministries Background"
             className="absolute inset-0 w-full h-full object-cover object-[center_40%] z-0"
-            fetchPriority="high"
+            fetchpriority="high"
             decoding="async"
           />
           <div className="absolute inset-0 bg-black/60 z-10" />

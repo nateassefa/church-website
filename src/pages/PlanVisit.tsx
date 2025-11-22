@@ -121,7 +121,7 @@ const PlanVisit = () => {
           alt="Plan Your Visit Background"
           className="absolute inset-0 w-full h-full object-cover z-0"
           style={{ objectPosition: '5% 40%' }}
-          fetchPriority="high"
+          fetchpriority="high"
           decoding="async"
         />
         <div className="absolute inset-0 bg-black/50 z-10" />
