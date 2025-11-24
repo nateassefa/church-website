@@ -12,6 +12,7 @@ import Ministries from "./pages/Ministries";
 import Events from "./pages/Events";
 import SmallGroups from "./pages/SmallGroups";
 import PlanVisit from "./pages/PlanVisit";
+import WatchService from "./pages/WatchService";
 import Give from "./pages/Give";
 import NotFound from "./pages/NotFound";
 import Careers from "./pages/Careers";
@@ -44,6 +45,7 @@ const App = () => {
             <Route path="/events" element={<Events />} />
             <Route path="/small-groups" element={<SmallGroups />} />
             <Route path="/plan-visit" element={<PlanVisit />} />
+            <Route path="/watch-service" element={<WatchService />} />
             <Route path="/give" element={<Give />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
