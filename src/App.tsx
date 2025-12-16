@@ -26,6 +26,8 @@ import SportRetailProject from "./pages/SportRetailProject";
 import TechDetails from "./pages/TechDetails";
 import WorkwearProject from "./pages/WorkwearProject";
 import FireCatProject from "./pages/FireCatProject";
+import YouthBibleStudyInterest from "./pages/YouthBibleStudyInterest";
+import NeighborhoodBibleStudyInterest from "./pages/NeighborhoodBibleStudyInterest";
 
 const App = () => {
   const [queryClient] = useState(() => new QueryClient());
@@ -58,6 +60,8 @@ const App = () => {
             <Route path="/tech-details" element={<TechDetails />} />
             <Route path="/workwear-project" element={<WorkwearProject />} />
             <Route path="/firecat-project" element={<FireCatProject />} />
+            <Route path="/youth-bible-study-interest" element={<YouthBibleStudyInterest />} />
+            <Route path="/neighborhood-bible-study-interest" element={<NeighborhoodBibleStudyInterest />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

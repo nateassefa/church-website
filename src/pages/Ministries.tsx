@@ -32,7 +32,7 @@ const Ministries = () => {
       title: "Young Adult Ministry",
       description: "A vibrant community for young adults to grow in faith, build relationships, and navigate life together.",
       details: [
-        "Tuesday Bible Study: 8:00-9:00 pm (Zoom)"
+        "Monday Bible Study: 7:00 pm (Zoom)"
       ],
       icon: <Users className="w-8 h-8" />, 
       color: "bg-purple-50 border-purple-200"

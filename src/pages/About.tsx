@@ -165,7 +165,7 @@ const About = () => {
                 Living Hope exists to fulfill the biblical mandate of the church by proclaiming the gospel, growing as disciples, building community, serving others, and living out our faith in daily life, demonstrating the transformative power of Christ's love.
               </p>
             </div>
-            {/* Purpose Highlights Section */}
+            {/* Purpose Section */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -174,7 +174,7 @@ const About = () => {
               className="py-20 bg-transparent"
             >
               <div className="container mx-auto px-4">
-                <h3 className="text-4xl md:text-5xl font-bold text-[#244363] text-center mb-16 tracking-wide">Purpose Highlights</h3>
+                <h3 className="text-4xl md:text-5xl font-bold text-[#244363] text-center mb-16 tracking-wide">Purpose</h3>
                 <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                   {/* Card 1 */}
                   <div className="bg-gray-50 rounded-2xl shadow-lg flex flex-col items-center p-8 border-l-8 border-[#d9b062] hover:shadow-xl transition-shadow duration-300">
@@ -206,6 +206,97 @@ const About = () => {
                 </div>
               </div>
             </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Gold divider before Our Journey section */}
+      <div className="w-screen h-1 bg-[#d9b062]" style={{margin: 0, padding: 0}}></div>
+      
+      {/* Timeline Section */}
+      <section className="py-20 bg-[#f8f6f3] overflow-visible">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
+          <motion.div
+            initial={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-7xl mx-auto overflow-visible"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-[#244363] text-center mb-4 tracking-wide">
+              Our Journey
+            </h2>
+            <div className="w-24 h-1 bg-[#d9b062] mx-auto mb-16"></div>
+            
+            {/* Horizontal Timeline */}
+            <div className="relative py-16 lg:py-24 overflow-visible">
+              {/* Timeline Events Container */}
+              <div className="overflow-x-auto pb-8 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0 overflow-visible">
+                <div className="relative min-w-max lg:min-w-0 overflow-visible">
+                  {/* Continuous horizontal timeline bar - only visible on desktop */}
+                  <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-2 bg-[#d9b062] transform -translate-y-1/2 z-0"></div>
+                  
+                  {/* Events Container */}
+                  <div className="flex flex-row justify-between items-start relative gap-6 lg:gap-12 pt-24 lg:pt-0 pb-24 lg:pb-0 overflow-visible">
+                    {/* Event 1 - Above Timeline */}
+                    <div className="relative flex-shrink-0 w-72 lg:w-auto lg:flex-1 flex flex-col items-center overflow-visible">
+                      {/* Event card above */}
+                      <div className="bg-white border-2 border-[#244363] rounded-lg p-5 lg:p-6 shadow-lg w-full lg:max-w-[240px] mb-4 lg:mb-0 lg:absolute lg:bottom-full lg:mb-6 z-20">
+                        <div className="text-[#244363] font-bold text-lg lg:text-xl mb-2">Nov 2022</div>
+                        <h3 className="text-[#244363] font-semibold text-base lg:text-lg mb-3">Home Bible Study Started</h3>
+                        <p className="text-gray-700 text-sm lg:text-base leading-relaxed">Home Bible Study started.</p>
+                      </div>
+                      {/* Vertical line connecting to timeline - gold color */}
+                      <div className="hidden lg:block absolute top-0 left-1/2 w-0.5 h-1/2 bg-[#d9b062] transform -translate-x-1/2 z-10"></div>
+                      {/* Timeline marker */}
+                      <div className="w-4 h-4 bg-[#244363] rounded-full border-4 border-white shadow-lg relative z-20 flex-shrink-0 lg:mt-0 mt-4"></div>
+                    </div>
+
+                    {/* Event 2 - Below Timeline */}
+                    <div className="relative flex-shrink-0 w-72 lg:w-auto lg:flex-1 flex flex-col items-center overflow-visible">
+                      {/* Timeline marker */}
+                      <div className="w-4 h-4 bg-[#244363] rounded-full border-4 border-white shadow-lg relative z-20 flex-shrink-0 mb-4 lg:mb-0"></div>
+                      {/* Vertical line connecting to timeline - gold color */}
+                      <div className="hidden lg:block absolute top-1/2 left-1/2 w-0.5 h-1/2 bg-[#d9b062] transform -translate-x-1/2 z-10"></div>
+                      {/* Event card below */}
+                      <div className="bg-white border-2 border-[#244363] rounded-lg p-5 lg:p-6 shadow-lg w-full lg:max-w-[240px] lg:absolute lg:top-full lg:mt-6 z-20">
+                        <div className="text-[#244363] font-bold text-lg lg:text-xl mb-2">Oct 2024</div>
+                        <h3 className="text-[#244363] font-semibold text-base lg:text-lg mb-3">Sunday Worship Launched</h3>
+                        <p className="text-gray-700 text-sm lg:text-base leading-relaxed">Sunday Worship launched at Triangle Assembly.</p>
+                      </div>
+                    </div>
+
+                    {/* Event 3 - Above Timeline */}
+                    <div className="relative flex-shrink-0 w-72 lg:w-auto lg:flex-1 flex flex-col items-center overflow-visible">
+                      {/* Event card above */}
+                      <div className="bg-white border-2 border-[#244363] rounded-lg p-5 lg:p-6 shadow-lg w-full lg:max-w-[240px] mb-4 lg:mb-0 lg:absolute lg:bottom-full lg:mb-6 z-20">
+                        <div className="text-[#244363] font-bold text-lg lg:text-xl mb-2">Mar 30, 2025</div>
+                        <h3 className="text-[#244363] font-semibold text-base lg:text-lg mb-3">LCMS Mission Church</h3>
+                        <p className="text-gray-700 text-sm lg:text-base leading-relaxed">Living Hope members agreed to become a LCMS mission Church.</p>
+                      </div>
+                      {/* Vertical line connecting to timeline - gold color */}
+                      <div className="hidden lg:block absolute top-0 left-1/2 w-0.5 h-1/2 bg-[#d9b062] transform -translate-x-1/2 z-10"></div>
+                      {/* Timeline marker */}
+                      <div className="w-4 h-4 bg-[#244363] rounded-full border-4 border-white shadow-lg relative z-20 flex-shrink-0 lg:mt-0 mt-4"></div>
+                    </div>
+
+                    {/* Event 4 - Below Timeline (with gold border for emphasis) */}
+                    <div className="relative flex-shrink-0 w-72 lg:w-auto lg:flex-1 flex flex-col items-center overflow-visible">
+                      {/* Timeline marker */}
+                      <div className="w-4 h-4 bg-[#244363] rounded-full border-4 border-white shadow-lg relative z-20 flex-shrink-0 mb-4 lg:mb-0"></div>
+                      {/* Vertical line connecting to timeline - gold color */}
+                      <div className="hidden lg:block absolute top-1/2 left-1/2 w-0.5 h-1/2 bg-[#d9b062] transform -translate-x-1/2 z-10"></div>
+                      {/* Event card below */}
+                      <div className="bg-white border-2 border-[#d9b062] rounded-lg p-5 lg:p-6 shadow-lg w-full lg:max-w-[240px] lg:absolute lg:top-full lg:mt-6 z-20">
+                        <div className="text-[#d9b062] font-bold text-lg lg:text-xl mb-2">April 5-6, 2025</div>
+                        <h3 className="text-[#244363] font-semibold text-base lg:text-lg mb-3">Church Launch</h3>
+                        <p className="text-gray-700 text-sm lg:text-base leading-relaxed">Church launched through a two day Prayer, Teaching, and Worship service.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>

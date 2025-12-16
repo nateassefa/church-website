@@ -92,6 +92,36 @@ const Navbar = () => {
               >
                 Statement of Faith
               </Link>
+              <Link 
+                to="/events"
+                className="px-3 py-2 text-lg font-semibold transition-colors hover:text-[#d9b062] text-white"
+              >
+                Events
+              </Link>
+              <div
+                onMouseEnter={() => setIsNewHereDropdownOpen(true)}
+                onMouseLeave={() => setIsNewHereDropdownOpen(false)}
+              >
+                <DropdownMenu open={isNewHereDropdownOpen} onOpenChange={setIsNewHereDropdownOpen}>
+                  <DropdownMenuTrigger className="px-3 py-2 text-lg font-semibold transition-colors hover:text-[#d9b062] text-white focus:outline-none">
+                    New Here
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent 
+                    className="bg-black border-gray-700"
+                    onMouseEnter={() => setIsNewHereDropdownOpen(true)}
+                    onMouseLeave={() => setIsNewHereDropdownOpen(false)}
+                  >
+                    <DropdownMenuItem asChild>
+                      <Link 
+                        to="/watch-service"
+                        className="cursor-pointer text-white hover:text-[#d9b062]"
+                      >
+                        Watch a Service
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
               <div
                 onMouseEnter={() => setIsNextStepsDropdownOpen(true)}
                 onMouseLeave={() => setIsNextStepsDropdownOpen(false)}
@@ -127,44 +157,6 @@ const Navbar = () => {
                         className="cursor-pointer text-white hover:text-[#d9b062]"
                       >
                         Small Groups
-                      </Link>
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div>
-              <Link 
-                to="/events"
-                className="px-3 py-2 text-lg font-semibold transition-colors hover:text-[#d9b062] text-white"
-              >
-                Events
-              </Link>
-              <div
-                onMouseEnter={() => setIsNewHereDropdownOpen(true)}
-                onMouseLeave={() => setIsNewHereDropdownOpen(false)}
-              >
-                <DropdownMenu open={isNewHereDropdownOpen} onOpenChange={setIsNewHereDropdownOpen}>
-                  <DropdownMenuTrigger className="px-3 py-2 text-lg font-semibold transition-colors hover:text-[#d9b062] text-white focus:outline-none">
-                    New Here
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent 
-                    className="bg-black border-gray-700"
-                    onMouseEnter={() => setIsNewHereDropdownOpen(true)}
-                    onMouseLeave={() => setIsNewHereDropdownOpen(false)}
-                  >
-                    <DropdownMenuItem asChild>
-                      <Link 
-                        to="/watch-service"
-                        className="cursor-pointer text-white hover:text-[#d9b062]"
-                      >
-                        Watch a Service
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link 
-                        to="/plan-visit"
-                        className="cursor-pointer text-white hover:text-[#d9b062]"
-                      >
-                        Plan a Visit
                       </Link>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
@@ -229,6 +221,29 @@ const Navbar = () => {
           >
             Statement of Faith
           </Link>
+          <Link 
+            to="/events"
+            className="block px-3 py-3 rounded-md text-lg font-semibold text-white hover:bg-[#244363]/80"
+            onClick={() => {
+              setIsMenuOpen(false);
+              window.scrollTo(0, 0);
+            }}
+          >
+            Events
+          </Link>
+          <div className="px-3 py-2 text-lg font-semibold text-white">
+            New Here
+          </div>
+          <Link 
+            to="/watch-service"
+            className="block px-3 py-3 rounded-md text-lg font-semibold text-white hover:bg-[#244363]/80 pl-8"
+            onClick={() => {
+              setIsMenuOpen(false);
+              window.scrollTo(0, 0);
+            }}
+          >
+            Watch a Service
+          </Link>
           <div className="px-3 py-2 text-lg font-semibold text-white">
             Next Steps
           </div>
@@ -262,39 +277,6 @@ const Navbar = () => {
           >
             Small Groups
           </Link>
-          <Link 
-            to="/events"
-            className="block px-3 py-3 rounded-md text-lg font-semibold text-white hover:bg-[#244363]/80"
-            onClick={() => {
-              setIsMenuOpen(false);
-              window.scrollTo(0, 0);
-            }}
-          >
-            Events
-          </Link>
-          <div className="px-3 py-2 text-lg font-semibold text-white">
-            New Here
-          </div>
-          <Link 
-            to="/watch-service"
-            className="block px-3 py-3 rounded-md text-lg font-semibold text-white hover:bg-[#244363]/80 pl-8"
-            onClick={() => {
-              setIsMenuOpen(false);
-              window.scrollTo(0, 0);
-            }}
-          >
-            Watch a Service
-          </Link>
-          <Link 
-            to="/plan-visit"
-            className="block px-3 py-3 rounded-md text-lg font-semibold text-white hover:bg-[#244363]/80 pl-8"
-            onClick={() => {
-              setIsMenuOpen(false);
-              window.scrollTo(0, 0);
-            }}
-          >
-            Plan a Visit
-          </Link>
           <a 
             href="https://give.tithe.ly/?formId=b6bf17e5-ad05-4f8f-bb12-55d1da8b3ce3&context=modal"
             target="_blank"
@@ -313,4 +295,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 

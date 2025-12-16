@@ -71,8 +71,8 @@ const upcomingEvents = [
       id: 2,
       title: "Young Adult Bible Study",
       description: "A dynamic Bible study for young adults focusing on relevant topics and building community through faith discussions.",
-      date: "Every Tuesday at 8pm via Zoom",
-      time: "8:00 PM",
+      date: "Every Monday at 7pm via Zoom",
+      time: "7:00 PM",
       location: "Online",
       category: "Bible Study",
       image: "/ChatGPT Image Nov 21, 2025, 05_05_29 PM.png",
@@ -263,15 +263,15 @@ const SmallGroups = () => {
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 sm:pb-32 text-white overflow-hidden min-h-[85vh] sm:min-h-[70vh]">
         <img
-          src="/Copy of _I0B7294.png"
+          src="/DSC00436.JPG"
           alt="Small Groups Background"
           className="absolute inset-0 w-full h-full object-cover z-0"
           fetchpriority="high"
           decoding="async"
-          style={{ filter: 'brightness(0.5)', objectPosition: 'center 10%' }}
+          style={{ filter: 'brightness(0.5)', objectPosition: 'center 60%' }}
         />
-        <div className="absolute inset-0 bg-black/50 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/70 via-[#244363]/30 to-transparent z-10" />
+        <div className="absolute inset-0 bg-black/25 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/60 via-[#244363]/20 to-transparent z-10" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-8 sm:pb-4">
           <motion.div
             initial="hidden"
@@ -373,14 +373,28 @@ const SmallGroups = () => {
                       
                       {/* Content positioned at bottom */}
                       <div className="relative z-10 h-full flex flex-col justify-end p-6 md:p-8 text-white">
-                        <h3 className="text-3xl md:text-4xl font-bold mb-3 leading-tight">{event.title}</h3>
-                        <div className="text-lg md:text-xl mb-3 opacity-95">{event.date}</div>
-                        {locationDisplay && (
-                          <div className="flex items-center gap-2 text-base md:text-lg opacity-85">
-                            <MapPin size={16} className="flex-shrink-0" />
-                            <span>{locationDisplay}</span>
+                        <div className="flex items-end justify-between gap-4">
+                          <div className="flex-1">
+                            <h3 className="text-3xl md:text-4xl font-bold mb-3 leading-tight">{event.title}</h3>
+                            <div className="text-lg md:text-xl mb-3 opacity-95">{event.date}</div>
+                            {locationDisplay && (
+                              <div className="flex items-center gap-2 text-base md:text-lg opacity-85">
+                                <MapPin size={16} className="flex-shrink-0" />
+                                <span>{locationDisplay}</span>
+                              </div>
+                            )}
                           </div>
-                        )}
+                          {(event.id === 2 || event.id === 3 || event.id === 4 || event.id === 5 || event.id === 7) && (
+                            <Link 
+                              to={event.id === 2 ? "/youth-bible-study-interest" : "/neighborhood-bible-study-interest"} 
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <Button className="bg-[#d9b062] text-[#244363] hover:bg-[#bfa05a] px-6 py-3 text-base font-semibold flex-shrink-0">
+                                Join
+                              </Button>
+                            </Link>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </motion.div>

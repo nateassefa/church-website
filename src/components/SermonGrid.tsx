@@ -101,15 +101,49 @@ const SermonGrid = ({ playlistId = "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho", title =
           console.log('API data received:', data);
           
           if (data.items && data.items.length > 0) {
+            // First, get all video IDs
+            const videoIds = data.items.map((item: any) => item.snippet.resourceId.videoId).join(',');
+            
+            // Fetch video details to get actual upload dates
+            const isProduction = import.meta.env.PROD;
+            const videosApiUrl = isProduction 
+              ? `/api/youtube/videos?videoIds=${videoIds}`
+              : `http://localhost:3000/api/youtube/videos?videoIds=${videoIds}`;
+            
+            let videoDetailsMap: Record<string, any> = {};
+            
+            try {
+              const videosResponse = await fetch(videosApiUrl, {
+                mode: 'cors',
+                headers: { 'Accept': 'application/json' }
+              }).catch(() => null);
+              
+              if (videosResponse && videosResponse.ok) {
+                const videosData = await videosResponse.json();
+                if (videosData.items) {
+                  videosData.items.forEach((video: any) => {
+                    videoDetailsMap[video.id] = {
+                      publishedAt: video.snippet.publishedAt
+                    };
+                  });
+                }
+              }
+            } catch (err) {
+              console.warn('Could not fetch video details, using playlist date:', err);
+            }
+            
             const formattedVideos: SermonVideo[] = data.items.map((item: any) => {
               const title = item.snippet.title;
+              const videoId = item.snippet.resourceId.videoId;
+              // Use actual video upload date if available, otherwise fall back to playlist date
+              const uploadDate = videoDetailsMap[videoId]?.publishedAt || item.snippet.publishedAt;
               
               return {
                 id: item.id,
                 title: item.snippet.title,
-                thumbnail: item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.medium?.url || getYouTubeThumbnail(item.snippet.resourceId.videoId),
-                publishedAt: item.snippet.publishedAt,
-                videoId: item.snippet.resourceId.videoId,
+                thumbnail: item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.medium?.url || getYouTubeThumbnail(videoId),
+                publishedAt: uploadDate, // This is the video upload date from YouTube
+                videoId: videoId,
                 speaker: extractSpeaker(title)
               };
             });
@@ -149,8 +183,18 @@ const SermonGrid = ({ playlistId = "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho", title =
       return dateString;
     }
     
-    // Otherwise, format from ISO date string
+    // Format from ISO date string (YouTube upload date)
+    if (!dateString) {
+      return 'Date unavailable';
+    }
+    
     const date = new Date(dateString);
+    
+    // Check if date is valid
+    if (isNaN(date.getTime())) {
+      return 'Date unavailable';
+    }
+    
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 
                     'July', 'August', 'September', 'October', 'November', 'December'];
     const day = date.getDate();
@@ -274,9 +318,6 @@ const SermonGrid = ({ playlistId = "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho", title =
                 <h3 className="text-base font-bold text-gray-900 mb-2 line-clamp-3 min-h-[4rem]">
                   {video.title}
                 </h3>
-                <p className="text-sm text-gray-600 mb-1 font-medium">
-                  {extractSpeaker(video.title)}
-                </p>
                 <p className="text-sm text-gray-500">
                   {formatDate(video.publishedAt)}
                 </p>

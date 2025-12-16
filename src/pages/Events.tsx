@@ -6,28 +6,28 @@ import { Link } from "react-router-dom";
 
 export const pastEvents = [
   {
-    id: 1,
-    title: "Thanksgiving Service",
-    date: "Nov 26",
-    time: "6:00 PM",
-    location: "3637 Graham Park Rd, Triangle VA 22172",
-    image: "/9093e918-84b5-47fd-92e5-87c464ab6c73.png"
-  },
-  {
-    id: 2,
-    title: "Vision Sharing Dinner",
-    date: "Nov 29",
-    time: "6:00 PM",
-    location: "3637 Graham Park Rd, Triangle VA 22172",
-    image: "/upcoming_1.png"
-  },
-  {
     id: 5,
     title: "Urbana Conference",
     date: "Dec 28 - Dec 31",
     time: "",
     location: "Phoenix, AZ",
     image: "/1971102936-30a536de1d9a3c88178e1e1170d4818dfd5ac3271924621dff855dbc50735068-d.webp"
+  },
+  {
+    id: 6,
+    title: "Spring 2026 Conference",
+    date: "Spring 2026",
+    time: "",
+    location: "",
+    image: "/ChatGPT Image Dec 16, 2025, 02_16_58 PM.png"
+  },
+  {
+    id: 7,
+    title: "Fall 2026 Conference",
+    date: "Fall 2026",
+    time: "",
+    location: "",
+    image: "/ChatGPT Image Dec 16, 2025, 02_50_34 PM.png"
   }
 ];
 

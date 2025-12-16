@@ -39,7 +39,7 @@ app.get('/api/youtube/playlist', async (req, res) => {
   }
 
   try {
-    const youtubeUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&maxResults=${maxResults}&order=date&key=${apiKey}`;
+    const youtubeUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&playlistId=${playlistId}&maxResults=${maxResults}&order=date&key=${apiKey}`;
     
     const youtubeResponse = await fetch(youtubeUrl, {
       headers: {
@@ -57,6 +57,47 @@ app.get('/api/youtube/playlist', async (req, res) => {
     console.error('Error fetching YouTube playlist:', error);
     return res.status(500).json({ 
       error: 'Failed to fetch playlist data',
+      message: error instanceof Error ? error.message : 'Unknown error'
+    });
+  }
+});
+
+// Endpoint to fetch video details by IDs
+app.get('/api/youtube/videos', async (req, res) => {
+  const { videoIds } = req.query;
+  const apiKey = process.env.VITE_YOUTUBE_API_KEY;
+
+  if (!apiKey) {
+    return res.status(500).json({ 
+      error: 'YouTube API key not configured' 
+    });
+  }
+
+  if (!videoIds || typeof videoIds !== 'string') {
+    return res.status(400).json({ 
+      error: 'Video IDs are required' 
+    });
+  }
+
+  try {
+    const youtubeUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoIds}&key=${apiKey}`;
+    
+    const youtubeResponse = await fetch(youtubeUrl, {
+      headers: {
+        'Referer': 'http://localhost:3000'
+      }
+    });
+    const data = await youtubeResponse.json();
+
+    if (!youtubeResponse.ok) {
+      return res.status(youtubeResponse.status).json(data);
+    }
+
+    return res.status(200).json(data);
+  } catch (error) {
+    console.error('Error fetching YouTube videos:', error);
+    return res.status(500).json({ 
+      error: 'Failed to fetch video data',
       message: error instanceof Error ? error.message : 'Unknown error'
     });
   }

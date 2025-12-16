@@ -6,29 +6,109 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Clock, Phone, Mail, Users, Car, Baby, Coffee, Heart, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import FAQ from '@/components/FAQ';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+interface SermonVideo {
+  videoId: string;
+  title: string;
+  thumbnail?: string;
+}
 
 const PlanVisit = () => {
-  useEffect(() => {
-    // Load Breeze form script
-    const script = document.createElement('script');
-    script.src = 'https://app.breezechms.com/js/form_embed.js';
-    script.async = true;
-    script.onload = () => {
-      console.log('Breeze form script loaded successfully');
-    };
-    script.onerror = () => {
-      console.error('Failed to load Breeze form script');
-    };
-    document.head.appendChild(script);
+  const [englishVideo, setEnglishVideo] = useState<SermonVideo | null>(null);
+  const [amharicVideo, setAmharicVideo] = useState<SermonVideo | null>(null);
+  const [loading, setLoading] = useState(true);
 
-    return () => {
-      // Cleanup script on component unmount
-      const existingScript = document.querySelector('script[src="https://app.breezechms.com/js/form_embed.js"]');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
+  useEffect(() => {
+    const fetchLatestVideos = async () => {
+      try {
+        setLoading(true);
+        
+        const englishPlaylistId = import.meta.env.VITE_YOUTUBE_ENGLISH_PLAYLIST_ID || "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho";
+        const amharicPlaylistId = import.meta.env.VITE_YOUTUBE_AMHARIC_PLAYLIST_ID || "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho";
+
+        // Use API proxy route (works in both dev and production) - same mechanism as SermonGrid
+        const isProduction = import.meta.env.PROD;
+
+        // Fetch English video - using same pattern as SermonGrid
+        try {
+          const englishApiUrl = isProduction 
+            ? `/api/youtube/playlist?playlistId=${englishPlaylistId}&maxResults=1`
+            : `http://localhost:3000/api/youtube/playlist?playlistId=${englishPlaylistId}&maxResults=1`;
+          
+          const englishResponse = await fetch(englishApiUrl, {
+            mode: 'cors',
+            headers: {
+              'Accept': 'application/json',
+            }
+          }).catch((err) => {
+            console.error('Fetch error for English video:', err);
+            // If CORS fails, try the production route as fallback
+            if (!isProduction) {
+              console.log('Trying production route as fallback for English video...');
+              return fetch(`/api/youtube/playlist?playlistId=${englishPlaylistId}&maxResults=1`).catch(() => null);
+            }
+            return null;
+          });
+
+          if (englishResponse && englishResponse.ok) {
+            const englishData = await englishResponse.json();
+            if (englishData.items && englishData.items.length > 0) {
+              const item = englishData.items[0];
+              setEnglishVideo({
+                videoId: item.snippet.resourceId.videoId,
+                title: item.snippet.title,
+                thumbnail: item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.medium?.url
+              });
+            }
+          }
+        } catch (err) {
+          console.warn('Error fetching English video:', err);
+        }
+
+        // Fetch Amharic video - using same pattern as SermonGrid
+        try {
+          const amharicApiUrl = isProduction 
+            ? `/api/youtube/playlist?playlistId=${amharicPlaylistId}&maxResults=1`
+            : `http://localhost:3000/api/youtube/playlist?playlistId=${amharicPlaylistId}&maxResults=1`;
+          
+          const amharicResponse = await fetch(amharicApiUrl, {
+            mode: 'cors',
+            headers: {
+              'Accept': 'application/json',
+            }
+          }).catch((err) => {
+            console.error('Fetch error for Amharic video:', err);
+            // If CORS fails, try the production route as fallback
+            if (!isProduction) {
+              console.log('Trying production route as fallback for Amharic video...');
+              return fetch(`/api/youtube/playlist?playlistId=${amharicPlaylistId}&maxResults=1`).catch(() => null);
+            }
+            return null;
+          });
+
+          if (amharicResponse && amharicResponse.ok) {
+            const amharicData = await amharicResponse.json();
+            if (amharicData.items && amharicData.items.length > 0) {
+              const item = amharicData.items[0];
+              setAmharicVideo({
+                videoId: item.snippet.resourceId.videoId,
+                title: item.snippet.title,
+                thumbnail: item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.medium?.url
+              });
+            }
+          }
+        } catch (err) {
+          console.warn('Error fetching Amharic video:', err);
+        }
+      } catch (err) {
+        console.error('Error fetching videos:', err);
+      } finally {
+        setLoading(false);
       }
     };
+
+    fetchLatestVideos();
   }, []);
 
   const serviceInfo = {
@@ -109,18 +189,18 @@ const PlanVisit = () => {
         }
       `}</style>
       <SEO 
-        title="Plan Your Visit - Living Hope for Generations Church" 
-        description="Plan your visit to Living Hope for Generations Church. Find service times, location, what to expect, and visitor information."
-        keywords={['plan visit', 'service times', 'location', 'first time', 'welcome', 'church visit']}
+        title="Become a Member - Living Hope for Generations Church" 
+        description="Become a member of Living Hope for Generations Church. Join our church family and get involved in our community."
+        keywords={['become a member', 'membership', 'join church', 'church membership', 'living hope']}
       />
       
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 sm:pb-32 text-white overflow-hidden min-h-[85vh] sm:min-h-[70vh]">
         <img
-          src="/DSC00270.png"
+          src="/DSC00439.jpg"
           alt="Plan Your Visit Background"
           className="absolute inset-0 w-full h-full object-cover z-0"
-          style={{ objectPosition: '5% 40%' }}
+          style={{ objectPosition: '5% 20%' }}
           fetchpriority="high"
           decoding="async"
         />
@@ -137,7 +217,7 @@ const PlanVisit = () => {
               variants={itemVariants}
               className="text-7xl md:text-8xl font-bold"
             >
-              Plan Your Visit
+              Become a Member
             </motion.h1>
           </motion.div>
         </div>
@@ -160,23 +240,20 @@ const PlanVisit = () => {
               We're excited to meet you and welcome you into our church family. Come experience the love of Christ in our community.
             </motion.p>
             <motion.div variants={itemVariants} className="mt-12 w-full">
-              <div 
-                style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
-                dangerouslySetInnerHTML={{
-                  __html: `
-                    <div class="breeze_form_embed" 
-                         data-subdomain="livinghopeforgenerationschurch" 
-                         data-address="4ecc0c" 
-                         data-width="100%" 
-                         data-border_width="0" 
-                         data-border_color="000000" 
-                         data-background_color="ffffff" 
-                         data-button_color="92b765">
-                    </div>
-                    <script src="https://app.breezechms.com/js/form_embed.js"></script>
-                  `
-                }}
-              />
+              <div className="bg-white rounded-lg shadow-lg p-8 md:p-12 border border-gray-200">
+                <iframe
+                  src="https://docs.google.com/forms/d/e/1FAIpQLSdTotYN-CYx86aFnvLZFDzE5qF7e2W5gtk7w9y3i4HOeGKkYA/viewform?embedded=true"
+                  width="100%"
+                  height="800"
+                  frameBorder="0"
+                  marginHeight={0}
+                  marginWidth={0}
+                  className="w-full"
+                  title="Become a Member Form"
+                >
+                  Loading…
+                </iframe>
+              </div>
             </motion.div>
           </motion.div>
         </div>
@@ -229,32 +306,52 @@ const PlanVisit = () => {
           <div className="grid grid-cols-1 lg:grid-cols-[4fr_2fr] gap-0">
             {/* Left: Two YouTube Videos Side by Side */}
             <div className="bg-[#244363] p-4 sm:p-6 lg:p-10 flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-10 items-center justify-center">
-              {/* Video 1 - Nate Assefa | confession requires obedience */}
-              <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src="https://www.youtube.com/embed/CP-rTFv-Dng"
-                  title="Nate Assefa | confession requires obedience"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full"
-                ></iframe>
-              </div>
-              {/* Video 2 - Dr Mamusha Fenta Pt 1 */}
-              <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src="https://www.youtube.com/embed/hZewNwz5eZs"
-                  title="Dr Mamusha Fenta Pt 1"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full"
-                ></iframe>
-              </div>
+              {/* Video 1 - English Sermon */}
+              {loading ? (
+                <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0 bg-gray-800 flex items-center justify-center">
+                  <p className="text-white">Loading...</p>
+                </div>
+              ) : englishVideo ? (
+                <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={`https://www.youtube.com/embed/${englishVideo.videoId}`}
+                    title={englishVideo.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full"
+                  ></iframe>
+                </div>
+              ) : (
+                <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0 bg-gray-800 flex items-center justify-center">
+                  <p className="text-white text-sm text-center px-4">English sermon unavailable</p>
+                </div>
+              )}
+              {/* Video 2 - Amharic Sermon */}
+              {loading ? (
+                <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0 bg-gray-800 flex items-center justify-center">
+                  <p className="text-white">Loading...</p>
+                </div>
+              ) : amharicVideo ? (
+                <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={`https://www.youtube.com/embed/${amharicVideo.videoId}`}
+                    title={amharicVideo.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full"
+                  ></iframe>
+                </div>
+              ) : (
+                <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0 bg-gray-800 flex items-center justify-center">
+                  <p className="text-white text-sm text-center px-4">Amharic sermon unavailable</p>
+                </div>
+              )}
             </div>
 
             {/* Right: Text and Buttons */}

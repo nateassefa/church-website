@@ -7,6 +7,12 @@ import Player from 'lottie-react';
 // @ts-ignore: Importing JSON for Lottie animation
 import treeAnimation from '../tree.json';
 
+interface SermonVideo {
+  videoId: string;
+  title: string;
+  thumbnail?: string;
+}
+
 function getNextSunday830AM() {
   const now = new Date();
   const result = new Date(now);
@@ -43,6 +49,102 @@ function useCountdown(targetDate) {
 const Index = () => {
   const nextSunday = getNextSunday830AM();
   const { days, hours, minutes, seconds } = useCountdown(nextSunday);
+  const [englishVideo, setEnglishVideo] = useState<SermonVideo | null>(null);
+  const [amharicVideo, setAmharicVideo] = useState<SermonVideo | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchLatestVideos = async () => {
+      try {
+        setLoading(true);
+        
+        const englishPlaylistId = import.meta.env.VITE_YOUTUBE_ENGLISH_PLAYLIST_ID || "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho";
+        const amharicPlaylistId = import.meta.env.VITE_YOUTUBE_AMHARIC_PLAYLIST_ID || "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho";
+
+        // Use API proxy route (works in both dev and production) - same mechanism as SermonGrid
+        const isProduction = import.meta.env.PROD;
+
+        // Fetch English video - using same pattern as SermonGrid
+        try {
+          const englishApiUrl = isProduction 
+            ? `/api/youtube/playlist?playlistId=${englishPlaylistId}&maxResults=1`
+            : `http://localhost:3000/api/youtube/playlist?playlistId=${englishPlaylistId}&maxResults=1`;
+          
+          const englishResponse = await fetch(englishApiUrl, {
+            mode: 'cors',
+            headers: {
+              'Accept': 'application/json',
+            }
+          }).catch((err) => {
+            console.error('Fetch error for English video:', err);
+            // If CORS fails, try the production route as fallback
+            if (!isProduction) {
+              console.log('Trying production route as fallback for English video...');
+              return fetch(`/api/youtube/playlist?playlistId=${englishPlaylistId}&maxResults=1`).catch(() => null);
+            }
+            return null;
+          });
+
+          if (englishResponse && englishResponse.ok) {
+            const englishData = await englishResponse.json();
+            if (englishData.items && englishData.items.length > 0) {
+              const item = englishData.items[0];
+              setEnglishVideo({
+                videoId: item.snippet.resourceId.videoId,
+                title: item.snippet.title,
+                thumbnail: item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.medium?.url
+              });
+            }
+          }
+        } catch (err) {
+          console.warn('Error fetching English video:', err);
+        }
+
+        // Fetch Amharic video - using same pattern as SermonGrid
+        try {
+          const amharicApiUrl = isProduction 
+            ? `/api/youtube/playlist?playlistId=${amharicPlaylistId}&maxResults=1`
+            : `http://localhost:3000/api/youtube/playlist?playlistId=${amharicPlaylistId}&maxResults=1`;
+          
+          const amharicResponse = await fetch(amharicApiUrl, {
+            mode: 'cors',
+            headers: {
+              'Accept': 'application/json',
+            }
+          }).catch((err) => {
+            console.error('Fetch error for Amharic video:', err);
+            // If CORS fails, try the production route as fallback
+            if (!isProduction) {
+              console.log('Trying production route as fallback for Amharic video...');
+              return fetch(`/api/youtube/playlist?playlistId=${amharicPlaylistId}&maxResults=1`).catch(() => null);
+            }
+            return null;
+          });
+
+          if (amharicResponse && amharicResponse.ok) {
+            const amharicData = await amharicResponse.json();
+            if (amharicData.items && amharicData.items.length > 0) {
+              const item = amharicData.items[0];
+              setAmharicVideo({
+                videoId: item.snippet.resourceId.videoId,
+                title: item.snippet.title,
+                thumbnail: item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.medium?.url
+              });
+            }
+          }
+        } catch (err) {
+          console.warn('Error fetching Amharic video:', err);
+        }
+      } catch (err) {
+        console.error('Error fetching videos:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLatestVideos();
+  }, []);
+
   return (
     <PageLayout>
       <SEO 
@@ -102,32 +204,52 @@ const Index = () => {
           <div className="grid grid-cols-1 lg:grid-cols-[4fr_2fr] gap-0">
             {/* Left: Two YouTube Videos Side by Side */}
             <div className="bg-[#244363] p-4 sm:p-6 lg:p-10 flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-10 items-center justify-center">
-              {/* Video 1 - Nate Assefa | confession requires obedience */}
-              <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src="https://www.youtube.com/embed/CP-rTFv-Dng"
-                  title="Nate Assefa | confession requires obedience"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full"
-                ></iframe>
-              </div>
-              {/* Video 2 - Dr Mamusha Fenta Pt 1 */}
-              <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src="https://www.youtube.com/embed/hZewNwz5eZs"
-                  title="Dr Mamusha Fenta Pt 1"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full"
-                ></iframe>
-              </div>
+              {/* Video 1 - English Sermon */}
+              {loading ? (
+                <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0 bg-gray-800 flex items-center justify-center">
+                  <p className="text-white">Loading...</p>
+                </div>
+              ) : englishVideo ? (
+                <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={`https://www.youtube.com/embed/${englishVideo.videoId}`}
+                    title={englishVideo.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full"
+                  ></iframe>
+                </div>
+              ) : (
+                <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0 bg-gray-800 flex items-center justify-center">
+                  <p className="text-white text-sm text-center px-4">English sermon unavailable</p>
+                </div>
+              )}
+              {/* Video 2 - Amharic Sermon */}
+              {loading ? (
+                <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0 bg-gray-800 flex items-center justify-center">
+                  <p className="text-white">Loading...</p>
+                </div>
+              ) : amharicVideo ? (
+                <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={`https://www.youtube.com/embed/${amharicVideo.videoId}`}
+                    title={amharicVideo.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full"
+                  ></iframe>
+                </div>
+              ) : (
+                <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0 bg-gray-800 flex items-center justify-center">
+                  <p className="text-white text-sm text-center px-4">Amharic sermon unavailable</p>
+                </div>
+              )}
             </div>
 
             {/* Right: Text and Buttons */}
@@ -159,9 +281,10 @@ const Index = () => {
           {/* Panel 1 */}
           <div className="relative w-full aspect-[4/3] overflow-hidden">
             <img
-              src="/DSC00009.jpg"
+              src="/DSC00270.png"
               alt="Church Community"
               className="w-full h-full object-cover"
+              style={{ transform: 'scale(1.2) translateX(5%)' }}
               loading="lazy"
               decoding="async"
             />
@@ -169,9 +292,10 @@ const Index = () => {
           {/* Panel 2 */}
           <div className="relative w-full aspect-[4/3] overflow-hidden">
             <img
-              src="/Copy of _I0B7291.png"
-              alt="Worship Service"
+              src="/DSC00436.JPG"
+              alt="Church Community"
               className="w-full h-full object-cover"
+              style={{ transform: 'scale(1.2)' }}
               loading="lazy"
               decoding="async"
             />
@@ -179,9 +303,10 @@ const Index = () => {
           {/* Panel 3 */}
           <div className="relative w-full aspect-[4/3] overflow-hidden">
             <img
-              src="/PHOTO-2025-03-29-14-31-16.jpg"
-              alt="Community Gathering"
+              src="/DSC00439.jpg"
+              alt="Church Community"
               className="w-full h-full object-cover"
+              style={{ transform: 'scale(1.2)' }}
               loading="lazy"
               decoding="async"
             />
@@ -192,6 +317,7 @@ const Index = () => {
               src="/DSC00310.jpg"
               alt="Church Family"
               className="w-full h-full object-cover"
+              style={{ transform: 'scale(1.2)' }}
               loading="lazy"
               decoding="async"
             />
