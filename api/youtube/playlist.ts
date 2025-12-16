@@ -34,7 +34,7 @@ export default async function handler(
   }
 
   try {
-    const youtubeUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&maxResults=${maxResults}&order=date&key=${apiKey}`;
+    const youtubeUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&playlistId=${playlistId}&maxResults=${maxResults}&order=date&key=${apiKey}`;
     
     const youtubeResponse = await fetch(youtubeUrl);
     const data = await youtubeResponse.json();
