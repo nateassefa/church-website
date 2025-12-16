@@ -119,6 +119,14 @@ const Navbar = () => {
                         Watch a Service
                       </Link>
                     </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link 
+                        to="/ministries"
+                        className="cursor-pointer text-white hover:text-[#d9b062]"
+                      >
+                        Ministries
+                      </Link>
+                    </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
@@ -135,14 +143,6 @@ const Navbar = () => {
                     onMouseEnter={() => setIsNextStepsDropdownOpen(true)}
                     onMouseLeave={() => setIsNextStepsDropdownOpen(false)}
                   >
-                    <DropdownMenuItem asChild>
-                      <Link 
-                        to="/ministries"
-                        className="cursor-pointer text-white hover:text-[#d9b062]"
-                      >
-                        Ministries
-                      </Link>
-                    </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link 
                         to="/plan-visit"
@@ -244,9 +244,6 @@ const Navbar = () => {
           >
             Watch a Service
           </Link>
-          <div className="px-3 py-2 text-lg font-semibold text-white">
-            Next Steps
-          </div>
           <Link 
             to="/ministries"
             className="block px-3 py-3 rounded-md text-lg font-semibold text-white hover:bg-[#244363]/80 pl-8"
@@ -257,6 +254,9 @@ const Navbar = () => {
           >
             Ministries
           </Link>
+          <div className="px-3 py-2 text-lg font-semibold text-white">
+            Next Steps
+          </div>
           <Link 
             to="/plan-visit"
             className="block px-3 py-3 rounded-md text-lg font-semibold text-white hover:bg-[#244363]/80 pl-8"

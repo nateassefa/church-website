@@ -20,7 +20,7 @@ const YouTubeIcon = (props: React.SVGProps<SVGSVGElement>) => (
 type FooterProps = { tall?: boolean };
 const Footer = ({ tall = false }: FooterProps) => {
   return (
-    <footer className={`bg-[#4c3219] text-white w-full ${tall ? 'pt-16 pb-8' : 'pt-16 pb-8'}`}>
+    <footer className={`bg-[#244363] text-white w-full ${tall ? 'pt-16 pb-8' : 'pt-16 pb-8'}`} style={{ backgroundColor: '#244363' }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <img
           src="/church_logo_lutheran.png"

@@ -368,7 +368,7 @@ const SmallGroups = () => {
                             }}
                           />
                         ) : null}
-                        <div className="absolute inset-0 bg-black/40"></div>
+                        <div className="absolute inset-0 bg-black/25"></div>
                       </div>
                       
                       {/* Content positioned at bottom */}

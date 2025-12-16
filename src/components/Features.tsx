@@ -134,7 +134,7 @@ const Features = () => {
               <div key={idx} className="relative overflow-hidden group aspect-[4/3] w-full mx-auto flex flex-col justify-end h-full">
                 <img src={ministries[idx].image} alt={title} className="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-300" />
                 {/* 20% black overlay for extra contrast */}
-                <div className="absolute inset-0 bg-black/40 z-10" />
+                <div className="absolute inset-0 bg-black/25 z-10" />
                 {/* Navy gradient overlay, increased spread */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/95 15% via-[#244363]/80 30% to-transparent z-20" style={{maskImage: 'linear-gradient(to top, #244363F2 15%, #244363CC 30%, transparent 50%)'}} />
                 {/* Text content */}

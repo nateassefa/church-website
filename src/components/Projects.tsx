@@ -174,7 +174,7 @@ const Projects = () => {
                       backgroundPosition: 'center'
                     }}
                   >
-                    <div className="absolute inset-0 bg-black/50"></div>
+                    <div className="absolute inset-0 bg-black/25"></div>
                     <div className="relative z-10 flex flex-col items-center justify-center">
                       <h3 className="text-2xl font-bold text-white mb-2">{project.brand.toUpperCase()}</h3>
                       <div className="w-12 h-1 bg-white mb-2"></div>

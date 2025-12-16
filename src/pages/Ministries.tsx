@@ -106,7 +106,7 @@ const Ministries = () => {
             fetchpriority="high"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-black/60 z-10" />
+          <div className="absolute inset-0 bg-black/25 z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/80 via-[#244363]/40 to-transparent z-10" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-8 sm:pb-4">
             <motion.div
@@ -202,7 +202,7 @@ const Ministries = () => {
                   return (
                     <>
                       <div className={`absolute inset-0 z-20 ${textOnRight ? 'bg-gradient-to-l from-[#244363]/70 via-[#244363]/30 to-transparent' : 'bg-gradient-to-r from-[#244363]/70 via-[#244363]/30 to-transparent'}`} />
-                      <div className={`absolute inset-0 bg-black/35 flex flex-col justify-center ${textOnRight ? 'items-end pr-12' : 'items-start pl-12'} h-full w-full z-20`}>
+                      <div className={`absolute inset-0 bg-black/25 flex flex-col justify-center ${textOnRight ? 'items-end pr-12' : 'items-start pl-12'} h-full w-full z-20`}>
                         <div className={`max-w-2xl ${textOnRight ? 'text-right' : 'text-left'}`}>
                           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 drop-shadow-lg">{ministry.title}</h2>
                           <p className="text-lg md:text-xl text-white mb-4 drop-shadow">{ministry.description}</p>
