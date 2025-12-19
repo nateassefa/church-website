@@ -15,11 +15,17 @@ export default async function handler(request, response) {
   }
 
   const { playlistId, maxResults = 9 } = request.query;
-  const apiKey = process.env.VITE_YOUTUBE_API_KEY;
+  // Try both VITE_ and non-VITE_ prefix (Vercel serverless functions may not expose VITE_ vars)
+  const apiKey = process.env.YOUTUBE_API_KEY || process.env.VITE_YOUTUBE_API_KEY;
 
   if (!apiKey) {
     return response.status(500).json({ 
-      error: 'YouTube API key not configured' 
+      error: 'YouTube API key not configured',
+      debug: {
+        hasYoutubeApiKey: !!process.env.YOUTUBE_API_KEY,
+        hasViteYoutubeApiKey: !!process.env.VITE_YOUTUBE_API_KEY,
+        envKeys: Object.keys(process.env).filter(k => k.toUpperCase().includes('YOUTUBE') || k.toUpperCase().includes('API'))
+      }
     });
   }
 
