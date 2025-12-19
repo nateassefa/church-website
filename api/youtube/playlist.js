@@ -1,9 +1,5 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-
-export default async function handler(
-  request: VercelRequest,
-  response: VercelResponse,
-) {
+// JavaScript version for better compatibility
+export default async function handler(request, response) {
   // Enable CORS
   response.setHeader('Access-Control-Allow-Credentials', 'true');
   response.setHeader('Access-Control-Allow-Origin', '*');
