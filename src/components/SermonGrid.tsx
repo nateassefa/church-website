@@ -72,7 +72,7 @@ const SermonGrid = ({ playlistId = "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho", title =
             ? `/api/youtube/playlist?playlistId=${playlistId}&maxResults=${maxResults}`
             : `http://localhost:3000/api/youtube/playlist?playlistId=${playlistId}&maxResults=${maxResults}`;
           
-          console.log('Fetching from:', apiUrl);
+          console.log(`Fetching ${maxResults} videos from:`, apiUrl);
           const response = await fetch(apiUrl, {
             mode: 'cors',
             headers: {
@@ -148,19 +148,20 @@ const SermonGrid = ({ playlistId = "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho", title =
               };
             });
             
+            console.log(`Setting ${formattedVideos.length} videos for ${title}`);
             setVideos(formattedVideos);
             setLoading(false);
             return;
           } else {
-            // No videos found, show playlist embed
-            setError('no-api-key');
+            // No videos found
+            setError('No videos found');
             setVideos([]);
             setLoading(false);
             return;
           }
         } catch (apiErr) {
-          // On any error, show playlist embed fallback
-          console.warn('API fetch failed, showing playlist embed:', apiErr);
+          // On any error, try to show playlist embed fallback
+          console.warn('API fetch failed:', apiErr);
           setError('no-api-key');
           setVideos([]);
           setLoading(false);
@@ -175,7 +176,7 @@ const SermonGrid = ({ playlistId = "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho", title =
     };
 
     fetchSermons();
-  }, [playlistId]);
+  }, [playlistId, maxResults]);
 
   const formatDate = (dateString: string) => {
     // If it's already formatted (from manual videos), return as-is
@@ -210,23 +211,49 @@ const SermonGrid = ({ playlistId = "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho", title =
   };
 
   const extractSpeaker = (title: string): string => {
-    // Try to extract speaker name from title
-    // Look for patterns like "Pastor John Morgan" or "Dr. Anna Morgan" or "| Pastor John Morgan"
-    const patterns = [
-      /\|\s*(?:Pastor|Dr\.?)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)/, // "| Pastor John Morgan"
-      /(?:Pastor|Dr\.?)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)/, // "Pastor John Morgan"
-      /by\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)/i, // "by John Morgan"
-    ];
+    // Split by "|" to get parts
+    const parts = title.split('|').map(p => p.trim());
     
-    for (const pattern of patterns) {
-      const match = title.match(pattern);
-      if (match) {
-        // Return the full match including "Pastor" or "Dr."
-        return match[0].replace(/^\|\s*/, ''); // Remove leading "| " if present
+    // Pattern 1: Check if first part is a name (e.g., "Nate Assefa | Confession Requires...")
+    const firstPart = parts[0];
+    const namePattern = /^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)$/; // First and last name
+    if (namePattern.test(firstPart) && !firstPart.match(/\d/)) { // No numbers (not a Bible verse)
+      return firstPart;
+    }
+    
+    // Pattern 2: Look for speaker in parts (skip Bible verses like "James 1:2-8")
+    for (let i = 1; i < parts.length; i++) {
+      const part = parts[i];
+      // Skip if it's a Bible verse or contains "Living Hope" (church name)
+      if (part.match(/\d+:\d+/) || part.includes('Living Hope')) {
+        continue;
+      }
+      // Check if it's a name with title
+      const withTitle = part.match(/^((?:Pastor|Dr\.?|Kes)\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)$/);
+      if (withTitle) {
+        return withTitle[1];
+      }
+      // Check if it's just a name (first and last)
+      const justName = part.match(/^([A-Z][a-z]+\s+[A-Z][a-z]+)$/);
+      if (justName) {
+        return justName[1];
       }
     }
     
-    return 'Speaker';
+    // Pattern 3: Look for "Pastor", "Dr.", or "Kes" anywhere
+    const titlePattern = /((?:Pastor|Dr\.?|Kes)\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)/;
+    const titleMatch = title.match(titlePattern);
+    if (titleMatch) {
+      return titleMatch[1];
+    }
+    
+    // Pattern 4: Look for any name pattern after "|"
+    const pipeNameMatch = title.match(/\|\s*([A-Z][a-z]+\s+[A-Z][a-z]+)/);
+    if (pipeNameMatch && !pipeNameMatch[1].match(/\d/)) {
+      return pipeNameMatch[1];
+    }
+    
+    return '';
   };
 
   if (loading) {
@@ -236,6 +263,7 @@ const SermonGrid = ({ playlistId = "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho", title =
       </div>
     );
   }
+
 
   if (error === 'no-api-key' && videos.length === 0) {
     // Fallback: Show YouTube playlist embed if API is not available
@@ -274,8 +302,13 @@ const SermonGrid = ({ playlistId = "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho", title =
 
   if (error && videos.length === 0 && error !== 'no-api-key') {
     return (
-      <div className="py-16 text-center">
-        <p className="text-red-600">Unable to load sermons. Please check back later.</p>
+      <div className="w-full">
+        <h2 className="text-4xl md:text-5xl font-bold text-black mb-12 text-center uppercase tracking-tight">
+          {title}
+        </h2>
+        <div className="py-16 text-center">
+          <p className="text-red-600">Unable to load sermons. Please check back later.</p>
+        </div>
       </div>
     );
   }
@@ -318,6 +351,9 @@ const SermonGrid = ({ playlistId = "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho", title =
                 <h3 className="text-base font-bold text-gray-900 mb-2 line-clamp-3 min-h-[4rem]">
                   {video.title}
                 </h3>
+                <p className="text-sm text-gray-600 mb-1 font-medium">
+                  {video.speaker ? `${video.speaker} | Living Hope Lutheran Church` : 'Living Hope Lutheran Church'}
+                </p>
                 <p className="text-sm text-gray-500">
                   {formatDate(video.publishedAt)}
                 </p>
@@ -331,4 +367,5 @@ const SermonGrid = ({ playlistId = "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho", title =
 };
 
 export default SermonGrid;
+
 

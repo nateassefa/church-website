@@ -33,8 +33,11 @@ export default async function handler(
     });
   }
 
+  // Ensure maxResults is a number
+  const maxResultsNum = parseInt(String(maxResults), 10) || 9;
+
   try {
-    const youtubeUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&playlistId=${playlistId}&maxResults=${maxResults}&order=date&key=${apiKey}`;
+    const youtubeUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&playlistId=${playlistId}&maxResults=${maxResultsNum}&order=date&key=${apiKey}`;
     
     const youtubeResponse = await fetch(youtubeUrl);
     const data = await youtubeResponse.json();

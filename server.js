@@ -16,7 +16,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(cors({
-  origin: ['http://localhost:8080', 'http://localhost:3000'],
+  origin: ['http://localhost:8080', 'http://localhost:8081', 'http://localhost:3000', 'http://localhost:5173'],
   credentials: true
 }));
 app.use(express.json());
@@ -38,8 +38,11 @@ app.get('/api/youtube/playlist', async (req, res) => {
     });
   }
 
+  // Ensure maxResults is a number
+  const maxResultsNum = parseInt(String(maxResults), 10) || 9;
+
   try {
-    const youtubeUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&playlistId=${playlistId}&maxResults=${maxResults}&order=date&key=${apiKey}`;
+    const youtubeUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&playlistId=${playlistId}&maxResults=${maxResultsNum}&order=date&key=${apiKey}`;
     
     const youtubeResponse = await fetch(youtubeUrl, {
       headers: {

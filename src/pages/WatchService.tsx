@@ -96,7 +96,7 @@ const WatchService = () => {
           <SermonGrid 
             playlistId={import.meta.env.VITE_YOUTUBE_ENGLISH_PLAYLIST_ID || "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho"} 
             title="ENGLISH SERMONS"
-            maxResults={9}
+            maxResults={12}
           />
         </div>
       </section>
@@ -107,7 +107,7 @@ const WatchService = () => {
           <SermonGrid 
             playlistId={import.meta.env.VITE_YOUTUBE_AMHARIC_PLAYLIST_ID || "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho"} 
             title="AMHARIC SERMONS"
-            maxResults={9}
+            maxResults={12}
           />
         </div>
       </section>
