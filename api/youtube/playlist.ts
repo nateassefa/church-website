@@ -20,13 +20,14 @@ export default async function handler(
 
   try {
     const { playlistId, maxResults } = request.query;
-    const apiKey = process.env.VITE_YOUTUBE_API_KEY;
+    // Try both with and without VITE_ prefix for Vercel compatibility
+    const apiKey = process.env.VITE_YOUTUBE_API_KEY || process.env.YOUTUBE_API_KEY;
 
     if (!apiKey) {
       console.error('YouTube API key not configured');
       return response.status(500).json({ 
         error: 'YouTube API key not configured',
-        details: 'Please set VITE_YOUTUBE_API_KEY in your Vercel environment variables'
+        details: 'Please set VITE_YOUTUBE_API_KEY or YOUTUBE_API_KEY in your Vercel environment variables'
       });
     }
 
@@ -36,14 +37,13 @@ export default async function handler(
       });
     }
 
-    // Ensure maxResults is a number
+    // Parse maxResults - YouTube API accepts both string and number
     const maxResultsNum = maxResults 
-      ? parseInt(String(maxResults), 10) 
+      ? parseInt(String(maxResults), 10) || 9
       : 9;
     
-    const finalMaxResults = (maxResultsNum > 0 && maxResultsNum <= 50) 
-      ? maxResultsNum 
-      : 9;
+    // Ensure it's within valid range (1-50)
+    const finalMaxResults = Math.max(1, Math.min(50, maxResultsNum));
 
     const youtubeUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&playlistId=${playlistId}&maxResults=${finalMaxResults}&order=date&key=${apiKey}`;
     
