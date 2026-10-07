@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
+import { AMHARIC_PLAYLIST_ID, fetchYoutubePlaylist } from '@/lib/youtube';
 
 interface SermonVideo {
   id: string;
@@ -45,7 +46,7 @@ const fetchVideoData = async (videoId: string) => {
   }
 };
 
-const SermonGrid = ({ playlistId = "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho", title = "WATCH RECENT SERMONS", maxResults = 9 }: SermonGridProps) => {
+const SermonGrid = ({ playlistId = AMHARIC_PLAYLIST_ID, title = "WATCH RECENT SERMONS", maxResults = 9 }: SermonGridProps) => {
   const [videos, setVideos] = useState<SermonVideo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -63,52 +64,22 @@ const SermonGrid = ({ playlistId = "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho", title =
           return;
         }
 
-        // Use API proxy route (works in both dev and production)
         try {
-          const isProduction = import.meta.env.PROD;
-          // In production, use the Vercel API route
-          // In development, use the local proxy server on port 3000
-          const apiUrl = isProduction 
-            ? `/api/youtube/playlist?playlistId=${playlistId}&maxResults=${maxResults}`
-            : `http://localhost:3000/api/youtube/playlist?playlistId=${playlistId}&maxResults=${maxResults}`;
+          const data = await fetchYoutubePlaylist(playlistId, maxResults);
           
-          console.log(`Fetching ${maxResults} videos from:`, apiUrl);
-          const response = await fetch(apiUrl, {
-            mode: 'cors',
-            headers: {
-              'Accept': 'application/json',
-            }
-          }).catch((err) => {
-            console.error('Fetch error:', err);
-            // If CORS fails, try the production route as fallback
-            if (!isProduction) {
-              console.log('Trying production route as fallback...');
-              return fetch(`/api/youtube/playlist?playlistId=${playlistId}&maxResults=${maxResults}`).catch(() => null);
-            }
-            return null;
-          });
-          
-          if (!response || !response.ok) {
-            console.warn('API response not OK:', response?.status, response?.statusText);
-            // If API fails, show playlist embed instead
+          if (!data) {
             setError('no-api-key');
             setVideos([]);
             setLoading(false);
             return;
           }
           
-          const data = await response.json();
-          console.log('API data received:', data);
-          
           if (data.items && data.items.length > 0) {
             // First, get all video IDs
             const videoIds = data.items.map((item: any) => item.snippet.resourceId.videoId).join(',');
             
             // Fetch video details to get actual upload dates
-            const isProduction = import.meta.env.PROD;
-            const videosApiUrl = isProduction 
-              ? `/api/youtube/videos?videoIds=${videoIds}`
-              : `http://localhost:3000/api/youtube/videos?videoIds=${videoIds}`;
+            const videosApiUrl = `/api/youtube/videos?videoIds=${videoIds}`;
             
             let videoDetailsMap: Record<string, any> = {};
             
@@ -146,7 +117,7 @@ const SermonGrid = ({ playlistId = "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho", title =
                 videoId: videoId,
                 speaker: extractSpeaker(title)
               };
-            });
+            }).sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
             
             console.log(`Setting ${formattedVideos.length} videos for ${title}`);
             setVideos(formattedVideos);

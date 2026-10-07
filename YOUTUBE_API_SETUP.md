@@ -6,7 +6,7 @@ Your YouTube API key has HTTP referrer restrictions that are blocking requests. 
 
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
 2. Navigate to **APIs & Services** > **Credentials**
-3. Find your YouTube API key (the one starting with `AIzaSyD5fnXFgf8aFOsLY8oi7gf8bpEqgH4RwZ8`)
+3. Find your YouTube API key
 4. Click on it to edit
 5. Under **Application restrictions**, select **None** (or **IP addresses** if you want to restrict by IP)
 6. Click **Save**

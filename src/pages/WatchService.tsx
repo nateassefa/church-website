@@ -2,6 +2,7 @@ import PageLayout from '@/components/PageLayout';
 import SEO from '@/components/SEO';
 import { motion } from "framer-motion";
 import SermonGrid from '@/components/SermonGrid';
+import { AMHARIC_PLAYLIST_ID, ENGLISH_PLAYLIST_ID } from '@/lib/youtube';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -94,7 +95,7 @@ const WatchService = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <SermonGrid 
-            playlistId={import.meta.env.VITE_YOUTUBE_ENGLISH_PLAYLIST_ID || "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho"} 
+            playlistId={ENGLISH_PLAYLIST_ID} 
             title="ENGLISH SERMONS"
             maxResults={12}
           />
@@ -105,7 +106,7 @@ const WatchService = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <SermonGrid 
-            playlistId={import.meta.env.VITE_YOUTUBE_AMHARIC_PLAYLIST_ID || "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho"} 
+            playlistId={AMHARIC_PLAYLIST_ID} 
             title="AMHARIC SERMONS"
             maxResults={12}
           />

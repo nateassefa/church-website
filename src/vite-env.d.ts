@@ -2,6 +2,8 @@
 
 interface ImportMetaEnv {
   readonly VITE_YOUTUBE_API_KEY: string
+  readonly VITE_YOUTUBE_ENGLISH_PLAYLIST_ID: string
+  readonly VITE_YOUTUBE_AMHARIC_PLAYLIST_ID: string
 }
 
 interface ImportMeta {

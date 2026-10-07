@@ -1,6 +1,6 @@
-// JavaScript version for better compatibility
+import { getVideos } from './lib.js';
+
 export default async function handler(request, response) {
-  // Enable CORS
   response.setHeader('Access-Control-Allow-Credentials', 'true');
   response.setHeader('Access-Control-Allow-Origin', '*');
   response.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
@@ -15,39 +15,6 @@ export default async function handler(request, response) {
   }
 
   const { videoIds } = request.query;
-  const apiKey = process.env.VITE_YOUTUBE_API_KEY;
-
-  if (!apiKey) {
-    return response.status(500).json({ 
-      error: 'YouTube API key not configured' 
-    });
-  }
-
-  if (!videoIds || typeof videoIds !== 'string') {
-    return response.status(400).json({ 
-      error: 'Video IDs are required' 
-    });
-  }
-
-  try {
-    const youtubeUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoIds}&key=${apiKey}`;
-    
-    const youtubeResponse = await fetch(youtubeUrl);
-    const data = await youtubeResponse.json();
-
-    if (!youtubeResponse.ok) {
-      return response.status(youtubeResponse.status).json(data);
-    }
-
-    return response.status(200).json(data);
-  } catch (error) {
-    console.error('Error fetching YouTube videos:', error);
-    return response.status(500).json({ 
-      error: 'Failed to fetch video data',
-      message: error instanceof Error ? error.message : 'Unknown error'
-    });
-  }
+  const result = await getVideos({ videoIds });
+  return response.status(result.status).json(result.data);
 }
-
-
-

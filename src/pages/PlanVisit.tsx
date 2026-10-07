@@ -7,6 +7,7 @@ import { MapPin, Clock, Phone, Mail, Users, Car, Baby, Coffee, Heart, ArrowRight
 import { Link } from "react-router-dom";
 import FAQ from '@/components/FAQ';
 import { useEffect, useState } from 'react';
+import { AMHARIC_PLAYLIST_ID, ENGLISH_PLAYLIST_ID, fetchYoutubePlaylist } from '@/lib/youtube';
 
 interface SermonVideo {
   videoId: string;
@@ -20,87 +21,25 @@ const PlanVisit = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const toSermonVideo = (data: { items?: Array<{ snippet?: { title?: string; resourceId?: { videoId?: string }; thumbnails?: { high?: { url?: string }; medium?: { url?: string } } } }> } | null) => {
+      const item = data?.items?.[0]?.snippet;
+      if (!item?.resourceId?.videoId) return null;
+      return {
+        videoId: item.resourceId.videoId,
+        title: item.title || '',
+        thumbnail: item.thumbnails?.high?.url || item.thumbnails?.medium?.url
+      };
+    };
+
     const fetchLatestVideos = async () => {
       try {
         setLoading(true);
-        
-        const englishPlaylistId = import.meta.env.VITE_YOUTUBE_ENGLISH_PLAYLIST_ID || "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho";
-        const amharicPlaylistId = import.meta.env.VITE_YOUTUBE_AMHARIC_PLAYLIST_ID || "PL5CuL39GGp2Lah6z9GM6RNX7YC8Srziho";
-
-        // Use API proxy route (works in both dev and production) - same mechanism as SermonGrid
-        const isProduction = import.meta.env.PROD;
-
-        // Fetch English video - using same pattern as SermonGrid
-        try {
-          const englishApiUrl = isProduction 
-            ? `/api/youtube/playlist?playlistId=${englishPlaylistId}&maxResults=1`
-            : `http://localhost:3000/api/youtube/playlist?playlistId=${englishPlaylistId}&maxResults=1`;
-          
-          const englishResponse = await fetch(englishApiUrl, {
-            mode: 'cors',
-            headers: {
-              'Accept': 'application/json',
-            }
-          }).catch((err) => {
-            console.error('Fetch error for English video:', err);
-            // If CORS fails, try the production route as fallback
-            if (!isProduction) {
-              console.log('Trying production route as fallback for English video...');
-              return fetch(`/api/youtube/playlist?playlistId=${englishPlaylistId}&maxResults=1`).catch(() => null);
-            }
-            return null;
-          });
-
-          if (englishResponse && englishResponse.ok) {
-            const englishData = await englishResponse.json();
-            if (englishData.items && englishData.items.length > 0) {
-              const item = englishData.items[0];
-              setEnglishVideo({
-                videoId: item.snippet.resourceId.videoId,
-                title: item.snippet.title,
-                thumbnail: item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.medium?.url
-              });
-            }
-          }
-        } catch (err) {
-          console.warn('Error fetching English video:', err);
-        }
-
-        // Fetch Amharic video - using same pattern as SermonGrid
-        try {
-          const amharicApiUrl = isProduction 
-            ? `/api/youtube/playlist?playlistId=${amharicPlaylistId}&maxResults=1`
-            : `http://localhost:3000/api/youtube/playlist?playlistId=${amharicPlaylistId}&maxResults=1`;
-          
-          const amharicResponse = await fetch(amharicApiUrl, {
-            mode: 'cors',
-            headers: {
-              'Accept': 'application/json',
-            }
-          }).catch((err) => {
-            console.error('Fetch error for Amharic video:', err);
-            // If CORS fails, try the production route as fallback
-            if (!isProduction) {
-              console.log('Trying production route as fallback for Amharic video...');
-              return fetch(`/api/youtube/playlist?playlistId=${amharicPlaylistId}&maxResults=1`).catch(() => null);
-            }
-            return null;
-          });
-
-          if (amharicResponse && amharicResponse.ok) {
-            const amharicData = await amharicResponse.json();
-            if (amharicData.items && amharicData.items.length > 0) {
-              const item = amharicData.items[0];
-              setAmharicVideo({
-                videoId: item.snippet.resourceId.videoId,
-                title: item.snippet.title,
-                thumbnail: item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.medium?.url
-              });
-            }
-          }
-        } catch (err) {
-          console.warn('Error fetching Amharic video:', err);
-        }
+        const [englishData, amharicData] = await Promise.all([
+          fetchYoutubePlaylist(ENGLISH_PLAYLIST_ID, 1),
+          fetchYoutubePlaylist(AMHARIC_PLAYLIST_ID, 1),
+        ]);
+        setEnglishVideo(toSermonVideo(englishData));
+        setAmharicVideo(toSermonVideo(amharicData));
       } catch (err) {
         console.error('Error fetching videos:', err);
       } finally {

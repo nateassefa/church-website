@@ -15,7 +15,6 @@ const Ministries = () => {
         "Sunday Service: 11:00 AM (Amharic & English)",
         "Location: 3637 Graham Park Road, Triangle VA 22172"
       ],
-      highlight: "Sunday Service · 11 AM",
       icon: <Music className="w-8 h-8" />, 
       color: "bg-blue-50 border-blue-200",
       image: "/Copy of _I0B7291.png",
@@ -41,7 +40,6 @@ const Ministries = () => {
       details: [
         "Bible Study: Mondays 7:00 PM on Zoom"
       ],
-      highlight: "Mondays 7:00 PM on Zoom",
       icon: <BookOpen className="w-8 h-8" />,
       color: "bg-teal-50 border-teal-200",
       image: "/IMG_6655_PhotoGrid.png",
@@ -56,7 +54,6 @@ const Ministries = () => {
       details: [
         "Bible Study: Wednesdays 7:00 PM, In Person & Virtual"
       ],
-      highlight: "Wed 7:00 PM · In Person & Virtual",
       icon: <Users className="w-8 h-8" />, 
       color: "bg-purple-50 border-purple-200",
       image: "/DSC00655.png",
@@ -204,14 +201,9 @@ const Ministries = () => {
                         <div className={`max-w-2xl ${textOnRight ? 'text-right' : 'text-left'}`}>
                           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 drop-shadow-lg">{ministry.title}</h2>
                           <p className="text-lg md:text-xl text-white mb-4 drop-shadow">{ministry.description}</p>
-                          {ministry.highlight && (
-                            <div className="inline-block bg-[#d9b062] text-[#244363] font-extrabold text-base md:text-lg px-5 py-2 rounded-full mb-4 shadow-lg">
-                              {ministry.highlight}
-                            </div>
-                          )}
                           <ul className="mb-8 list-disc list-inside" style={{ color: '#f3c96b' }}>
                             {ministry.details.map((detail, i) => (
-                              <li key={i} className="text-lg font-semibold" style={{ color: '#f3c96b' }}>
+                              <li key={i} className="text-lg" style={{ color: '#fff', WebkitTextStroke: '0.2px #fff' }}>
                                 {detail}
                               </li>
                             ))}
