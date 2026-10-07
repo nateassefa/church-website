@@ -5,9 +5,9 @@ const YouthBibleStudyInterest = () => {
   return (
     <PageLayout>
       <SEO 
-        title="Youth Bible Study Interest - Living Hope for Generations Church" 
-        description="Join our Youth Bible Study via Zoom every Monday at 7pm. Sign up to get connected with our WhatsApp chat."
-        keywords={['youth bible study', 'young adults', 'bible study', 'zoom', 'whatsapp']}
+        title="Middle & High School Bible Study Interest - Living Hope for Generations Church" 
+        description="Join our Middle & High School Bible Study via Zoom every Monday at 7:00 PM. Sign up to get connected with our WhatsApp chat."
+        keywords={['youth bible study', 'middle school', 'high school', 'bible study', 'zoom', 'whatsapp']}
       />
       
       <section className="py-24 bg-[#244363] min-h-screen">
@@ -16,10 +16,10 @@ const YouthBibleStudyInterest = () => {
             {/* Header */}
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                Youth Bible Study Interest
+                Middle & High School Bible Study
               </h1>
               <p className="text-lg text-white mb-2">
-                We have Youth Bible Study via Zoom every Monday @ 7pm!
+                We have Middle & High School Bible Study via Zoom every Monday at 7:00 PM!
               </p>
               <p className="text-lg text-white">
                 Join our WhatsApp chat by giving us your info below.

@@ -112,7 +112,7 @@ const PlanVisit = () => {
   }, []);
 
   const serviceInfo = {
-    time: "10:00 AM - 12:00 PM",
+    time: "11:00 AM",
     day: "Every Sunday",
     address: "123 Church Street, Woodbridge, VA 22191",
     phone: "(703) 555-0123",

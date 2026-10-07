@@ -143,9 +143,9 @@ const Features = () => {
                     <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-2 leading-tight drop-shadow-lg">{title}</h3>
                     <p className={`text-white text-xl md:text-2xl font-normal leading-snug mb-1 ${idx === 1 ? 'mt-12' : ''}`}>
                       {[
-                        "Join us at 8:30 AM on Sundays",
+                        "Join us at 11:00 AM on Sundays",
                         "Bible Study Groups across Woodbridge, Dumfries, Stafford, and Fredericksburg",
-                        "Join us on Zoom every Monday at 9pm!"
+                        "Join us Wednesday at 7:00 PM, In Person & Virtual"
                       ][idx]}
                     </p>
                   </div>

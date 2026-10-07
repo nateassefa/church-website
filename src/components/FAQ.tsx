@@ -19,8 +19,8 @@ const FAQ = () => {
       id: "1",
       question: "What are your services like?",
       questionAmharic: "የአገልግሎት ግዜያችን ምን ይመስላል?",
-      answer: "Our services usually run about 2 hours long consisting of worship, a powerful message from the Word of God, and fellowship. We will make sure to honor your time!",
-      answerAmharic: "የአገልግሎት ግዜያችን ለሁለት ሰአት ያህል የሚቆይ ሲሆን በውስጡም የአምልኮ ግዜ የእግዚአብሄር ቃል በሙላት የሚሰበክበት ግዜና በጋራ ሻይ ቡና በማለት ህብረት የምናደርግበትን ግዜን ያካተተ ነው:: ሁሌም ሰአታችንን እንጠብቃለን!"
+      answer: "Sunday service starts at 11 AM. Our services usually run about 2 hours long consisting of worship, a powerful message from the Word of God, and fellowship. We will make sure to honor your time!",
+      answerAmharic: "የአገልግሎት ግዜያችን እሁድ ከጠዋቱ 11:00 ሰዓት ይጀምራል። ለሁለት ሰአት ያህል የሚቆይ ሲሆን በውስጡም የአምልኮ ግዜ የእግዚአብሄር ቃል በሙላት የሚሰበክበት ግዜና በጋራ ሻይ ቡና በማለት ህብረት የምናደርግበትን ግዜን ያካተተ ነው:: ሁሌም ሰአታችንን እንጠብቃለን!"
     },
     {
       id: "2",
@@ -33,8 +33,8 @@ const FAQ = () => {
       id: "3",
       question: "Do you have anything for children and/or students?",
       questionAmharic: "ለልጆች ወይም ለተማሪዎች የሚሆን አገልግሎት አላችሁ?",
-      answer: "We do! We have a Young Adult Ministry that holds Bible Study at 7pm every Monday via Zoom! We also have Sunday School for kids preschool-6th grade.",
-      answerAmharic: "በርግጥም የልጆችና ወጣቶች አግልግሎት አለን፤ ዘወትር ሰኞ ምሽት 7:00 PM በዙም የሚካሄድ የወጣቶች የመፀሐፍ ቅዱስ ጥናት ግዜ አለን:: እንዲሁም ከጀማሪ እስከ ስድስተኛ ክፍል ላሉ ህፃናት የሰንበት ትምህርት በቤተክርስቲያናችን ይሰጣል።"
+      answer: "We do! Middle & High School Ministries hold Bible Study Mondays at 7:00 PM on Zoom. Young Adult Bible Study is Wednesdays at 7:00 PM, in person and virtual. We also have Sunday School for kids preschool–6th grade.",
+      answerAmharic: "በርግጥም የልጆችና ወጣቶች አግልግሎት አለን፤ መካከለኛና ሁለተኛ ደረጃ ተማሪዎች ዘወትር ሰኞ ምሽት 7:00 PM በዙም የመጽሐፍ ቅዱስ ጥናት አላቸው። የወጣት አዋቂዎች የመጽሐፍ ቅዱስ ጥናት ዘወትር ረቡዕ 7:00 PM በአካልና በቨርቹዋል ይካሄዳል። እንዲሁም ከጀማሪ እስከ ስድስተኛ ክፍል ላሉ ህፃናት የሰንበት ትምህርት በቤተክርስቲያናችን ይሰጣል።"
     },
     {
       id: "4",

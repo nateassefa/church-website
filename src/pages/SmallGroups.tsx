@@ -52,8 +52,8 @@ const upcomingEvents = [
       id: 1,
       title: "Sunday Worship Service",
       description: "Join us for our weekly bilingual worship service featuring contemporary and traditional music, inspiring messages, and fellowship.",
-      date: "Every Sunday at 8:30 AM",
-      time: "8:30–10:30 AM",
+      date: "Every Sunday at 11:00 AM",
+      time: "11:00 AM",
       location: "3637 Graham Park Road, Triangle VA 22172 (Amharic & English)",
       category: "Worship",
       image: "/public.png",
@@ -71,16 +71,34 @@ const upcomingEvents = [
       id: 2,
       title: "Young Adult Bible Study",
       description: "A dynamic Bible study for young adults focusing on relevant topics and building community through faith discussions.",
-      date: "Every Monday at 7pm via Zoom",
+      date: "Every Wednesday at 7:00 PM, In Person & Virtual",
+      time: "7:00 PM",
+      location: "In Person & Virtual",
+      category: "Bible Study",
+      image: "/ChatGPT Image Nov 21, 2025, 05_05_29 PM.png",
+      when: "weekly",
+      region: "church",
+      campus: "main",
+      locationType: "hybrid",
+      ageGroup: "young-adult",
+      frequency: "weekly",
+      language: "english",
+      gender: "all"
+    },
+    {
+      id: 8,
+      title: "Middle & High School Bible Study",
+      description: "Middle and high school students gather to grow in faith and study Scripture together.",
+      date: "Every Monday at 7:00 PM on Zoom",
       time: "7:00 PM",
       location: "Online",
       category: "Bible Study",
-      image: "/ChatGPT Image Nov 21, 2025, 05_05_29 PM.png",
+      image: "/IMG_6655_PhotoGrid.png",
       when: "weekly",
       region: "online",
       campus: "online",
       locationType: "online",
-      ageGroup: "young-adult",
+      ageGroup: "all",
       frequency: "weekly",
       language: "english",
       gender: "all"
@@ -209,6 +227,9 @@ const SmallGroups = () => {
       filtered = filtered.filter(event => {
         if (!event?.locationType) return false;
         const eventLocationType = String(event.locationType).toLowerCase().trim();
+        if (eventLocationType === "hybrid") {
+          return filterValue === "in-person" || filterValue === "online";
+        }
         return eventLocationType === filterValue;
       });
     }
@@ -384,9 +405,9 @@ const SmallGroups = () => {
                               </div>
                             )}
                           </div>
-                          {(event.id === 2 || event.id === 3 || event.id === 4 || event.id === 5 || event.id === 7) && (
+                          {(event.id === 3 || event.id === 4 || event.id === 5 || event.id === 7 || event.id === 8) && (
                             <Link 
-                              to={event.id === 2 ? "/youth-bible-study-interest" : "/neighborhood-bible-study-interest"} 
+                              to={event.id === 8 ? "/youth-bible-study-interest" : "/neighborhood-bible-study-interest"} 
                               onClick={(e) => e.stopPropagation()}
                             >
                               <Button className="bg-[#d9b062] text-[#244363] hover:bg-[#bfa05a] px-6 py-3 text-base font-semibold flex-shrink-0">

@@ -107,10 +107,17 @@ const Hero = () => {
             {/* Large WELCOME text */}
             <motion.h1
               variants={itemVariants}
-              className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-8 sm:mb-12"
+              className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-4 sm:mb-6"
             >
               WELCOME
             </motion.h1>
+            <motion.p
+              variants={itemVariants}
+              className="flex items-center justify-center gap-2 text-white text-lg sm:text-xl md:text-2xl font-semibold mb-8 sm:mb-12"
+            >
+              <Clock size={22} className="text-[#d9b062]" />
+              Sunday Service · 11 AM
+            </motion.p>
             
             {/* Buttons */}
             <motion.div

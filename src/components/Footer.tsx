@@ -50,6 +50,7 @@ const Footer = ({ tall = false }: FooterProps) => {
               <a href="https://www.tiktok.com/@livinghopegenchurch" target="_blank" rel="noopener noreferrer" className="hover:text-[#d9b062] transition-colors"><TikTokIcon /></a>
               <a href="https://www.youtube.com/@Livinghopegenchurch" target="_blank" rel="noopener noreferrer" className="hover:text-[#d9b062] transition-colors"><YouTubeIcon /></a>
             </div>
+            <p className="text-white font-semibold mb-2 text-center">Sunday Service · 11 AM</p>
             <address className="not-italic text-gray-300 mb-1 leading-relaxed text-center md:text-left">
               3637 Graham Park Rd, Triangle, VA 22172
             </address>

@@ -1,9 +1,9 @@
+import type { CSSProperties } from 'react';
 import PageLayout from '@/components/PageLayout';
 import SEO from '@/components/SEO';
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Users, BookOpen, Heart, Music, Calendar, MapPin, Clock, Phone, Mail } from "lucide-react";
+import { Users, BookOpen, Heart, Music } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Ministries = () => {
@@ -12,11 +12,15 @@ const Ministries = () => {
       title: "Bilingual Worship Services",
       description: "Join us every Sunday for worship in both Amharic and English, creating a bridge between generations and cultures.",
       details: [
-        "Sunday Service: 8:30–10:30 AM (Amharic & English)",
+        "Sunday Service: 11:00 AM (Amharic & English)",
         "Location: 3637 Graham Park Road, Triangle VA 22172"
       ],
+      highlight: "Sunday Service · 11 AM",
       icon: <Music className="w-8 h-8" />, 
-      color: "bg-blue-50 border-blue-200"
+      color: "bg-blue-50 border-blue-200",
+      image: "/Copy of _I0B7291.png",
+      imageClass: "",
+      imageStyle: { objectPosition: 'center 5%' } as CSSProperties,
     },
     {
       title: "Children's Ministry",
@@ -26,16 +30,39 @@ const Ministries = () => {
         "Children's choir and activities"
       ],
       icon: <Heart className="w-8 h-8" />, 
-      color: "bg-yellow-50 border-yellow-200"
+      color: "bg-yellow-50 border-yellow-200",
+      image: "/PHOTO-2025-06-15-14-20-21.jpg",
+      imageClass: "object-right",
+      textOnRight: true,
+    },
+    {
+      title: "Middle & High School Ministries",
+      description: "A place for middle and high school students to grow in faith, build friendships, and study Scripture together.",
+      details: [
+        "Bible Study: Mondays 7:00 PM on Zoom"
+      ],
+      highlight: "Mondays 7:00 PM on Zoom",
+      icon: <BookOpen className="w-8 h-8" />,
+      color: "bg-teal-50 border-teal-200",
+      image: "/IMG_6655_PhotoGrid.png",
+      imageClass: "object-center",
+      imageStyle: { objectPosition: 'center 20%' } as CSSProperties,
+      href: "/youth-bible-study-interest",
+      textOnRight: true,
     },
     {
       title: "Young Adult Ministry",
       description: "A vibrant community for young adults to grow in faith, build relationships, and navigate life together.",
       details: [
-        "Monday Bible Study: 7:00 pm (Zoom)"
+        "Bible Study: Wednesdays 7:00 PM, In Person & Virtual"
       ],
+      highlight: "Wed 7:00 PM · In Person & Virtual",
       icon: <Users className="w-8 h-8" />, 
-      color: "bg-purple-50 border-purple-200"
+      color: "bg-purple-50 border-purple-200",
+      image: "/DSC00655.png",
+      imageClass: "object-center",
+      imageStyle: { objectPosition: '90% 70%' } as CSSProperties,
+      textOnRight: false,
     },
     {
       title: "Prayer Ministry",
@@ -45,7 +72,10 @@ const Ministries = () => {
         "Prayer chain for urgent requests"
       ],
       icon: <Heart className="w-8 h-8" />, 
-      color: "bg-red-50 border-red-200"
+      color: "bg-red-50 border-red-200",
+      image: "/87c42148-e584-4fcf-b619-b36ab2a66e6e_PhotoGrid.png",
+      imageClass: "",
+      imageStyle: { objectPosition: 'right 20%' } as CSSProperties,
     },
     {
       title: "Community Outreach",
@@ -55,7 +85,10 @@ const Ministries = () => {
         "Local community service projects"
       ],
       icon: <Users className="w-8 h-8" />, 
-      color: "bg-orange-50 border-orange-200"
+      color: "bg-orange-50 border-orange-200",
+      image: "/PHOTO-2025-03-29-14-31-16.jpg",
+      imageClass: "",
+      imageStyle: { objectPosition: 'center 35%' } as CSSProperties
     }
   ];
 
@@ -152,53 +185,18 @@ const Ministries = () => {
             return (
               <div key={idx} className="relative w-full max-w-6xl mx-auto h-[400px] rounded-2xl overflow-hidden shadow-xl flex">
                 <img
-                  src={
-                    ministry.title === "Bilingual Worship Services"
-                      ? "/Copy of _I0B7291.png"
-                      : ministry.title === "Children's Ministry"
-                        ? "/PHOTO-2025-06-15-14-20-21.jpg"
-                        : ministry.title === "Prayer Ministry"
-                          ? "/87c42148-e584-4fcf-b619-b36ab2a66e6e_PhotoGrid.png"
-                          : ministry.title === "Community Outreach"
-                            ? "/PHOTO-2025-03-29-14-31-16.jpg"
-                            : ministry.title === "Young Adult Ministry"
-                              ? "/DSC00655.png"
-                              : "/placeholder.svg"
-                  }
+                  src={ministry.image || "/placeholder.svg"}
                   alt={ministry.title}
                   loading="lazy"
                   decoding="async"
-                  className={`absolute inset-0 w-full h-full object-cover ${
-                    ministry.title === "Bilingual Worship Services"
-                      ? ''
-                      : ministry.title === "Children's Ministry"
-                        ? 'object-right'
-                      : ministry.title === "Prayer Ministry"
-                        ? ''
-                      : ministry.title === "Community Outreach"
-                        ? ''
-                        : 'object-center'
-                  }`}
-                  style={
-                    ministry.title === "Bilingual Worship Services"
-                      ? { objectPosition: 'center 5%' }
-                      : ministry.title === "Prayer Ministry"
-                        ? { objectPosition: 'right 20%' }
-                        : ministry.title === "Community Outreach"
-                          ? { objectPosition: 'center 35%' }
-                          : ministry.title === "Young Adult Ministry"
-                            ? { objectPosition: '90% 70%' }
-                            : undefined
-                  }
+                  className={`absolute inset-0 w-full h-full object-cover ${ministry.imageClass || 'object-center'}`}
+                  style={ministry.imageStyle}
                 />
                 {/* Black gradient overlay for text readability */}
                 {(() => {
-                  // Override formatting for swapped ministries
-                  const textOnRight = ministry.title === "Young Adult Ministry" 
-                    ? false 
-                    : ministry.title === "Children's Ministry" 
-                      ? true 
-                      : isEven;
+                  const textOnRight = typeof ministry.textOnRight === 'boolean'
+                    ? ministry.textOnRight
+                    : isEven;
                   return (
                     <>
                       <div className={`absolute inset-0 z-20 ${textOnRight ? 'bg-gradient-to-l from-[#244363]/70 via-[#244363]/30 to-transparent' : 'bg-gradient-to-r from-[#244363]/70 via-[#244363]/30 to-transparent'}`} />
@@ -206,14 +204,19 @@ const Ministries = () => {
                         <div className={`max-w-2xl ${textOnRight ? 'text-right' : 'text-left'}`}>
                           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 drop-shadow-lg">{ministry.title}</h2>
                           <p className="text-lg md:text-xl text-white mb-4 drop-shadow">{ministry.description}</p>
+                          {ministry.highlight && (
+                            <div className="inline-block bg-[#d9b062] text-[#244363] font-extrabold text-base md:text-lg px-5 py-2 rounded-full mb-4 shadow-lg">
+                              {ministry.highlight}
+                            </div>
+                          )}
                           <ul className="mb-8 list-disc list-inside" style={{ color: '#f3c96b' }}>
                             {ministry.details.map((detail, i) => (
-                              <li key={i} className="text-lg" style={{ color: '#fff', WebkitTextStroke: '0.2px #fff' }}>
+                              <li key={i} className="text-lg font-semibold" style={{ color: '#f3c96b' }}>
                                 {detail}
                               </li>
                             ))}
                           </ul>
-                          <Link to="/plan-visit">
+                          <Link to={ministry.href || "/plan-visit"}>
                             <Button className="bg-white text-[#244363] hover:bg-[#d9b062] hover:text-[#244363] px-8 py-4 text-lg font-bold rounded-full shadow-lg">
                               LEARN MORE <span className="ml-2">&rarr;</span>
                             </Button>

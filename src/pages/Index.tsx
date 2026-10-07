@@ -13,14 +13,14 @@ interface SermonVideo {
   thumbnail?: string;
 }
 
-function getNextSunday830AM() {
+function getNextSunday11AM() {
   const now = new Date();
   const result = new Date(now);
-  result.setHours(8, 30, 0, 0); // Set to 8:30 AM
+  result.setHours(11, 0, 0, 0); // Set to 11:00 AM
   // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
   const day = now.getDay();
   if (day === 0 && now < result) {
-    // Today is Sunday, but before 8:30 AM
+    // Today is Sunday, but before 11:00 AM
     return result;
   } else {
     // Next Sunday
@@ -47,7 +47,7 @@ function useCountdown(targetDate) {
 }
 
 const Index = () => {
-  const nextSunday = getNextSunday830AM();
+  const nextSunday = getNextSunday11AM();
   const { days, hours, minutes, seconds } = useCountdown(nextSunday);
   const [englishVideo, setEnglishVideo] = useState<SermonVideo | null>(null);
   const [amharicVideo, setAmharicVideo] = useState<SermonVideo | null>(null);
@@ -70,20 +70,35 @@ const Index = () => {
             ? `/api/youtube/playlist?playlistId=${englishPlaylistId}&maxResults=1`
             : `http://localhost:3000/api/youtube/playlist?playlistId=${englishPlaylistId}&maxResults=1`;
           
+          // Add timeout to prevent hanging
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+          
           const englishResponse = await fetch(englishApiUrl, {
             mode: 'cors',
             headers: {
               'Accept': 'application/json',
-            }
+            },
+            signal: controller.signal
           }).catch((err) => {
+            clearTimeout(timeoutId);
             console.error('Fetch error for English video:', err);
             // If CORS fails, try the production route as fallback
             if (!isProduction) {
               console.log('Trying production route as fallback for English video...');
-              return fetch(`/api/youtube/playlist?playlistId=${englishPlaylistId}&maxResults=1`).catch(() => null);
+              const fallbackController = new AbortController();
+              const fallbackTimeout = setTimeout(() => fallbackController.abort(), 5000);
+              return fetch(`/api/youtube/playlist?playlistId=${englishPlaylistId}&maxResults=1`, {
+                signal: fallbackController.signal
+              }).catch(() => {
+                clearTimeout(fallbackTimeout);
+                return null;
+              }).finally(() => clearTimeout(fallbackTimeout));
             }
             return null;
           });
+          
+          clearTimeout(timeoutId);
 
           if (englishResponse && englishResponse.ok) {
             const englishData = await englishResponse.json();
@@ -106,20 +121,35 @@ const Index = () => {
             ? `/api/youtube/playlist?playlistId=${amharicPlaylistId}&maxResults=1`
             : `http://localhost:3000/api/youtube/playlist?playlistId=${amharicPlaylistId}&maxResults=1`;
           
+          // Add timeout to prevent hanging
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+          
           const amharicResponse = await fetch(amharicApiUrl, {
             mode: 'cors',
             headers: {
               'Accept': 'application/json',
-            }
+            },
+            signal: controller.signal
           }).catch((err) => {
+            clearTimeout(timeoutId);
             console.error('Fetch error for Amharic video:', err);
             // If CORS fails, try the production route as fallback
             if (!isProduction) {
               console.log('Trying production route as fallback for Amharic video...');
-              return fetch(`/api/youtube/playlist?playlistId=${amharicPlaylistId}&maxResults=1`).catch(() => null);
+              const fallbackController = new AbortController();
+              const fallbackTimeout = setTimeout(() => fallbackController.abort(), 5000);
+              return fetch(`/api/youtube/playlist?playlistId=${amharicPlaylistId}&maxResults=1`, {
+                signal: fallbackController.signal
+              }).catch(() => {
+                clearTimeout(fallbackTimeout);
+                return null;
+              }).finally(() => clearTimeout(fallbackTimeout));
             }
             return null;
           });
+          
+          clearTimeout(timeoutId);
 
           if (amharicResponse && amharicResponse.ok) {
             const amharicData = await amharicResponse.json();
