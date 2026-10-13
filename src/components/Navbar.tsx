@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils';
 import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
+import { preloadPageImages } from '@/lib/preloadImages';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -67,7 +68,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 bg-transparent overflow-visible">
           <div className="flex-shrink-0 bg-transparent overflow-visible">
             <Link to="/" className="flex items-center bg-transparent -ml-4 md:-ml-8 mt-16 md:mt-16">
-              <img src="/church_logo_lutheran.png" alt="Living Hope Logo" className="h-40 md:h-52 w-auto object-contain max-w-[280px] md:max-w-none" loading="eager" fetchpriority="high" />
+              <img src="/church_logo_lutheran.png" alt="Living Hope Logo" className="h-40 md:h-52 w-auto object-contain max-w-[280px] md:max-w-none" loading="eager" fetchPriority="high" decoding="sync" />
             </Link>
           </div>
           
@@ -76,24 +77,28 @@ const Navbar = () => {
             <div className="ml-10 flex items-baseline space-x-8 bg-transparent">
               <Link 
                 to="/"
+                onMouseEnter={() => preloadPageImages('/')}
                 className="px-3 py-2 text-lg font-semibold transition-colors hover:text-[#d9b062] text-white"
               >
                 Home
               </Link>
               <Link 
                 to="/about"
+                onMouseEnter={() => preloadPageImages('/about')}
                 className="px-3 py-2 text-lg font-semibold transition-colors hover:text-[#d9b062] text-white"
               >
                 About Us
               </Link>
               <Link 
                 to="/statement-of-faith"
+                onMouseEnter={() => preloadPageImages('/statement-of-faith')}
                 className="px-3 py-2 text-lg font-semibold transition-colors hover:text-[#d9b062] text-white"
               >
                 Statement of Faith
               </Link>
               <Link 
                 to="/events"
+                onMouseEnter={() => preloadPageImages('/events')}
                 className="px-3 py-2 text-lg font-semibold transition-colors hover:text-[#d9b062] text-white"
               >
                 Events
@@ -114,6 +119,7 @@ const Navbar = () => {
                     <DropdownMenuItem asChild>
                       <Link 
                         to="/watch-service"
+                        onMouseEnter={() => preloadPageImages('/watch-service')}
                         className="cursor-pointer text-white hover:text-[#d9b062]"
                       >
                         Watch a Service
@@ -122,6 +128,7 @@ const Navbar = () => {
                     <DropdownMenuItem asChild>
                       <Link 
                         to="/ministries"
+                        onMouseEnter={() => preloadPageImages('/ministries')}
                         className="cursor-pointer text-white hover:text-[#d9b062]"
                       >
                         Ministries
@@ -146,6 +153,7 @@ const Navbar = () => {
                     <DropdownMenuItem asChild>
                       <Link 
                         to="/plan-visit"
+                        onMouseEnter={() => preloadPageImages('/plan-visit')}
                         className="cursor-pointer text-white hover:text-[#d9b062]"
                       >
                         Become a Member
@@ -154,6 +162,7 @@ const Navbar = () => {
                     <DropdownMenuItem asChild>
                       <Link 
                         to="/small-groups"
+                        onMouseEnter={() => preloadPageImages('/small-groups')}
                         className="cursor-pointer text-white hover:text-[#d9b062]"
                       >
                         Small Groups
@@ -194,6 +203,7 @@ const Navbar = () => {
           <Link 
             to="/"
             className="block px-3 py-3 rounded-md text-lg font-semibold text-white hover:bg-[#244363]/80"
+            onTouchStart={() => preloadPageImages('/')}
             onClick={() => {
               setIsMenuOpen(false);
               window.scrollTo(0, 0);
@@ -204,6 +214,7 @@ const Navbar = () => {
           <Link 
             to="/about"
             className="block px-3 py-3 rounded-md text-lg font-semibold text-white hover:bg-[#244363]/80"
+            onTouchStart={() => preloadPageImages('/about')}
             onClick={() => {
               setIsMenuOpen(false);
               window.scrollTo(0, 0);
@@ -214,6 +225,7 @@ const Navbar = () => {
           <Link 
             to="/statement-of-faith"
             className="block px-3 py-3 rounded-md text-lg font-semibold text-white hover:bg-[#244363]/80"
+            onTouchStart={() => preloadPageImages('/statement-of-faith')}
             onClick={() => {
               setIsMenuOpen(false);
               window.scrollTo(0, 0);
@@ -224,6 +236,7 @@ const Navbar = () => {
           <Link 
             to="/events"
             className="block px-3 py-3 rounded-md text-lg font-semibold text-white hover:bg-[#244363]/80"
+            onTouchStart={() => preloadPageImages('/events')}
             onClick={() => {
               setIsMenuOpen(false);
               window.scrollTo(0, 0);
@@ -237,6 +250,7 @@ const Navbar = () => {
           <Link 
             to="/watch-service"
             className="block px-3 py-3 rounded-md text-lg font-semibold text-white hover:bg-[#244363]/80 pl-8"
+            onTouchStart={() => preloadPageImages('/watch-service')}
             onClick={() => {
               setIsMenuOpen(false);
               window.scrollTo(0, 0);
@@ -247,6 +261,7 @@ const Navbar = () => {
           <Link 
             to="/ministries"
             className="block px-3 py-3 rounded-md text-lg font-semibold text-white hover:bg-[#244363]/80 pl-8"
+            onTouchStart={() => preloadPageImages('/ministries')}
             onClick={() => {
               setIsMenuOpen(false);
               window.scrollTo(0, 0);
@@ -260,6 +275,7 @@ const Navbar = () => {
           <Link 
             to="/plan-visit"
             className="block px-3 py-3 rounded-md text-lg font-semibold text-white hover:bg-[#244363]/80 pl-8"
+            onTouchStart={() => preloadPageImages('/plan-visit')}
             onClick={() => {
               setIsMenuOpen(false);
               window.scrollTo(0, 0);
@@ -270,6 +286,7 @@ const Navbar = () => {
           <Link 
             to="/small-groups"
             className="block px-3 py-3 rounded-md text-lg font-semibold text-white hover:bg-[#244363]/80 pl-8"
+            onTouchStart={() => preloadPageImages('/small-groups')}
             onClick={() => {
               setIsMenuOpen(false);
               window.scrollTo(0, 0);

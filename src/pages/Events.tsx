@@ -19,7 +19,7 @@ export const pastEvents = [
     date: "Spring 2026",
     time: "",
     location: "",
-    image: "/ChatGPT Image Dec 16, 2025, 02_16_58 PM.png"
+    image: "/ChatGPT Image Dec 16, 2025, 02_16_58 PM.jpg"
   },
   {
     id: 7,
@@ -27,7 +27,7 @@ export const pastEvents = [
     date: "Fall 2026",
     time: "",
     location: "",
-    image: "/ChatGPT Image Dec 16, 2025, 02_50_34 PM.png"
+    image: "/ChatGPT Image Dec 16, 2025, 02_50_34 PM.jpg"
   }
 ];
 
@@ -73,11 +73,12 @@ const Events = () => {
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 sm:pb-32 text-white overflow-hidden min-h-[85vh] sm:min-h-[70vh]">
         <img
-          src="/Copy of _I0B7294.png"
+          src="/Copy of _I0B7294.jpg"
           alt="Events Background"
           className="absolute inset-0 w-full h-full object-cover z-0"
-          fetchpriority="high"
-          decoding="async"
+          loading="eager"
+          fetchPriority="high"
+          decoding="sync"
           style={{ filter: 'brightness(0.5)', objectPosition: 'center 10%' }}
         />
         <div className="absolute inset-0 bg-black/25 z-10" />
@@ -102,36 +103,25 @@ const Events = () => {
       {/* Upcoming Events */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            <motion.h2 
-              variants={itemVariants}
-              className="text-3xl md:text-4xl font-bold text-center text-[#244363] mb-12"
-            >
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-center text-[#244363] mb-12">
               Upcoming Events
-            </motion.h2>
+            </h2>
             <div className="max-w-7xl mx-auto border border-gray-300 rounded-lg p-8">
               {/* Single row - 3 cards */}
-              <motion.div 
-                variants={containerVariants}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
-              >
-                {pastEvents.map((event, index) => (
-                  <motion.div 
-                    key={event.id} 
-                    variants={itemVariants}
-                  >
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                {pastEvents.map((event) => (
+                  <div key={event.id}>
                     <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-full">
                       {/* Event Image */}
                       <div className="w-full aspect-video bg-gray-200 flex items-center justify-center overflow-hidden">
                         <img
-                          src={event.image || '/placeholder.svg'}
+                          src={encodeURI(event.image || '/placeholder.svg')}
                           alt={event.title}
                           className="w-full h-full object-cover object-center"
+                          loading="eager"
+                          fetchPriority="high"
+                          decoding="sync"
                         />
                       </div>
                       <div className="p-8 flex flex-col flex-1">
@@ -146,11 +136,11 @@ const Events = () => {
                         )}
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 

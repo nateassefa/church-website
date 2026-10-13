@@ -220,12 +220,13 @@ const Index = () => {
           {/* Panel 1 */}
           <div className="relative w-full aspect-[4/3] overflow-hidden">
             <img
-              src="/DSC00270.png"
+              src="/DSC00270.jpg"
               alt="Church Community"
               className="w-full h-full object-cover"
               style={{ transform: 'scale(1.2) translateX(5%)' }}
-              loading="lazy"
-              decoding="async"
+              loading="eager"
+              fetchPriority="high"
+              decoding="sync"
             />
           </div>
           {/* Panel 2 */}
@@ -235,8 +236,9 @@ const Index = () => {
               alt="Church Community"
               className="w-full h-full object-cover"
               style={{ transform: 'scale(1.2)' }}
-              loading="lazy"
-              decoding="async"
+              loading="eager"
+              fetchPriority="high"
+              decoding="sync"
             />
           </div>
           {/* Panel 3 */}
@@ -246,8 +248,9 @@ const Index = () => {
               alt="Church Community"
               className="w-full h-full object-cover"
               style={{ transform: 'scale(1.2)' }}
-              loading="lazy"
-              decoding="async"
+              loading="eager"
+              fetchPriority="high"
+              decoding="sync"
             />
           </div>
           {/* Panel 4 */}
@@ -257,8 +260,9 @@ const Index = () => {
               alt="Church Family"
               className="w-full h-full object-cover"
               style={{ transform: 'scale(1.2)' }}
-              loading="lazy"
-              decoding="async"
+              loading="eager"
+              fetchPriority="high"
+              decoding="sync"
             />
           </div>
         </div>

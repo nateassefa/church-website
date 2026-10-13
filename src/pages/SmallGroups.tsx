@@ -56,7 +56,7 @@ const upcomingEvents = [
       time: "11:00 AM",
       location: "3637 Graham Park Road, Triangle VA 22172 (Amharic & English)",
       category: "Worship",
-      image: "/public.png",
+      image: "/public.jpg",
       featured: true,
       when: "weekly",
       region: "church",
@@ -75,7 +75,7 @@ const upcomingEvents = [
       time: "7:00 PM",
       location: "In Person & Virtual",
       category: "Bible Study",
-      image: "/ChatGPT Image Nov 21, 2025, 05_05_29 PM.png",
+      image: "/ChatGPT Image Nov 21, 2025, 05_05_29 PM.jpg",
       when: "weekly",
       region: "church",
       campus: "main",
@@ -93,7 +93,7 @@ const upcomingEvents = [
       time: "7:00 PM",
       location: "Online",
       category: "Bible Study",
-      image: "/IMG_6655_PhotoGrid.png",
+      image: "/IMG_6655_PhotoGrid.jpg",
       when: "weekly",
       region: "online",
       campus: "online",
@@ -110,7 +110,7 @@ const upcomingEvents = [
       date: "Directly after Sunday Service",
       time: "Directly after Sunday Service",
       category: "Fellowship",
-      image: "/37ef91a4-a452-4e5f-a4de-f260106e9b17.png",
+      image: "/37ef91a4-a452-4e5f-a4de-f260106e9b17.jpg",
       when: "weekly",
       region: "church",
       campus: "main",
@@ -128,7 +128,7 @@ const upcomingEvents = [
       time: "6:00-8:00 PM",
       location: "Dumfries, VA",
       category: "Bible Study",
-      image: "/ChatGPT Image Nov 21, 2025, 04_27_38 PM.png",
+      image: "/ChatGPT Image Nov 21, 2025, 04_27_38 PM.jpg",
       when: "weekly",
       region: "dumfries",
       campus: "dumfries",
@@ -146,7 +146,7 @@ const upcomingEvents = [
       time: "7:00 PM",
       location: "Woodbridge, VA",
       category: "Bible Study",
-      image: "/ChatGPT Image Nov 21, 2025, 04_49_12 PM.png",
+      image: "/ChatGPT Image Nov 21, 2025, 04_49_12 PM.jpg",
       when: "weekly",
       region: "woodbridge",
       campus: "woodbridge",
@@ -164,7 +164,7 @@ const upcomingEvents = [
       time: "3:00-5:00 PM",
       location: "Fredericksburg, VA",
       category: "Bible Study",
-      image: "/ChatGPT Image Nov 21, 2025, 04_32_25 PM.png",
+      image: "/ChatGPT Image Nov 21, 2025, 04_32_25 PM.jpg",
       when: "weekly",
       region: "fredericksburg",
       campus: "fredericksburg",
@@ -182,7 +182,7 @@ const upcomingEvents = [
       time: "6:00-8:00 PM",
       location: "Stafford, VA",
       category: "Bible Study",
-      image: "/ChatGPT Image Nov 21, 2025, 04_36_33 PM.png",
+      image: "/ChatGPT Image Nov 21, 2025, 04_36_33 PM.jpg",
       when: "weekly",
       region: "stafford",
       campus: "stafford",
@@ -287,8 +287,9 @@ const SmallGroups = () => {
           src="/DSC00436.JPG"
           alt="Small Groups Background"
           className="absolute inset-0 w-full h-full object-cover z-0"
-          fetchpriority="high"
-          decoding="async"
+          loading="eager"
+          fetchPriority="high"
+          decoding="sync"
           style={{ filter: 'brightness(0.5)', objectPosition: 'center 60%' }}
         />
         <div className="absolute inset-0 bg-black/25 z-10" />
@@ -313,23 +314,12 @@ const SmallGroups = () => {
       {/* Weekly Events */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={containerVariants}
-          >
-            <motion.h2 
-              variants={itemVariants}
-              className="text-3xl md:text-4xl font-bold text-center text-[#244363] mb-8"
-            >
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-center text-[#244363] mb-8">
               Weekly Events
-            </motion.h2>
+            </h2>
             
-            <motion.div 
-              variants={containerVariants}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto"
-            >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
               {filteredEvents.length > 0 ? (
                 filteredEvents.map((event, index) => {
                 // Format location for display
@@ -343,9 +333,8 @@ const SmallGroups = () => {
                 }
                 
                 return (
-                  <motion.div 
+                  <div 
                     key={event.id}
-                    variants={itemVariants}
                     className={filteredEvents.length === 1 ? 'md:col-start-1 md:col-span-1' : ''}
                   >
                     <div className="relative rounded-lg overflow-hidden h-[400px] md:h-[500px] shadow-2xl group cursor-pointer">
@@ -354,11 +343,12 @@ const SmallGroups = () => {
                         {event.image && event.image.trim() !== '' ? (
                           <img
                             key={`${event.id}-${event.image}`}
-                            src={event.image}
+                            src={encodeURI(event.image)}
                             alt={event.title}
-                            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
-                            loading="lazy"
-                            decoding="async"
+                            className="absolute inset-0 w-full h-full object-cover"
+                            loading="eager"
+                            fetchPriority="high"
+                            decoding="sync"
                             onError={(e) => {
                               // Log detailed error information to help debug
                               const imgElement = e.currentTarget;
@@ -418,7 +408,7 @@ const SmallGroups = () => {
                         </div>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 );
               }))
               : (
@@ -426,8 +416,8 @@ const SmallGroups = () => {
                   <p className="text-gray-600 text-lg">No events found matching your search criteria.</p>
                 </div>
               )}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 

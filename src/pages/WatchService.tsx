@@ -45,11 +45,12 @@ const WatchService = () => {
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 sm:pb-32 text-white overflow-hidden min-h-[85vh] sm:min-h-[70vh]">
         <img
-          src="/DSC00565.png"
+          src="/DSC00565.jpg"
           alt="Watch Service Background"
           className="absolute inset-0 w-full h-full object-cover z-0"
-          fetchpriority="high"
-          decoding="async"
+          loading="eager"
+          fetchPriority="high"
+          decoding="sync"
           style={{ filter: 'brightness(0.5)', objectPosition: 'center 40%' }}
         />
         <div className="absolute inset-0 bg-black/25 z-10" />

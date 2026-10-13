@@ -48,8 +48,9 @@ const About = () => {
           src="/DSC00310.jpg" 
           alt="Living Hope for Generations Church family" 
           className="absolute inset-0 w-full h-full object-cover object-[center_25%] z-0"
-          fetchpriority="high"
-          decoding="async"
+          loading="eager"
+          fetchPriority="high"
+          decoding="sync"
         />
         {/* Overlay for readability */}
         <div className="absolute inset-0 bg-black/25 z-10" />
@@ -80,17 +81,18 @@ const About = () => {
             variants={containerVariants}
             className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16"
           >
-            <motion.div variants={itemVariants}>
+            <div>
               <div className="w-full h-96 flex items-center justify-center bg-gray-200 rounded-lg shadow-lg overflow-hidden">
                 <img 
-                  src="/image (3).jpg" 
+                  src={encodeURI("/image (3).jpg")} 
                   alt="Living Hope for Generations Church family" 
                   className="w-full h-full object-cover object-center"
-                  loading="lazy"
-                  decoding="async" 
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="sync" 
                 />
               </div>
-            </motion.div>
+            </div>
             <motion.div variants={itemVariants}>
               <h2 className="text-3xl font-bold text-[#244363] mb-6">Our Church Family</h2>
               <p className="text-gray-700 text-lg leading-relaxed mb-6">

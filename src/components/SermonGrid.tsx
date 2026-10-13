@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { AMHARIC_PLAYLIST_ID, fetchYoutubePlaylist } from '@/lib/youtube';
 
@@ -291,12 +290,8 @@ const SermonGrid = ({ playlistId = AMHARIC_PLAYLIST_ID, title = "WATCH RECENT SE
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {videos.map((video, index) => (
-          <motion.div
+          <div
             key={video.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
             className="group cursor-pointer"
             onClick={() => window.open(`https://www.youtube.com/watch?v=${video.videoId}`, '_blank')}
           >
@@ -307,7 +302,8 @@ const SermonGrid = ({ playlistId = AMHARIC_PLAYLIST_ID, title = "WATCH RECENT SE
                   src={video.thumbnail}
                   alt={video.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
+                  loading="eager"
+                  decoding="sync"
                 />
                 {/* Play overlay - white circle with blue play icon */}
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -330,7 +326,7 @@ const SermonGrid = ({ playlistId = AMHARIC_PLAYLIST_ID, title = "WATCH RECENT SE
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

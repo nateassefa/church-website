@@ -17,7 +17,7 @@ const Ministries = () => {
       ],
       icon: <Music className="w-8 h-8" />, 
       color: "bg-blue-50 border-blue-200",
-      image: "/Copy of _I0B7291.png",
+      image: "/Copy of _I0B7291.jpg",
       imageClass: "",
       imageStyle: { objectPosition: 'center 5%' } as CSSProperties,
     },
@@ -42,7 +42,7 @@ const Ministries = () => {
       ],
       icon: <BookOpen className="w-8 h-8" />,
       color: "bg-teal-50 border-teal-200",
-      image: "/IMG_6655_PhotoGrid.png",
+      image: "/IMG_6655_PhotoGrid.jpg",
       imageClass: "object-center",
       imageStyle: { objectPosition: 'center 20%' } as CSSProperties,
       href: "/youth-bible-study-interest",
@@ -56,7 +56,7 @@ const Ministries = () => {
       ],
       icon: <Users className="w-8 h-8" />, 
       color: "bg-purple-50 border-purple-200",
-      image: "/DSC00655.png",
+      image: "/DSC00655.jpg",
       imageClass: "object-center",
       imageStyle: { objectPosition: '90% 70%' } as CSSProperties,
       textOnRight: false,
@@ -70,7 +70,7 @@ const Ministries = () => {
       ],
       icon: <Heart className="w-8 h-8" />, 
       color: "bg-red-50 border-red-200",
-      image: "/87c42148-e584-4fcf-b619-b36ab2a66e6e_PhotoGrid.png",
+      image: "/87c42148-e584-4fcf-b619-b36ab2a66e6e_PhotoGrid.jpg",
       imageClass: "",
       imageStyle: { objectPosition: 'right 20%' } as CSSProperties,
     },
@@ -130,11 +130,12 @@ const Ministries = () => {
         {/* Hero Section with Background Image */}
         <section className="relative pt-24 pb-16 sm:pb-32 text-white overflow-hidden min-h-[85vh] sm:min-h-[70vh]">
           <img
-            src="/WhatsApp Image 2025-03-29 at 14.31.16.png"
+            src={encodeURI("/WhatsApp Image 2025-03-29 at 14.31.16.jpg")}
             alt="Ministries Background"
             className="absolute inset-0 w-full h-full object-cover object-[center_40%] z-0"
-            fetchpriority="high"
-            decoding="async"
+            loading="eager"
+            fetchPriority="high"
+            decoding="sync"
           />
           <div className="absolute inset-0 bg-black/25 z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/80 via-[#244363]/40 to-transparent z-10" />
@@ -182,10 +183,11 @@ const Ministries = () => {
             return (
               <div key={idx} className="relative w-full max-w-6xl mx-auto h-[400px] rounded-2xl overflow-hidden shadow-xl flex">
                 <img
-                  src={ministry.image || "/placeholder.svg"}
+                  src={encodeURI(ministry.image || "/placeholder.svg")}
                   alt={ministry.title}
-                  loading="lazy"
-                  decoding="async"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="sync"
                   className={`absolute inset-0 w-full h-full object-cover ${ministry.imageClass || 'object-center'}`}
                   style={ministry.imageStyle}
                 />

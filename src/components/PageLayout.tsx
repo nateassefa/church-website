@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactInfo from '@/components/ContactInfo';
 import FloatingContactButton from '@/components/FloatingContactButton';
+import { preloadAllPageImages, preloadPageImages } from '@/lib/preloadImages';
 
 type PageLayoutProps = {
   children: React.ReactNode;
@@ -14,10 +15,14 @@ type PageLayoutProps = {
 const PageLayout = ({ children, showContact = true, footerTall = false }: PageLayoutProps) => {
   const location = useLocation();
 
-  // Effect to scroll to top when route changes
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.scrollTo(0, 0);
-  }, [location]);
+    preloadPageImages(location.pathname);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    preloadAllPageImages();
+  }, []);
 
   return (
     <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden flex flex-col">

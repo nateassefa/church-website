@@ -10,7 +10,7 @@ const ministries = [
   {
     title: "Kids Life",
     description: "Kids Life has a variety of avenues to help your children pre-school to 5th grade learn about Jesus’ love for them.",
-    image: "/490103190_122106027620827914_5173506189753291620_n_PhotoGrid.png",
+    image: "/490103190_122106027620827914_5173506189753291620_n_PhotoGrid.jpg",
     button: "Learn More"
   },
   {
@@ -22,7 +22,7 @@ const ministries = [
   {
     title: "Life Connect",
     description: "Life Connect is your pathway to involvement and finding your fit in our vibrant church family.",
-    image: "/IMG_6655_PhotoGrid.png",
+    image: "/IMG_6655_PhotoGrid.jpg",
     button: "Save Your Seat"
   }
 ];
