@@ -19,6 +19,8 @@ export const PAGE_IMAGES: Record<string, string[]> = {
   ],
   '/events': [
     '/Copy of _I0B7294.jpg',
+    '/fall-thanksgiving-conference-flyer.jpg',
+    '/friendsgiving-flyer.jpg',
   ],
   '/small-groups': [
     '/DSC00436.JPG',

@@ -9,25 +9,17 @@ export const pastEvents = [
     id: 5,
     title: "Fall Thanksgiving Conference (የምስጋና ኮንፍረንስ)",
     date: "Nov 20–22",
-    time: "",
-    location: "",
-    image: "/placeholder.svg"
+    time: "Fri–Sat 5 PM, Sun 11 AM",
+    location: "3637 Graham Park Rd, Triangle VA",
+    image: "/fall-thanksgiving-conference-flyer.jpg"
   },
   {
     id: 6,
     title: "Friendsgiving",
     date: "Nov 27",
-    time: "",
-    location: "",
-    image: "/placeholder.svg"
-  },
-  {
-    id: 7,
-    title: "Spring Worship Conference",
-    date: "March 2027",
-    time: "",
-    location: "",
-    image: "/placeholder.svg"
+    time: "6 PM",
+    location: "Potluck Style",
+    image: "/friendsgiving-flyer.jpg"
   }
 ];
 
@@ -108,8 +100,7 @@ const Events = () => {
               Upcoming Events
             </h2>
             <div className="max-w-7xl mx-auto border border-gray-300 rounded-lg p-8">
-              {/* Single row - 3 cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
                 {pastEvents.map((event) => (
                   <div key={event.id}>
                     <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-full">
