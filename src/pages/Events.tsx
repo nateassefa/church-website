@@ -7,27 +7,27 @@ import { Link } from "react-router-dom";
 export const pastEvents = [
   {
     id: 5,
-    title: "Urbana Conference",
-    date: "Dec 28 - Dec 31",
+    title: "Fall Thanksgiving Conference (የምስጋና ኮንፍረንስ)",
+    date: "Nov 20–22",
     time: "",
-    location: "Phoenix, AZ",
-    image: "/1971102936-30a536de1d9a3c88178e1e1170d4818dfd5ac3271924621dff855dbc50735068-d.webp"
+    location: "",
+    image: "/placeholder.svg"
   },
   {
     id: 6,
-    title: "Spring 2026 Conference",
-    date: "Spring 2026",
+    title: "Friendsgiving",
+    date: "Nov 27",
     time: "",
     location: "",
-    image: "/ChatGPT Image Dec 16, 2025, 02_16_58 PM.jpg"
+    image: "/placeholder.svg"
   },
   {
     id: 7,
-    title: "Fall 2026 Conference",
-    date: "Fall 2026",
+    title: "Spring Worship Conference",
+    date: "March 2027",
     time: "",
     location: "",
-    image: "/ChatGPT Image Dec 16, 2025, 02_50_34 PM.jpg"
+    image: "/placeholder.svg"
   }
 ];
 

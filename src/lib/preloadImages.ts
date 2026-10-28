@@ -7,7 +7,7 @@ export const PAGE_IMAGES: Record<string, string[]> = {
     '/DSC00310.jpg',
   ],
   '/about': ['/DSC00310.jpg', '/image (3).jpg'],
-  '/statement-of-faith': ['/DSC00287.JPG'],
+  '/statement-of-faith': ['/statement-of-faith-hero.jpg'],
   '/ministries': [
     '/WhatsApp Image 2025-03-29 at 14.31.16.jpg',
     '/Copy of _I0B7291.jpg',
@@ -19,8 +19,6 @@ export const PAGE_IMAGES: Record<string, string[]> = {
   ],
   '/events': [
     '/Copy of _I0B7294.jpg',
-    '/ChatGPT Image Dec 16, 2025, 02_16_58 PM.jpg',
-    '/ChatGPT Image Dec 16, 2025, 02_50_34 PM.jpg',
   ],
   '/small-groups': [
     '/DSC00436.JPG',

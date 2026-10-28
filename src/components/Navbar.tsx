@@ -67,8 +67,8 @@ const Navbar = () => {
       <div className="w-full px-4 sm:px-6 lg:px-8 mx-auto bg-transparent overflow-visible">
         <div className="flex items-center justify-between h-16 bg-transparent overflow-visible">
           <div className="flex-shrink-0 bg-transparent overflow-visible">
-            <Link to="/" className="flex items-center bg-transparent -ml-4 md:-ml-8 mt-16 md:mt-16">
-              <img src="/church_logo_lutheran.png" alt="Living Hope Logo" className="h-40 md:h-52 w-auto object-contain max-w-[280px] md:max-w-none" loading="eager" fetchPriority="high" decoding="sync" />
+            <Link to="/" className="flex items-center bg-transparent -ml-2 md:-ml-4 mt-2 md:mt-3">
+              <img src="/church_logo_lutheran.png" alt="Living Hope Logo" className="h-12 sm:h-14 md:h-[4.5rem] w-auto object-contain max-w-[220px] sm:max-w-[300px] md:max-w-[420px] drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]" loading="eager" fetchPriority="high" decoding="sync" />
             </Link>
           </div>
           

@@ -103,9 +103,9 @@ const StatementOfFaith = () => {
         {/* Hero Section */}
         <section className="relative pt-24 pb-16 sm:pb-32 text-white overflow-hidden min-h-[85vh] sm:min-h-[70vh]">
           <img 
-            src="/DSC00287.JPG" 
+            src="/statement-of-faith-hero.jpg" 
             alt="Statement of Faith Background" 
-            className="absolute inset-0 w-full h-full object-cover object-[center_35%] z-0"
+            className="absolute inset-0 w-full h-full object-cover object-[center_20%] z-0"
             loading="eager"
             fetchPriority="high"
             decoding="sync" 
