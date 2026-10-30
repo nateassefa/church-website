@@ -140,7 +140,7 @@ const PlanVisit = () => {
           src={photoUrl('/become-a-member.jpg')}
           alt="Plan Your Visit Background"
           className="absolute inset-0 w-full h-full object-cover z-0"
-          style={{ objectPosition: 'center 38%' }}
+          style={{ objectPosition: 'center 42%' }}
           loading="eager"
           fetchPriority="high"
           decoding="sync"

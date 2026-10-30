@@ -134,7 +134,7 @@ const Ministries = () => {
           <img
             src={photoUrl('/ministries-hero.jpg')}
             alt="Ministries Background"
-            className="absolute inset-0 w-full h-full object-cover object-[center_36%] z-0"
+            className="absolute inset-0 w-full h-full object-cover object-[center_40%] z-0"
             loading="eager"
             fetchPriority="high"
             decoding="sync"

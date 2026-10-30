@@ -37,7 +37,7 @@ export const PAGE_IMAGES: Record<string, string[]> = {
   '/watch-service': ['/recent-sermons.jpg'],
 };
 
-export const PHOTO_V = 'orig';
+export const PHOTO_V = 'orig-full';
 
 export function photoUrl(src: string) {
   if (!src || src.startsWith('http') || src.includes('?')) return src;

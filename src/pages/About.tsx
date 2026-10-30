@@ -86,7 +86,7 @@ const About = () => {
                 <img 
                   src={photoUrl('/church-family.jpg')} 
                   alt="Living Hope for Generations Church family" 
-                  className="w-full h-full object-cover object-[58%_18%]"
+                  className="w-full h-full object-cover object-[center_42%]"
                   loading="eager"
                   fetchPriority="high"
                   decoding="sync" 

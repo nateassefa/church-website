@@ -232,7 +232,7 @@ const Index = () => {
             <img
               src={photoUrl('/home-strip-2.jpg')}
               alt="Church Community"
-              className="w-full h-full object-cover object-[40%_30%]"
+              className="w-full h-full object-cover object-[center_32%]"
               loading="eager"
               fetchPriority="high"
               decoding="sync"
@@ -242,7 +242,7 @@ const Index = () => {
             <img
               src={photoUrl('/home-strip-3.jpg')}
               alt="Church Community"
-              className="w-full h-full object-cover object-[58%_center]"
+              className="w-full h-full object-cover object-center"
               loading="eager"
               fetchPriority="high"
               decoding="sync"
@@ -252,7 +252,7 @@ const Index = () => {
             <img
               src={photoUrl('/home-strip-4.jpg')}
               alt="Church Family"
-              className="w-full h-full object-cover object-[center_26%]"
+              className="w-full h-full object-cover object-[center_28%]"
               loading="eager"
               fetchPriority="high"
               decoding="sync"

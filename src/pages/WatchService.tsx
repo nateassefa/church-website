@@ -52,7 +52,7 @@ const WatchService = () => {
           loading="eager"
           fetchPriority="high"
           decoding="sync"
-          style={{ filter: 'brightness(0.5)', objectPosition: 'center 28%' }}
+          style={{ filter: 'brightness(0.5)', objectPosition: 'center 38%' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 via-[20%] to-transparent to-[38%] z-10" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-8 sm:pb-4">
