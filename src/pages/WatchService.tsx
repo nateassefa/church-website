@@ -3,6 +3,7 @@ import SEO from '@/components/SEO';
 import { motion } from "framer-motion";
 import SermonGrid from '@/components/SermonGrid';
 import { AMHARIC_PLAYLIST_ID, ENGLISH_PLAYLIST_ID } from '@/lib/youtube';
+import { photoUrl } from '@/lib/preloadImages';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -45,16 +46,15 @@ const WatchService = () => {
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 sm:pb-32 text-white overflow-hidden min-h-[85vh] sm:min-h-[70vh]">
         <img
-          src="/DSC00565.jpg"
+          src={photoUrl('/recent-sermons.jpg')}
           alt="Watch Service Background"
           className="absolute inset-0 w-full h-full object-cover z-0"
           loading="eager"
           fetchPriority="high"
           decoding="sync"
-          style={{ filter: 'brightness(0.5)', objectPosition: 'center 40%' }}
+          style={{ filter: 'brightness(0.5)', objectPosition: 'center 28%' }}
         />
-        <div className="absolute inset-0 bg-black/25 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/70 via-[#244363]/30 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 via-[20%] to-transparent to-[38%] z-10" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-8 sm:pb-4">
           <motion.div
             initial="hidden"

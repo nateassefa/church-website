@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import { photoUrl } from '@/lib/preloadImages';
 import { useState, useMemo } from "react";
 import {
   Select,
@@ -284,16 +285,15 @@ const SmallGroups = () => {
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 sm:pb-32 text-white overflow-hidden min-h-[85vh] sm:min-h-[70vh]">
         <img
-          src="/DSC00436.JPG"
+          src={photoUrl('/small-groups-hero.jpg')}
           alt="Small Groups Background"
           className="absolute inset-0 w-full h-full object-cover z-0"
           loading="eager"
           fetchPriority="high"
           decoding="sync"
-          style={{ filter: 'brightness(0.5)', objectPosition: 'center 60%' }}
+          style={{ filter: 'brightness(0.5)', objectPosition: 'center 38%' }}
         />
-        <div className="absolute inset-0 bg-black/25 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/60 via-[#244363]/20 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 via-[20%] to-transparent to-[38%] z-10" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-8 sm:pb-4">
           <motion.div
             initial="hidden"

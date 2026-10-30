@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import PageLayout from '@/components/PageLayout';
 import SEO from '@/components/SEO';
 import { Card, CardContent } from "@/components/ui/card";
+import { photoUrl } from '@/lib/preloadImages';
 
 const About = () => {
   const containerVariants = {
@@ -47,14 +48,13 @@ const About = () => {
         <img 
           src="/DSC00310.jpg" 
           alt="Living Hope for Generations Church family" 
-          className="absolute inset-0 w-full h-full object-cover object-[center_25%] z-0"
+          className="absolute inset-0 w-full h-full object-cover object-[38%_30%] z-0"
           loading="eager"
           fetchPriority="high"
           decoding="sync"
         />
         {/* Overlay for readability */}
-        <div className="absolute inset-0 bg-black/25 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/70 via-[#244363]/30 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 via-[20%] to-transparent to-[38%] z-10" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-8 sm:pb-4">
           <motion.div
             initial="hidden"
@@ -82,11 +82,11 @@ const About = () => {
             className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16"
           >
             <div>
-              <div className="w-full h-96 flex items-center justify-center bg-gray-200 rounded-lg shadow-lg overflow-hidden">
+              <div className="w-full aspect-[4/5] max-h-[36rem] flex items-center justify-center bg-gray-200 rounded-lg shadow-lg overflow-hidden">
                 <img 
-                  src={encodeURI("/image (3).jpg")} 
+                  src={photoUrl('/church-family.jpg')} 
                   alt="Living Hope for Generations Church family" 
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-cover object-[58%_18%]"
                   loading="eager"
                   fetchPriority="high"
                   decoding="sync" 

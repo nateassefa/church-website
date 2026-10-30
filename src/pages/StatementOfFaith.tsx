@@ -3,6 +3,7 @@ import SEO from '@/components/SEO';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { photoUrl } from '@/lib/preloadImages';
 
 const StatementOfFaith = () => {
   const containerVariants = {
@@ -103,15 +104,14 @@ const StatementOfFaith = () => {
         {/* Hero Section */}
         <section className="relative pt-24 pb-16 sm:pb-32 text-white overflow-hidden min-h-[85vh] sm:min-h-[70vh]">
           <img 
-            src="/statement-of-faith-hero.jpg" 
+            src={photoUrl('/statement-of-faith-hero.jpg')} 
             alt="Statement of Faith Background" 
-            className="absolute inset-0 w-full h-full object-cover object-[center_20%] z-0"
+            className="absolute inset-0 w-full h-full object-cover object-[42%_38%] z-0"
             loading="eager"
             fetchPriority="high"
             decoding="sync" 
           />
-          <div className="absolute inset-0 bg-black/25 z-10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/70 via-[#244363]/30 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 via-[20%] to-transparent to-[38%] z-10" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-8 sm:pb-4">
             <motion.div
               initial="hidden"
@@ -177,51 +177,64 @@ const StatementOfFaith = () => {
         </section>
 
         {/* The Sacraments */}
-        <section className="py-16 bg-[#244363] text-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={containerVariants}
-            >
-              <motion.h2 
-                variants={itemVariants}
-                className="text-3xl md:text-4xl font-bold text-white text-center mb-12"
+        <section className="bg-[#244363] text-white">
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            <div className="relative min-h-[320px] md:min-h-full">
+              <img
+                src={photoUrl('/sacraments-communion.jpg')}
+                alt="Pastor serving communion at the altar"
+                className="absolute inset-0 w-full h-full object-cover object-[48%_32%]"
+                width={682}
+                height={1024}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div className="flex flex-col justify-center py-8 md:py-10 px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={containerVariants}
               >
-                The Sacraments
-              </motion.h2>
-              <div className="h-1 w-16 bg-[#d9b062] mx-auto mb-2 rounded" />
+                <motion.h2
+                  variants={itemVariants}
+                  className="text-3xl md:text-4xl font-bold text-white text-center mb-6"
+                >
+                  The Sacraments
+                </motion.h2>
+                <div className="h-1 w-16 bg-[#d9b062] mx-auto mb-2 rounded" />
 
-              <motion.div 
-                variants={itemVariants}
-                className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-10"
-              >
-                {ordinances.map((ordinance, index) => (
-                  <Card key={index} className="border-l-4 border-l-[#d9b062] hover:shadow-lg transition-shadow bg-gray-50">
-                    <CardContent className="p-8">
-                      <h3 className="text-2xl font-semibold text-[#244363] mb-4">
-                        {ordinance.title}
-                      </h3>
-                      <p className="text-gray-600 mb-6 text-lg">
-                        {ordinance.description}
-                      </p>
-                      <div className="space-y-2">
-                        {ordinance.references.map((ref, refIndex) => (
-                          <Badge 
-                            key={refIndex}
-                            variant="outline" 
-                            className="text-[#4c3219] border-[#4c3219] mr-2"
-                          >
-                            {ref}
-                          </Badge>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
+                <motion.div
+                  variants={itemVariants}
+                  className="flex flex-wrap justify-center gap-6 mt-8"
+                >
+                  {ordinances.map((ordinance, index) => (
+                    <Card key={index} className="aspect-square w-full max-w-[20rem] border-l-4 border-l-[#d9b062] hover:shadow-lg transition-shadow bg-gray-50">
+                      <CardContent className="p-6 sm:p-7 h-full flex flex-col justify-center">
+                        <h3 className="text-xl sm:text-2xl font-semibold text-[#244363] mb-3">
+                          {ordinance.title}
+                        </h3>
+                        <p className="text-gray-600 mb-4 text-sm sm:text-base leading-relaxed">
+                          {ordinance.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {ordinance.references.map((ref, refIndex) => (
+                            <Badge
+                              key={refIndex}
+                              variant="outline"
+                              className="text-[#4c3219] border-[#4c3219]"
+                            >
+                              {ref}
+                            </Badge>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </motion.div>
               </motion.div>
-            </motion.div>
+            </div>
           </div>
         </section>
 

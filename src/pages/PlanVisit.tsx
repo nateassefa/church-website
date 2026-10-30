@@ -3,11 +3,12 @@ import SEO from '@/components/SEO';
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MapPin, Clock, Phone, Mail, Users, Car, Baby, Coffee, Heart, ArrowRight } from "lucide-react";
+import { MapPin, Clock, Phone, Mail, Users, Car, Baby, Coffee, Heart, ArrowRight, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import FAQ from '@/components/FAQ';
 import { useEffect, useState } from 'react';
 import { AMHARIC_PLAYLIST_ID, ENGLISH_PLAYLIST_ID, fetchYoutubePlaylist } from '@/lib/youtube';
+import { photoUrl } from '@/lib/preloadImages';
 
 interface SermonVideo {
   videoId: string;
@@ -136,16 +137,15 @@ const PlanVisit = () => {
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 sm:pb-32 text-white overflow-hidden min-h-[85vh] sm:min-h-[70vh]">
         <img
-          src="/DSC00439.jpg"
+          src={photoUrl('/become-a-member.jpg')}
           alt="Plan Your Visit Background"
           className="absolute inset-0 w-full h-full object-cover z-0"
-          style={{ objectPosition: '5% 20%' }}
+          style={{ objectPosition: 'center 38%' }}
           loading="eager"
           fetchPriority="high"
           decoding="sync"
         />
-        <div className="absolute inset-0 bg-black/25 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/70 via-[#244363]/30 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 via-[20%] to-transparent to-[38%] z-10" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-8 sm:pb-4">
           <motion.div
             initial="hidden"
@@ -252,18 +252,23 @@ const PlanVisit = () => {
                   <p className="text-white">Loading...</p>
                 </div>
               ) : englishVideo ? (
-                <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0">
-                  <iframe
-                    width="100%"
-                    height="100%"
-                    src={`https://www.youtube.com/embed/${englishVideo.videoId}`}
-                    title={englishVideo.title}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    className="absolute inset-0 w-full h-full"
-                  ></iframe>
-                </div>
+                <a
+                  href={`https://www.youtube.com/watch?v=${englishVideo.videoId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0 block group"
+                >
+                  <img
+                    src={englishVideo.thumbnail || `https://img.youtube.com/vi/${englishVideo.videoId}/hqdefault.jpg`}
+                    alt="English sermon"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                      <Play className="w-8 h-8 text-[#244363] ml-1" fill="#244363" />
+                    </div>
+                  </div>
+                </a>
               ) : (
                 <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0 bg-gray-800 flex items-center justify-center">
                   <p className="text-white text-sm text-center px-4">English sermon unavailable</p>
@@ -275,18 +280,23 @@ const PlanVisit = () => {
                   <p className="text-white">Loading...</p>
                 </div>
               ) : amharicVideo ? (
-                <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0">
-                  <iframe
-                    width="100%"
-                    height="100%"
-                    src={`https://www.youtube.com/embed/${amharicVideo.videoId}`}
-                    title={amharicVideo.title}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    className="absolute inset-0 w-full h-full"
-                  ></iframe>
-                </div>
+                <a
+                  href={`https://www.youtube.com/watch?v=${amharicVideo.videoId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0 block group"
+                >
+                  <img
+                    src={amharicVideo.thumbnail || `https://img.youtube.com/vi/${amharicVideo.videoId}/hqdefault.jpg`}
+                    alt="Amharic sermon"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                      <Play className="w-8 h-8 text-[#244363] ml-1" fill="#244363" />
+                    </div>
+                  </div>
+                </a>
               ) : (
                 <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0 bg-gray-800 flex items-center justify-center">
                   <p className="text-white text-sm text-center px-4">Amharic sermon unavailable</p>

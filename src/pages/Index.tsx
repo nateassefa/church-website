@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import PageLayout from '@/components/PageLayout';
 import Hero from '@/components/Hero';
 import SEO from '@/components/SEO';
-import { Clock, MapPin } from 'lucide-react';
+import { Clock, MapPin, Play } from 'lucide-react';
 import Player from 'lottie-react';
 // @ts-ignore: Importing JSON for Lottie animation
 import treeAnimation from '../tree.json';
 import { AMHARIC_PLAYLIST_ID, ENGLISH_PLAYLIST_ID, fetchYoutubePlaylist } from '@/lib/youtube';
+import { photoUrl } from '@/lib/preloadImages';
 
 interface SermonVideo {
   videoId: string;
@@ -149,18 +150,23 @@ const Index = () => {
                   <p className="text-white">Loading...</p>
                 </div>
               ) : englishVideo ? (
-                <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0">
-                  <iframe
-                    width="100%"
-                    height="100%"
-                    src={`https://www.youtube.com/embed/${englishVideo.videoId}`}
-                    title={englishVideo.title}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    className="absolute inset-0 w-full h-full"
-                  ></iframe>
-                </div>
+                <a
+                  href={`https://www.youtube.com/watch?v=${englishVideo.videoId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0 block group"
+                >
+                  <img
+                    src={englishVideo.thumbnail || `https://img.youtube.com/vi/${englishVideo.videoId}/hqdefault.jpg`}
+                    alt="English sermon"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                      <Play className="w-8 h-8 text-[#244363] ml-1" fill="#244363" />
+                    </div>
+                  </div>
+                </a>
               ) : (
                 <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0 bg-gray-800 flex items-center justify-center">
                   <p className="text-white text-sm text-center px-4">English sermon unavailable</p>
@@ -172,18 +178,23 @@ const Index = () => {
                   <p className="text-white">Loading...</p>
                 </div>
               ) : amharicVideo ? (
-                <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0">
-                  <iframe
-                    width="100%"
-                    height="100%"
-                    src={`https://www.youtube.com/embed/${amharicVideo.videoId}`}
-                    title={amharicVideo.title}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    className="absolute inset-0 w-full h-full"
-                  ></iframe>
-                </div>
+                <a
+                  href={`https://www.youtube.com/watch?v=${amharicVideo.videoId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0 block group"
+                >
+                  <img
+                    src={amharicVideo.thumbnail || `https://img.youtube.com/vi/${amharicVideo.videoId}/hqdefault.jpg`}
+                    alt="Amharic sermon"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                      <Play className="w-8 h-8 text-[#244363] ml-1" fill="#244363" />
+                    </div>
+                  </div>
+                </a>
               ) : (
                 <div className="relative w-full sm:flex-1 aspect-video rounded overflow-hidden min-w-0 bg-gray-800 flex items-center justify-center">
                   <p className="text-white text-sm text-center px-4">Amharic sermon unavailable</p>
@@ -216,50 +227,32 @@ const Index = () => {
 
       {/* Image Gallery Section */}
       <section className="w-full">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-0">
-          {/* Panel 1 */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-0">
           <div className="relative w-full aspect-[4/3] overflow-hidden">
             <img
-              src="/DSC00270.jpg"
+              src={photoUrl('/home-strip-2.jpg')}
               alt="Church Community"
-              className="w-full h-full object-cover"
-              style={{ transform: 'scale(1.2) translateX(5%)' }}
+              className="w-full h-full object-cover object-[40%_30%]"
               loading="eager"
               fetchPriority="high"
               decoding="sync"
             />
           </div>
-          {/* Panel 2 */}
           <div className="relative w-full aspect-[4/3] overflow-hidden">
             <img
-              src="/DSC00436.JPG"
+              src={photoUrl('/home-strip-3.jpg')}
               alt="Church Community"
-              className="w-full h-full object-cover"
-              style={{ transform: 'scale(1.2)' }}
+              className="w-full h-full object-cover object-[58%_center]"
               loading="eager"
               fetchPriority="high"
               decoding="sync"
             />
           </div>
-          {/* Panel 3 */}
           <div className="relative w-full aspect-[4/3] overflow-hidden">
             <img
-              src="/DSC00439.jpg"
-              alt="Church Community"
-              className="w-full h-full object-cover"
-              style={{ transform: 'scale(1.2)' }}
-              loading="eager"
-              fetchPriority="high"
-              decoding="sync"
-            />
-          </div>
-          {/* Panel 4 */}
-          <div className="relative w-full aspect-[4/3] overflow-hidden">
-            <img
-              src="/DSC00310.jpg"
+              src={photoUrl('/home-strip-4.jpg')}
               alt="Church Family"
-              className="w-full h-full object-cover"
-              style={{ transform: 'scale(1.2)' }}
+              className="w-full h-full object-cover object-[center_26%]"
               loading="eager"
               fetchPriority="high"
               decoding="sync"

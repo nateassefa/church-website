@@ -3,6 +3,7 @@ import SEO from '@/components/SEO';
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { photoUrl } from '@/lib/preloadImages';
 
 export const pastEvents = [
   {
@@ -71,10 +72,9 @@ const Events = () => {
           loading="eager"
           fetchPriority="high"
           decoding="sync"
-          style={{ filter: 'brightness(0.5)', objectPosition: 'center 10%' }}
+          style={{ filter: 'brightness(0.5)', objectPosition: '42% 28%' }}
         />
-        <div className="absolute inset-0 bg-black/25 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/70 via-[#244363]/30 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 via-[20%] to-transparent to-[38%] z-10" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-8 sm:pb-4">
           <motion.div
             initial="hidden"
@@ -107,7 +107,7 @@ const Events = () => {
                       {/* Event Image */}
                       <div className="w-full aspect-video bg-gray-200 flex items-center justify-center overflow-hidden">
                         <img
-                          src={encodeURI(event.image || '/placeholder.svg')}
+                          src={encodeURI(photoUrl(event.image || '/placeholder.svg'))}
                           alt={event.title}
                           className="w-full h-full object-cover object-center"
                           loading="eager"

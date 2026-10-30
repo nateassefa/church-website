@@ -68,13 +68,13 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 bg-transparent overflow-visible">
           <div className="flex-shrink-0 bg-transparent overflow-visible">
             <Link to="/" className="flex items-center bg-transparent -ml-2 md:-ml-4 mt-2 md:mt-3">
-              <img src="/church_logo_lutheran.png" alt="Living Hope Logo" className="h-12 sm:h-14 md:h-[4.5rem] w-auto object-contain max-w-[220px] sm:max-w-[300px] md:max-w-[420px] drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]" loading="eager" fetchPriority="high" decoding="sync" />
+              <img src="/church_logo_white.png" alt="Living Hope Logo" className="h-16 sm:h-20 md:h-24 w-auto object-contain max-w-[280px] sm:max-w-[400px] md:max-w-[560px] drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]" loading="eager" fetchPriority="high" decoding="sync" />
             </Link>
           </div>
           
           {/* Desktop Navigation */}
           <div className="hidden md:block bg-transparent">
-            <div className="ml-10 flex items-baseline space-x-8 bg-transparent">
+            <div className="ml-6 lg:ml-10 flex items-baseline space-x-5 lg:space-x-8 bg-transparent whitespace-nowrap">
               <Link 
                 to="/"
                 onMouseEnter={() => preloadPageImages('/')}

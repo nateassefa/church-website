@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Users, BookOpen, Heart, Music } from "lucide-react";
 import { Link } from "react-router-dom";
+import { photoUrl } from '@/lib/preloadImages';
 
 const Ministries = () => {
   const ministries = [
@@ -17,9 +18,9 @@ const Ministries = () => {
       ],
       icon: <Music className="w-8 h-8" />, 
       color: "bg-blue-50 border-blue-200",
-      image: "/Copy of _I0B7291.jpg",
+      image: "/ministry-worship.jpg",
       imageClass: "",
-      imageStyle: { objectPosition: 'center 5%' } as CSSProperties,
+      imageStyle: { objectPosition: '58% 42%' } as CSSProperties,
     },
     {
       title: "Children's Ministry",
@@ -30,8 +31,9 @@ const Ministries = () => {
       ],
       icon: <Heart className="w-8 h-8" />, 
       color: "bg-yellow-50 border-yellow-200",
-      image: "/PHOTO-2025-06-15-14-20-21.jpg",
-      imageClass: "object-right",
+      image: "/ministry-children.jpg",
+      imageClass: "object-center",
+      imageStyle: { objectPosition: 'center 28%' } as CSSProperties,
       textOnRight: true,
     },
     {
@@ -42,9 +44,9 @@ const Ministries = () => {
       ],
       icon: <BookOpen className="w-8 h-8" />,
       color: "bg-teal-50 border-teal-200",
-      image: "/IMG_6655_PhotoGrid.jpg",
+      image: "/ministry-youth.jpg",
       imageClass: "object-center",
-      imageStyle: { objectPosition: 'center 20%' } as CSSProperties,
+      imageStyle: { objectPosition: '42% 58%' } as CSSProperties,
       href: "/youth-bible-study-interest",
       textOnRight: true,
     },
@@ -56,9 +58,9 @@ const Ministries = () => {
       ],
       icon: <Users className="w-8 h-8" />, 
       color: "bg-purple-50 border-purple-200",
-      image: "/DSC00655.jpg",
+      image: "/ministry-young-adults.jpg",
       imageClass: "object-center",
-      imageStyle: { objectPosition: '90% 70%' } as CSSProperties,
+      imageStyle: { objectPosition: '32% 30%' } as CSSProperties,
       textOnRight: false,
     },
     {
@@ -70,9 +72,9 @@ const Ministries = () => {
       ],
       icon: <Heart className="w-8 h-8" />, 
       color: "bg-red-50 border-red-200",
-      image: "/87c42148-e584-4fcf-b619-b36ab2a66e6e_PhotoGrid.jpg",
+      image: "/ministry-prayer.jpg",
       imageClass: "",
-      imageStyle: { objectPosition: 'right 20%' } as CSSProperties,
+      imageStyle: { objectPosition: '48% 32%' } as CSSProperties,
     },
     {
       title: "Community Outreach",
@@ -85,7 +87,7 @@ const Ministries = () => {
       color: "bg-orange-50 border-orange-200",
       image: "/PHOTO-2025-03-29-14-31-16.jpg",
       imageClass: "",
-      imageStyle: { objectPosition: 'center 35%' } as CSSProperties
+      imageStyle: { objectPosition: '58% 36%' } as CSSProperties
     }
   ];
 
@@ -130,15 +132,14 @@ const Ministries = () => {
         {/* Hero Section with Background Image */}
         <section className="relative pt-24 pb-16 sm:pb-32 text-white overflow-hidden min-h-[85vh] sm:min-h-[70vh]">
           <img
-            src={encodeURI("/WhatsApp Image 2025-03-29 at 14.31.16.jpg")}
+            src={photoUrl('/ministries-hero.jpg')}
             alt="Ministries Background"
-            className="absolute inset-0 w-full h-full object-cover object-[center_40%] z-0"
+            className="absolute inset-0 w-full h-full object-cover object-[center_36%] z-0"
             loading="eager"
             fetchPriority="high"
             decoding="sync"
           />
-          <div className="absolute inset-0 bg-black/25 z-10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/80 via-[#244363]/40 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 via-[20%] to-transparent to-[38%] z-10" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-8 sm:pb-4">
             <motion.div
               initial="hidden"
@@ -183,7 +184,7 @@ const Ministries = () => {
             return (
               <div key={idx} className="relative w-full max-w-6xl mx-auto h-[400px] rounded-2xl overflow-hidden shadow-xl flex">
                 <img
-                  src={encodeURI(ministry.image || "/placeholder.svg")}
+                  src={encodeURI(photoUrl(ministry.image || "/placeholder.svg"))}
                   alt={ministry.title}
                   loading="eager"
                   fetchPriority="high"
@@ -198,8 +199,8 @@ const Ministries = () => {
                     : isEven;
                   return (
                     <>
-                      <div className={`absolute inset-0 z-20 ${textOnRight ? 'bg-gradient-to-l from-[#244363]/70 via-[#244363]/30 to-transparent' : 'bg-gradient-to-r from-[#244363]/70 via-[#244363]/30 to-transparent'}`} />
-                      <div className={`absolute inset-0 bg-black/25 flex flex-col justify-center ${textOnRight ? 'items-end pr-12' : 'items-start pl-12'} h-full w-full z-20`}>
+                      <div className={`absolute inset-0 z-20 ${textOnRight ? 'bg-gradient-to-l from-black/75 via-black/35 via-[26%] to-transparent to-[50%]' : 'bg-gradient-to-r from-black/75 via-black/35 via-[26%] to-transparent to-[50%]'}`} />
+                      <div className={`absolute inset-0 flex flex-col justify-center ${textOnRight ? 'items-end pr-12' : 'items-start pl-12'} h-full w-full z-20`}>
                         <div className={`max-w-2xl ${textOnRight ? 'text-right' : 'text-left'}`}>
                           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 drop-shadow-lg">{ministry.title}</h2>
                           <p className="text-lg md:text-xl text-white mb-4 drop-shadow">{ministry.description}</p>

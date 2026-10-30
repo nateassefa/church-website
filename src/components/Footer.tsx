@@ -22,14 +22,7 @@ const Footer = ({ tall = false }: FooterProps) => {
   return (
     <footer className={`bg-[#244363] text-white w-full ${tall ? 'pt-16 pb-8' : 'pt-16 pb-8'}`} style={{ backgroundColor: '#244363' }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <img
-          src="/church_logo_lutheran.png"
-          alt="Living Hope for Generations Church Logo"
-          loading="lazy"
-          decoding="async"
-          className="absolute -left-[280px] top-1/2 -translate-y-1/2 h-24 w-auto object-contain opacity-80"
-        />
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-stretch text-center md:text-left divide-y-0 md:divide-x md:divide-white/20 pl-0 md:pl-24">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-stretch text-center md:text-left divide-y-0 md:divide-x md:divide-white/20">
           {/* Left: About */}
           <div className="flex-1 flex flex-col items-center md:items-start pb-10 md:pb-0 md:pr-10 w-full md:w-auto">
             <h3 className="text-base font-bold tracking-widest mb-4 text-white uppercase">About</h3>
@@ -68,8 +61,19 @@ const Footer = ({ tall = false }: FooterProps) => {
             </ul>
           </div>
         </div>
-        <div className="pt-8 mt-8 border-t border-white/10 text-center text-gray-400 text-sm">
-          © {new Date().getFullYear()} Living Hope for Generations Church. All rights reserved.
+      </div>
+      <div className="mt-10 border-t border-white/10">
+        <div className="w-full px-4 sm:px-6 lg:px-8 pt-5 pb-3 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3">
+          <img
+            src="/church_logo_white.png"
+            alt="Living Hope for Generations Church Logo"
+            loading="lazy"
+            decoding="async"
+            className="h-16 sm:h-20 md:h-24 w-auto max-w-[min(100%,360px)] object-contain object-left shrink-0"
+          />
+          <p className="text-left sm:text-right text-gray-400 text-sm sm:pb-1">
+            © {new Date().getFullYear()} Living Hope for Generations Church. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

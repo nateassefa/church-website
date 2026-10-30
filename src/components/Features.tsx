@@ -132,11 +132,9 @@ const Features = () => {
           <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 px-4 items-stretch">
             {["Sunday Service", "Neighborhood Bible Study", "Young Adult Bible Study"].map((title, idx) => (
               <div key={idx} className="relative overflow-hidden group aspect-[4/3] w-full mx-auto flex flex-col justify-end h-full">
-                <img src={ministries[idx].image} alt={title} className="absolute inset-0 w-full h-full object-cover z-0 group-hover:scale-105 transition-transform duration-300" />
+                <img src={ministries[idx].image} alt={title} className="absolute inset-0 w-full h-full object-cover object-[center_32%] z-0 group-hover:scale-105 transition-transform duration-300" />
                 {/* 20% black overlay for extra contrast */}
-                <div className="absolute inset-0 bg-black/25 z-10" />
-                {/* Navy gradient overlay, increased spread */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#244363]/95 15% via-[#244363]/80 30% to-transparent z-20" style={{maskImage: 'linear-gradient(to top, #244363F2 15%, #244363CC 30%, transparent 50%)'}} />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 via-[20%] to-transparent to-[38%] z-10" />
                 {/* Text content */}
                 <div className="relative z-20 p-8 pb-0 w-full flex flex-col justify-end flex-1">
                   <div className="flex flex-col justify-end flex-1">

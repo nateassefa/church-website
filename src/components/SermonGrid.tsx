@@ -28,23 +28,6 @@ const getYouTubeThumbnail = (videoId: string) => {
   return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 };
 
-// Helper function to fetch video data from YouTube oEmbed (no API key needed)
-const fetchVideoData = async (videoId: string) => {
-  try {
-    const response = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`);
-    if (!response.ok) return null;
-    const data = await response.json();
-    return {
-      title: data.title,
-      thumbnail: getYouTubeThumbnail(videoId),
-      author: data.author_name
-    };
-  } catch (err) {
-    console.error(`Error fetching video ${videoId}:`, err);
-    return null;
-  }
-};
-
 const SermonGrid = ({ playlistId = AMHARIC_PLAYLIST_ID, title = "WATCH RECENT SERMONS", maxResults = 9 }: SermonGridProps) => {
   const [videos, setVideos] = useState<SermonVideo[]>([]);
   const [loading, setLoading] = useState(true);
@@ -74,51 +57,16 @@ const SermonGrid = ({ playlistId = AMHARIC_PLAYLIST_ID, title = "WATCH RECENT SE
           }
           
           if (data.items && data.items.length > 0) {
-            // First, get all video IDs
-            const videoIds = data.items.map((item: any) => item.snippet.resourceId.videoId).join(',');
-            
-            // Fetch video details to get actual upload dates
-            const videosApiUrl = `/api/youtube/videos?videoIds=${videoIds}`;
-            
-            let videoDetailsMap: Record<string, any> = {};
-            
-            try {
-              const videosResponse = await fetch(videosApiUrl, {
-                mode: 'cors',
-                headers: { 'Accept': 'application/json' }
-              }).catch(() => null);
-              
-              if (videosResponse && videosResponse.ok) {
-                const videosData = await videosResponse.json();
-                if (videosData.items) {
-                  videosData.items.forEach((video: any) => {
-                    videoDetailsMap[video.id] = {
-                      publishedAt: video.snippet.publishedAt
-                    };
-                  });
-                }
-              }
-            } catch (err) {
-              console.warn('Could not fetch video details, using playlist date:', err);
-            }
-            
             const formattedVideos: SermonVideo[] = data.items.map((item: any) => {
-              const title = item.snippet.title;
               const videoId = item.snippet.resourceId.videoId;
-              // Use actual video upload date if available, otherwise fall back to playlist date
-              const uploadDate = videoDetailsMap[videoId]?.publishedAt || item.snippet.publishedAt;
-              
               return {
                 id: item.id,
                 title: item.snippet.title,
                 thumbnail: item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.medium?.url || getYouTubeThumbnail(videoId),
-                publishedAt: uploadDate, // This is the video upload date from YouTube
+                publishedAt: item.snippet.publishedAt,
                 videoId: videoId,
-                speaker: extractSpeaker(title)
               };
-            }).sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
-            
-            console.log(`Setting ${formattedVideos.length} videos for ${title}`);
+            });
             setVideos(formattedVideos);
             setLoading(false);
             return;
@@ -147,84 +95,6 @@ const SermonGrid = ({ playlistId = AMHARIC_PLAYLIST_ID, title = "WATCH RECENT SE
 
     fetchSermons();
   }, [playlistId, maxResults]);
-
-  const formatDate = (dateString: string) => {
-    // If it's already formatted (from manual videos), return as-is
-    if (dateString.includes('th') || dateString.includes('st') || dateString.includes('nd') || dateString.includes('rd')) {
-      return dateString;
-    }
-    
-    // Format from ISO date string (YouTube upload date)
-    if (!dateString) {
-      return 'Date unavailable';
-    }
-    
-    const date = new Date(dateString);
-    
-    // Check if date is valid
-    if (isNaN(date.getTime())) {
-      return 'Date unavailable';
-    }
-    
-    const months = ['January', 'February', 'March', 'April', 'May', 'June', 
-                    'July', 'August', 'September', 'October', 'November', 'December'];
-    const day = date.getDate();
-    const month = months[date.getMonth()];
-    const year = date.getFullYear();
-    
-    // Add ordinal suffix
-    const suffix = day === 1 || day === 21 || day === 31 ? 'st' :
-                   day === 2 || day === 22 ? 'nd' :
-                   day === 3 || day === 23 ? 'rd' : 'th';
-    
-    return `${month} ${day}${suffix} ${year}`;
-  };
-
-  const extractSpeaker = (title: string): string => {
-    // Split by "|" to get parts
-    const parts = title.split('|').map(p => p.trim());
-    
-    // Pattern 1: Check if first part is a name (e.g., "Nate Assefa | Confession Requires...")
-    const firstPart = parts[0];
-    const namePattern = /^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)$/; // First and last name
-    if (namePattern.test(firstPart) && !firstPart.match(/\d/)) { // No numbers (not a Bible verse)
-      return firstPart;
-    }
-    
-    // Pattern 2: Look for speaker in parts (skip Bible verses like "James 1:2-8")
-    for (let i = 1; i < parts.length; i++) {
-      const part = parts[i];
-      // Skip if it's a Bible verse or contains "Living Hope" (church name)
-      if (part.match(/\d+:\d+/) || part.includes('Living Hope')) {
-        continue;
-      }
-      // Check if it's a name with title
-      const withTitle = part.match(/^((?:Pastor|Dr\.?|Kes)\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)$/);
-      if (withTitle) {
-        return withTitle[1];
-      }
-      // Check if it's just a name (first and last)
-      const justName = part.match(/^([A-Z][a-z]+\s+[A-Z][a-z]+)$/);
-      if (justName) {
-        return justName[1];
-      }
-    }
-    
-    // Pattern 3: Look for "Pastor", "Dr.", or "Kes" anywhere
-    const titlePattern = /((?:Pastor|Dr\.?|Kes)\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)/;
-    const titleMatch = title.match(titlePattern);
-    if (titleMatch) {
-      return titleMatch[1];
-    }
-    
-    // Pattern 4: Look for any name pattern after "|"
-    const pipeNameMatch = title.match(/\|\s*([A-Z][a-z]+\s+[A-Z][a-z]+)/);
-    if (pipeNameMatch && !pipeNameMatch[1].match(/\d/)) {
-      return pipeNameMatch[1];
-    }
-    
-    return '';
-  };
 
   if (loading) {
     return (
@@ -295,35 +165,20 @@ const SermonGrid = ({ playlistId = AMHARIC_PLAYLIST_ID, title = "WATCH RECENT SE
             className="group cursor-pointer"
             onClick={() => window.open(`https://www.youtube.com/watch?v=${video.videoId}`, '_blank')}
           >
-            <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-              {/* Thumbnail */}
+            <div className="rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               <div className="relative aspect-video bg-gray-200 overflow-hidden">
                 <img
                   src={video.thumbnail}
-                  alt={video.title}
+                  alt=""
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   loading="eager"
                   decoding="sync"
                 />
-                {/* Play overlay - white circle with blue play icon */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
                     <Play className="w-8 h-8 text-[#244363] ml-1" fill="#244363" />
                   </div>
                 </div>
-              </div>
-              
-              {/* Content */}
-              <div className="p-4">
-                <h3 className="text-base font-bold text-gray-900 mb-2 line-clamp-3 min-h-[4rem]">
-                  {video.title}
-                </h3>
-                <p className="text-sm text-gray-600 mb-1 font-medium">
-                  {video.speaker ? `${video.speaker} | Living Hope Lutheran Church` : 'Living Hope Lutheran Church'}
-                </p>
-                <p className="text-sm text-gray-500">
-                  {formatDate(video.publishedAt)}
-                </p>
               </div>
             </div>
           </div>
