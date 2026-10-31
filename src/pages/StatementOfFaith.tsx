@@ -110,6 +110,7 @@ const StatementOfFaith = () => {
             loading="eager"
             fetchPriority="high"
             decoding="sync" 
+            style={{ filter: 'brightness(0.5)' }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 via-[20%] to-transparent to-[38%] z-10" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 h-full flex items-end justify-center pb-8 sm:pb-4">
@@ -188,7 +189,9 @@ const StatementOfFaith = () => {
                 height={1024}
                 loading="lazy"
                 decoding="async"
+                style={{ filter: 'brightness(0.5)' }}
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 via-[20%] to-transparent to-[38%]" />
             </div>
             <div className="flex flex-col justify-center py-8 md:py-10 px-4 sm:px-6 lg:px-8">
               <motion.div

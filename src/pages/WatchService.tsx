@@ -98,7 +98,7 @@ const WatchService = () => {
           <SermonGrid 
             playlistId={ENGLISH_PLAYLIST_ID} 
             title="ENGLISH SERMONS"
-            maxResults={12}
+            maxResults={2}
           />
         </div>
       </section>
@@ -109,7 +109,7 @@ const WatchService = () => {
           <SermonGrid 
             playlistId={AMHARIC_PLAYLIST_ID} 
             title="AMHARIC SERMONS"
-            maxResults={12}
+            maxResults={2}
           />
         </div>
       </section>

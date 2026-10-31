@@ -52,6 +52,7 @@ const About = () => {
           loading="eager"
           fetchPriority="high"
           decoding="sync"
+          style={{ filter: 'brightness(0.5)' }}
         />
         {/* Overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 via-[20%] to-transparent to-[38%] z-10" />

@@ -24,20 +24,20 @@ export const PAGE_IMAGES: Record<string, string[]> = {
   ],
   '/small-groups': [
     '/small-groups-hero.jpg',
-    '/public.jpg',
-    '/ChatGPT Image Nov 21, 2025, 05_05_29 PM.jpg',
-    '/IMG_6655_PhotoGrid.jpg',
-    '/37ef91a4-a452-4e5f-a4de-f260106e9b17.jpg',
-    '/ChatGPT Image Nov 21, 2025, 04_27_38 PM.jpg',
-    '/ChatGPT Image Nov 21, 2025, 04_49_12 PM.jpg',
-    '/ChatGPT Image Nov 21, 2025, 04_32_25 PM.jpg',
-    '/ChatGPT Image Nov 21, 2025, 04_36_33 PM.jpg',
+    '/sg-sunday-service.jpg',
+    '/sg-young-adult.jpg',
+    '/sg-youth.jpg',
+    '/fellowship-lunch.jpg',
+    '/sg-dumfries.jpg',
+    '/sg-woodbridge.jpg',
+    '/sg-fredericksburg.jpg',
+    '/sg-stafford.jpg',
   ],
   '/plan-visit': ['/become-a-member.jpg'],
   '/watch-service': ['/recent-sermons.jpg'],
 };
 
-export const PHOTO_V = 'orig-full';
+export const PHOTO_V = 'up4x-4';
 
 export function photoUrl(src: string) {
   if (!src || src.startsWith('http') || src.includes('?')) return src;

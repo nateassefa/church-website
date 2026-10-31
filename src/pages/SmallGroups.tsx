@@ -57,7 +57,7 @@ const upcomingEvents = [
       time: "11:00 AM",
       location: "3637 Graham Park Road, Triangle VA 22172 (Amharic & English)",
       category: "Worship",
-      image: "/public.jpg",
+      image: "/sg-sunday-service.jpg",
       featured: true,
       when: "weekly",
       region: "church",
@@ -76,7 +76,7 @@ const upcomingEvents = [
       time: "7:00 PM",
       location: "In Person & Virtual",
       category: "Bible Study",
-      image: "/ChatGPT Image Nov 21, 2025, 05_05_29 PM.jpg",
+      image: "/sg-young-adult.jpg",
       when: "weekly",
       region: "church",
       campus: "main",
@@ -94,7 +94,7 @@ const upcomingEvents = [
       time: "7:00 PM",
       location: "Online",
       category: "Bible Study",
-      image: "/IMG_6655_PhotoGrid.jpg",
+      image: "/sg-youth.jpg",
       when: "weekly",
       region: "online",
       campus: "online",
@@ -111,7 +111,7 @@ const upcomingEvents = [
       date: "Directly after Sunday Service",
       time: "Directly after Sunday Service",
       category: "Fellowship",
-      image: "/37ef91a4-a452-4e5f-a4de-f260106e9b17.jpg",
+      image: "/fellowship-lunch.jpg",
       when: "weekly",
       region: "church",
       campus: "main",
@@ -125,11 +125,9 @@ const upcomingEvents = [
       id: 3,
       title: "Dumfries Amharic Bible Study",
       description: "Join us for Bible study in Amharic at our Dumfries location.",
-      date: "Every Thursday at 6:00-8:00 PM",
-      time: "6:00-8:00 PM",
       location: "Dumfries, VA",
       category: "Bible Study",
-      image: "/ChatGPT Image Nov 21, 2025, 04_27_38 PM.jpg",
+      image: "/sg-dumfries.jpg",
       when: "weekly",
       region: "dumfries",
       campus: "dumfries",
@@ -143,11 +141,9 @@ const upcomingEvents = [
       id: 4,
       title: "Woodbridge Amharic Bible Study",
       description: "Join us for Bible study in Amharic at our Woodbridge location.",
-      date: "Every Thursday at 7:00 PM",
-      time: "7:00 PM",
       location: "Woodbridge, VA",
       category: "Bible Study",
-      image: "/ChatGPT Image Nov 21, 2025, 04_49_12 PM.jpg",
+      image: "/sg-woodbridge.jpg",
       when: "weekly",
       region: "woodbridge",
       campus: "woodbridge",
@@ -161,11 +157,9 @@ const upcomingEvents = [
       id: 5,
       title: "Fredericksburg Amharic Bible Study",
       description: "Join us for Bible study in Amharic at our Fredericksburg location.",
-      date: "Every Monday at 3:00-5:00 PM",
-      time: "3:00-5:00 PM",
       location: "Fredericksburg, VA",
       category: "Bible Study",
-      image: "/ChatGPT Image Nov 21, 2025, 04_32_25 PM.jpg",
+      image: "/sg-fredericksburg.jpg",
       when: "weekly",
       region: "fredericksburg",
       campus: "fredericksburg",
@@ -179,11 +173,9 @@ const upcomingEvents = [
       id: 7,
       title: "Stafford Amharic Bible Study",
       description: "Join us for Bible study in Amharic at our Stafford location.",
-      date: "Every Thursday at 6:00-8:00 PM",
-      time: "6:00-8:00 PM",
       location: "Stafford, VA",
       category: "Bible Study",
-      image: "/ChatGPT Image Nov 21, 2025, 04_36_33 PM.jpg",
+      image: "/sg-stafford.jpg",
       when: "weekly",
       region: "stafford",
       campus: "stafford",
@@ -387,7 +379,9 @@ const SmallGroups = () => {
                         <div className="flex items-end justify-between gap-4">
                           <div className="flex-1">
                             <h3 className="text-3xl md:text-4xl font-bold mb-3 leading-tight">{event.title}</h3>
-                            <div className="text-lg md:text-xl mb-3 opacity-95">{event.date}</div>
+                            {'date' in event && event.date && (
+                              <div className="text-lg md:text-xl mb-3 opacity-95">{event.date}</div>
+                            )}
                             {locationDisplay && (
                               <div className="flex items-center gap-2 text-base md:text-lg opacity-85">
                                 <MapPin size={16} className="flex-shrink-0" />

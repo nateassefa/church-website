@@ -65,7 +65,7 @@ async function fetchPlaylistRss(playlistId, maxResults) {
   const xml = await response.text();
   const entries = [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)];
 
-  const items = entries.slice(0, maxResults).map((match, index) => {
+  const items = entries.map((match, index) => {
     const block = match[1];
     const videoId = block.match(/<yt:videoId>([^<]+)<\/yt:videoId>/)?.[1] || '';
     const title = decodeXml(block.match(/<title>([\s\S]*?)<\/title>/)?.[1] || '');
@@ -86,7 +86,10 @@ async function fetchPlaylistRss(playlistId, maxResults) {
         },
       },
     };
-  }).filter((item) => item.snippet.resourceId.videoId);
+  })
+    .filter((item) => item.snippet.resourceId.videoId)
+    .sort((a, b) => b.snippet.publishedAt.localeCompare(a.snippet.publishedAt))
+    .slice(0, maxResults);
 
   return { items };
 }
@@ -104,14 +107,18 @@ export async function getPlaylist({ playlistId, maxResults = 9 }) {
 
   if (apiKey) {
     try {
-      const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails,status&playlistId=${encodeURIComponent(playlistId)}&maxResults=${max}&key=${apiKey}`;
+      const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails,status&playlistId=${encodeURIComponent(playlistId)}&maxResults=50&key=${apiKey}`;
       const { ok, data } = await youtubeGet(url);
       if (ok && Array.isArray(data.items)) {
+        const publishedAt = (item) => item.contentDetails?.videoPublishedAt || item.snippet?.publishedAt || '';
         return {
           status: 200,
           data: {
             ...data,
-            items: data.items.filter(isPublicPlaylistItem),
+            items: data.items
+              .filter(isPublicPlaylistItem)
+              .sort((a, b) => publishedAt(b).localeCompare(publishedAt(a)))
+              .slice(0, max),
           },
         };
       }

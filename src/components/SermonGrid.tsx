@@ -158,7 +158,7 @@ const SermonGrid = ({ playlistId = AMHARIC_PLAYLIST_ID, title = "WATCH RECENT SE
       <h2 className="text-4xl md:text-5xl font-bold text-black mb-12 text-center uppercase tracking-tight">
         {title}
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className={`grid grid-cols-1 sm:grid-cols-2 gap-6 ${videos.length <= 2 ? 'max-w-5xl mx-auto' : 'lg:grid-cols-3'}`}>
         {videos.map((video, index) => (
           <div
             key={video.id}
