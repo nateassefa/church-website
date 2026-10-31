@@ -37,7 +37,7 @@ export const PAGE_IMAGES: Record<string, string[]> = {
   '/watch-service': ['/recent-sermons.jpg'],
 };
 
-export const PHOTO_V = 'up4x-4';
+export const PHOTO_V = 'web-1';
 
 export function photoUrl(src: string) {
   if (!src || src.startsWith('http') || src.includes('?')) return src;
@@ -59,8 +59,4 @@ export function preloadImages(urls: string[] = []) {
 
 export function preloadPageImages(pathname: string) {
   preloadImages(PAGE_IMAGES[pathname] || []);
-}
-
-export function preloadAllPageImages() {
-  Object.values(PAGE_IMAGES).forEach((urls) => preloadImages(urls));
 }

@@ -1,10 +1,10 @@
-import React, { useEffect, useLayoutEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactInfo from '@/components/ContactInfo';
 import FloatingContactButton from '@/components/FloatingContactButton';
-import { preloadAllPageImages, preloadPageImages } from '@/lib/preloadImages';
+import { preloadPageImages } from '@/lib/preloadImages';
 
 type PageLayoutProps = {
   children: React.ReactNode;
@@ -19,10 +19,6 @@ const PageLayout = ({ children, showContact = true, footerTall = false }: PageLa
     window.scrollTo(0, 0);
     preloadPageImages(location.pathname);
   }, [location.pathname]);
-
-  useEffect(() => {
-    preloadAllPageImages();
-  }, []);
 
   return (
     <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden flex flex-col">

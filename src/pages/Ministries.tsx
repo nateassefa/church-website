@@ -188,9 +188,8 @@ const Ministries = () => {
                 <img
                   src={encodeURI(photoUrl(ministry.image || "/placeholder.svg"))}
                   alt={ministry.title}
-                  loading="eager"
-                  fetchPriority="high"
-                  decoding="sync"
+                  loading={idx < 2 ? "eager" : "lazy"}
+                  decoding="async"
                   className={`absolute inset-0 w-full h-full object-cover ${ministry.imageClass || 'object-center'}`}
                   style={ministry.imageStyle}
                 />

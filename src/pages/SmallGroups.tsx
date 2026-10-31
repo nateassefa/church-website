@@ -338,9 +338,8 @@ const SmallGroups = () => {
                             src={encodeURI(event.image)}
                             alt={event.title}
                             className="absolute inset-0 w-full h-full object-cover"
-                            loading="eager"
-                            fetchPriority="high"
-                            decoding="sync"
+                            loading={index < 2 ? "eager" : "lazy"}
+                            decoding="async"
                             onError={(e) => {
                               // Log detailed error information to help debug
                               const imgElement = e.currentTarget;

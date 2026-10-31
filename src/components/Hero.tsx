@@ -86,8 +86,10 @@ const Hero = () => {
           loop
           muted
           playsInline
+          preload="auto"
+          poster="/hero-poster.jpg"
           className="absolute inset-0 w-full h-full object-cover"
-          src="/video-output-37BFB8D5-1DDB-4941-B6DD-EA6D6371FCDA-1 2.mov"
+          src="/hero.mp4"
         />
         {/* Black overlay for text readability */}
         <div 
